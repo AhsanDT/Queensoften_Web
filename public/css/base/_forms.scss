@@ -1,0 +1,242 @@
+// forms
+
+form,
+fieldset {
+  margin: 0;
+  padding: 0;
+  border-style: none;
+
+
+  .form-group{
+    margin: 0 0 15px;
+      position: relative;
+
+    > label{
+      font-size: 12px;
+    }
+  }
+
+  &.infoForm{
+    padding: 50px;
+
+      @include media("<tablet"){
+          padding: 15px;
+      }
+
+    .form-control{
+      border: none;
+      padding: 0;
+      pointer-events: none;
+      height: auto;
+      line-height: 20px;
+      font-size: 14px;
+
+      &:focus{
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+
+
+  }
+
+  &.eidtForm{
+    padding: 50px;
+
+    label{
+      font-size: 12px;
+    }
+  }
+}
+
+select,
+.form-select,
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='search'],
+input[type='password'],
+input[type='url'],
+input[type='date'],
+textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border: 1px solid rgba(0,0,0,0.15);
+  font-size: 13px;
+  height: 40px;
+  line-height: 38px;
+  border-radius: 5px;
+  padding: 0 15px;
+  box-sizing: border-box;
+
+
+
+  // &:hover {
+
+  // }
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: rgba(0,0,0,0.25);
+  }
+
+  @include placeholder {
+    color: $placeholder-color;
+  }
+}
+
+select {
+  -webkit-border-radius: 0;
+}
+
+textarea {
+  resize: vertical;
+  vertical-align: top;
+    resize: none;
+    width: 100%;
+}
+
+button,
+input[type='button'],
+input[type='reset'],
+input[type='file'],
+input[type='submit'] {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  cursor: pointer;
+}
+
+.form-check{
+  padding: 0;
+}
+
+.form-check-input[type="radio"],
+.form-check-input[type="checkbox"]{
+  position: absolute;
+  opacity: 0;
+
+  &:checked + label{
+    &:before {
+      background: #6E31A2;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 9px;
+      background: white;
+      width: 2px;
+      height: 2px;
+      box-shadow:
+              2px 0 0 white,
+              4px 0 0 white,
+              4px -2px 0 white,
+              4px -4px 0 white,
+              4px -6px 0 white,
+              4px -8px 0 white;
+      transform: rotate(45deg);
+    }
+  }
+
+  &:disabled{
+    + label{
+      color: #b8b8b8;
+      cursor: auto;
+
+      &:before {
+        box-shadow: none;
+        background: #ddd;
+      }
+    }
+  }
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0 0 0 25px;
+    @include flex-align;
+    min-height: 20px;
+    font-size: 13px;
+
+    &:before {
+      content: '';
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 3px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.form-check-input[type="radio"]{
+
+  &:checked + label{
+    &:before {
+      background: #6E31A2;
+    }
+
+    &:after {
+      left: 6px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      box-shadow: none;
+      border-radius: 50%;
+    }
+  }
+
+  & + label {
+
+    &:before {
+      border-radius: 50%;
+    }
+  }
+}
+
+.square{
+    .form-check-input[type="radio"] {
+        + label{
+            &:before {
+                border-radius: 5px;
+                background: none;
+            }
+
+            &:after {
+                left: 5px;
+                top: 6px;
+                width: 10px;
+                height: 5px;
+                box-shadow: none;
+                border-left: 2px solid #6E31A2;
+                border-bottom: 2px solid #6E31A2;
+                border-radius: 0;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+.fa-eye{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 16px;
+    right: 0;
+    display: block;
+    background: url("../images/eyePassword.svg") no-repeat;
+    background-size: 20px;
+
+    &:before{
+        display: none;
+    }
+}

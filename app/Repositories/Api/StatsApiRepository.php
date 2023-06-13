@@ -1,0 +1,166 @@
+<?php
+
+namespace App\Repositories\Api;
+
+
+use App\Models\Challenge;
+use App\Models\Statistics;
+use App\Models\User;
+use App\Services\AchievementService;
+use App\Services\ChallengeService;
+use App\Traits\AchievementTrait;
+use App\Traits\ResponseTrait;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use PHPUnit\Exception;
+use Symfony\Component\HttpFoundation\Response;
+
+class StatsApiRepository implements StatsApiRepositoryInterface
+{
+    use ResponseTrait;
+    use AchievementTrait;
+    protected $model;
+    protected $date;
+    public    $achievementService;
+    public    $challengeService;
+    public function __construct(Statistics $model,AchievementService $achievementService,ChallengeService $challengeService){
+        $this->model = $model;
+        $this->date  = date('m-d-Y');
+        $this->achievementService = $achievementService;
+        $this->challengeService = $challengeService;
+    }
+
+    function create($request,$userId): JsonResponse
+    {
+        try {
+            $user = User::find($userId);
+            if(!$user)
+                return $this->response(false,'User not found!',[], Response::HTTP_UNAUTHORIZED);
+
+            $stats = $this->model::Create([
+                'game_type' => $request->game_type,
+                'won' => $request->won ?? 0,
+                'lost' => $request->lost ?? 0,
+                'date' => $request->date ?? null,
+                'time' => $request->time ?? null,
+                'score' => $request->score ?? 0,
+                'user_id' => $userId,
+            ]);
+
+            if($stats){
+                $achievementUnlock= null;
+                if(isset($request->challenge_id)){
+                    $achievementUnlock = $this->unlockAchievement($request->challenge_id,$user,$request->hardcoded,$request);
+                }
+
+                if($achievementUnlock){
+                    return $this->response(true,'Achievement Unlocked',$achievementUnlock, Response::HTTP_OK);
+                }
+
+                return $this->response(true,'Statistics saved successfully',$stats, Response::HTTP_OK);
+            }
+            return $this->response(false,'Something went wrong please try again later.',[], Response::HTTP_UNAUTHORIZED);
+
+        }catch (Exception $exception){
+            return $this->response(false,'Something went wrong please try again later.',[], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+    public function list($userId, $gameType): JsonResponse
+    {
+        $data = [];
+        $stats = DB::table('statistics')
+            ->select(DB::raw('date,count(*) as total_played,sum(won) as total_won,sum(lost) as total_lost,sum(won) as current_winning_streak,sum(won) as longest_winning_streak,sum(lost) as longest_losing_streak,round(avg(score),0) as average_score,min(time) as best_time'))
+            ->where('user_id','=',$userId)
+            ->where('game_type','=',$gameType)
+            ->groupBy('date')
+            ->limit(10)
+            ->get();
+        //round((sum(won)/(count(*))*100),2)
+        foreach ($stats as $row){
+            array_push($data,[
+                'date' => $row->date,
+                'total_played' => $row->total_played,
+                'total_won' => $row->total_won,
+                'total_lost' => $row->total_lost,
+                'win_percentage' => round(($row->total_won / $row->total_played) * 100,0). ' %',
+                'current_winning_streak' => $row->current_winning_streak,
+                'longest_winning_streak' => $row->longest_winning_streak,
+                'longest_losing_streak' => $row->longest_losing_streak,
+                'average_score' => $row->average_score ?? 0,
+                'best_time' => $row->best_time ?? "0:00"
+            ]);
+        }
+        return $this->response(true,'',$data,Response::HTTP_OK);
+    }
+    function unlockAchievement($challenge_id,$user,$hardcoded,$request){
+        if(!$this->achievementService->getAchievement($challenge_id,$user->id)) {
+            $challenge = $this->challengeService->getChallenge($challenge_id,0);
+            if ($challenge) {
+                return $this->winchallengeUnderHourMinute($challenge,$user);
+            }else if($hardcoded == 1){
+                $challenge = $this->challengeService->getChallenge($challenge_id,1);
+                if($challenge->play > 0){
+                    return  $this->playChallenges($challenge,$user);
+                } elseif($request->challenge_win_hardcoded == 1){
+                    $this->achievementService->save($challenge,$user);
+                   return $this->achievementResponse($challenge);
+                }else{
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+    function playChallenges($challenge,$user){
+        $statistics = $this->model::where('user_id',$user->id)->where('game_type', 'Challenge')
+            ->limit($challenge->play)
+            ->orderBy('id','DESC')
+            ->get();
+
+        if (count($statistics) == $challenge->play) {
+            $this->achievementService->save($challenge,$user);
+            return $this->achievementResponse($challenge);
+
+        }
+    }
+    function winchallengeUnderHourMinute($challenge,$user){
+        $timeInSeconds = 0 ;
+        $diffInSeconds = 0 ;
+        $flag = false;
+        if($challenge->games > 0) {
+            $statistics = $this->model::where('user_id',$user->id)->where('game_type', 'Challenge')
+                ->where('won', 1)
+                ->where('date', $this->date)
+                ->limit($challenge->games)
+                ->orderBy('id','DESC')
+                ->get();
+
+            if (count($statistics) == $challenge->games) {
+
+                if(($challenge->minute !=0 || $challenge->hour != 0) || ($challenge->minute !=00 || $challenge->hour != 00)) {
+                    foreach ($statistics as $key => $stats) {
+                        if ($key == 0) {
+                            $timeInSeconds = strtotime($stats->created_at);
+                        } else {
+                            $timeInSeconds = $timeInSeconds - strtotime($stats->created_at);
+                            $diffInSeconds = $diffInSeconds + $timeInSeconds;
+                            $timeInSeconds = strtotime($stats->created_at);
+                        }
+                    }
+                    $totalSecond = $challenge->hour * 3600 + $challenge->minute * 60;
+                    if ($diffInSeconds < $totalSecond) {
+                        $flag = true;
+                    }
+                }else{
+                    $flag = true;
+                }
+
+                if($flag){
+                    $this->achievementService->save($challenge, $user);
+                    return $this->achievementResponse($challenge);
+                }
+
+            }
+        }
+    }
+}

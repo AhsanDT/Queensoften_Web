@@ -1,0 +1,164 @@
+#wrapper{
+	&.loginWrapper{
+		padding: 50px 0;
+	}
+}
+
+
+.loginWrapper{
+	@include flex-align;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	min-height: 100vh;
+	background: #f5f5f5;
+	color: #fff;
+
+	&:before{
+		position: absolute;
+		content: '';
+		background: linear-gradient(57.19deg, #6E31A2 20.44%, rgba(225, 226, 230, 0) 224.36%);
+		display: block;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 0;
+	}
+
+	.container{
+		@include flex-align-center;
+		flex-direction: row-reverse;
+		z-index: 1;
+		max-width: 900px;
+	}
+
+
+	.logo{
+		float: none;
+		padding: 50px;
+		max-width: 400px;
+		margin: 0 auto 30px;
+	}
+
+	form{
+		position: relative;
+		color: #fff;
+
+		@include media ("<tablet"){
+			padding: 50px 15px;
+		}
+
+		.form-group{
+			margin: 0 0 15px;
+            position: relative;
+
+            .fa-lock{
+                position: absolute;
+                top: 39px;
+                left: 17px;
+                font-size: 25px;
+                color: #B45FA1;
+            }
+		}
+
+		label{
+			font-size: 15px;
+			font-weight: 600;
+		}
+
+
+        input[type=password]{
+            padding-left: 50px;
+        }
+
+		.form-control{
+			background: none;
+			height: 60px !important;
+			line-height: 58px !important;
+			background: #fff;
+			border-radius: 10px;
+			border:1px solid rgba(255, 255, 255, 1) !important;
+			color: #222;
+			font-size: 14px;
+            margin: 5px 0 0;
+
+			@include placeholder{
+				color: rgba(0, 0, 0, 0.3);
+			}
+		}
+
+		.custom-control-label{
+			color: #222;
+			line-height: 25px;
+		}
+
+		a{
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.btn{
+			display: block;
+			width: 100%;
+			height: 60px;
+			border-radius: 10px;
+			background: #000;
+			color: #fff;
+			font-size: 15px;
+			line-height: 58px;
+			font-weight: 600;
+			text-transform: capitalize;
+
+			&:hover{
+				background: rgba(0,0,0,0.85);
+				border-color: rgba(0,0,0,0.85);
+			}
+		}
+
+	}
+
+	.divider{
+		margin: 15px 0;
+		position: relative;
+		font-size: 18px;
+		line-height: 22px;
+		text-align: center;
+		overflow: hidden;
+
+		span{
+			display: inline-block;
+			vertical-align: top;
+			padding: 5px 10px;
+			position: relative;
+			z-index: 1;
+
+			&:before,
+			&:after{
+				@include ease;
+				position: absolute;
+				content: '';
+				top: 50%;
+				margin: -1px 0 0;
+				height: 1px;
+				width: 999px;
+				background:  rgba(0, 0, 0, 0.2);
+			}
+
+			&:after{
+				left: 110%;
+			}
+
+			&:before{
+				right: 110%;
+			}
+		}
+
+
+	}
+
+	.social-links{
+		text-align: center;
+	}
+}
