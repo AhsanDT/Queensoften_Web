@@ -43,6 +43,9 @@ Route::group(['middleware'=> ['auth:admin']],function() {
         Route::post('/activate/{id}',  [\App\Http\Controllers\ChallengeController::class, 'activate'])->name('activate');
         Route::delete('/delete/{id}',  [\App\Http\Controllers\ChallengeController::class, 'delete'])->name('delete');
     });
+    Route::prefix('e-store')->name('e-store.')->group(function () {
+        Route::get('/',  [\App\Http\Controllers\EStoreController::class, 'index'])->name('index');
+    });
     Route::prefix('support')->name('support.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\SupportController::class, 'index'])->name('index');
         Route::get('/get',  [\App\Http\Controllers\SupportController::class, 'get'])->name('get');
