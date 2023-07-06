@@ -125,6 +125,25 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
 
 .table{
 
+    &.transparent{
+        th{
+            background: transparent;
+            color: #2F2F2F;
+        }
+    }
+
+    &.border-0{
+        th, td{
+            border: none;
+        }
+    }
+
+    &.text-left{
+        th, td{
+            text-align: left;
+        }
+    }
+
     tr{
         &:last-child{
             td{

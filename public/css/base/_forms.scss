@@ -7,14 +7,7 @@ fieldset {
   border-style: none;
 
 
-  .form-group{
-    margin: 0 0 15px;
-      position: relative;
 
-    > label{
-      font-size: 12px;
-    }
-  }
 
   &.infoForm{
     padding: 50px;
@@ -48,6 +41,15 @@ fieldset {
       font-size: 12px;
     }
   }
+}
+
+.form-group{
+    margin: 0 0 20px;
+    position: relative;
+
+    > label{
+        font-size: 12px;
+    }
 }
 
 select,
@@ -92,8 +94,7 @@ select {
 }
 
 textarea {
-  resize: vertical;
-  vertical-align: top;
+    height: 100px;
     resize: none;
     width: 100%;
 }
