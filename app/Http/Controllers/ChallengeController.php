@@ -28,6 +28,7 @@ class ChallengeController extends Controller
         return view('challenges.index',compact('prizes'));
     }
     function create(ChallengeRequest $request){
+        return view('challenges.create');
         try {
             $date = explode('-',$request->date);
             $challenge = new $this->challenge;
