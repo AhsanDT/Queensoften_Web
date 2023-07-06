@@ -31,9 +31,7 @@
         </div>
     </main>
 @endsection
-@section('challenge-modal')
-    @include('partials.challenge_modal',compact('prizes'))
-@endsection
+
 @section('extra-js')
     <script>
         var table =   $('#table').DataTable({

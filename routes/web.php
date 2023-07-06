@@ -36,7 +36,8 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     });
     Route::prefix('challenges')->name('challenges.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\ChallengeController::class, 'index'])->name('index');
-        Route::post('/create',  [\App\Http\Controllers\ChallengeController::class, 'create'])->name('create');
+        Route::get('/create',  [\App\Http\Controllers\ChallengeController::class, 'create'])->name('create');
+        //Route::post('/store',  [\App\Http\Controllers\ChallengeController::class, 'create'])->name('store');
         Route::get('/list',  [\App\Http\Controllers\ChallengeController::class, 'challengeList'])->name('list');
         Route::post('/disable/{id}',  [\App\Http\Controllers\ChallengeController::class, 'disable'])->name('disable');
         Route::post('/activate/{id}',  [\App\Http\Controllers\ChallengeController::class, 'activate'])->name('activate');
