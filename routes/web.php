@@ -45,6 +45,17 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     });
     Route::prefix('e-store')->name('e-store.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\EStoreController::class, 'index'])->name('index');
+        Route::get('/design-card',  [\App\Http\Controllers\EStoreController::class, 'designCard'])->name('design-card');
+    });
+    Route::prefix('storymode')->name('storymode.')->group(function () {
+        Route::get('/',  [\App\Http\Controllers\StoryModeController::class, 'index'])->name('index');
+        Route::get('/detail',  [\App\Http\Controllers\StoryModeController::class, 'storyModeDetail'])->name('detail');
+        Route::get('/create',  [\App\Http\Controllers\StoryModeController::class, 'storyModeCreate'])->name('create');
+    });
+    Route::prefix('subscription-winner')->name('subscription-winner.')->group(function () {
+        Route::get('/',  [\App\Http\Controllers\SubscriptionWinnerController::class, 'index'])->name('index');
+       // Route::get('/detail',  [\App\Http\Controllers\StoryModeController::class, 'storyModeDetail'])->name('detail');
+       // Route::get('/create',  [\App\Http\Controllers\StoryModeController::class, 'storyModeCreate'])->name('create');
     });
     Route::prefix('support')->name('support.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\SupportController::class, 'index'])->name('index');
