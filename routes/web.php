@@ -37,7 +37,7 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     Route::prefix('challenges')->name('challenges.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\ChallengeController::class, 'index'])->name('index');
         Route::get('/create',  [\App\Http\Controllers\ChallengeController::class, 'create'])->name('create');
-        //Route::post('/store',  [\App\Http\Controllers\ChallengeController::class, 'create'])->name('store');
+        Route::post('/store',  [\App\Http\Controllers\ChallengeController::class, 'store'])->name('store');
         Route::get('/list',  [\App\Http\Controllers\ChallengeController::class, 'challengeList'])->name('list');
         Route::post('/disable/{id}',  [\App\Http\Controllers\ChallengeController::class, 'disable'])->name('disable');
         Route::post('/activate/{id}',  [\App\Http\Controllers\ChallengeController::class, 'activate'])->name('activate');
@@ -63,6 +63,12 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     Route::prefix('setting')->name('setting.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\SettingController::class, 'index'])->name('index');
         Route::post('/',  [\App\Http\Controllers\SettingController::class, 'store_share_app'])->name('store.share_app');
+    });
+    Route::prefix('tutorials')->name('tutorials.')->group(function () {
+        Route::get('/index',  [\App\Http\Controllers\TutorailController::class, 'index'])->name('index');
+        Route::get('/list',  [\App\Http\Controllers\TutorailController::class, 'tutorialsList'])->name('list');
+        Route::post('/store',  [\App\Http\Controllers\TutorailController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',  [\App\Http\Controllers\TutorailController::class, 'edit'])->name('edit');
     });
     Route::post('/profile/update/{id}',  [\App\Http\Controllers\AuthController::class, 'profileUpdate'])->name('profile.update');
 });

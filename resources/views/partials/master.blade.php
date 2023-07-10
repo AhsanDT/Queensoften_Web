@@ -11,6 +11,7 @@
     @include('layout.footer')
 </div>
 @yield('challenge-modal')
+@yield('tutorial-modal')
 @include('layout.js')
 @yield('extra-js')
 <script>

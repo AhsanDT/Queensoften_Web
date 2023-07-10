@@ -150,6 +150,12 @@
                 Challenges
             </a>
         </li>
+        <li class="{{ request()->routeIs('tutorials.index') ? "active" : ""}}">
+            <a href="{{route('tutorials.index')}}">
+                <i class="fas fa-laptop"></i>
+                Tutorials
+            </a>
+        </li>
         <li class="{{ request()->routeIs('support.index') ? "active" : ""}}">
             <a href="{{route('support.index')}}">
                 <i class="fas fa-envelope"></i>

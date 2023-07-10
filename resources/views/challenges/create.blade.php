@@ -84,9 +84,9 @@
                                             <div class="col-md-6 form-group">
                                                 <label>Prize</label>
                                                 <select class="custom-select" name="prize">
-                                                    {{--                                            @foreach($prizes as $prize)--}}
-                                                    {{--                                                <option value="{{$prize->id}}">{{$prize->name}}</option>--}}
-                                                    {{--                                            @endforeach--}}
+                                                                                                @foreach($prizes as $prize)
+                                                                                                    <option value="{{$prize->id}}">{{$prize->name}}</option>
+                                                                                                @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-md-6 form-group">
