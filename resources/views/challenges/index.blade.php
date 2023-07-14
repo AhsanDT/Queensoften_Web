@@ -7,7 +7,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <table id='table' class="table challenges-list">
+                    <table id='challenge-table' class="table challenges-list">
                         <thead>
                         <tr>
                             <th class="selectAll"></th>
@@ -36,7 +36,7 @@
 @endsection
 @section('extra-js')
     <script>
-        var table =   $('#table').DataTable({
+        var table =   $('#challenge-table').DataTable({
             dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
             buttons: [
                 {
