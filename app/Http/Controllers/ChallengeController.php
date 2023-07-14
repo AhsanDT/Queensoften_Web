@@ -28,7 +28,7 @@ class ChallengeController extends Controller
         return view('challenges.index',compact('prizes'));
     }
     function store(ChallengeRequest $request){
-        return view('challenges.create');
+//        return view('challenges.create');
         try {
             $date = explode('-',$request->date);
             $challenge = new $this->challenge;
@@ -49,25 +49,8 @@ class ChallengeController extends Controller
         }
     }
     function create(Request $request){
-        return view('challenges.create');
-        try {
-            $date = explode('-',$request->date);
-            $challenge = new $this->challenge;
-            $challenge->date =  date('m-d-Y', strtotime($request->date));
-            $challenge->hour = $request->hour;
-            $challenge->minute = $request->minute;
-            $challenge->title = $request->title;
-            $challenge->games = $request->games;
-            $challenge->days = json_encode($request->days);
-            $challenge->occurrence = $request->occurrence;
-            $challenge->prize_id = $request->prize;
-            $challenge->quantity = $request->quantity;
-            $challenge->save();
-
-            return $this->response(true,'Challenge created successfully',[],Response::HTTP_OK);
-        }catch (\Exception $exception){
-            return $this->response(false,$exception->getMessage(),[],Response::HTTP_UNAUTHORIZED);
-        }
+        $prizes = $this->prize->all();
+        return view('challenges.create',compact('prizes'));
     }
     function challengeList(Request $request)
     {

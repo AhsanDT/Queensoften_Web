@@ -16,7 +16,51 @@ function initTabs() {
 }
 
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+
+
 jQuery(document).ready(function($){
+
+    $(document).ready(function() {
+        // When a file is selected
+        $('.imageInput').change(function(e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+            var $imgPreview = $(this).closest('.imgUpload').find('.imgPreview');
+
+            reader.onload = function(e) {
+                $imgPreview.show();
+                $imgPreview.find('.previewImage').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(file);
+        });
+
+        // Remove the selected image
+        $('.removeBtn').click(function() {
+            var $imgUpload = $(this).closest('.imgUpload');
+            var $input = $imgUpload.find('.imageInput');
+            var $imgPreview = $imgUpload.find('.imgPreview');
+
+            $input.val('');
+            $imgPreview.hide();
+        });
+    });
+
+
     $(".editButton").click(function(){
         $(".profileDetail").hide();
     });
@@ -24,7 +68,21 @@ jQuery(document).ready(function($){
         $(".profileDetail").show();
     });
 
-
+    var table  = $('.datatable').DataTable({
+        processing: true,
+        //serverSide: true,
+        //"searching": true,
+        "paging": true,
+        //'bSortable': false,
+        //"bInfo": true,
+        //"bSort" : false,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        //"autoWidth": false,
+        //"bDestroy": true,
+        //"scrollX":true,
+        dom: '<"topFooter">rt<"bottomFooter"lip>',
+    })
     $('.datatable-checkbox').DataTable( {
         /* "scrollY":        100,
          "scrollX":        true,
@@ -345,6 +403,12 @@ function initMobileNav() {
                                 }
                                 animating = false;
                                 resizeHolder(newTab, false);
+
+                                // Check if the activated tab contains the datatable
+                                // if (newTab.find('.datatable').length) {
+                                //     initializeDatatable();
+                                // }
+
                                 autoRotate();
                                 $(window).trigger('resize');
                             }

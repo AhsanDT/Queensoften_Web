@@ -122,6 +122,15 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
     }
 }
 
+.dt-buttons{
+    display: flex;
+    flex-wrap: wrap;
+
+    button{
+        margin: 2px;
+    }
+}
+
 
 .table{
 
@@ -223,11 +232,22 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
         }
     }
 
+    .imgBox{
+        max-width: 100px;
+
+        img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
     .dataTables_empty{
         color: #842029;
         background: #f8d7da;
         padding: 15px;
     }
+
 
     .actions{
         text-align: center;

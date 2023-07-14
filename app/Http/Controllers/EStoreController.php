@@ -10,5 +10,9 @@ class EStoreController extends Controller
         return view('e-store.index');
     }
 
+    function designCard(){
+        return view('e-store.card-design');
+    }
+
 
 }

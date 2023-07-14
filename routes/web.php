@@ -37,7 +37,7 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     Route::prefix('challenges')->name('challenges.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\ChallengeController::class, 'index'])->name('index');
         Route::get('/create',  [\App\Http\Controllers\ChallengeController::class, 'create'])->name('create');
-        //Route::post('/store',  [\App\Http\Controllers\ChallengeController::class, 'create'])->name('store');
+        Route::post('/store',  [\App\Http\Controllers\ChallengeController::class, 'store'])->name('store');
         Route::get('/list',  [\App\Http\Controllers\ChallengeController::class, 'challengeList'])->name('list');
         Route::post('/disable/{id}',  [\App\Http\Controllers\ChallengeController::class, 'disable'])->name('disable');
         Route::post('/activate/{id}',  [\App\Http\Controllers\ChallengeController::class, 'activate'])->name('activate');
@@ -45,6 +45,17 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     });
     Route::prefix('e-store')->name('e-store.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\EStoreController::class, 'index'])->name('index');
+        Route::get('/design-card',  [\App\Http\Controllers\EStoreController::class, 'designCard'])->name('design-card');
+    });
+    Route::prefix('storymode')->name('storymode.')->group(function () {
+        Route::get('/',  [\App\Http\Controllers\StoryModeController::class, 'index'])->name('index');
+        Route::get('/detail',  [\App\Http\Controllers\StoryModeController::class, 'storyModeDetail'])->name('detail');
+        Route::get('/create',  [\App\Http\Controllers\StoryModeController::class, 'storyModeCreate'])->name('create');
+    });
+    Route::prefix('subscription-winner')->name('subscription-winner.')->group(function () {
+        Route::get('/',  [\App\Http\Controllers\SubscriptionWinnerController::class, 'index'])->name('index');
+       // Route::get('/detail',  [\App\Http\Controllers\StoryModeController::class, 'storyModeDetail'])->name('detail');
+       // Route::get('/create',  [\App\Http\Controllers\StoryModeController::class, 'storyModeCreate'])->name('create');
     });
     Route::prefix('support')->name('support.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\SupportController::class, 'index'])->name('index');
@@ -63,6 +74,20 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     Route::prefix('setting')->name('setting.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\SettingController::class, 'index'])->name('index');
         Route::post('/',  [\App\Http\Controllers\SettingController::class, 'store_share_app'])->name('store.share_app');
+    });
+    Route::prefix('tutorials')->name('tutorials.')->group(function () {
+        Route::get('/index',  [\App\Http\Controllers\TutorialController::class, 'index'])->name('index');
+        Route::get('/list',  [\App\Http\Controllers\TutorialController::class, 'tutorialsList'])->name('list');
+        Route::post('/store',  [\App\Http\Controllers\TutorialController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',  [\App\Http\Controllers\TutorialController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}',  [\App\Http\Controllers\TutorialController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}',  [\App\Http\Controllers\TutorialController::class, 'destroy'])->name('delete');
+    });
+    Route::prefix('coin-reward')->name('coin-reward.')->group(function () {
+        Route::get('/index',  [\App\Http\Controllers\CoinRewardController::class, 'index'])->name('index');
+    });
+    Route::prefix('spin-wheel')->name('spin-wheel.')->group(function () {
+        Route::get('/index',  [\App\Http\Controllers\SpinTheWheelController::class, 'index'])->name('index');
     });
     Route::post('/profile/update/{id}',  [\App\Http\Controllers\AuthController::class, 'profileUpdate'])->name('profile.update');
 });

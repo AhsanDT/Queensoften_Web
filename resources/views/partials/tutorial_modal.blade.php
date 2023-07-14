@@ -1,0 +1,31 @@
+<div class="modal fade" id="addTutorial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content p-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="text-center mb-4 pt-4">Add Tutorial</h4>
+                <form data-action="{{route('tutorials.store')}}" method="POST" class="ajax-form" enctype="multipart/form-data">
+                    @csrf()
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label>Image</label>
+                            <input id="image" type="file" class="form-control" name="image" placeholder="select image">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>Sequence</label>
+                            <input id="sequence" type="number" class="form-control" name="sequence" placeholder="0">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>Tutorial Description</label>
+                            <textarea id="description" class="form-control" name="description" >Enter Here</textarea>
+                        </div>
+                        <div class="col-md-12 d-flex flex-column align-items-center">
+                            <button type="submit" class="btn w-50 mb-3">Add Tutorial</button>
+                            <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

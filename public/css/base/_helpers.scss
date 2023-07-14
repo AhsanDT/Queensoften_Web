@@ -41,6 +41,15 @@
 }
 
 
+.text-right{
+    text-align: right;
+}
+
+.bg-danger{
+    background: #FF2113 !important;
+    border-color: #FF2113 !important;
+}
+
 
 /// * Helper class to truncate and add ellipsis to a string too long for it to fit
 /// * on a single line.
