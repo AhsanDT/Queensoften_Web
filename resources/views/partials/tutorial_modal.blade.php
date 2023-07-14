@@ -17,7 +17,7 @@
                         </div>
                         <div class="col-md-12 form-group">
                             <label>Tutorial Description</label>
-                            <textarea id="description" class="form-control" name="description" >Enter Here</textarea>
+                            <textarea id="description" class="form-control" name="description" ></textarea>
                         </div>
                         <div class="col-md-12 d-flex flex-column align-items-center">
                             <button type="submit" class="btn w-50 mb-3">Add Tutorial</button>
