@@ -50,7 +50,7 @@
             });
 
         }
-        var table  = $('#table').DataTable({
+        var table  = $('#user-datatable').DataTable({
             //dom: "rtiplf",
             select: {
                 style: 'multi',
@@ -172,5 +172,6 @@
             //     }
             // }
         });
+        table.destroy();
     </script>
 @endsection

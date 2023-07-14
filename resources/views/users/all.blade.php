@@ -1,4 +1,4 @@
-<table id="table" class="table datatable">
+<table id="user-datatable" class="table datatable">
     <thead>
     <tr>
         <th class="selectAll"></th>

@@ -126,7 +126,7 @@
         <a href="#" class="nav-opener"><i class="fal fa-bars"></i> </a>
 
         <nav id="nav">
-            <div class="logo >
+            <div class="logo">
                 <a href="{{route('index')}}">
             <img src="{{asset('images/Queens_of_ten.png')}}">
             </a>
