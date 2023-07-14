@@ -76,10 +76,18 @@ Route::group(['middleware'=> ['auth:admin']],function() {
         Route::post('/',  [\App\Http\Controllers\SettingController::class, 'store_share_app'])->name('store.share_app');
     });
     Route::prefix('tutorials')->name('tutorials.')->group(function () {
-        Route::get('/index',  [\App\Http\Controllers\TutorailController::class, 'index'])->name('index');
-        Route::get('/list',  [\App\Http\Controllers\TutorailController::class, 'tutorialsList'])->name('list');
-        Route::post('/store',  [\App\Http\Controllers\TutorailController::class, 'store'])->name('store');
-        Route::get('/edit/{id}',  [\App\Http\Controllers\TutorailController::class, 'edit'])->name('edit');
+        Route::get('/index',  [\App\Http\Controllers\TutorialController::class, 'index'])->name('index');
+        Route::get('/list',  [\App\Http\Controllers\TutorialController::class, 'tutorialsList'])->name('list');
+        Route::post('/store',  [\App\Http\Controllers\TutorialController::class, 'store'])->name('store');
+        Route::get('/edit/{id}',  [\App\Http\Controllers\TutorialController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}',  [\App\Http\Controllers\TutorialController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}',  [\App\Http\Controllers\TutorialController::class, 'destroy'])->name('delete');
+    });
+    Route::prefix('coin-reward')->name('coin-reward.')->group(function () {
+        Route::get('/index',  [\App\Http\Controllers\CoinRewardController::class, 'index'])->name('index');
+    });
+    Route::prefix('spin-wheel')->name('spin-wheel.')->group(function () {
+        Route::get('/index',  [\App\Http\Controllers\SpinTheWheelController::class, 'index'])->name('index');
     });
     Route::post('/profile/update/{id}',  [\App\Http\Controllers\AuthController::class, 'profileUpdate'])->name('profile.update');
 });

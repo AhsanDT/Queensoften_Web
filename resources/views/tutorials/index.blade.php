@@ -29,6 +29,9 @@
 @section('tutorial-modal')
     @include('partials.tutorial_modal')
 @endsection
+@section('edit-tutorial-modal')
+    @include('partials.edit_tutorial_modal')
+@endsection
 @section('extra-js')
     <script>
         var table =   $('#table').DataTable({
@@ -76,7 +79,7 @@
                     "data": "image",
                     "orderable": false,
                     render: function (data, type, row) {
-                        return '<img src="' + data + '" alt="Image" width="100">';
+                        return '<img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100">';
                     }
                 },
                 {
@@ -88,7 +91,9 @@
                     "orderable": false,
                     className: 'actions',
                     'render': function (data, type, row) {
-                        return '<td class="actions d-flex" style="width: 60px"><a href="#" onclick="editTutorial('+row.id+')" class="m-1"><icon class="fas fa-edit"><a href="#" class="m-1"><icon class="fas fa-trash"></td>';
+                        var delUrl = "{{ route('tutorials.delete', ':id') }}";
+                        delUrl = delUrl.replace(':id', row.id);
+                        return '<td class="actions d-flex" style="width: 60px"><a href="#" onclick="editTutorial(' + row.id + ')" class="m-1"><icon class="fas fa-edit"></icon></a><a href="javascript:" class="delete-record" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
                     }
                 },
             ],
@@ -98,8 +103,53 @@
             url = url.replace(':id', id);
             $.get(url , function (data) {
                 console.log(data)
+                $('#updateTutorial').modal('show');
+                $("#tutorialImage").attr("src", "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.image);
+                $('#editSequence').val(data.data.sequence)
+                $('#editTutorialId').val(data.data.id)
+                $('#EditDescription').val(data.data.description)
             })
         }
+        $(document).on('submit', ".edit-ajax-form", function (e) {
+            e.preventDefault();
+            var form = $(this);
+            var formData = new FormData(this);
+            var url = form.data("action");
+            var tutorialId = $('#editTutorialId').val();
+            console.log(tutorialId);
+            url = url.replace(":id", tutorialId);
+            console.log(url);
+            var button = $(this).find(':input[type=submit]');
+
+            $.ajax({
+                type: form.attr("method"),
+                url: url,
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function () {
+                    button.prop('disabled', true);
+                },
+                success: function (response) {
+                    button.prop('disabled', false);
+                    if (response.success === true) {
+                        toastr.success(response.message);
+                        @if(!request()->routeIs('setting.index'))
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
+                        @endif
+                    }
+                },
+                error: function (data) {
+                    button.prop('disabled', false);
+                    $.each(data.responseJSON.errors, function (field_name, error) {
+                        toastr.error(error);
+                    })
+                }
+            })
+        });
     </script>
 @endsection
 

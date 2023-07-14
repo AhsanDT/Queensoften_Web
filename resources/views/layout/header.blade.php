@@ -156,6 +156,36 @@
                 Tutorials
             </a>
         </li>
+        <li class="{{ request()->routeIs('e-store.index') ? "active" : ""}}">
+            <a href="{{route('e-store.index')}}">
+                <i class="fas fa-store"></i>
+                E-Store
+            </a>
+        </li>
+        <li class="{{ request()->routeIs('subscription-winner.index') ? "active" : ""}}">
+            <a href="{{route('subscription-winner.index')}}">
+                <i class="fas fa-trophy"></i>
+                Subscription Winner
+            </a>
+        </li>
+        <li class="{{ request()->routeIs('coin-reward.index') ? "active" : ""}}">
+            <a href="{{route('coin-reward.index')}}">
+                <i class="fas fa-coins"></i>
+                Coin Rewards
+            </a>
+        </li>
+        <li class="{{ request()->routeIs('spin-wheel.index') ? "active" : ""}}">
+            <a href="{{route('spin-wheel.index')}}">
+                <i class="fas fa-tire"></i>
+                Spin The Wheel
+            </a>
+        </li>
+        <li class="{{ request()->routeIs('storymode.index') ? "active" : ""}}">
+            <a href="{{route('storymode.index')}}">
+                <i class="fas fa-book-reader"></i>
+                Story Mode
+            </a>
+        </li>
         <li class="{{ request()->routeIs('support.index') ? "active" : ""}}">
             <a href="{{route('support.index')}}">
                 <i class="fas fa-envelope"></i>

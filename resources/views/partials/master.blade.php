@@ -12,6 +12,7 @@
 </div>
 @yield('challenge-modal')
 @yield('tutorial-modal')
+@yield('edit-tutorial-modal')
 @yield('addValuePopup')
 @yield('select-winner')
 @include('layout.js')

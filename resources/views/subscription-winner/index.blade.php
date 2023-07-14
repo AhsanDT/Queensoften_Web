@@ -3,7 +3,7 @@
     <main id="main">
         <div class="container">
             <div class="page-title">
-                <h1>Users</h1>
+                <h1>Subscription Winner</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
