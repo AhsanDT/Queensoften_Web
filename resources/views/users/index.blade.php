@@ -66,7 +66,7 @@
             iDisplayLength: 10,
             "lengthChange": true,
             "autoWidth": false,
-            "bDestroy": true,
+            // "bDestroy": true,
             "scrollX":true,
             language: {
                 searchPlaceholder: 'Search Users',
@@ -172,6 +172,5 @@
             //     }
             // }
         });
-        table.destroy();
     </script>
 @endsection

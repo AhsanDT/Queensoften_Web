@@ -1116,6 +1116,7 @@
                 }
             ],
         });
+        table.destroy();
     </script>
     <script>
         $(document).ready(function(){
