@@ -43,7 +43,7 @@
                     text: 'Add Challenge',
                     className: 'btn btn-dark btn-challenge',
                     action: function (e, dt, node, config) {
-                        $('#addChallenge').modal('show')
+                        window.location.href = "{{ route('challenges.create') }}";
                     }
                 }
             ],
