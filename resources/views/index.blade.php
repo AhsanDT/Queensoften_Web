@@ -152,6 +152,7 @@
             //     }
             // },
         });
+        table.destroy();
     </script>
 @endsection
 
