@@ -219,9 +219,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
     }
 
     th{
-        text-transform: capitalize;
+        text-transform: uppercase;
         background: #6E31A2;
         color: #fff;
+        font-weight: 600;
         padding: 12px 10px;
 
         .form-check-input[type="radio"] + label::before,

@@ -489,7 +489,7 @@
                         </div>
                         <div class="tab" id="Skin">
                             <div class="py-3 text-right">
-                                <a href="#" class="btn">Add</a>
+                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#addValuePopup">Add</a>
                             </div>
                             <div class="table-responsive">
                                 <table class="table datatable">
@@ -587,7 +587,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
-                                <label> Name</label>
+                                <label>Name Value</label>
                                 <input type="text" class="form-control" placeholder="0">
                             </div>
                             <div class="col-md-12 form-group">
@@ -613,11 +613,11 @@
                     <form  method="POST" class="ajax-form">
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <label>USD Equivalent</label>
+                                <label>Coin Value</label>
                                 <input type="text" class="form-control" placeholder="0">
                             </div>
                             <div class="col-md-12 form-group">
-                                <label>Coin Value</label>
+                                <label>USD Equivalent</label>
                                 <input type="text" class="form-control" placeholder="0">
                             </div>
                             <div class="col-md-12 d-flex flex-column align-items-center">

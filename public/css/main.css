@@ -23176,9 +23176,10 @@ div.dtr-modal div.dtr-modal-background {
   background: #D2D2D2;
 }
 .table th {
-  text-transform: capitalize;
+  text-transform: uppercase;
   background: #6E31A2;
   color: #fff;
+  font-weight: 600;
   padding: 12px 10px;
 }
 .table th .form-check-input[type=radio] + label::before,
@@ -23525,6 +23526,7 @@ fieldset.eidtForm label {
 }
 .form-group > label {
   font-size: 12px;
+  color: #000;
 }
 
 select,
@@ -24363,6 +24365,7 @@ img.ful-width {
   top: 0;
   left: 0;
   height: 100vh;
+  overflow: hidden;
 }
 @media (max-width: 1199px) {
   #nav {
@@ -24375,7 +24378,9 @@ img.ful-width {
 #nav ul {
   position: relative;
   padding: 0 0 0 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  height: calc(100vh - 185px);
+  margin-right: -13px;
 }
 #nav ul li {
   display: block;

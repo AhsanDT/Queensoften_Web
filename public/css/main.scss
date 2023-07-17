@@ -424,6 +424,7 @@ img{
 	top: 0;
 	left: 0;
 	height: 100vh;
+    overflow: hidden;
 
 	@include media("<widescreen"){
 		left: -300px;
@@ -437,9 +438,11 @@ img{
 		@extend %listreset;
 		position: relative;
 		padding: 0 0 0 10px;
-        overflow-y: scroll;
+        overflow-y: auto;
+        height: calc(100vh - 185px);
+        margin-right: -13px;
 
-		li{
+        li{
 			display: block;
 			position: relative;
             margin: 0 0 2px;
