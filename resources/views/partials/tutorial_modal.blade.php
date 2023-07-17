@@ -1,8 +1,7 @@
 <div class="modal fade" id="addTutorial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content p-5">
+        <div class="modal-content p-3">
             <div class="modal-body">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <h4 class="text-center mb-4 pt-4">Add Tutorial</h4>
                 <form data-action="{{route('tutorials.store')}}" method="POST" class="ajax-form" enctype="multipart/form-data">
                     @csrf()
@@ -31,7 +30,7 @@
                             <textarea id="description" class="form-control" name="description" ></textarea>
                         </div>
                         <div class="col-md-12 d-flex flex-column align-items-center">
-                            <button type="submit" class="btn w-50 mb-3">Add Tutorial</button>
+                            <button type="submit" class="btn mb-3">Add</button>
                             <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>

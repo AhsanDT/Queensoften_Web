@@ -118,6 +118,7 @@ input[type="submit"],
         border-color: transparent;
     }
 
+
     &.btn-dark{
         color:#fff !important;
         background: #000 !important;
@@ -1702,5 +1703,16 @@ div.dtr-modal{
         font-size: 16px;
         text-transform: uppercase;
         font-weight: 600;
+    }
+}
+
+.table{
+    .description{
+        p{
+            white-space: normal;
+            line-break: anywhere;
+            padding: 0 50px;
+            margin-bottom: 0;
+        }
     }
 }
