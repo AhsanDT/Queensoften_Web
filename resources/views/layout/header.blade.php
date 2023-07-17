@@ -162,12 +162,6 @@
                 E-Store
             </a>
         </li>
-        <li class="{{ request()->routeIs('subscription-winner.index') ? "active" : ""}}">
-            <a href="{{route('subscription-winner.index')}}">
-                <i class="fas fa-trophy"></i>
-                Subscription Winner
-            </a>
-        </li>
         <li class="{{ request()->routeIs('coin-reward.index') ? "active" : ""}}">
             <a href="{{route('coin-reward.index')}}">
                 <i class="fas fa-coins"></i>

@@ -5,16 +5,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <h4 class="text-center mb-4 pt-4">Select Prize</h4>
                 <form  method="POST" class="ajax-form">
-                    <div class="form-group">
-                        <select class="imgHorizentalSelect" name="states[]">
+                    <div class="col-md-12 form-group">
+                        <select class="imgHorizentalSelect" style="width: 100%" name="states[]">
                             <option value='SkySuit'>Sky Suit</option>
                             <option value='royalsuit'>Royal Suit</option>
                             <option value='front_door'>Earth Suit</option>
                             <option value='front_door'>Rose Suit</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <select class="imgHorizentalSelect" name="states[]">
+                    <div class="col-md-12 form-group">
+                        <select class="imgHorizentalSelect" style="width: 100%" name="states[]">
                             <option value='SkySuit'>Skin</option>
                             <option value='royalsuit'>Skin</option>
                             <option value='front_door'>Skin</option>

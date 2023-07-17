@@ -9,6 +9,7 @@
                 <li class="active"><a href="#stab1">All</a></li>
                 <li><a href="#stab2" onclick="loadDatatable('active','stab2');">Active</a></li>
                 <li><a href="#stab3" onclick="loadDatatable('inactive','stab3');" >Inactive</a></li>
+                <li><a href="#PremiumSubscribers">Premium Subscribers</a></li>
             </ul>
             <div class="tab-content">
                 <div id="stab1" class="tab">
@@ -18,12 +19,88 @@
                 </div>
                 <div id="stab3" class="tab">
                 </div>
+                <div class="tab" id="PremiumSubscribers">
+                    <div class="table-responsive">
+                        <table class="table datatable" id="PremiumSubscribersDatatable">
+                            <thead>
+                            <tr>
+                                <th class="text-left">profile</th>
+                                <th>Online status</th>
+                                <th>gamertag</th>
+                                <th>account Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center text-left">
+                                        <a href="#" class="userImg">
+                                            <img src="https://appscorridor.com/queens-of-ten-admin/images/user1.png" alt="username">
+                                        </a>
+                                        <div class="description">
+                                            <h6>Apple John</h6>
+                                            <a href="#">bqgxwprts4@privaterelay.appleid.com</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge text-success">Active</span>
+                                </td>
+                                <td>jaxongriff101</td>
+                                <td>
+                                    <span class="text-success">active</span>
+                                </td>
+                                <td class="actions">
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                            <i class="far fa-ellipsis-v"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a href="javascript:"><i class="fal fa-ban bg-warning text-white"></i>Disable User</a></li>
+                                            <li><a href="javascript:"><i class="fal fa-trash bg-danger text-white"></i> Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 @endsection
+@section('challenge-modal')
+    @include('partials.select-winner')
+@endsection
 @section('extra-js')
     <script>
+        var dataTable = $('#PremiumSubscribersDatatable').DataTable({
+            processing: true,
+            serverSide: true,
+            "searching": true,
+            "paging": true,
+            'bSortable': false,
+            "bInfo": true,
+            "bSort": false,
+            iDisplayLength: 10,
+            "lengthChange": true,
+            "bDestroy": true,
+            dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+            buttons: [
+                {
+                    text: 'Select Winner',
+                    className: 'btn-dark',
+                    attr: {
+                        id: 'selectWinnerButton'
+                    },
+                    action: function () {
+                        $('#selectWinner').modal('show');
+                    }
+                }
+            ],
+        });
         function loadDatatable(dataTableName,id){
             $('#'+id).html('');
             show_loading_img();
