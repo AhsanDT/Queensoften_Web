@@ -42,7 +42,6 @@ class TutorialController extends Controller
 
         if (!empty($searchTerm)) {
             $query->where('description', 'like', '%'.$searchTerm.'%');
-            // Add more conditions or filters based on your requirements
         }
 
         $filteredCount = $query->count();
