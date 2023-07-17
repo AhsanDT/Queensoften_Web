@@ -36,18 +36,23 @@ jQuery(document).ready(function($){
 
     $(document).ready(function() {
         // When a file is selected
-        $('.imageInput').change(function(e) {
-            var file = e.target.files[0];
+        $('.imageInput').change(function(e, src = '') {
             var reader = new FileReader();
             var $imgPreview = $(this).closest('.imgUpload').find('.imgPreview');
 
-            reader.onload = function(e) {
+            if (src !== '') {
                 $imgPreview.show();
-                $imgPreview.find('.previewImage').attr('src', e.target.result);
+                $imgPreview.find('.previewImage').attr('src', src);
+            } else {
+                var file = e.target.files[0];
+                reader.onload = function(e) {
+                    $imgPreview.show();
+                    $imgPreview.find('.previewImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(file);
             }
-
-            reader.readAsDataURL(file);
         });
+
 
         // Remove the selected image
         $('.removeBtn').click(function() {

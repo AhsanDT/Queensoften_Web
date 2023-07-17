@@ -109,7 +109,9 @@
             $.get(url , function (data) {
                 console.log(data)
                 $('#updateTutorial').modal('show');
-                $("#tutorialImage").attr("src", "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.image);
+                var src = "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.image
+                $('.imageInput').trigger('change', src);
+                // $("#tutorialImage").attr("src", "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.image);
                 $('#editSequence').val(data.data.sequence)
                 $('#editTutorialId').val(data.data.id)
                 $('#EditDescription').val(data.data.description)
