@@ -3,7 +3,7 @@
     <main id="main">
         <div class="container">
             <div class="page-title">
-                <h1>Tutorials</h1>
+                <h1>Tutorial</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -38,7 +38,7 @@
             dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
             buttons: [
                 {
-                    text: 'Add Tutorial',
+                    text: 'Add Tutorial Step',
                     className: 'btn btn-dark btn-challenge',
                     action: function (e, dt, node, config) {
                         $('#addTutorial').modal('show')

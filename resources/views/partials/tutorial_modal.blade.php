@@ -6,10 +6,21 @@
                 <h4 class="text-center mb-4 pt-4">Add Tutorial</h4>
                 <form data-action="{{route('tutorials.store')}}" method="POST" class="ajax-form" enctype="multipart/form-data">
                     @csrf()
-                    <div class="row">
-                        <div class="col-md-12 form-group">
-                            <label>Image</label>
-                            <input id="image" type="file" class="form-control" name="image" placeholder="select image">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 form-group">
+                            <div class="imgUpload">
+                                <label for='imgCoverPhoto'>
+                                    <input type="file" class="imageInput" name="image" id='imgCoverPhoto' placeholder="Image upload">
+                                    <div class="placeholderBox">
+                                        <div class="iconBox"></div>
+                                        Upload Image
+                                    </div>
+                                </label>
+                                <div class="imgPreview">
+                                    <img class="previewImage" src="" />
+                                    <div class="removeBtn"><i class="fal fa-times"></i></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-12 form-group">
                             <label>Sequence</label>
