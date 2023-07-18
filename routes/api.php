@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\UserApiController;
+//use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::prefix('v1')->group(function () {
     Route::post('/login', [UserApiController::class, 'login']);
+    Route::post('/auth-login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
     Route::get('/guidelines', [\App\Http\Controllers\GuidelineController::class, 'guidelines']);
     Route::get('getShareLink', [ShareAppApiController::class, 'getLink']);
     Route::get('/store/items', [\App\Http\Controllers\Api\StoreController::class, 'items']);
