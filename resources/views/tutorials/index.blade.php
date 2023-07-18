@@ -3,7 +3,7 @@
     <main id="main">
         <div class="container">
             <div class="page-title">
-                <h1>Tutorials</h1>
+                <h1>Tutorial</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -18,6 +18,7 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         </tbody>
                     </table>
                 </div>
@@ -38,8 +39,8 @@
             dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
             buttons: [
                 {
-                    text: 'Add Tutorial',
-                    className: 'btn btn-dark btn-challenge',
+                    text: 'Add Tutorial Step',
+                    className: 'btn btn-dark btn-challenge datatable-custom-btn',
                     action: function (e, dt, node, config) {
                         $('#addTutorial').modal('show')
                     }
@@ -79,21 +80,25 @@
                     "data": "image",
                     "orderable": false,
                     render: function (data, type, row) {
-                        return '<img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100">';
+                        return '<div class="imgBox mx-auto"><img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100"></div>';
                     }
                 },
                 {
                     "data": "description"
-                    , "orderable": true
+                    , "orderable": true,
+                    className: 'description',
+                    render:function (data){
+                        return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    }
                 },
                 {
                     "data": "actions",
                     "orderable": false,
-                    className: 'actions',
+                    className: 'actions custom-action',
                     'render': function (data, type, row) {
                         var delUrl = "{{ route('tutorials.delete', ':id') }}";
                         delUrl = delUrl.replace(':id', row.id);
-                        return '<td class="actions d-flex" style="width: 60px"><a href="#" onclick="editTutorial(' + row.id + ')" class="m-1"><icon class="fas fa-edit"></icon></a><a href="javascript:" class="delete-record" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                        return '<td class="actions d-flex" style="width: 60px"><a href="#" onclick="editTutorial(' + row.id + ')" class="m-1 btn action bg-edit text-white"><icon class="fas fa-edit"></icon></a><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
                     }
                 },
             ],
@@ -104,7 +109,9 @@
             $.get(url , function (data) {
                 console.log(data)
                 $('#updateTutorial').modal('show');
-                $("#tutorialImage").attr("src", "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.image);
+                var src = "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.image
+                $('.imageInput').trigger('change', src);
+                // $("#tutorialImage").attr("src", "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.image);
                 $('#editSequence').val(data.data.sequence)
                 $('#editTutorialId').val(data.data.id)
                 $('#EditDescription').val(data.data.description)

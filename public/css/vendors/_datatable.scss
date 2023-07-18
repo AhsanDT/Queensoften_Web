@@ -123,11 +123,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
 }
 
 .dt-buttons{
-    display: flex;
-    flex-wrap: wrap;
 
     button{
         margin: 2px;
+        padding: 12px;
     }
 }
 
@@ -220,9 +219,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
     }
 
     th{
-        text-transform: capitalize;
+        text-transform: uppercase;
         background: #6E31A2;
         color: #fff;
+        font-weight: 600;
         padding: 12px 10px;
 
         .form-check-input[type="radio"] + label::before,
@@ -238,7 +238,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
         img{
             display: block;
             width: 100%;
-            height: auto;
+            height: 100px;
+            object-fit: cover;
+            object-position: top;
         }
     }
 
@@ -251,6 +253,13 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
 
     .actions{
         text-align: center;
+        &.custom-action{
+            width: 150px;
+            a{
+                display: inline-block;
+                line-height: 20px;
+            }
+        }
 
         &.sorting{
             &:after,

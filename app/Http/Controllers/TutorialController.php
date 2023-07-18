@@ -36,8 +36,23 @@ class TutorialController extends Controller
         }
     }
     public function tutorialsList(){
-        $tutorials = Tutorial::all();
-        return json_encode(array('data' => $tutorials, 'recordsTotal' => count($tutorials), 'recordsFiltered' => count($tutorials)));
+        $searchTerm = $_REQUEST['sSearch'];
+
+        $query = Tutorial::query();
+
+        if (!empty($searchTerm)) {
+            $query->where('description', 'like', '%'.$searchTerm.'%');
+        }
+
+        $filteredCount = $query->count();
+
+        $tutorials = $query->get();
+
+        return response()->json([
+            'data' => $tutorials,
+            'recordsTotal' => count($tutorials),
+            'recordsFiltered' => $filteredCount,
+        ]);
     }
     public function edit($id){
         $tutorial = Tutorial::findOrFail($id);
