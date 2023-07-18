@@ -52,11 +52,6 @@ Route::group(['middleware'=> ['auth:admin']],function() {
         Route::get('/detail',  [\App\Http\Controllers\StoryModeController::class, 'storyModeDetail'])->name('detail');
         Route::get('/create',  [\App\Http\Controllers\StoryModeController::class, 'storyModeCreate'])->name('create');
     });
-    Route::prefix('subscription-winner')->name('subscription-winner.')->group(function () {
-        Route::get('/',  [\App\Http\Controllers\SubscriptionWinnerController::class, 'index'])->name('index');
-       // Route::get('/detail',  [\App\Http\Controllers\StoryModeController::class, 'storyModeDetail'])->name('detail');
-       // Route::get('/create',  [\App\Http\Controllers\StoryModeController::class, 'storyModeCreate'])->name('create');
-    });
     Route::prefix('support')->name('support.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\SupportController::class, 'index'])->name('index');
         Route::get('/get',  [\App\Http\Controllers\SupportController::class, 'get'])->name('get');
