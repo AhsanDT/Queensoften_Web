@@ -21,7 +21,7 @@
                 </div>
                 <div class="tab" id="PremiumSubscribers">
                     <div class="table-responsive">
-                        <table class="table datatable" id="PremiumSubscribersDatatable">
+                        <table class="table" id="PremiumSubscribersDatatable">
                             <thead>
                             <tr>
                                 <th class="text-left">profile</th>
