@@ -22,10 +22,10 @@ class AuthApiRepository implements AuthApiInterface
     {
         try {
             $userName = $request->username;
-            $user = $this->modal->where("userName",$userName)->first();
+            $user = $this->modal->where("username",$userName)->first();
             if($user){
-                $checkTrashUser = $this->modal->where("userName",$userName)->onlyTrashed()->first();
-                $checkUser = $this->modal->where("userName",$userName)->where('account_status', 0)->first();
+                $checkTrashUser = $this->modal->where("username",$userName)->onlyTrashed()->first();
+                $checkUser = $this->modal->where("username",$userName)->where('account_status', 0)->first();
 
                 if ($checkTrashUser || $checkUser){
                     return $this->response(
