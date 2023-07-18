@@ -54,6 +54,7 @@ class AuthApiRepository implements AuthApiInterface
                 }
             }else{
                 $user = $this->modal->create(['name'=>$request->username,'username'=>$request->username,'email'=>$request->username.'@gmail.com', 'password'=>Hash::make($request->password)]);
+//                dd($user);
                 $credentials = $request->only('username', 'password');
                 if (auth()->attempt($credentials)) {
                     $user->tokens()->where('name', 'access_token')->delete();
