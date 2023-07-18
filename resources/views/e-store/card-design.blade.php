@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mb-3 d-flex">
-                        <a href="#" class="btn-back">
+                        <a href="/e-store" class="btn-back">
                             <i class="fas fa-long-arrow-left" style="margin-right: 10px"></i> Add
                         </a>
                     </div>

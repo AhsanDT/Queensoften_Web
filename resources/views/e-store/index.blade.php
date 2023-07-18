@@ -587,7 +587,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
-                                <label> Name</label>
+                                <label>Name Value</label>
                                 <input type="text" class="form-control" placeholder="0">
                             </div>
                             <div class="col-md-12 form-group">
@@ -777,11 +777,11 @@
                     <form  method="POST" class="ajax-form">
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <label>USD Equivalent</label>
+                                <label>Coin Value</label>
                                 <input type="text" class="form-control" placeholder="0">
                             </div>
                             <div class="col-md-12 form-group">
-                                <label>Coin Value</label>
+                                <label>USD Equivalent</label>
                                 <input type="text" class="form-control" placeholder="0">
                             </div>
                             <div class="col-md-12 d-flex flex-column align-items-center">

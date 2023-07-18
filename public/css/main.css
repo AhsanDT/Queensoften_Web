@@ -23101,12 +23101,9 @@ div.dtr-modal div.dtr-modal-background {
   transform: rotate(-135deg);
 }
 
-.dt-buttons {
-  display: flex;
-  flex-wrap: wrap;
-}
 .dt-buttons button {
   margin: 2px;
+  padding: 12px;
 }
 
 .table.transparent th {
@@ -23179,9 +23176,10 @@ div.dtr-modal div.dtr-modal-background {
   background: #D2D2D2;
 }
 .table th {
-  text-transform: capitalize;
+  text-transform: uppercase;
   background: #6E31A2;
   color: #fff;
+  font-weight: 600;
   padding: 12px 10px;
 }
 .table th .form-check-input[type=radio] + label::before,
@@ -23195,7 +23193,9 @@ div.dtr-modal div.dtr-modal-background {
 .table .imgBox img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100px;
+  object-fit: cover;
+  object-position: top;
 }
 .table .dataTables_empty {
   color: #842029;
@@ -23204,6 +23204,13 @@ div.dtr-modal div.dtr-modal-background {
 }
 .table .actions {
   text-align: center;
+}
+.table .actions.custom-action {
+  width: 150px;
+}
+.table .actions.custom-action a {
+  display: inline-block;
+  line-height: 20px;
 }
 .table .actions.sorting:after, .table .actions.sorting:before {
   display: none;
@@ -23347,6 +23354,11 @@ div.dtr-modal div.dtr-modal-background {
 .bg-danger {
   background: #FF2113 !important;
   border-color: #FF2113 !important;
+}
+
+.bg-edit {
+  background: #7330A6 !important;
+  border-color: #7330A6 !important;
 }
 
 .ellipsis {
@@ -23514,6 +23526,7 @@ fieldset.eidtForm label {
 }
 .form-group > label {
   font-size: 12px;
+  color: #000;
 }
 
 select,
@@ -24352,6 +24365,7 @@ img.ful-width {
   top: 0;
   left: 0;
   height: 100vh;
+  overflow: hidden;
 }
 @media (max-width: 1199px) {
   #nav {
@@ -24364,7 +24378,9 @@ img.ful-width {
 #nav ul {
   position: relative;
   padding: 0 0 0 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  height: calc(100vh - 185px);
+  margin-right: -13px;
 }
 #nav ul li {
   display: block;
@@ -25490,6 +25506,13 @@ div.dtr-modal .dtr-modal-content .dtr-details td {
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 600;
+}
+
+.table .description p {
+  white-space: normal;
+  line-break: anywhere;
+  padding: 0 50px;
+  margin-bottom: 0;
 }
 
 /*# sourceMappingURL=main.css.map */
