@@ -46,6 +46,12 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     Route::prefix('e-store')->name('e-store.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\EStoreController::class, 'index'])->name('index');
         Route::get('/design-card',  [\App\Http\Controllers\EStoreController::class, 'designCard'])->name('design-card');
+        Route::post('shuffle',[\App\Http\Controllers\EStoreController::class, 'addShuffle'])->name('shuffle');
+        Route::get('shuffle-list',[\App\Http\Controllers\EStoreController::class, 'shuffleList'])->name('shuffle-list');
+        Route::delete('shuffle-delete/{id}',[\App\Http\Controllers\EStoreController::class, 'shuffleDelete'])->name('shuffle-delete');
+        Route::post('joker',[\App\Http\Controllers\EStoreController::class, 'addJoker'])->name('joker');
+        Route::get('joker-list',[\App\Http\Controllers\EStoreController::class, 'jokerList'])->name('joker-list');
+        Route::delete('joker-delete/{id}',[\App\Http\Controllers\EStoreController::class, 'jokerDelete'])->name('joker-delete');
     });
     Route::prefix('storymode')->name('storymode.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\StoryModeController::class, 'index'])->name('index');
