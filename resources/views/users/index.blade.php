@@ -76,31 +76,31 @@
 @endsection
 @section('extra-js')
     <script>
-        var dataTable = $('#PremiumSubscribersDatatable').DataTable({
-            processing: true,
-            serverSide: true,
-            "searching": true,
-            "paging": true,
-            'bSortable': false,
-            "bInfo": true,
-            "bSort": false,
-            iDisplayLength: 10,
-            "lengthChange": true,
-            "bDestroy": true,
-            dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
-            buttons: [
-                {
-                    text: 'Select Winner',
-                    className: 'btn-dark',
-                    attr: {
-                        id: 'selectWinnerButton'
-                    },
-                    action: function () {
-                        $('#selectWinner').modal('show');
-                    }
-                }
-            ],
-        });
+        // var dataTable = $('#PremiumSubscribersDatatable').DataTable({
+        //     processing: true,
+        //     serverSide: true,
+        //     "searching": true,
+        //     "paging": true,
+        //     'bSortable': false,
+        //     "bInfo": true,
+        //     "bSort": false,
+        //     iDisplayLength: 10,
+        //     "lengthChange": true,
+        //     "bDestroy": true,
+        //     dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        //     buttons: [
+        //         {
+        //             text: 'Select Winner',
+        //             className: 'btn-dark',
+        //             attr: {
+        //                 id: 'selectWinnerButton'
+        //             },
+        //             action: function () {
+        //                 $('#selectWinner').modal('show');
+        //             }
+        //         }
+        //     ],
+        // });
         function loadDatatable(dataTableName,id){
             $('#'+id).html('');
             show_loading_img();
