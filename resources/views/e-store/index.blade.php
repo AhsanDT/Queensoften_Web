@@ -587,7 +587,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
-                                <label>Name Value</label>
+                                <label>Shuffle Value</label>
                                 <input type="text" class="form-control" placeholder="0">
                             </div>
                             <div class="col-md-12 form-group">
