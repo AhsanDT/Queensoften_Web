@@ -52,6 +52,15 @@ Route::group(['middleware'=> ['auth:admin']],function() {
         Route::post('joker',[\App\Http\Controllers\EStoreController::class, 'addJoker'])->name('joker');
         Route::get('joker-list',[\App\Http\Controllers\EStoreController::class, 'jokerList'])->name('joker-list');
         Route::delete('joker-delete/{id}',[\App\Http\Controllers\EStoreController::class, 'jokerDelete'])->name('joker-delete');
+        Route::post('suit',[\App\Http\Controllers\EStoreController::class, 'addSuit'])->name('suit');
+        Route::get('suit-list',[\App\Http\Controllers\EStoreController::class, 'suitList'])->name('suit-list');
+        Route::delete('suit-delete/{id}',[\App\Http\Controllers\EStoreController::class, 'suitDelete'])->name('suit-delete');
+        Route::post('skin',[\App\Http\Controllers\EStoreController::class, 'addSkin'])->name('skin');
+        Route::get('skin-list',[\App\Http\Controllers\EStoreController::class, 'skinList'])->name('skin-list');
+        Route::delete('skin-delete/{id}',[\App\Http\Controllers\EStoreController::class, 'skinDelete'])->name('skin-delete');
+        Route::post('coin',[\App\Http\Controllers\EStoreController::class, 'addCoin'])->name('coin');
+        Route::get('coin-list',[\App\Http\Controllers\EStoreController::class, 'coinList'])->name('coin-list');
+        Route::delete('coin-delete/{id}',[\App\Http\Controllers\EStoreController::class, 'coinDelete'])->name('coin-delete');
     });
     Route::prefix('storymode')->name('storymode.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\StoryModeController::class, 'index'])->name('index');

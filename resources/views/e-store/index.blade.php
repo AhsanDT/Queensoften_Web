@@ -36,76 +36,26 @@
                             </div>
                         </div>
                         <div class="tab" id="Jokers">
-                            <div class="py-3 text-right">
-                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#addJokerValuePopup">Add</a>
-                            </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="jokerDatatable">
                                     <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>coin value</th>
-                                        <th>date Created</th>
-                                        <th>action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>coin value</th>
+                                            <th>date Created</th>
+                                            <th>action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/jokerImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>BIG JOKER</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/jokerImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>BIG JOKER</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/jokerImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>BIG JOKER</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="tab" id="Suits">
-                            <div class="py-3 text-right">
-                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#addSuitsValuePopup">Add</a>
-                            </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="suitDatatable">
                                     <thead>
                                     <tr>
                                         <th>Image</th>
@@ -116,61 +66,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/suitImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>EARTH SUIT</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/suitImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>ROSE SUIT</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/suitImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>SKY SUIT</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="tab" id="Coins">
-                            <div class="py-3 text-right">
-                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#USDEquivalent">Add</a>
-                            </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="coinDatatable">
                                     <thead>
                                     <tr>
                                         <th>ROYAL COIN QUANTITY</th>
@@ -180,47 +83,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>500</td>
-                                            <td>c50</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1,100</td>
-                                            <td>$1</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>12,000</td>
-                                            <td>$10</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>25,000</td>
-                                            <td>$20</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -291,11 +153,8 @@
                             </div>
                         </div>
                         <div class="tab" id="Skin">
-                            <div class="py-3 text-right">
-                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#addSkinValuePopup">Add</a>
-                            </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="skinDatatable">
                                     <thead>
                                     <tr>
                                         <th>skin</th>
@@ -306,51 +165,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/skin1.svg" />
-                                            </div>
-                                        </td>
-                                        <td>2</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/skin1.svg" />
-                                            </div>
-                                        </td>
-                                        <td>2</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/skin1.svg" />
-                                            </div>
-                                        </td>
-                                        <td>2</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -366,238 +180,19 @@
 
 @endsection
 @section('addValuePopup')
-    <div class="modal fade" id="addValuePopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <h4 class="text-center mb-4 pt-4">Add Value</h4>
-                    <form  method="POST" class="ajax-form" data-action="{{route('e-store.shuffle')}}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <div class="imgUpload mx-auto" style="max-width: 200px">
-                                    <label for='imgCoverPhoto'>
-                                        <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload" name="image">
-                                        <div class="placeholderBox">
-                                            <div class="iconBox"></div>
-                                            Upload Photo
-                                        </div>
-                                    </label>
-                                    <div class="imgPreview">
-                                        <img class="previewImage" src="" />
-                                        <div class="removeBtn"><i class="fal fa-times"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>Name Value</label>
-                                <input type="number" class="form-control" placeholder="0" name="value">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>Coin Value</label>
-                                <input type="number" class="form-control" placeholder="0" name="coins">
-                            </div>
-                            <div class="col-md-12 d-flex flex-column align-items-center">
-                                <button type="submit" class="btn w-50 mb-3">Add Challenge</button>
-                                <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="addSkinValuePopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <h4 class="text-center mb-4 pt-4">Add Value</h4>
-                    <form  method="POST" class="ajax-form">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <div class="imgUpload mx-auto" style="max-width: 200px">
-                                    <label for='imgCoverPhoto'>
-                                        <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload">
-                                        <div class="placeholderBox">
-                                            <div class="iconBox"></div>
-                                            Upload Cover Photo
-                                        </div>
-                                    </label>
-                                    <div class="imgPreview">
-                                        <img class="previewImage" src="" />
-                                        <div class="removeBtn"><i class="fal fa-times"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label> Name</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>Coin Value</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 d-flex flex-column align-items-center">
-                                <button type="submit" class="btn w-50 mb-3">Add Challenge</button>
-                                <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="addDeckValuePopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <h4 class="text-center mb-4 pt-4">Add Value</h4>
-                    <form  method="POST" class="ajax-form">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <div class="imgUpload mx-auto" style="max-width: 200px">
-                                    <label for='imgCoverPhoto'>
-                                        <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload">
-                                        <div class="placeholderBox">
-                                            <div class="iconBox"></div>
-                                            Upload Cover Photo
-                                        </div>
-                                    </label>
-                                    <div class="imgPreview">
-                                        <img class="previewImage" src="" />
-                                        <div class="removeBtn"><i class="fal fa-times"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label> Name</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>Coin Value</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 d-flex flex-column align-items-center">
-                                <button type="submit" class="btn w-50 mb-3">Add Challenge</button>
-                                <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="addSuitsValuePopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <h4 class="text-center mb-4 pt-4">Add Value</h4>
-                    <form  method="POST" class="ajax-form">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <div class="imgUpload mx-auto" style="max-width: 200px">
-                                    <label for='imgCoverPhoto'>
-                                        <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload">
-                                        <div class="placeholderBox">
-                                            <div class="iconBox"></div>
-                                            Upload Cover Photo
-                                        </div>
-                                    </label>
-                                    <div class="imgPreview">
-                                        <img class="previewImage" src="" />
-                                        <div class="removeBtn"><i class="fal fa-times"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label> Name</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>Coin Value</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 d-flex flex-column align-items-center">
-                                <button type="submit" class="btn w-50 mb-3">Add Challenge</button>
-                                <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="addJokerValuePopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <h4 class="text-center mb-4 pt-4">Add Value</h4>
-                    <form  method="POST" class="ajax-form">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <div class="imgUpload mx-auto" style="max-width: 200px">
-                                    <label for='imgCoverPhoto'>
-                                        <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload">
-                                        <div class="placeholderBox">
-                                            <div class="iconBox"></div>
-                                            Upload Cover Photo
-                                        </div>
-                                    </label>
-                                    <div class="imgPreview">
-                                        <img class="previewImage" src="" />
-                                        <div class="removeBtn"><i class="fal fa-times"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label> Name</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>Coin Value</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 d-flex flex-column align-items-center">
-                                <button type="submit" class="btn w-50 mb-3">Add Challenge</button>
-                                <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="USDEquivalent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <h4 class="text-center mb-4 pt-4">Add Value</h4>
-                    <form  method="POST" class="ajax-form">
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label>Coin Value</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>USD Equivalent</label>
-                                <input type="text" class="form-control" placeholder="0">
-                            </div>
-                            <div class="col-md-12 d-flex flex-column align-items-center">
-                                <button type="submit" class="btn w-50 mb-3">Add Challenge</button>
-                                <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('partials.shuffle_popup')
+@endsection
+@section('jokerPopup')
+    @include('partials.joker_popup')
+@endsection
+@section('suitPopup')
+    @include('partials.suit_popup')
+@endsection
+@section('skinPopup')
+    @include('partials.skin_popup')
+@endsection
+@section('coinPopup')
+    @include('partials.coin_popup')
 @endsection
 @section('extra-js')
 <script>
@@ -674,6 +269,314 @@
                 className: 'actions custom-action',
                 'render': function (data, type, row) {
                     var delUrl = "{{ route('e-store.shuffle-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var jokerTable =   $('#jokerDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#addJokerValuePopup').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.joker-list')}}',
+        language: {
+            searchPlaceholder: 'Search Joker',
+            "emptyTable": "No Joker found",
+            "zeroRecords": "No Joker found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+            {"width": "120px", "targets": 3},
+        ],
+        "columns": [
+            {
+                "data": "image",
+                "orderable": false,
+                render: function (data, type, row) {
+                    return '<div class="imgBox mx-auto"><img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100"></div>';
+                }
+            },
+            {
+                "data": "name"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.joker-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var suitTable =   $('#suitDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#addSuitsValuePopup').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.suit-list')}}',
+        language: {
+            searchPlaceholder: 'Search Suit',
+            "emptyTable": "No Suit found",
+            "zeroRecords": "No Suit found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+            {"width": "120px", "targets": 3},
+        ],
+        "columns": [
+            {
+                "data": "image",
+                "orderable": false,
+                render: function (data, type, row) {
+                    return '<div class="imgBox mx-auto"><img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100"></div>';
+                }
+            },
+            {
+                "data": "name"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.suit-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var skinTable =   $('#skinDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#addSkinValuePopup').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.skin-list')}}',
+        language: {
+            searchPlaceholder: 'Search Skin',
+            "emptyTable": "No Skin found",
+            "zeroRecords": "No Skin found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+            {"width": "120px", "targets": 3},
+        ],
+        "columns": [
+            {
+                "data": "image",
+                "orderable": false,
+                render: function (data, type, row) {
+                    return '<div class="imgBox mx-auto"><img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100"></div>';
+                }
+            },
+            {
+                "data": "name"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.skin-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var coinTable =   $('#coinDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#USDEquivalent').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.coin-list')}}',
+        language: {
+            searchPlaceholder: 'Search Coin',
+            "emptyTable": "No Coin found",
+            "zeroRecords": "No Coin found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+        ],
+        "columns": [
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "price"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.coin-delete', ':id') }}";
                     delUrl = delUrl.replace(':id', row.id);
                     return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
                 }
