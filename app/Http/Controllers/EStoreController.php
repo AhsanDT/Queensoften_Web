@@ -364,4 +364,25 @@ class EStoreController extends Controller
             'recordsFiltered' => $filteredCount,
         ]);
     }
+    public function deckDelete($id){
+        try {
+            $deck = Deck::where('id',$id)->get()->first();
+            Storage::disk('s3')->delete($deck->image);
+            $deck_attachments = DeckAttachment::where('deck_id',$id)->get();
+            foreach ($deck_attachments as $deck_attachment){
+                Storage::disk('s3')->delete($deck_attachment->image);
+                $deck_attachment->delete();
+            }
+            $deck->delete();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Deck deleted successfully',
+                    'status_code' => 200,
+                ]
+            );
+        }catch (\Exception $exception){
+            return $this->response(false,'Something went wrong please try again later',[], Response::HTTP_UNAUTHORIZED);
+        }
+    }
 }
