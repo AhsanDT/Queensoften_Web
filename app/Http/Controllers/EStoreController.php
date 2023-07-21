@@ -38,7 +38,7 @@ class EStoreController extends Controller
             return response()->json(
                 [
                     'success' => true,
-                    'message' => 'Tutorial added successfully',
+                    'message' => 'Shuffle added successfully',
                     'status_code' => 200,
                 ]
             );
