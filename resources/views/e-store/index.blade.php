@@ -150,7 +150,7 @@
 @section('extra-js')
 <script>
     var shuffleTable =   $('#shuffleDatatable').DataTable({
-        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        dom: '<"topFooter"B>rt<"bottomFooter"lip>',
         buttons: [
             {
                 text: 'Add',
@@ -229,7 +229,7 @@
         ],
     });
     var jokerTable =   $('#jokerDatatable').DataTable({
-        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        dom: '<"topFooter"B>rt<"bottomFooter"lip>',
         buttons: [
             {
                 text: 'Add',
@@ -308,7 +308,7 @@
         ],
     });
     var suitTable =   $('#suitDatatable').DataTable({
-        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        dom: '<"topFooter"B>rt<"bottomFooter"lip>',
         buttons: [
             {
                 text: 'Add',
@@ -387,7 +387,7 @@
         ],
     });
     var skinTable =   $('#skinDatatable').DataTable({
-        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        dom: '<"topFooter"B>rt<"bottomFooter"lip>',
         buttons: [
             {
                 text: 'Add',
@@ -466,7 +466,7 @@
         ],
     });
     var deckTable =   $('#deckDatatable').DataTable({
-        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        dom: '<"topFooter"B>rt<"bottomFooter"lip>',
         buttons: [
             {
                 text: 'Add',
@@ -545,7 +545,7 @@
         ],
     });
     var coinTable =   $('#coinDatatable').DataTable({
-        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        dom: '<"topFooter"B>rt<"bottomFooter"lip>',
         buttons: [
             {
                 text: 'Add',

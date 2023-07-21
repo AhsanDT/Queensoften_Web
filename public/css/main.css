@@ -23104,6 +23104,7 @@ div.dtr-modal div.dtr-modal-background {
 .dt-buttons button {
   margin: 2px;
   padding: 12px;
+  min-width: 120px;
 }
 
 .table.transparent th {
@@ -23497,6 +23498,10 @@ fieldset.infoForm {
     padding: 15px;
   }
 }
+form.infoForm label,
+fieldset.infoForm label {
+  color: #757575;
+}
 form.infoForm .form-control,
 fieldset.infoForm .form-control {
   border: none;
@@ -23505,6 +23510,7 @@ fieldset.infoForm .form-control {
   height: auto;
   line-height: 20px;
   font-size: 14px;
+  font-weight: 500;
 }
 form.infoForm .form-control:focus,
 fieldset.infoForm .form-control:focus {

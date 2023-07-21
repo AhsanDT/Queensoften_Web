@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-md-12 d-flex flex-column align-items-center">
                             <button type="submit" class="btn mb-3">Add</button>
-                            <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </form>
