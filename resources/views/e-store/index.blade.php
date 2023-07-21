@@ -88,9 +88,6 @@
                             </div>
                         </div>
                         <div class="tab" id="Deck">
-                            <div class="py-3 text-right">
-                                <a href="{{route('e-store.design-card')}}" class="btn">Add</a>
-                            </div>
                             <div class="table-responsive">
                                 <table class="table" id="deckDatatable">
                                     <thead>
@@ -713,9 +710,9 @@
         buttons: [
             {
                 text: 'Add',
-                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                className: 'btn btn-dark',
                 action: function (e, dt, node, config) {
-                    $('#addSkinValuePopup').modal('show')
+                    window.location.href = "{{route('e-store.design-card')}}"
                 }
             }
         ],
@@ -733,9 +730,9 @@
         "scrollX": false,
         sAjaxSource: '{{route('e-store.deck-list')}}',
         language: {
-            searchPlaceholder: 'Search Skin',
-            "emptyTable": "No Skin found",
-            "zeroRecords": "No Skin found"
+            searchPlaceholder: 'Search Deck',
+            "emptyTable": "No Deck found",
+            "zeroRecords": "No Deck found"
         },
         "columnDefs": [
             {"width": "120px", "targets": 0},
