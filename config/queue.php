@@ -33,7 +33,9 @@ return [
         'sync' => [
             'driver' => 'sync',
         ],
-
+        'attachments' => [
+            'driver' => 'sync',
+        ],
         'database' => [
             'driver' => 'database',
             'table' => 'jobs',

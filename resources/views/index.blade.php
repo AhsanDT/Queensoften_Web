@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <table id="table" class="table datatable">
+                        <table id="table" class="table">
                             <thead>
                             <tr>
                                 <th class="selectAll"></th>

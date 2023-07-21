@@ -36,76 +36,26 @@
                             </div>
                         </div>
                         <div class="tab" id="Jokers">
-                            <div class="py-3 text-right">
-                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#addJokerValuePopup">Add</a>
-                            </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="jokerDatatable">
                                     <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>coin value</th>
-                                        <th>date Created</th>
-                                        <th>action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>coin value</th>
+                                            <th>date Created</th>
+                                            <th>action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/jokerImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>BIG JOKER</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/jokerImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>BIG JOKER</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/jokerImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>BIG JOKER</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="tab" id="Suits">
-                            <div class="py-3 text-right">
-                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#addSuitsValuePopup">Add</a>
-                            </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="suitDatatable">
                                     <thead>
                                     <tr>
                                         <th>Image</th>
@@ -116,61 +66,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/suitImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>EARTH SUIT</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/suitImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>ROSE SUIT</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/suitImg.svg" />
-                                            </div>
-                                        </td>
-                                        <td>SKY SUIT</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="tab" id="Coins">
-                            <div class="py-3 text-right">
-                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#USDEquivalent">Add</a>
-                            </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="coinDatatable">
                                     <thead>
                                     <tr>
                                         <th>ROYAL COIN QUANTITY</th>
@@ -180,47 +83,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>500</td>
-                                            <td>c50</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1,100</td>
-                                            <td>$1</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>12,000</td>
-                                            <td>$10</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>25,000</td>
-                                            <td>$20</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -230,7 +92,7 @@
                                 <a href="{{route('e-store.design-card')}}" class="btn">Add</a>
                             </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="deckDatatable">
                                     <thead>
                                         <tr>
                                             <th>Image</th>
@@ -241,61 +103,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="imgBox mx-auto">
-                                                    <img src="images/deckImg.svg" />
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>200</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="imgBox mx-auto">
-                                                    <img src="images/deckImg.svg" />
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>200</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="imgBox mx-auto">
-                                                    <img src="images/deckImg.svg" />
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>200</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="tab" id="Skin">
-                            <div class="py-3 text-right">
-                                <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#addSkinValuePopup">Add</a>
-                            </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="skinDatatable">
                                     <thead>
                                     <tr>
                                         <th>skin</th>
@@ -306,51 +121,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/skin1.svg" />
-                                            </div>
-                                        </td>
-                                        <td>2</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/skin1.svg" />
-                                            </div>
-                                        </td>
-                                        <td>2</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="imgBox mx-auto">
-                                                <img src="images/skin1.svg" />
-                                            </div>
-                                        </td>
-                                        <td>2</td>
-                                        <td>200</td>
-                                        <td>06/23/23</td>
-                                        <td>
-                                            <a href="#" class="btn action bg-danger text-white">
-                                                <i class="fal fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -366,6 +136,7 @@
 
 @endsection
 @section('addValuePopup')
+<<<<<<< HEAD
     <div class="modal fade" id="addValuePopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
@@ -603,6 +374,21 @@
             </div>
         </div>
     </div>
+=======
+    @include('partials.shuffle_popup')
+@endsection
+@section('jokerPopup')
+    @include('partials.joker_popup')
+@endsection
+@section('suitPopup')
+    @include('partials.suit_popup')
+@endsection
+@section('skinPopup')
+    @include('partials.skin_popup')
+@endsection
+@section('coinPopup')
+    @include('partials.coin_popup')
+>>>>>>> 4ff60bdb9a30d1cf0ee09e2c27e0e55cb0ca6056
 @endsection
 @section('extra-js')
 <script>
@@ -679,6 +465,393 @@
                 className: 'actions custom-action',
                 'render': function (data, type, row) {
                     var delUrl = "{{ route('e-store.shuffle-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var jokerTable =   $('#jokerDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#addJokerValuePopup').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.joker-list')}}',
+        language: {
+            searchPlaceholder: 'Search Joker',
+            "emptyTable": "No Joker found",
+            "zeroRecords": "No Joker found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+            {"width": "120px", "targets": 3},
+        ],
+        "columns": [
+            {
+                "data": "image",
+                "orderable": false,
+                render: function (data, type, row) {
+                    return '<div class="imgBox mx-auto"><img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100"></div>';
+                }
+            },
+            {
+                "data": "name"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.joker-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var suitTable =   $('#suitDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#addSuitsValuePopup').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.suit-list')}}',
+        language: {
+            searchPlaceholder: 'Search Suit',
+            "emptyTable": "No Suit found",
+            "zeroRecords": "No Suit found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+            {"width": "120px", "targets": 3},
+        ],
+        "columns": [
+            {
+                "data": "image",
+                "orderable": false,
+                render: function (data, type, row) {
+                    return '<div class="imgBox mx-auto"><img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100"></div>';
+                }
+            },
+            {
+                "data": "name"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.suit-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var skinTable =   $('#skinDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#addSkinValuePopup').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.skin-list')}}',
+        language: {
+            searchPlaceholder: 'Search Skin',
+            "emptyTable": "No Skin found",
+            "zeroRecords": "No Skin found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+            {"width": "120px", "targets": 3},
+        ],
+        "columns": [
+            {
+                "data": "image",
+                "orderable": false,
+                render: function (data, type, row) {
+                    return '<div class="imgBox mx-auto"><img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100"></div>';
+                }
+            },
+            {
+                "data": "name"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.skin-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var deckTable =   $('#deckDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#addSkinValuePopup').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.deck-list')}}',
+        language: {
+            searchPlaceholder: 'Search Skin',
+            "emptyTable": "No Skin found",
+            "zeroRecords": "No Skin found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+            {"width": "120px", "targets": 3},
+        ],
+        "columns": [
+            {
+                "data": "image",
+                "orderable": false,
+                render: function (data, type, row) {
+                    return '<div class="imgBox mx-auto"><img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100"></div>';
+                }
+            },
+            {
+                "data": "title"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.deck-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var coinTable =   $('#coinDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#USDEquivalent').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.coin-list')}}',
+        language: {
+            searchPlaceholder: 'Search Coin',
+            "emptyTable": "No Coin found",
+            "zeroRecords": "No Coin found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+        ],
+        "columns": [
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "price"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.coin-delete', ':id') }}";
                     delUrl = delUrl.replace(':id', row.id);
                     return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
                 }

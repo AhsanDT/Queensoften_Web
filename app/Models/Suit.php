@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Joker extends Model
+class Suit extends Model
 {
     use HasFactory;
     protected $fillable =[
-      'image',
-      'name',
-      'coins'
+        'image',
+        'name',
+        'coins'
     ];
 }
