@@ -22,10 +22,10 @@ class AuthApiRepository implements AuthApiInterface
     {
         try {
             $userName = $request->username;
-            $user = $this->modal->where("userName",$userName)->first();
+            $user = $this->modal->where("username",$userName)->first();
             if($user){
-                $checkTrashUser = $this->modal->where("userName",$userName)->onlyTrashed()->first();
-                $checkUser = $this->modal->where("userName",$userName)->where('account_status', 0)->first();
+                $checkTrashUser = $this->modal->where("username",$userName)->onlyTrashed()->first();
+                $checkUser = $this->modal->where("username",$userName)->where('account_status', 0)->first();
 
                 if ($checkTrashUser || $checkUser){
                     return $this->response(
@@ -53,7 +53,8 @@ class AuthApiRepository implements AuthApiInterface
                     }
                 }
             }else{
-                $user = $this->modal->create(['name'=>$request->username,'username'=>$request->username,'email'=>$request->username.'@gmail.com', 'password'=>Hash::make($request->password)]);
+                $user = $this->modal->create(['name'=>$request->username,'username'=>$request->username,'email'=>$request->username.'@gmail.com', 'password'=>Hash::make($request->password),'picture'=>'https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2']);
+//                dd($user);
                 $credentials = $request->only('username', 'password');
                 if (auth()->attempt($credentials)) {
                     $user->tokens()->where('name', 'access_token')->delete();
@@ -75,5 +76,17 @@ class AuthApiRepository implements AuthApiInterface
         } catch (Exception $exception) {
             return $this->response(false, $exception->getMessage(), [], Response::HTTP_UNAUTHORIZED);
         }
+    }
+    public function logout($request): JsonResponse
+    {
+        $user = $this->modal->find($request->id);
+        if ($user) {
+            $user->tokens()->delete();
+            $sessionGuard = Auth::guard('web');
+            $sessionGuard->logoutOtherDevices($user->password);
+            $sessionGuard->logout();
+            return $this->response(true, 'Logged out successfully', [], Response::HTTP_OK);
+        }
+        return $this->response(false, 'User not found', [], Response::HTTP_NOT_FOUND);
     }
 }

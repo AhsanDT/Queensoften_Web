@@ -50,6 +50,7 @@ Route::prefix('v1')->group(function () {
         Route::prefix('support')->group(function () {
             Route::post('create', [SupportApiController::class, 'create']);
         });
+        Route::post('/auth-logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
     });
 });
 
