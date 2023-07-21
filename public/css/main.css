@@ -23101,7 +23101,11 @@ div.dtr-modal div.dtr-modal-background {
   transform: rotate(-135deg);
 }
 
+.dt-buttons {
+  width: 100%;
+}
 .dt-buttons button {
+  float: right;
   margin: 2px;
   padding: 12px;
   min-width: 120px;
