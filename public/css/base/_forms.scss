@@ -15,6 +15,9 @@ fieldset {
       @include media("<tablet"){
           padding: 15px;
       }
+      label{
+        color: #757575;
+      }
 
     .form-control{
       border: none;
@@ -23,6 +26,7 @@ fieldset {
       height: auto;
       line-height: 20px;
       font-size: 14px;
+      font-weight: 500;
 
       &:focus{
         box-shadow: none;

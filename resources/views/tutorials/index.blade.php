@@ -11,10 +11,10 @@
                         <thead>
                         <tr>
                             <th class="selectAll"></th>
-                            <th class="text-left">IMAGES</th>
+                            <th class="text-left">IMAGE</th>
                             <th>DESCRIPTION</th>
                             {{--                            <th>STATUS</th>--}}
-                            <th class="actions">Actions</th>
+                            <th class="actions">Action</th>
                         </tr>
                         </thead>
                         <tbody>
