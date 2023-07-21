@@ -488,6 +488,7 @@
                 }
             },
             error: function (data) {
+                $('#loader').hide();
                 button.prop('disabled', false);
                 $.each(data.responseJSON.errors, function (field_name, error) {
                     toastr.error(error);
