@@ -24,10 +24,10 @@ class DeckRequest extends FormRequest
     public function rules()
     {
         return [
-            'image',
-            'title',
-            'coins',
-            'joker_image',
+            'image'=>'required|mimes:jpeg,jpg,png',
+            'title'=>'required',
+            'coins'=>'required|numeric',
+            'joker_image'=>'required',
         ];
     }
 }

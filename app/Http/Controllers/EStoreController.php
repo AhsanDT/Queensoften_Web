@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddCoinRequest;
 use App\Http\Requests\AddJokerRequest;
 use App\Http\Requests\AddShuffleRequest;
+use App\Http\Requests\DeckRequest;
 use App\Jobs\StoreImageJob;
 use App\Models\Coin;
 use App\Models\Deck;
@@ -302,7 +303,7 @@ class EStoreController extends Controller
             return $this->response(false,'Something went wrong please try again later',[], Response::HTTP_UNAUTHORIZED);
         }
     }
-    public function addDeck(Request $request){
+    public function addDeck(DeckRequest $request){
 //        dd($request->all());
         $file = $request->file('image');
         $jokerFile = $request->file('joker_image');
