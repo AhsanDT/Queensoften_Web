@@ -92,7 +92,7 @@
                                 <a href="{{route('e-store.design-card')}}" class="btn">Add</a>
                             </div>
                             <div class="table-responsive">
-                                <table class="table datatable">
+                                <table class="table" id="deckDatatable">
                                     <thead>
                                         <tr>
                                             <th>Image</th>
@@ -103,51 +103,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="imgBox mx-auto">
-                                                    <img src="images/deckImg.svg" />
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>200</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="imgBox mx-auto">
-                                                    <img src="images/deckImg.svg" />
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>200</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="imgBox mx-auto">
-                                                    <img src="images/deckImg.svg" />
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>200</td>
-                                            <td>06/23/23</td>
-                                            <td>
-                                                <a href="#" class="btn action bg-danger text-white">
-                                                    <i class="fal fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -506,6 +462,85 @@
                 className: 'actions custom-action',
                 'render': function (data, type, row) {
                     var delUrl = "{{ route('e-store.skin-delete', ':id') }}";
+                    delUrl = delUrl.replace(':id', row.id);
+                    return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                }
+            },
+        ],
+    });
+    var deckTable =   $('#deckDatatable').DataTable({
+        dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+        buttons: [
+            {
+                text: 'Add',
+                className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                action: function (e, dt, node, config) {
+                    $('#addSkinValuePopup').modal('show')
+                }
+            }
+        ],
+        processing: true,
+        serverSide: true,
+        "searching": true,
+        "paging": true,
+        'bSortable': false,
+        "bInfo": true,
+        iDisplayLength: 10,
+        "lengthChange": true,
+        "autoWidth": true,
+        "bDestroy": true,
+        "bSort" : false,
+        "scrollX": false,
+        sAjaxSource: '{{route('e-store.deck-list')}}',
+        language: {
+            searchPlaceholder: 'Search Skin',
+            "emptyTable": "No Skin found",
+            "zeroRecords": "No Skin found"
+        },
+        "columnDefs": [
+            {"width": "120px", "targets": 0},
+            {"width": "120px", "targets": 1},
+            {"width": "120px", "targets": 2},
+            {"width": "120px", "targets": 3},
+        ],
+        "columns": [
+            {
+                "data": "image",
+                "orderable": false,
+                render: function (data, type, row) {
+                    return '<div class="imgBox mx-auto"><img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/' + data + '" alt="Image" width="100"></div>';
+                }
+            },
+            {
+                "data": "title"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "coins"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "created_at"
+                , "orderable": true,
+                className: 'description',
+                render:function (data){
+                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                }
+            },
+            {
+                "data": "actions",
+                "orderable": false,
+                className: 'actions custom-action',
+                'render': function (data, type, row) {
+                    var delUrl = "{{ route('e-store.deck-delete', ':id') }}";
                     delUrl = delUrl.replace(':id', row.id);
                     return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
                 }
