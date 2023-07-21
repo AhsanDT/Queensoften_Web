@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddCoinRequest;
 use App\Http\Requests\AddJokerRequest;
 use App\Http\Requests\AddShuffleRequest;
+use App\Jobs\StoreImageJob;
 use App\Models\Coin;
+use App\Models\Deck;
+use App\Models\DeckAttachment;
 use App\Models\Joker;
 use App\Models\Shuffle;
 use App\Models\Skin;
@@ -298,5 +301,67 @@ class EStoreController extends Controller
         }catch (\Exception $exception){
             return $this->response(false,'Something went wrong please try again later',[], Response::HTTP_UNAUTHORIZED);
         }
+    }
+    public function addDeck(Request $request){
+//        dd($request->all());
+        $file = $request->file('image');
+        $jokerFile = $request->file('joker_image');
+        $name = time() . $file->getClientOriginalName();
+        $joker_name = time() . $jokerFile->getClientOriginalName();
+        $filePath = 'images/' . $name;
+        $joker_filePath = 'images/' . $joker_name;
+        Storage::disk('s3')->put($filePath, file_get_contents($file));
+        Storage::disk('s3')->put($joker_filePath, file_get_contents($jokerFile));
+        $deck = Deck::create(['image' => $filePath, 'title' => $request->title, 'coins' => $request->coins, 'joker_image' => $joker_filePath]);
+        if($deck){
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Deck added successfully',
+                    'status_code' => 200,
+                    'deck_id'=>$deck->id
+                ]
+            );
+        }else{
+            return response()->json([
+                'message' => 'error',
+                'success' => false
+            ])  ;
+        }
+    }
+    public function addDeckAttachment(Request $request){
+        $imagePath = $request->file('image')->store('temp'); // Store the file temporarily in the "temp" directory.
+        $imgType = $request->img_type;
+        $imgSubType = $request->img_sub_type;
+        $deckId = $request->deck_id;
+
+        // Dispatch the job to handle the attachment addition, specifying the "attachments" queue
+        dispatch(new StoreImageJob($imagePath, $imgType, $imgSubType, $deckId))
+            ->onQueue('attachments');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Attachment addition job dispatched successfully',
+            'status_code' => 200,
+        ]);
+    }
+    public function deckList(){
+        $searchTerm = $_REQUEST['sSearch'];
+
+        $query = Deck::query();
+
+        if (!empty($searchTerm)) {
+            $query->where('title', 'like', '%'.$searchTerm.'%')->orWhere('coins', 'like', '%'.$searchTerm.'%');
+        }
+
+        $filteredCount = $query->count();
+
+        $deck = $query->get();
+
+        return response()->json([
+            'data' => $deck,
+            'recordsTotal' => count($deck),
+            'recordsFiltered' => $filteredCount,
+        ]);
     }
 }
