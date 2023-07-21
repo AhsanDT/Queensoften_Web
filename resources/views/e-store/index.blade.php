@@ -490,9 +490,9 @@
         "scrollX": false,
         sAjaxSource: '{{route('e-store.deck-list')}}',
         language: {
-            searchPlaceholder: 'Search Skin',
-            "emptyTable": "No Skin found",
-            "zeroRecords": "No Skin found"
+            searchPlaceholder: 'Search Deck',
+            "emptyTable": "No Deck found",
+            "zeroRecords": "No Deck found"
         },
         "columnDefs": [
             {"width": "120px", "targets": 0},
