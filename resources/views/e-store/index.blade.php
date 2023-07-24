@@ -219,7 +219,7 @@
                         var day = dateParts[0];
                         var month = dateParts[1];
                         var year = dateParts[2];
-                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                        return "<p class='text-center text-truncate'>" + day + "-" + month + "-" + year + "</p>";
                     }
                 }
             },
@@ -305,7 +305,7 @@
                         var day = dateParts[0];
                         var month = dateParts[1];
                         var year = dateParts[2];
-                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                        return "<p class='text-center text-truncate'>" + day + "-" + month + "-" + year + "</p>";
                     }
                 }
             },
@@ -391,7 +391,7 @@
                         var day = dateParts[0];
                         var month = dateParts[1];
                         var year = dateParts[2];
-                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                        return "<p class='text-center text-truncate'>" + day + "-" + month + "-" + year + "</p>";
                     }
                 }
             },
@@ -477,7 +477,7 @@
                         var day = dateParts[0];
                         var month = dateParts[1];
                         var year = dateParts[2];
-                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                        return "<p class='text-center text-truncate'>" + day + "-" + month + "-" + year + "</p>";
                     }
                 }
             },
@@ -563,7 +563,7 @@
                         var day = dateParts[0];
                         var month = dateParts[1];
                         var year = dateParts[2];
-                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                        return "<p class='text-center text-truncate'>" + day + "-" + month + "-" + year + "</p>";
                     }
                 }
             },
@@ -641,7 +641,7 @@
                         var day = dateParts[0];
                         var month = dateParts[1];
                         var year = dateParts[2];
-                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                        return "<p class='text-center text-truncate'>" + day + "-" + month + "-" + year + "</p>";
                     }
                 }
             },
