@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\Api\AuthApiInterface;
 use App\Repositories\Api\AuthApiRepository;
+use App\Repositories\Api\EstoreApiInterface;
+use App\Repositories\Api\EstoreApiRepository;
 use App\Repositories\Api\TutorialApiInterface;
 use App\Repositories\Api\TutorialApiRepository;
 use Illuminate\Support\ServiceProvider;
@@ -27,6 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\Api\SupportApiRepositoryInterface::class, \App\Repositories\Api\SupportApiRepository::class);
         $this->app->bind(AuthApiInterface::class,AuthApiRepository::class);
         $this->app->bind(TutorialApiInterface::class,TutorialApiRepository::class);
+        $this->app->bind(EstoreApiInterface::class,EstoreApiRepository::class);
     }
 
     /**
