@@ -197,7 +197,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -205,7 +205,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -283,7 +283,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -291,7 +291,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -369,7 +369,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -377,7 +377,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -455,7 +455,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -463,7 +463,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -541,7 +541,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -549,7 +549,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -619,7 +619,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -627,7 +627,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
