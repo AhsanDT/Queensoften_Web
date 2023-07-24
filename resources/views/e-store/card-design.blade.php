@@ -422,8 +422,8 @@
         var imageInputs = $(this).find(':input[type=file]').not('#imgCoverPhoto, #imgJokerPhoto');
 
         // Define successfulRequests and totalRequests inside the submit function.
-        // var successfulRequests = 0;
-        // var totalRequests = imageInputs.length;
+        var successfulRequests = 0;
+        var totalRequests = imageInputs.length;
         $('#loader').show();
 
         $.ajax({
@@ -437,7 +437,6 @@
                 button.prop('disabled', true);
             },
             success: function (response) {
-                $('#loader').hide();
                 button.prop('disabled', false);
                 if (response.success === true) {
                     toastr.success(response.message);
@@ -469,12 +468,13 @@
                                 },
                                 success: function(response) {
                                     console.log(response.message);
-                                    // successfulRequests++;
-                                    // if (successfulRequests === totalRequests) {
+                                    successfulRequests++;
+                                    if (successfulRequests === totalRequests) {
+                                        $('#loader').hide();
                                         setTimeout(function () {
                                             window.location.reload();
                                         }, 4000);
-                                    // }
+                                    }
                                 },
                                 error: function(xhr) {
                                     console.log('Error: ' + xhr.responseText); // Show error message
@@ -486,6 +486,9 @@
                     // Optional: Reload the page or perform other actions after processing all images.
                     // ...
                 }
+                // setTimeout(function () {
+                //     window.location.reload();
+                // }, 3000);
             },
             error: function (data) {
                 $('#loader').hide();
