@@ -42,6 +42,9 @@ Route::prefix('v1')->group(function () {
         Route::prefix('tutorial')->group(function () {
             Route::get('/list', [\App\Http\Controllers\Api\TutorialApiController::class, 'list']);
         });
+        Route::prefix('e-store')->group(function () {
+            Route::get('/list', [\App\Http\Controllers\Api\EstoreApiController::class, 'list']);
+        });
         Route::prefix('achievement')->group(function () {
             Route::get('{userId}/get', [AchievementController::class, 'getAchievement']);
             Route::post('/update', [UserApiController::class, 'achievementUpdate']);
