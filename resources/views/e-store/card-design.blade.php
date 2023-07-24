@@ -471,6 +471,7 @@
                                     successfulRequests++;
                                     if (successfulRequests === totalRequests) {
                                         $('#loader').hide();
+                                        toastr.success('All Attachments uploaded successfully');
                                         setTimeout(function () {
                                             window.location.reload();
                                         }, 4000);
@@ -482,7 +483,6 @@
                             });
                         }
                     });
-                    toastr.success('All Attachments uploaded successfully');
                     // Optional: Reload the page or perform other actions after processing all images.
                     // ...
                 }
