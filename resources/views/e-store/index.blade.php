@@ -195,7 +195,7 @@
             {
                 "data": "value"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -203,7 +203,7 @@
             {
                 "data": "coins"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -211,7 +211,7 @@
             {
                 "data": "created_at"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     var datePart = data.split('T')[0];
                     var dateParts = datePart.split('-');
@@ -367,7 +367,7 @@
             {
                 "data": "name"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -375,7 +375,7 @@
             {
                 "data": "coins"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -383,7 +383,7 @@
             {
                 "data": "created_at"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     var datePart = data.split('T')[0];
                     var dateParts = datePart.split('-');
@@ -453,7 +453,7 @@
             {
                 "data": "name"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -461,7 +461,7 @@
             {
                 "data": "coins"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -469,7 +469,7 @@
             {
                 "data": "created_at"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     var datePart = data.split('T')[0];
                     var dateParts = datePart.split('-');
@@ -539,7 +539,7 @@
             {
                 "data": "title"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -547,7 +547,7 @@
             {
                 "data": "coins"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -555,7 +555,7 @@
             {
                 "data": "created_at"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     var datePart = data.split('T')[0];
                     var dateParts = datePart.split('-');
@@ -617,7 +617,7 @@
             {
                 "data": "coins"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -625,7 +625,7 @@
             {
                 "data": "price"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
@@ -633,7 +633,7 @@
             {
                 "data": "created_at"
                 , "orderable": true,
-                className: 'description',
+                // className: 'description',
                 render:function (data){
                     var datePart = data.split('T')[0];
                     var dateParts = datePart.split('-');
