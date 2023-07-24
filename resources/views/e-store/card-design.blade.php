@@ -493,9 +493,18 @@
             error: function (data) {
                 $('#loader').hide();
                 button.prop('disabled', false);
-                $.each(data.responseJSON.errors, function (field_name, error) {
-                    toastr.error(error);
-                })
+                var errors = JSON.parse(data.responseText).errors;
+                $.each(errors, function (name, error) {
+                    // Add or remove 'input-error' class based on validation errors
+                    $('.form-control[name="' + name + '"]').toggleClass('input-error', true);
+                    $('.imageInput[name="' + name + '"]').toggleClass('input-error', true);
+
+                    // Show the error message below the respective form field
+                    var errorMessage = '<span class="error-message" style="color: red">' + error + '</span>';
+                    $('.form-control[name="' + name + '"]').after(errorMessage);
+                    $('.imageInput[name="' + name + '"]').closest('.imgUpload').after(errorMessage);
+                });
+                toastr.error('Please resolve the following errors');
             }
         });
     });
