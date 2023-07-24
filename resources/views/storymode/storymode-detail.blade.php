@@ -13,7 +13,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="col-lg-6 offset-lg-3 text-center">
                     <h1>SEASON 1</h1>
                     <div class="mb-3">12 January 2023 - 12 February 2023</div>
                     <div class="img-box mb-3">

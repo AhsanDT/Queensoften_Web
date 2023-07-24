@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mb-3 d-flex">
-                        <a href="#" class="btn-back">
+                        <a href="/" class="btn-back">
                             <i class="fas fa-long-arrow-left" style="margin-right: 10px"></i> Back
                         </a>
                     </div>
@@ -25,7 +25,7 @@
                                         <input type="date" class="form-control" placeholder="01/05/2023" />
                                     </div>
                                     <div class="col-md-12 form-group">
-                                        <label>Title</label>
+                                        <label>Season Title</label>
                                         <input type="text" class="form-control" placeholder="Season 1" />
                                     </div>
                                     <div class="col-md-12 form-group">
