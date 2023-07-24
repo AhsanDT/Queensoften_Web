@@ -197,7 +197,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -205,7 +205,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -213,7 +213,14 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    var datePart = data.split('T')[0];
+                    var dateParts = datePart.split('-');
+                    if (dateParts.length === 3) {
+                        var day = dateParts[0];
+                        var month = dateParts[1];
+                        var year = dateParts[2];
+                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                    }
                 }
             },
             {
@@ -276,7 +283,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -284,7 +291,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -292,7 +299,14 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    var datePart = data.split('T')[0];
+                    var dateParts = datePart.split('-');
+                    if (dateParts.length === 3) {
+                        var day = dateParts[0];
+                        var month = dateParts[1];
+                        var year = dateParts[2];
+                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                    }
                 }
             },
             {
@@ -355,7 +369,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -363,7 +377,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -371,7 +385,14 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    var datePart = data.split('T')[0];
+                    var dateParts = datePart.split('-');
+                    if (dateParts.length === 3) {
+                        var day = dateParts[0];
+                        var month = dateParts[1];
+                        var year = dateParts[2];
+                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                    }
                 }
             },
             {
@@ -434,7 +455,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -442,7 +463,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -450,7 +471,14 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    var datePart = data.split('T')[0];
+                    var dateParts = datePart.split('-');
+                    if (dateParts.length === 3) {
+                        var day = dateParts[0];
+                        var month = dateParts[1];
+                        var year = dateParts[2];
+                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                    }
                 }
             },
             {
@@ -513,7 +541,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -521,7 +549,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -529,7 +557,14 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    var datePart = data.split('T')[0];
+                    var dateParts = datePart.split('-');
+                    if (dateParts.length === 3) {
+                        var day = dateParts[0];
+                        var month = dateParts[1];
+                        var year = dateParts[2];
+                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                    }
                 }
             },
             {
@@ -584,7 +619,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -592,7 +627,7 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    return "<p  class='text-center text-truncate'>"+data+"</p>"
                 }
             },
             {
@@ -600,7 +635,14 @@
                 , "orderable": true,
                 className: 'description',
                 render:function (data){
-                    return "<p  class='text-start text-truncate'>"+data+"</p>"
+                    var datePart = data.split('T')[0];
+                    var dateParts = datePart.split('-');
+                    if (dateParts.length === 3) {
+                        var day = dateParts[0];
+                        var month = dateParts[1];
+                        var year = dateParts[2];
+                        return "<p class='text-start text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                    }
                 }
             },
             {
