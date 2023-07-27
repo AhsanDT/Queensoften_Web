@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('decks', function (Blueprint $table) {
-            $table->integer('coins')->change()->default(0)->unsigned()->using('coins::integer');
+            $table->integer('coins')->using('coins::integer');
         });
     }
 
