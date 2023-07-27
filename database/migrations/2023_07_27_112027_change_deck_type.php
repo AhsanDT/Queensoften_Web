@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('decks', function (Blueprint $table) {
-            $table->integer('coins')->change()->default(0)->unsigned();
+            $table->integer('coins')->nullable()->change();
+            \DB::table('decks')->update(['coins' => 0]);
+            \DB::statement('ALTER TABLE decks ALTER coins TYPE INTEGER USING coins::integer');
         });
     }
 
@@ -26,7 +28,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('decks', function (Blueprint $table) {
-            $table->dropColumn('coins');
+            $table->string('coins')->change();
         });
     }
 };
