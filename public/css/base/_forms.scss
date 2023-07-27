@@ -246,3 +246,20 @@ input[type='submit'] {
         display: none;
     }
 }
+
+.checkBox{
+    padding: 10px 30px;
+    label{
+        color: rgba(0, 0, 0, 0.50);
+    }
+    .title {
+        font-weight: 600;
+    }
+    .form-check-input[type=radio] + label:before, .form-check-input[type=checkbox] + label:before{
+        border: 3px solid #fff;
+        outline: 2px solid #6E31A2;
+    }
+    .form-check-input[type=radio]:checked + label:after{
+        display: none;
+    }
+}

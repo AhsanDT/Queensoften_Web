@@ -100,20 +100,43 @@
 
                                     </form>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="checkBox">
+                                        <p class="title mb-3">Deck Count</p>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                             Single
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                               2 Decks
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                3 Decks
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="tab" id="AddSpecialCards">
                             <form>
                                 <div class="row align-items-end">
-                                    <div class="col-md-6 form-group">
-                                        <label>Deck Count</label>
-                                        <select class="form-select" style="max-width: 300px">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
+{{--                                    <div class="col-md-6 form-group">--}}
+{{--                                        <label>Deck Count</label>--}}
+{{--                                        <select class="form-select" style="max-width: 300px">--}}
+{{--                                            <option>1</option>--}}
+{{--                                            <option>2</option>--}}
+{{--                                            <option>3</option>--}}
+{{--                                            <option>4</option>--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
                                     <div class="col-md-6 form-group">
                                         <div class="form-check square" style="margin: 7px 0">
                                             <input class="form-check-input" type="checkbox" name="SelectAll" id="SelectAll" value="SelectAll">
