@@ -42,7 +42,7 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
                 $challenge = $challengeData->first(); // Since challenges have the same data, just take the first one
                 $attachments = $challengeData->pluck('special_cards')->flatten()->toArray();
                 $challenge['attachments'] = $attachments;
-//                $challengesWithAttachments[] = $challenge;
+                $challengesWithAttachments[] = $challenge;
             }
 
             $data = [
