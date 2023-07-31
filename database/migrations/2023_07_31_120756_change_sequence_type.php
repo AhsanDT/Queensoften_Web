@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::table('tutorials', function (Blueprint $table) {
             $table->integer('sequence')->nullable()->default(0)->change();
+            \DB::table('tutorials')->update(['sequence' => 0]);
+            \DB::statement('ALTER TABLE tutorials ALTER COLUMN sequence TYPE INTEGER USING sequence::integer');
         });
-
     }
 
     /**
