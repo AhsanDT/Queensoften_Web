@@ -14,10 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('tutorials', function (Blueprint $table) {
-            $table->integer('sequence')->nullable()->change();
-            \DB::table('tutorials')->update(['sequence' => 0]);
-            \DB::statement('ALTER TABLE tutorials MODIFY sequence INTEGER');
+            $table->integer('sequence')->nullable()->default(0)->change();
         });
+
     }
 
     /**
