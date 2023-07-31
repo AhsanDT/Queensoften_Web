@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ChallengeRequest;
 use App\Models\Challenge;
+use App\Models\ChallengeAttachment;
 use App\Models\Prize;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
@@ -17,10 +18,12 @@ class ChallengeController extends Controller
     use ResponseTrait;
     protected $prize;
     protected $challenge;
+    protected $challenge_attachment;
 
-    function __construct(Prize $prize,Challenge $challenge){
+    function __construct(Prize $prize,Challenge $challenge,ChallengeAttachment $challenge_attachment){
         $this->prize = $prize;
         $this->challenge = $challenge;
+        $this->challenge_attachment = $challenge_attachment;
     }
 
     function index(){
@@ -28,6 +31,7 @@ class ChallengeController extends Controller
         return view('challenges.index',compact('prizes'));
     }
     function store(ChallengeRequest $request){
+//        dd($request->all());
 //        return view('challenges.create');
         try {
             $date = explode('-',$request->date);
@@ -41,7 +45,24 @@ class ChallengeController extends Controller
             $challenge->occurrence = $request->occurrence;
             $challenge->prize_id = $request->prize;
             $challenge->quantity = $request->quantity;
+            $challenge->deck = $request->deck;
             $challenge->save();
+            $challenge_attachment = new $this->challenge_attachment;
+            $specialCards = json_decode($request->special_cards, true); // Convert JSON string to PHP array
+
+            foreach ($specialCards as $cardName => $cardType) {
+                // Extract the card type (e.g., "spade") and subtype (e.g., "king") from the card name
+                $cardData = explode('_', $cardName);
+                $type = $cardData[0]; // e.g., "spade"
+                $subType = $cardData[1]; // e.g., "king"
+
+                // Create and save the challenge_attachment record
+                $challengeAttachment = new $this->challenge_attachment;
+                $challengeAttachment->challenge_id = $challenge->id;
+                $challengeAttachment->type = $type;
+                $challengeAttachment->sub_type = $subType;
+                $challengeAttachment->save();
+            }
 
             return $this->response(true,'Challenge created successfully',[],Response::HTTP_OK);
         }catch (\Exception $exception){

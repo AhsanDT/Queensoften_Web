@@ -32,7 +32,8 @@ class ChallengeRequest extends FormRequest
             'days' => 'required',
             'occurrence' => 'required',
             'prize' => 'required',
-            'quantity'=>'required|numeric'
+            'quantity'=>'required|numeric',
+            'deck'=>'required'
         ];
     }
     public function messages()
