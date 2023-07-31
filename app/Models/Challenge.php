@@ -21,4 +21,10 @@ class Challenge extends Model
     {
         return $this->hasMany(Achievement::class,'challenge_id','id');
     }
+    // Inside Challenge model
+    public function special_cards()
+    {
+        return $this->hasMany(ChallengeAttachment::class, 'challenge_id');
+    }
+
 }

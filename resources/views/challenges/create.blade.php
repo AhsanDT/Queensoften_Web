@@ -14,10 +14,10 @@
                     <div class="tab-content">
                         <div class="tab" id="ChallengeInformation">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <form {{--data-action="{{route('challenges/create')}}"--}} method="POST" class="ajax-form">
+                                <div class="col-md-12">
+                                    <form data-action="{{route('challenges.store')}}" method="POST" class="challenge-ajax-form d-flex">
                                         @csrf()
-                                        <div class="row">
+                                        <div class="row col-md-6">
                                             <div class="col-md-6 form-group">
                                                 <label>Date</label>
                                                 <input id="date_picker" type="date" class="form-control" name="date" value="{{date('Y-m-d')}}">
@@ -97,218 +97,160 @@
                                                 <button type="submit" class="btn mx-0 mb-3">Save</button>
                                             </div>
                                         </div>
-
+                                        <div class="col-md-6">
+                                            <div class="checkBox">
+                                                <p class="title mb-3">Deck Count</p>
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="radio" name="deck" id="flexRadioDefault1" value="1" checked>
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Single
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="radio" name="deck" id="flexRadioDefault2" value="2">
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        2 Decks
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="deck" id="flexRadioDefault3" value="3">
+                                                    <label class="form-check-label" for="flexRadioDefault3">
+                                                        3 Decks
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </form>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkBox">
-                                        <p class="title mb-3">Deck Count</p>
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                             Single
-                                            </label>
-                                        </div>
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                               2 Decks
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                3 Decks
-                                            </label>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="tab" id="AddSpecialCards">
-                            <form>
-                                <div class="row align-items-end">
-{{--                                    <div class="col-md-6 form-group">--}}
-{{--                                        <label>Deck Count</label>--}}
-{{--                                        <select class="form-select" style="max-width: 300px">--}}
-{{--                                            <option>1</option>--}}
-{{--                                            <option>2</option>--}}
-{{--                                            <option>3</option>--}}
-{{--                                            <option>4</option>--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-                                    <div class="col-md-6 form-group">
-                                        <div class="form-check square" style="margin: 7px 0">
-                                            <input class="form-check-input" type="checkbox" name="SelectAll" id="SelectAll" value="SelectAll">
-                                            <label class="form-check-label" for="SelectAll">
-                                                Select All
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <table class="table transparent border-0 text-left">
-                                            <thead>
-                                            <tr>
-                                                <th>Spade</th>
-                                                <th>Heart</th>
-                                                <th>Diamond</th>
-                                                <th>Club</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="SpadeKing" value="SpadeKing">
-                                                        <label class="form-check-label" for="SpadeKing">
-                                                            King
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="HeartKing" value="HeartKing">
-                                                        <label class="form-check-label" for="HeartKing">
-                                                            King
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="DiamondKing" value="DiamondKing">
-                                                        <label class="form-check-label" for="DiamondKing">
-                                                            King
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="ClubKing" value="ClubKing">
-                                                        <label class="form-check-label" for="ClubKing">
-                                                            King
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="Queen" id="SpadeQueen" value="SpadeQueen">
-                                                        <label class="form-check-label" for="SpadeQueen">
-                                                            Queen
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="Queen" id="HeartQueen" value="HeartQueen">
-                                                        <label class="form-check-label" for="HeartQueen">
-                                                            Queen
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="Queen" id="DiamondQueen" value="DiamondQueen">
-                                                        <label class="form-check-label" for="DiamondQueen">
-                                                            Queen
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="Queen" id="ClubQueen" value="ClubQueen">
-                                                        <label class="form-check-label" for="ClubQueen">
-                                                            Queen
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="SpadeKing" value="SpadeKing">
-                                                        <label class="form-check-label" for="SpadeKing">
-                                                            Jack
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="HeartKing" value="HeartKing">
-                                                        <label class="form-check-label" for="HeartKing">
-                                                            Jack
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="DiamondKing" value="DiamondKing">
-                                                        <label class="form-check-label" for="DiamondKing">
-                                                            Jack
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="ClubKing" value="ClubKing">
-                                                        <label class="form-check-label" for="ClubKing">
-                                                            Jack
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="SpadeKing" value="SpadeKing">
-                                                        <label class="form-check-label" for="SpadeKing">
-                                                            Ace
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="HeartKing" value="HeartKing">
-                                                        <label class="form-check-label" for="HeartKing">
-                                                            Ace
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="DiamondKing" value="DiamondKing">
-                                                        <label class="form-check-label" for="DiamondKing">
-                                                            Ace
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check square">
-                                                        <input class="form-check-input" type="checkbox" name="King" id="ClubKing" value="ClubKing">
-                                                        <label class="form-check-label" for="ClubKing">
-                                                            Ace
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <tfoot>
-                                            <tr>
-                                                <td>2-10 Cards (Default)</td>
-                                                <td>2-10 Cards (Default)</td>
-                                                <td>2-10 Cards (Default)</td>
-                                                <td>2-10 Cards (Default)</td>
-                                            </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <div class="col-md-12 form-group pt-5">
-                                        <button type="button" class="btn mx-0">Save</button>
-                                    </div>
+                            <div class="row align-items-end">
+                                <div class="col-md-12">
+                                    <table class="table transparent border-0 text-left">
+                                        <thead>
+                                        <tr>
+                                            <th>Spade</th>
+                                            <th>Heart</th>
+                                            <th>Diamond</th>
+                                            <th>Club</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="spade_king" id="SpadeKing" value="king">
+                                                    <label class="form-check-label" for="SpadeKing">
+                                                        King
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="heart_king" id="HeartKing" value="king">
+                                                    <label class="form-check-label" for="HeartKing">
+                                                        King
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="diamond_king" id="DiamondKing" value="king">
+                                                    <label class="form-check-label" for="DiamondKing">
+                                                        King
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="club_king" id="ClubKing" value="king">
+                                                    <label class="form-check-label" for="ClubKing">
+                                                        King
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="spade_queen" id="SpadeQueen" value="queen">
+                                                    <label class="form-check-label" for="SpadeQueen">
+                                                        Queen
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="heart_queen" id="HeartQueen" value="queen">
+                                                    <label class="form-check-label" for="HeartQueen">
+                                                        Queen
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="diamond_queen" id="DiamondQueen" value="queen">
+                                                    <label class="form-check-label" for="DiamondQueen">
+                                                        Queen
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="club_queen" id="ClubQueen" value="queen">
+                                                    <label class="form-check-label" for="ClubQueen">
+                                                        Queen
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="spade_jack" id="spade_jack" value="jack">
+                                                    <label class="form-check-label" for="spade_jack"> <!-- Corrected: Change "SpadeKing" to "spade_jack" -->
+                                                        Jack
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="heart_jack" id="heart_jack" value="jack">
+                                                    <label class="form-check-label" for="heart_jack"> <!-- Corrected: Change "HeartKing" to "heart_jack" -->
+                                                        Jack
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="diamond_jack" id="diamond_jack" value="jack">
+                                                    <label class="form-check-label" for="diamond_jack"> <!-- Corrected: Change "DiamondKing" to "diamond_jack" -->
+                                                        Jack
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-check square">
+                                                    <input class="form-check-input" type="checkbox" name="club_jack" id="club_jack" value="jack">
+                                                    <label class="form-check-label" for="club_jack"> <!-- Corrected: Change "ClubKing" to "club_jack" -->
+                                                        Jack
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <td>Ace-10 Cards (Default)</td>
+                                            <td>Ace-10 Cards (Default)</td>
+                                            <td>Ace-10 Cards (Default)</td>
+                                            <td>Ace-10 Cards (Default)</td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
-                            </form>
-
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -319,6 +261,56 @@
 @endsection
 
 @section('extra-js')
+    <script>
+        $(document).on('submit', ".challenge-ajax-form", function (e) {
+            e.preventDefault();
+            var form = $(this);
+            var formData = new FormData(this);
+            var button = $(this).find(':input[type=submit]');
 
+            // Collect special card checkbox values from the table
+            var specialCards = {};
+            $('#AddSpecialCards input[type="checkbox"]').each(function () {
+                if ($(this).is(":checked")) {
+                    var name = $(this).attr("name");
+                    var value = $(this).val();
+                    specialCards[name] = value;
+                }
+            });
+
+            // Append specialCards object to the formData
+            formData.append("special_cards", JSON.stringify(specialCards));
+
+            $.ajax({
+                type: form.attr("method"),
+                url: form.attr("data-action"),
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function () {
+                    button.prop('disabled', true);
+                },
+                success: function (response) {
+                    button.prop('disabled', false);
+                    if (response.success === true) {
+                        toastr.success(response.message);
+                        @if(!request()->routeIs('setting.index'))
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
+                        @endif
+                    }
+                },
+                error: function (data) {
+                    button.prop('disabled', false);
+                    $.each(data.responseJSON.errors, function (field_name, error) {
+                        toastr.error(error);
+                    })
+                }
+            })
+        });
+
+    </script>
 @endsection
 

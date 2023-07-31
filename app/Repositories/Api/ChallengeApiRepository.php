@@ -5,6 +5,7 @@ namespace App\Repositories\Api;
 
 use App\Models\Achievement;
 use App\Models\Challenge;
+use App\Models\ChallengeAttachment;
 use App\Models\User;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
@@ -26,14 +27,30 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
     public function list(): JsonResponse
     {
         try {
-            $challenges =  Challenge::join('prizes', 'challenges.prize_id', '=','prizes.id','inner')
-                ->select('challenges.title','challenges.date','challenges.hour','challenges.minute','challenges.games','challenges.days',
-                    'challenges.occurrence','challenges.active','prizes.name as prize')->where('challenges.active',1)->get();
+            $challenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
+                ->leftJoin('challenge_attachments', 'challenges.id', '=', 'challenge_attachments.challenge_id')
+                ->select('challenges.id', 'challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
+                    'challenges.occurrence', 'challenges.active', 'prizes.name as prize', 'challenges.deck')
+                ->with('special_cards') // Eager load the special_cards relationship
+                ->where('challenges.active', 1)
+                ->get()
+                ->groupBy('id'); // Group the results by challenge id
+
+            $challengesWithAttachments = [];
+
+            foreach ($challenges as $challengeId => $challengeData) {
+                $challenge = $challengeData->first(); // Since challenges have the same data, just take the first one
+                $attachments = $challengeData->pluck('special_cards')->flatten()->toArray();
+                $challenge['attachments'] = $attachments;
+                $challengesWithAttachments[] = $challenge;
+            }
 
             $data = [
-                'count' => $challenges->count(),
-                'challenges' => $challenges
+                'count' => count($challengesWithAttachments),
+                'challenges' => $challengesWithAttachments
             ];
+
+
 
             return $this->response(true,'',$data,Response::HTTP_OK);
 
