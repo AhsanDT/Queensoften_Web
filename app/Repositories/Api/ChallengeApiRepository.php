@@ -67,78 +67,92 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
                 return $this->response(false,'User not found!',[], Response::HTTP_UNAUTHORIZED);
 
 
+//            $challenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
+//                ->select('challenges.id','challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
+//                    'challenges.occurrence', 'challenges.weekly', 'challenges.monthly', 'challenges.active', 'prizes.name as prize','challenges.hard_coded')->where('challenges.active', 1)
+//                ->where('visibility',1);
+//
+//            $weeklyChallenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
+//                ->select('challenges.id','challenges.hard_coded','challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
+//                    'challenges.occurrence', 'challenges.weekly', 'challenges.monthly', 'challenges.active', 'prizes.name as prize','challenges.hard_coded')->where('challenges.active', 1)
+//                ->where('challenges.occurrence','Weekly')
+//                ->where('visibility',1);
+//
+//
+//            $monthlyChallenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
+//                ->select('challenges.id','challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
+//                    'challenges.occurrence', 'challenges.weekly', 'challenges.monthly', 'challenges.active', 'prizes.name as prize','challenges.hard_coded')->where('challenges.active', 1)
+//                ->where('challenges.occurrence','Monthly')
+//                ->where('visibility',1);
+//
+//            $todayChallenge = null;
+//
+//            foreach ($monthlyChallenges->get() as $monthlyChallenge) {
+//                if ($monthlyChallenge->monthly == $this->date) {
+//                    if (!$this->checkUserAchieveChallenge($monthlyChallenge->id, $userId)) {
+//                        $modal          = new Challenge();
+//                        $modal->exists  = true;
+//                        $modal->id      = $monthlyChallenge->id;
+//                        $modal->monthly  =   date('m-d-Y',strtotime('+1 month'));
+//                        $modal->save();
+//                        break;
+//                    }
+//                    continue;
+//                }
+//            }
+//
+//            if(!$todayChallenge) {
+//                foreach ($weeklyChallenges->get() as $weeklyChallenge) {
+//                    if ($weeklyChallenge->weekly == $this->date) {
+//                        if (!$this->checkUserAchieveChallenge($weeklyChallenge->id, $userId)) {
+//                            $todayChallenge = $weeklyChallenge;
+//                            $modal          = new Challenge();
+//                            $modal->exists  = true;
+//                            $modal->id      = $weeklyChallenge->id;
+//                            $modal->weekly  = date('m-d-Y',strtotime('+7 days'));
+//                            $modal->save();
+//                            break;
+//                        }
+//                        continue;
+//                    }
+//                }
+//            }
+//            if(!$todayChallenge) {
+//                foreach ($challenges->get() as $challenge) {
+//
+//                    if ($challenge->date == $this->date) {
+//                        if (!$this->checkUserAchieveChallenge($challenge->id, $userId)) {
+//                            $todayChallenge = $challenge;
+//                            break;
+//                        }
+//                        continue;
+//                    }
+//                    if (in_array($this->day, json_decode($challenge->days), true)) {
+//
+//                        if (!$this->checkUserAchieveChallenge($challenge->id, $userId)) {
+//                            $todayChallenge = $challenge;
+//                            break;
+//                        }
+//                        continue;
+//                    }
+//                }
+//            }
             $challenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
-                ->select('challenges.id','challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
-                    'challenges.occurrence', 'challenges.weekly', 'challenges.monthly', 'challenges.active', 'prizes.name as prize','challenges.hard_coded')->where('challenges.active', 1)
-                ->where('visibility',1);
+                ->select('challenges.id', 'challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
+                    'challenges.occurrence', 'challenges.weekly', 'challenges.monthly', 'challenges.active', 'prizes.name as prize', 'challenges.hard_coded')
+                ->where('challenges.active', 1)
+                ->where('visibility', 1);
 
-            $weeklyChallenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
-                ->select('challenges.id','challenges.hard_coded','challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
-                    'challenges.occurrence', 'challenges.weekly', 'challenges.monthly', 'challenges.active', 'prizes.name as prize','challenges.hard_coded')->where('challenges.active', 1)
-                ->where('challenges.occurrence','Weekly')
-                ->where('visibility',1);
-
-
-            $monthlyChallenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
-                ->select('challenges.id','challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
-                    'challenges.occurrence', 'challenges.weekly', 'challenges.monthly', 'challenges.active', 'prizes.name as prize','challenges.hard_coded')->where('challenges.active', 1)
-                ->where('challenges.occurrence','Monthly')
-                ->where('visibility',1);
-
-            $todayChallenge = null;
-
-            foreach ($monthlyChallenges->get() as $monthlyChallenge) {
-                if ($monthlyChallenge->monthly == $this->date) {
-                    if (!$this->checkUserAchieveChallenge($monthlyChallenge->id, $userId)) {
-                        $modal          = new Challenge();
-                        $modal->exists  = true;
-                        $modal->id      = $monthlyChallenge->id;
-                        $modal->monthly  =   date('m-d-Y',strtotime('+1 month'));
-                        $modal->save();
-                        break;
-                    }
-                    continue;
-                }
-            }
-
-            if(!$todayChallenge) {
-                foreach ($weeklyChallenges->get() as $weeklyChallenge) {
-                    if ($weeklyChallenge->weekly == $this->date) {
-                        if (!$this->checkUserAchieveChallenge($weeklyChallenge->id, $userId)) {
-                            $todayChallenge = $weeklyChallenge;
-                            $modal          = new Challenge();
-                            $modal->exists  = true;
-                            $modal->id      = $weeklyChallenge->id;
-                            $modal->weekly  = date('m-d-Y',strtotime('+7 days'));
-                            $modal->save();
-                            break;
-                        }
-                        continue;
-                    }
-                }
-            }
-            if(!$todayChallenge) {
-                foreach ($challenges->get() as $challenge) {
-
-                    if ($challenge->date == $this->date) {
-                        if (!$this->checkUserAchieveChallenge($challenge->id, $userId)) {
-                            $todayChallenge = $challenge;
-                            break;
-                        }
-                        continue;
-                    }
-                    if (in_array($this->day, json_decode($challenge->days), true)) {
-
-                        if (!$this->checkUserAchieveChallenge($challenge->id, $userId)) {
-                            $todayChallenge = $challenge;
-                            break;
-                        }
-                        continue;
-                    }
-                }
-            }
+            // Get the top 3 challenges for today that are not in user_challenges
+            $todayChallenges = $challenges->where('challenges.date', $this->date)
+                ->whereNotIn('challenges.id', function ($query) use ($userId) {
+                    $query->select('challenge_id')->from('user_challenges')->where('user_id', $userId);
+                })
+                ->orderBy('challenges.id')
+                ->take(3)
+                ->get();
             $data = [
-                'challenge' => $todayChallenge
+                'challenge' => $todayChallenges
             ];
 
             return $this->response(true,'',$data,Response::HTTP_OK);

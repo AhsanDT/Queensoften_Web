@@ -6,6 +6,7 @@ namespace App\Repositories\Api;
 use App\Models\Challenge;
 use App\Models\Statistics;
 use App\Models\User;
+use App\Models\UserChallenge;
 use App\Services\AchievementService;
 use App\Services\ChallengeService;
 use App\Traits\AchievementTrait;
@@ -46,7 +47,14 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 'score' => $request->score ?? 0,
                 'user_id' => $userId,
             ]);
-
+            if ($request->game_type ==  'Challenge'){
+                $user_challenge = UserChallenge::create([
+                    'user_id'=>$request->user_id,
+                    'challenge_id'=>$request->challenge_id,
+                    'win'=>$request->won,
+                    'status'=>true,
+                ]);
+            }
             if($stats){
                 $achievementUnlock= null;
                 if(isset($request->challenge_id)){
