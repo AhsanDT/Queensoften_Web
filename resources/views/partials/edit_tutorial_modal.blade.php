@@ -13,8 +13,8 @@
 {{--                            <label>Image</label>--}}
 {{--                            <input id="editImage" type="file" class="form-control" name="image" placeholder="select image">--}}
                             <div class="imgUpload">
-                                <label for='imgCoverPhoto'>
-                                    <input type="file" class="imageInput" name="image" id='imgCoverPhoto' placeholder="Image upload">
+                                <label for='editImgCoverPhoto'>
+                                    <input type="file" class="imageInput" name="image" id='editImgCoverPhoto' placeholder="Image upload">
                                     <div class="placeholderBox">
                                         <div class="iconBox"></div>
                                         Upload Image
