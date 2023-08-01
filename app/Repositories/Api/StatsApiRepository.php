@@ -49,7 +49,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
             ]);
             if ($request->game_type ==  'Challenge'){
                 $user_challenge = UserChallenge::create([
-                    'user_id'=>$request->user_id,
+                    'user_id'=>$userId,
                     'challenge_id'=>$request->challenge_id,
                     'win'=>$request->won,
                     'status'=>true,
