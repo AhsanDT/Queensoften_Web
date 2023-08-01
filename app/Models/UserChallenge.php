@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class UserChallenge extends Model
 {
     use HasFactory;
+    protected $fillable = [
+      'user_id',
+      'challenge_id',
+      'win',
+      'status'
+    ];
 }
