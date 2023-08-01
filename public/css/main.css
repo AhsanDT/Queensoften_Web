@@ -23779,6 +23779,60 @@ input[type=submit] {
   display: none;
 }
 
+.custom-radio-select {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.custom-radio-select li {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+@media screen and (max-width: 580px) {
+  .custom-radio-select li h6 {
+    font-size: 11px;
+  }
+}
+.custom-radio-select li label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.custom-radio-select li label img {
+  display: block;
+  height: auto;
+  width: 100%;
+  padding: 5px;
+}
+.custom-radio-select li label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid #6E31A2;
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+.custom-radio-select li input[type=radio][id^=cb] {
+  display: none;
+}
+.custom-radio-select li input[type=radio][id^=cb]:checked + label:before {
+  content: "✓";
+  background-color: #6E31A2;
+  transform: scale(1);
+}
+
 .social-links {
   overflow: hidden;
   letter-spacing: -5px;
@@ -24734,6 +24788,13 @@ img.ful-width {
   padding: 0 10px 20px;
 }
 
+.accordion.custom-accordion .accordion-item {
+  background-color: #f6f6f6;
+}
+.accordion.custom-accordion .accordion-button:not(.collapsed) {
+  color: #000;
+  background-color: #F6F6F6;
+}
 .accordion .accordion-button {
   height: auto;
   line-height: 18px;
