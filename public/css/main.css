@@ -25185,7 +25185,6 @@ img.ful-width {
   width: 100% !important;
 }
 .select2 .select2-selection {
-  height: 40px;
   border: 1px solid rgba(0, 0, 0, 0.15) !important;
   padding: 0;
   display: flex;
