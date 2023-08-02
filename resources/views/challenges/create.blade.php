@@ -1,5 +1,20 @@
 @extends('partials.master')
 @section('content')
+    <style>
+        .no-spinner {
+            -moz-appearance: textfield; /* Firefox */
+            appearance: textfield; /* Other modern browsers */
+        }
+
+        /* Hide the up and down arrows */
+        .no-spinner::-webkit-inner-spin-button,
+        .no-spinner::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+
+    </style>
     <main id="main">
         <div class="container">
             <div class="page-title">
@@ -7,9 +22,14 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <div class="mb-3 d-flex">
+                        <a href="{{route('challenges.index')}}" class="btn-back">
+                            <i class="fas fa-long-arrow-left" style="margin-right: 10px"></i>Back
+                        </a>
+                    </div>
                     <ul class="tabset">
-                        <li><a href="#ChallengeInformation">Challenge Information</a> </li>
-                        <li class="active"><a href="#AddSpecialCards">Add Special Cards</a> </li>
+                        <li class="active"><a href="#ChallengeInformation">Challenge Information</a> </li>
+                        <li><a href="#AddSpecialCards">Add Special Cards</a> </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab" id="ChallengeInformation">
@@ -26,25 +46,25 @@
                                                 <label>In less than</label>
                                                 <div class="row dottedRow">
                                                     <div class="col-md-6 form-group">
-                                                        <input type="tel" class="form-control" placeholder="24" name="hour" min="0" max="24" >
+                                                        <input type="number" class="form-control no-spinner" placeholder="24" name="hour" min="0" max="24" >
                                                     </div>
                                                     <span class="fw-bold dott" style="font-size: 18px">:</span>
                                                     <div class="col-md-6 form-group">
-                                                        <input type="tel" class="form-control" placeholder="minutes" name="minute" min="0" max="60" >
+                                                        <input type="number" class="form-control no-spinner" placeholder="minutes" name="minute" min="0" max="60" >
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 form-group">
                                                 <label>Title</label>
-                                                <input type="text" class="form-control" name="title">
+                                                <input type="text" class="form-control" name="title" placeholder="Win 3 games in 24 Hours">
                                             </div>
                                             <div class="col-md-12 form-group">
                                                 <label>Description</label>
-                                                <textarea name="description"></textarea>
+                                                <textarea name="description" placeholder="Win 3 games in 24 Hours"></textarea>
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label>How many games</label>
-                                                <input type="tel" class="form-control" name="games">
+                                                <input type="number" class="form-control no-spinner" name="games" placeholder="100">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label>Days</label>
@@ -84,14 +104,14 @@
                                             <div class="col-md-6 form-group">
                                                 <label>Prize</label>
                                                 <select class="custom-select" name="prize">
-                                                                                                @foreach($prizes as $prize)
-                                                                                                    <option value="{{$prize->id}}">{{$prize->name}}</option>
-                                                                                                @endforeach
+                                                    @foreach($prizes as $prize)
+                                                        <option value="{{$prize->id}}">{{$prize->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label>Quantity</label>
-                                                <input type="tel" class="form-control" name="quantity">
+                                                <input type="number" class="form-control no-spinner" name="quantity" placeholder="1">
                                             </div>
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn mx-0 mb-3">Save</button>
@@ -297,7 +317,7 @@
                         toastr.success(response.message);
                         @if(!request()->routeIs('setting.index'))
                         setTimeout(function () {
-                            window.location.reload();
+                            window.location.href = "{{route('challenges.index')}}";
                         }, 2000);
                         @endif
                     }
