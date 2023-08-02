@@ -11,7 +11,7 @@
                         <thead>
                         <tr>
                             <th class="selectAll"></th>
-                            <th class="text-left">IMAGE</th>
+                            <th class="text-center">IMAGE</th>
                             <th>DESCRIPTION</th>
                             {{--                            <th>STATUS</th>--}}
                             <th class="actions">Action</th>
