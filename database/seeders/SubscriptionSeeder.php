@@ -19,17 +19,17 @@ class SubscriptionSeeder extends Seeder
         $data = [
             [
                 'name' => 'free',
-                'duration'=>'monthly',
+                'duration'=>'1 month',
                 'price'=>null
             ],
             [
                 'name' => 'free',
-                'duration'=>'unlimited',
+                'duration'=>'1 month',
                 'price'=>2.99
             ],
             [
                 'name' => 'free',
-                'duration'=>'unlimited',
+                'duration'=>'1 year',
                 'price'=>34.59
             ],
         ];
