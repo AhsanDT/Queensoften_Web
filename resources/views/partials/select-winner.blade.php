@@ -4,7 +4,7 @@
             <div class="modal-body">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <h4 class="text-center mb-4 pt-4">Select Prize</h4>
-                <form method="POST" class="ajax-form">
+                <form method="POST" class="ajax-form" data-action="{{route('users.winner')}}">
                     @csrf
                     <div class="accordion mb-3 custom-accordion">
                         <div class="accordion-item">
@@ -19,7 +19,7 @@
                                 <div class="accordion-body">
                                     <ul class="custom-radio-select">
                                         @foreach($suits as $suit)
-                                            <li><input type="radio" name="test" id="cb1"/>
+                                            <li><input type="radio" name="suit" id="cb1" value="{{$suit->id}}"/>
                                                 <label for="cb1">
                                                     <div
                                                         class="d-flex align-items-center justify-content-between flex-column flex-wrap">
@@ -35,15 +35,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 form-group">
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option value='' selected>Select Suite</option>
-                            @foreach($suits as $suit)
-                                <option value='{{$suit->id}}'>{{$suit->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="skin">
                             <option value='' selected>Select Skin</option>
                             @foreach($skins as $skin)
                                 <option value='{{$skin->id}}'>{{$skin->name}}</option>
