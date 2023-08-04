@@ -47,6 +47,7 @@ Route::prefix('v1')->group(function () {
         });
         Route::prefix('subscription')->group(function () {
             Route::get('/list', [\App\Http\Controllers\Api\SubscriptionController::class, 'list']);
+            Route::post('/subscribe', [\App\Http\Controllers\Api\SubscriptionController::class, 'subscribe']);
         });
         Route::prefix('achievement')->group(function () {
             Route::get('{userId}/get', [AchievementController::class, 'getAchievement']);
