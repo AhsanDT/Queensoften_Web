@@ -30,6 +30,7 @@ class User extends Authenticatable
         'facebook_id',
         'apple_id',
         'online_status',
+        'subscription_id',
         'updated_at',
         'activeAt'
     ];
