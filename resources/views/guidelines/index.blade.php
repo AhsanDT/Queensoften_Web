@@ -24,9 +24,11 @@
                                             <textarea
                                                 name="terms_and_condition">{{$guideline->terms_and_condition ?? ''}}</textarea>
                                         </div>
-                                        <button type="submit">
-                                            Save
-                                        </button>
+                                      <div class="text-center">
+                                          <button type="submit">
+                                              Save
+                                          </button>
+                                      </div>
                                     </form>
                                 </div>
                                 <div id="stab2" class="tab editSection">
