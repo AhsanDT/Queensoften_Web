@@ -3,6 +3,7 @@
 namespace App\Repositories\Api;
 
 
+use App\Models\Subscription;
 use App\Models\User;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
@@ -53,9 +54,16 @@ class AuthApiRepository implements AuthApiInterface
                     }
                 }
             }else{
-                $user = $this->modal->create(['name'=>$request->username,'username'=>$request->username,'email'=>$request->username.'@gmail.com', 'password'=>Hash::make($request->password),'picture'=>'https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2']);
+                $subscription = Subscription::first();
+                $user = $this->modal->create(['name'=>$request->username,
+                    'username'=>$request->username,
+                    'email'=>$request->username.'@gmail.com',
+                    'subscription_id'=>$subscription->id,
+                    'password'=>Hash::make($request->password),
+                    'picture'=>'https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2']);
 //                dd($user);
                 $credentials = $request->only('username', 'password');
+
                 if (auth()->attempt($credentials)) {
                     $user->tokens()->where('name', 'access_token')->delete();
                     $token = $user->createToken('access_token')->plainTextToken;

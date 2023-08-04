@@ -18,22 +18,25 @@ class SubscriptionSeeder extends Seeder
 
         $data = [
             [
-                'name' => 'free',
+                'name' => 'Free User',
                 'duration'=>'1 month',
-                'price'=>null
+                'price'=>0
             ],
             [
-                'name' => 'free',
+                'name' => 'Premium User',
                 'duration'=>'1 month',
                 'price'=>2.99
             ],
             [
-                'name' => 'free',
+                'name' => 'Premium User',
                 'duration'=>'1 year',
                 'price'=>34.59
             ],
         ];
 
-        Subscription::insert($data);
+        $subscription = Subscription::count();
+        if (!$subscription){
+            Subscription::insert($data);
+        }
     }
 }
