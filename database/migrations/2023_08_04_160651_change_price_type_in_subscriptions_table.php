@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->float('price')->change();
             \DB::table('subscriptions')->update(['price' => 0]);
-            \DB::statement('ALTER TABLE subscriptions MODIFY price FLOAT');
+            \DB::statement('ALTER TABLE subscriptions ALTER price TYPE INTEGER USING price::float');
         });
     }
 
