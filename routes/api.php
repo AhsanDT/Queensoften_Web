@@ -45,8 +45,8 @@ Route::prefix('v1')->group(function () {
         Route::prefix('e-store')->group(function () {
             Route::get('/list', [\App\Http\Controllers\Api\EstoreApiController::class, 'list']);
         });
-        Route::prefix('subscription_list')->group(function () {
-            Route::get('/list', [\App\Http\Controllers\Api\EstoreApiController::class, 'list']);
+        Route::prefix('subscription')->group(function () {
+            Route::get('/list', [\App\Http\Controllers\Api\SubscriptionController::class, 'list']);
         });
         Route::prefix('achievement')->group(function () {
             Route::get('{userId}/get', [AchievementController::class, 'getAchievement']);
