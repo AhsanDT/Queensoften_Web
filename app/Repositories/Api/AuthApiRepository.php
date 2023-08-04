@@ -54,7 +54,7 @@ class AuthApiRepository implements AuthApiInterface
                     }
                 }
             }else{
-                $subscription = Subscription::first();
+                $subscription = Subscription::where('price',0)->first();
                 $user = $this->modal->create(['name'=>$request->username,
                     'username'=>$request->username,
                     'email'=>$request->username.'@gmail.com',
