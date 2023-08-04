@@ -51,7 +51,7 @@
                         </select>
                     </div>
                     <div class="col-md-12 form-group">
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="coins">
                             <option value='' selected>Select Coins</option>
                             @foreach($coins as $coin)
                                 <option value='{{$coin->id}}'>{{$coin->coins}}</option>
@@ -59,7 +59,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="joker">
                             <option value='' selected>Select Joker</option>
                             @foreach($jokers as $joker)
                                 <option value='{{$joker->id}}'>{{$joker->name}}</option>
@@ -67,7 +67,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="shuffle">
                             <option value='' selected>Select Shuffle</option>
                             @foreach($shuffles as $shuffle)
                                 <option value='{{$shuffle->id}}'>{{$shuffle->name}}</option>
