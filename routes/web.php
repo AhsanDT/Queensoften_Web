@@ -27,6 +27,7 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     Route::get('/',  [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\UserController::class, 'index'])->name('index');
+        Route::get('/premium',  [\App\Http\Controllers\UserController::class, 'premium'])->name('premium');
         Route::get('/viewload',  [\App\Http\Controllers\UserController::class, 'viewload'])->name('viewload');
         Route::delete('/delete/{id}',  [\App\Http\Controllers\UserController::class, 'delete'])->name('delete');
         Route::post('/disable/{id}',  [\App\Http\Controllers\UserController::class, 'disable'])->name('disable');
