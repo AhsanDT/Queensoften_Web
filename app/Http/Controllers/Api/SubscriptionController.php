@@ -17,4 +17,7 @@ class SubscriptionController extends Controller
     public function list(){
         return $this->subscriptionRepository->list();
     }
+    public function subscribe(Request $request){
+        return $this->subscriptionRepository->subscribe($request->all());
+    }
 }

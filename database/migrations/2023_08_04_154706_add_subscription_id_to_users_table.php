@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('subscription_id')->nullable();
+            $table->unsignedBigInteger('subscription_id')->default(1)->nullable();
             $table->foreign('subscription_id')->references('id')->on('subscriptions')->onDelete('cascade');
+            $table->integer('total_games');
         });
     }
 
@@ -28,6 +29,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('subscription_id');
+            $table->dropColumn('total_games');
         });
     }
 };
