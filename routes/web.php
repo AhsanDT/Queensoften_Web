@@ -32,6 +32,7 @@ Route::group(['middleware'=> ['auth:admin']],function() {
         Route::delete('/delete/{id}',  [\App\Http\Controllers\UserController::class, 'delete'])->name('delete');
         Route::post('/disable/{id}',  [\App\Http\Controllers\UserController::class, 'disable'])->name('disable');
         Route::post('/activate/{id}',  [\App\Http\Controllers\UserController::class, 'activate'])->name('activate');
+        Route::post('/subscription-winner',  [\App\Http\Controllers\SubscriptionWinnerController::class, 'winner'])->name('winner');
 
         Route::get('/list_ajax/',  [\App\Http\Controllers\UserController::class, 'users_ajax'])->name('ajax');
     });
