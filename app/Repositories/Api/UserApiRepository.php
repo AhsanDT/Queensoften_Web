@@ -5,6 +5,7 @@ namespace App\Repositories\Api;
 use App\Models\Achievement;
 use App\Models\Purchase;
 use App\Models\Statistics;
+use App\Models\Subscription;
 use App\Models\SupportTicket;
 use App\Models\User;
 use App\Services\AchievementService;
@@ -72,7 +73,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                     '',
                     Response::HTTP_UNAUTHORIZED);
 
-
+            $subscription = Subscription::where('price',0)->first();
             $user = $this->modal::updateOrCreate([
                 "$key" => $value,
             ], [
@@ -83,7 +84,8 @@ class UserApiRepository implements UserApiRepositoryInterface
                 'google_id' => ($request->driver == 'google') ? $request->driver_id : null,
                 'facebook_id' => ($request->driver == 'facebook') ? $request->driver_id : null,
                 'apple_id' => ($request->driver == 'apple') ? $request->driver_id : null,
-                'activeAt' => now()
+                'activeAt' => now(),
+                'subscription_id' => $subscription->id,
             ]);
 
             $user->email = $email;
