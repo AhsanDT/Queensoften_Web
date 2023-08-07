@@ -28,5 +28,8 @@ class UserApiController extends Controller
     function customerDataDelete(Request $request){
         return $this->userApiRepository->customerDataDelete($request);
     }
+    public function getUser($id){
+        return $this->userApiRepository->getUser($id);
+    }
 
 }

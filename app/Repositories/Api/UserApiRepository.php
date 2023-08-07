@@ -181,4 +181,12 @@ class UserApiRepository implements UserApiRepositoryInterface
 
         }
     }
+    public function getUser($id): JsonResponse
+    {
+        $user = User::with('purchases')->find($id);
+        if (!$user) {
+            return $this->response(false, 'User not found', '', Response::HTTP_NOT_FOUND);
+        }
+        return $this->response(true, "User fetched successfully", $user, Response::HTTP_OK);
+    }
 }
