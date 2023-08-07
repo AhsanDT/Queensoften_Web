@@ -9,7 +9,7 @@
                         <div class="col-md-6 form-group">
                             <div class="imgUpload">
                                 <label for='imgCoverPhoto'>
-                                    <input type="file" class="imageInput" name="image" id='imgCoverPhoto' placeholder="Image upload">
+                                    <input type="file" class="imageInput" name="image" id='imgCoverPhoto' placeholder="Image upload" accept="image/*">
                                     <div class="placeholderBox">
                                         <div class="iconBox"></div>
                                         Upload Image
