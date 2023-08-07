@@ -23034,6 +23034,7 @@ div.dtr-modal div.dtr-modal-background {
   background-repeat: no-repeat;
   background-size: 15px;
   background-position: 12px center;
+  width: 350px !important;
 }
 @media (max-width: 639px) {
   .dataTables_filter input[type=search] {
@@ -24010,8 +24011,9 @@ input[type=submit] {
   color: #B45FA1;
 }
 .loginWrapper form label {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
+  color: #fff;
 }
 .loginWrapper form input[type=password] {
   padding-left: 50px;

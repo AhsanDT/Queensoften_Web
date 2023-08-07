@@ -42,6 +42,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
         background-repeat: no-repeat;
         background-size: 15px;
         background-position: 12px center;
+        width: 350px !important;
 
         @include media("<phone"){
             width: 100% !important;
