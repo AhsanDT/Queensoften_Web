@@ -13,7 +13,6 @@ class SubscriptionWinnerController extends Controller
         return view('subscription-winner.index');
     }
     public function winner(Request $request){
-//        dd($request->all());
         $selectedOptions = [
             'suit' => $request->input('suit'),
             'skin' => $request->input('skin'),
@@ -21,6 +20,25 @@ class SubscriptionWinnerController extends Controller
             'joker' => $request->input('joker'),
             'shuffle' => $request->input('shuffle'),
         ];
+        $isEmpty = true;
+
+        // Check if any selected option is not empty
+        foreach ($selectedOptions as $type => $purchaseId) {
+            if ($purchaseId) {
+                $isEmpty = false;
+                break;
+            }
+        }
+
+        if ($isEmpty) {
+            return response()->json([
+                'success' => false,
+                'errors' => [
+                    'error'=>'No options selected. Please select at least one option.'
+                ],
+                'status_code' => 400,
+            ],400);
+        }
         $randomUserId = User::inRandomOrder()->value('id');
         $user = User::find($randomUserId)->get();
         foreach ($selectedOptions as $type => $purchaseId) {
