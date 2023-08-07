@@ -23786,7 +23786,7 @@ input[type=submit] {
   list-style-type: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .custom-radio-select li {
   flex: 0 0 25%;

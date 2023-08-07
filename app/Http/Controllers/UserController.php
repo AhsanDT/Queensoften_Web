@@ -6,9 +6,11 @@ use App\Models\Coin;
 use App\Models\Joker;
 use App\Models\Shuffle;
 use App\Models\Skin;
+use App\Models\Subscription;
 use App\Models\Suit;
 use App\Models\User;
 use App\Repositories\UserRepositoryInterface;
+use DateTime;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -50,22 +52,64 @@ class UserController extends Controller
     public function premium(){
 //        dd(1);
         $searchTerm = $_REQUEST['sSearch'];
-
-        $query = User::where('subscription_id', '!=', 1);
-
+        $subscription = Subscription::where('price',0)->first();
+        $query = User::where('subscription_id', '!=', $subscription->id);
         if (!empty($searchTerm)) {
-            $query->where('description', 'like', '%'.$searchTerm.'%');
+            $search = $_REQUEST['sSearch'];
+            $query->where(function ($query) use ($search) {
+                $query->orWhere('name', 'LIKE', '%' . $search . '%');
+                $query->orWhere('email', 'LIKE', '%' . $search . '%');
+                $query->orWhere('username', 'LIKE', '%' . $search . '%');
+            });
+        }
+        $data = [];
+        $store_snippets = $query->get();
+        if (count($store_snippets) > 0) {
+            $serial = $_REQUEST['iDisplayStart'];
+            foreach ($store_snippets as $row):
+                $serial++;
+                $obj = new \stdClass;
+                $obj->serial_no = $serial;
+                $obj->name = $row->name ? ucwords($row->name) : 'Apple User';
+                $obj->email = $row->email ?? "email is hidden";
+                $obj->picture = $row->picture;
+                if($row->activeAt) {
+                    $start_date = new DateTime($row->activeAt);
+                    $diffInMinutes = $start_date->diff(new DateTime(now()));
+                    if (isset($diffInMinutes->i) && ($diffInMinutes->i < 5)) {
+                        $obj->online_status = true;
+                    } else {
+                        $obj->online_status = false;
+                    }
+                }else{
+                    $obj->online_status = false;
+                }
+                $obj->username = $row->username ?? "appleuser";
+                $obj->account_status = $row->account_status;
+                $obj->actions = '';
+                $obj->id = $row->id;
+                $obj->delete_route = route('users.delete', [$row->id]);
+                if ($row->account_status == 1) {
+                    $obj->disable_route = route('users.disable', [$row->id]);
+                    $obj->account_status_name = "Disable";
+
+                } else {
+                    $obj->disable_route = route('users.activate', [$row->id]);
+                    $obj->account_status_name = "Activate";
+
+                }
+                $data[] = $obj;
+            endforeach;
         }
 
-        $filteredCount = $query->count();
+        $filtered_count = $query->count();
 
-        $users = $query->get();
+//        $users = $query->get();
 
         return response()->json([
-            'data' => $users,
-            'recordsTotal' => $filteredCount, // Total count of all eligible users
-            'recordsFiltered' => $filteredCount, // Total count after applying filters
+            'data' => $data,
+            'recordsTotal' => $filtered_count, // Total count of all eligible users
+            'recordsFiltered' => $filtered_count, // Total count after applying filters
         ]);
-
     }
 }

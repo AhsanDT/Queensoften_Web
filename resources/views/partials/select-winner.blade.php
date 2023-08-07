@@ -19,10 +19,10 @@
                                 <div class="accordion-body">
                                     <ul class="custom-radio-select">
                                         @foreach($suits as $suit)
-                                            <li><input type="radio" name="suit" id="cb1" value="{{$suit->id}}"/>
-                                                <label for="cb1">
-                                                    <div
-                                                        class="d-flex align-items-center justify-content-between flex-column flex-wrap">
+                                            <li>
+                                                <input type="radio" name="suit" id="cb{{$suit->id}}" value="{{$suit->id}}"/>
+                                                <label for="cb{{$suit->id}}">
+                                                    <div class="d-flex align-items-center justify-content-between flex-column flex-wrap">
                                                         <h6>{{$suit->name}}</h6>
                                                         <img src="{{asset('https://queensoftenimages.s3.us-west-1.amazonaws.com/'.$suit->image)}}">
                                                     </div>
@@ -34,6 +34,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-12 form-group">
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="skin">
                             <option value='' selected>Select Skin</option>
