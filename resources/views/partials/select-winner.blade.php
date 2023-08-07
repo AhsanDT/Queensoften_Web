@@ -63,7 +63,7 @@
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="shuffle">
                             <option value='' selected>Select Shuffle</option>
                             @foreach($shuffles as $shuffle)
-                                <option value='{{$shuffle->id}}'>{{$shuffle->name}}</option>
+                                <option value='{{$shuffle->id}}'>{{$shuffle->value}}</option>
                             @endforeach
                         </select>
                     </div>
