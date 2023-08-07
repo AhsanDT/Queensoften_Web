@@ -35,6 +35,9 @@ $('#addTutorial').on('hidden.bs.modal', function () {
     $('.previewImage').attr('src', '');
     $('.ajax-form :input').val('');
 });
+$('#selectWinner').on('hidden.bs.modal', function () {
+    $('.ajax-form :input').val('');
+});
 $('#updateTutorial').on('hidden.bs.modal', function () {
     $('#editImgCoverPhoto').val('');
     $('.previewImage').attr('src', '');
