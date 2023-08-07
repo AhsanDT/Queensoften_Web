@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            $table->string('subscription_type');
+            $table->string('subscription_type')->nullable();
         });
         $data = [
             [
