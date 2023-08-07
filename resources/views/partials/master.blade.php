@@ -151,6 +151,7 @@
                         window.location.reload();
                     }, 2000);
                     @endif
+                    imagePreview.css('background-image', 'none');
                 }
             },
             error: function (data) {

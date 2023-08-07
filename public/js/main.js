@@ -30,7 +30,26 @@ function readURL(input) {
 $("#imageUpload").change(function() {
     readURL(this);
 });
-
+$('#updateTutorial').on('hidden.bs.modal', function () {
+    $('#editImgCoverPhoto').val('');
+    $('.previewImage').attr('src', '');
+});
+$('#addJokerValuePopup').on('hidden.bs.modal', function () {
+    $('#jokerImgCoverPhoto').val('');
+    $('.previewImage').attr('src', '');
+});
+$('#addValuePopup').on('hidden.bs.modal', function () {
+    $('#imgCoverPhoto').val('');
+    $('.previewImage').attr('src', '');
+});
+$('#addSuitsValuePopup').on('hidden.bs.modal', function () {
+    $('#imgCoverPhoto').val('');
+    $('.previewImage').attr('src', '');
+});
+$('#addSkinValuePopup').on('hidden.bs.modal', function () {
+    $('#skinImgCoverPhoto').val('');
+    $('.previewImage').attr('src', '');
+});
 
 jQuery(document).ready(function($){
 
