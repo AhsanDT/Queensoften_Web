@@ -30,25 +30,35 @@ function readURL(input) {
 $("#imageUpload").change(function() {
     readURL(this);
 });
+$('#addTutorial').on('hidden.bs.modal', function () {
+    $('#imgCoverPhoto').val('');
+    $('.previewImage').attr('src', '');
+    $('.ajax-form :input').val('');
+});
 $('#updateTutorial').on('hidden.bs.modal', function () {
     $('#editImgCoverPhoto').val('');
     $('.previewImage').attr('src', '');
+    $('.edit-ajax-form :input').val('');
 });
 $('#addJokerValuePopup').on('hidden.bs.modal', function () {
     $('#jokerImgCoverPhoto').val('');
     $('.previewImage').attr('src', '');
+    $('.ajax-form :input').val('');
 });
 $('#addValuePopup').on('hidden.bs.modal', function () {
     $('#imgCoverPhoto').val('');
     $('.previewImage').attr('src', '');
+    $('.ajax-form :input').val('');
 });
 $('#addSuitsValuePopup').on('hidden.bs.modal', function () {
     $('#imgCoverPhoto').val('');
     $('.previewImage').attr('src', '');
+    $('.ajax-form :input').val('');
 });
 $('#addSkinValuePopup').on('hidden.bs.modal', function () {
     $('#skinImgCoverPhoto').val('');
     $('.previewImage').attr('src', '');
+    $('.ajax-form :input').val('');
 });
 
 jQuery(document).ready(function($){
