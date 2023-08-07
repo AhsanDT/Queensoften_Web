@@ -35,6 +35,9 @@ Route::prefix('v1')->group(function () {
             Route::post('/{userId}/item/use', [\App\Http\Controllers\Api\StoreController::class, 'itemUse']);
             Route::post('/{userId}/skin/use', [\App\Http\Controllers\Api\StoreController::class, 'skinUse']);
         });
+        Route::prefix('user')->group(function (){
+           Route::get('/{id}',[UserApiController::class,'getUser']);
+        });
         Route::prefix('challenges')->group(function () {
             Route::get('/list', [\App\Http\Controllers\Api\ChallengeApiController::class, 'list']);
             Route::get('/{userId}/get', [\App\Http\Controllers\Api\ChallengeApiController::class, 'get']);
