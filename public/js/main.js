@@ -37,6 +37,7 @@ $('#addTutorial').on('hidden.bs.modal', function () {
 });
 $('#selectWinner').on('hidden.bs.modal', function () {
     $('.ajax-form :input').val('');
+    $('input[name="suit"]').prop('checked', false);
 });
 $('#updateTutorial').on('hidden.bs.modal', function () {
     $('#editImgCoverPhoto').val('');
