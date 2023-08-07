@@ -10,7 +10,7 @@
                         <div class="form-group col-md-12">
                             <div class="imgUpload mx-auto" style="max-width: 200px">
                                 <label for='imgCoverPhoto'>
-                                    <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload" name="image">
+                                    <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload" name="image" accept="image/*">
                                     <div class="placeholderBox">
                                         <div class="iconBox"></div>
                                         Upload Photo
