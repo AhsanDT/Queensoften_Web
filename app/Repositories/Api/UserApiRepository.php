@@ -120,10 +120,10 @@ class UserApiRepository implements UserApiRepositoryInterface
                 $user->tokens()->where('name', 'access_token')->delete();
 
                 $token = $user->createToken('access_token')->plainTextToken;
-
+                $userNew = $this->modal->with('purchases', 'subscription')->where("username", $user->username)->first();
                 return $this->response(true, 'Login Successfully',
                     [
-                        'user' => $user,
+                        'user' => $userNew,
                         'achievement' => $achievement,
                         'token' => $token
                     ]
@@ -183,7 +183,7 @@ class UserApiRepository implements UserApiRepositoryInterface
     }
     public function getUser($id): JsonResponse
     {
-        $user = User::with('purchases')->find($id);
+        $user = User::with('purchases','subscription')->find($id);
         if (!$user) {
             return $this->response(false, 'User not found', '', Response::HTTP_NOT_FOUND);
         }

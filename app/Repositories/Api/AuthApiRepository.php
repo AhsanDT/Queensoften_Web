@@ -62,16 +62,17 @@ class AuthApiRepository implements AuthApiInterface
                     'password'=>Hash::make($request->password),
                     'picture'=>'https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2']);
 //                dd($user);
+                $userNew = $this->modal->with('purchases', 'subscription')->where("username", $user->username)->first();
                 $credentials = $request->only('username', 'password');
 
                 if (auth()->attempt($credentials)) {
-                    $user->tokens()->where('name', 'access_token')->delete();
-                    $token = $user->createToken('access_token')->plainTextToken;
+                    $userNew->tokens()->where('name', 'access_token')->delete();
+                    $token = $userNew->createToken('access_token')->plainTextToken;
                     return $this->response(
                         true,
                         'Login Successfully',
                         [
-                            'user' => $user,
+                            'user' => $userNew,
                             'achievement' => null,
                             'token' => $token
                         ],
