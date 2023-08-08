@@ -23,7 +23,7 @@ class AuthApiRepository implements AuthApiInterface
     {
         try {
             $userName = $request->username;
-            $user = $this->modal->where("username",$userName)->first();
+            $user = $this->modal->with('purchases', 'subscription')->where("username", $userName)->first();
             if($user){
                 $checkTrashUser = $this->modal->where("username",$userName)->onlyTrashed()->first();
                 $checkUser = $this->modal->where("username",$userName)->where('account_status', 0)->first();
