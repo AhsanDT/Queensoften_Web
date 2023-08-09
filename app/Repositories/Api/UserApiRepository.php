@@ -73,7 +73,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                     '',
                     Response::HTTP_UNAUTHORIZED);
 
-            $subscription = Subscription::where('price',0)->first();
+//            $subscription = Subscription::where('price',0)->first();
             $user = $this->modal::updateOrCreate([
                 "$key" => $value,
             ], [
@@ -85,7 +85,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                 'facebook_id' => ($request->driver == 'facebook') ? $request->driver_id : null,
                 'apple_id' => ($request->driver == 'apple') ? $request->driver_id : null,
                 'activeAt' => now(),
-                'subscription_id' => $subscription->id,
+//                'subscription_id' => $subscription->id,
             ]);
 
             $user->email = $email;
