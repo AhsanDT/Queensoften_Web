@@ -25,6 +25,20 @@ class AuthApiRepository implements AuthApiInterface
             $userName = $request->username;
             $user = $this->modal->with('purchases', 'subscription')->where("username", $userName)->first();
             if($user){
+                $subscriptionType = $user->subscription->type; // Assuming subscription type is stored in the 'type' column
+                $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
+                if ($user->drop_hand < $maxDropHand) {
+                    $user->drop_hand++;
+                    $user->save();
+                } else {
+                    return $this->response(
+                        false,
+                        'You have used all your available drop_hand for today.',
+                        '',
+                        Response::HTTP_UNAUTHORIZED
+                    );
+                }
+
                 $checkTrashUser = $this->modal->where("username",$userName)->onlyTrashed()->first();
                 $checkUser = $this->modal->where("username",$userName)->where('account_status', 0)->first();
 
