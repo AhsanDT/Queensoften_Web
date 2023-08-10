@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('drop_hand')->default(0);
-            $table->integer('wins');
-            $table->integer('win_rewarded');
-            $table->boolean('claimed');
+            $table->integer('wins')->nullable();
+            $table->integer('win_rewarded')->nullable();
+            $table->boolean('claimed')->nullable();
         });
     }
 
