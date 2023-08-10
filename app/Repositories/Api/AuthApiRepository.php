@@ -28,7 +28,7 @@ class AuthApiRepository implements AuthApiInterface
                 $subscriptionType = $user->subscription->type; // Assuming subscription type is stored in the 'type' column
                 $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
                 if ($user->drop_hand < $maxDropHand) {
-                    $user->drop_hand++;
+                    $user->drop_hand = $maxDropHand;
                     $user->save();
                 } else {
                     return $this->response(
