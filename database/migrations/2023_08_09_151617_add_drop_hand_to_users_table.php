@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('drop_hand');
+            $table->integer('drop_hand')->default(0);
             $table->integer('wins');
             $table->integer('win_rewarded');
             $table->boolean('claimed');
