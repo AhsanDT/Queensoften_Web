@@ -66,6 +66,10 @@ class AuthApiRepository implements AuthApiInterface
                     'password'=>Hash::make($request->password),
                     'picture'=>'https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2']);
 //                dd($user);
+                $subscriptionType = $user->subscription->subscription_type; // Assuming subscription type is stored in the 'type' column
+                $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
+                $user->drop_hand = $maxDropHand;
+                $user->save();
                 $userNew = $this->modal->with('purchases', 'subscription')->where("username", $user->username)->first();
                 $credentials = $request->only('username', 'password');
 
