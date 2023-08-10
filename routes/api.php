@@ -25,6 +25,7 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
 
         Route::post('/customer-redirect', [UserApiController::class, 'customerDataDelete']);
+        Route::get('/differ-drop-hand/{id}', [UserApiController::class, 'differ']);
         Route::prefix('stats')->group(function () {
             Route::post('/{userId}/create', [\App\Http\Controllers\Api\StatisticsController::class, 'create']);
             Route::get('/{userId}/list/{gameType}', [\App\Http\Controllers\Api\StatisticsController::class, 'list']);

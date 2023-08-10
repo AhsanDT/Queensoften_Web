@@ -31,5 +31,8 @@ class UserApiController extends Controller
     public function getUser($id){
         return $this->userApiRepository->getUser($id);
     }
+    public function differ($id){
+        return $this->userApiRepository->differ($id);
+    }
 
 }

@@ -188,4 +188,20 @@ class UserApiRepository implements UserApiRepositoryInterface
         }
         return $this->response(true, "User fetched successfully", $user, Response::HTTP_OK);
     }
+    public function differ($id):JsonResponse
+    {
+        $user = User::find($id);
+        if($user->drop_hand_usage != 'used' ){
+            if ($user->drop_hand > 0){
+                $user->drop_hand = $user->drop_hand - 1;
+                $user->save();
+                if ($user->drop_hand == 0){
+                    $user->drop_hand_usage = 'used';
+                }
+            }
+            return $this->response(true, "Drop hand updated successfully", '', Response::HTTP_OK);
+        }else{
+            return $this->response(false, 'You have reached the limit', '', Response::HTTP_UNAUTHORIZED);
+        }
+    }
 }
