@@ -25,7 +25,7 @@ class AuthApiRepository implements AuthApiInterface
             $userName = $request->username;
             $user = $this->modal->with('purchases', 'subscription')->where("username", $userName)->first();
             if($user){
-                $subscriptionType = $user->subscription->type; // Assuming subscription type is stored in the 'type' column
+                $subscriptionType = $user->subscription->subscription_type; // Assuming subscription type is stored in the 'type' column
                 $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
                     $user->drop_hand = $maxDropHand;
                     $user->save();
