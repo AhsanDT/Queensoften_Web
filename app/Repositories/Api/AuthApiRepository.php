@@ -20,80 +20,96 @@ class AuthApiRepository implements AuthApiInterface
         $this->modal = new User();
     }
     public function login($request): JsonResponse
-    {
-        try {
-            $userName = $request->username;
-            $user = $this->modal->with('purchases', 'subscription')->where("username", $userName)->first();
-            if($user){
-                $subscriptionType = $user->subscription->subscription_type; // Assuming subscription type is stored in the 'type' column
-                $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
-                    $user->drop_hand = $maxDropHand;
-                    $user->save();
-                $checkTrashUser = $this->modal->where("username",$userName)->onlyTrashed()->first();
-                $checkUser = $this->modal->where("username",$userName)->where('account_status', 0)->first();
-
-                if ($checkTrashUser || $checkUser){
-                    return $this->response(
-                        false,
-                        'Your account is deleted or disabled by admin. Please contact with support.',
-                        '',
-                        Response::HTTP_UNAUTHORIZED);
-                }
-                else{
-                    $credentials = $request->only('username', 'password');
-                    if(auth()->attempt($credentials)){
-                        $user->tokens()->where('name', 'access_token')->delete();
-
-                        $token = $user->createToken('access_token')->plainTextToken;
-
-                        return $this->response(true, 'Login Successfully',
-                            [
-                                'user' => $user,
-                                'achievement' => null,
-                                'token' => $token
-                            ]
-                            , Response::HTTP_OK);
-                    }else{
-                        return $this->response(false, 'Invalid Credentials.', [], Response::HTTP_UNAUTHORIZED);
-                    }
-                }
-            }else{
-                $subscription = Subscription::where('price',0)->first();
-                $user = $this->modal->create(['name'=>$request->username,
-                    'username'=>$request->username,
-                    'email'=>$request->username.'@gmail.com',
-                    'subscription_id'=>$subscription->id,
-                    'password'=>Hash::make($request->password),
-                    'picture'=>'https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2']);
-//                dd($user);
-                $subscriptionType = $user->subscription->subscription_type; // Assuming subscription type is stored in the 'type' column
+{
+    try {
+        $userName = $request->username;
+        $user = $this->modal->with('purchases', 'subscription')->where("username", $userName)->first();
+        if($user){
+            $subscriptionType = $user->subscription->subscription_type;
+            if ($user->drop_hand_usage != 'used'){
                 $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
                 $user->drop_hand = $maxDropHand;
-                $user->save();
-                $userNew = $this->modal->with('purchases', 'subscription')->where("username", $user->username)->first();
-                $credentials = $request->only('username', 'password');
+                $lastLoginDate = $user->last_login_at;
+                $today = now()->startOfDay();
+                if (!$lastLoginDate || $lastLoginDate < $today) {
+                    $user->last_login_at = now();
+                    $user->save();
+                }
+//                $user->save();
+            }
+            $checkTrashUser = $this->modal->where("username",$userName)->onlyTrashed()->first();
+            $checkUser = $this->modal->where("username",$userName)->where('account_status', 0)->first();
 
-                if (auth()->attempt($credentials)) {
-                    $userNew->tokens()->where('name', 'access_token')->delete();
-                    $token = $userNew->createToken('access_token')->plainTextToken;
-                    return $this->response(
-                        true,
-                        'Login Successfully',
+            if ($checkTrashUser || $checkUser){
+                return $this->response(
+                    false,
+                    'Your account is deleted or disabled by admin. Please contact with support.',
+                    '',
+                    Response::HTTP_UNAUTHORIZED);
+            }
+            else{
+                $credentials = $request->only('username', 'password');
+                if(auth()->attempt($credentials)){
+                    $user->tokens()->where('name', 'access_token')->delete();
+
+                    $token = $user->createToken('access_token')->plainTextToken;
+
+                    return $this->response(true, 'Login Successfully',
                         [
-                            'user' => $userNew,
+                            'user' => $user,
                             'achievement' => null,
                             'token' => $token
-                        ],
-                        Response::HTTP_OK
-                    );
-                } else {
+                        ]
+                        , Response::HTTP_OK);
+                }else{
                     return $this->response(false, 'Invalid Credentials.', [], Response::HTTP_UNAUTHORIZED);
                 }
             }
-        } catch (Exception $exception) {
-            return $this->response(false, $exception->getMessage(), [], Response::HTTP_UNAUTHORIZED);
+        }else{
+            $subscription = Subscription::where('price',0)->first();
+            $user = $this->modal->create(['name'=>$request->username,
+                'username'=>$request->username,
+                'email'=>$request->username.'@gmail.com',
+                'subscription_id'=>$subscription->id,
+                'password'=>Hash::make($request->password),
+                'picture'=>'https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2']);
+//                dd($user);
+            $subscriptionType = $user->subscription->subscription_type; // Assuming subscription type is stored in the 'type' column
+            if ($user->drop_hand_usage != 'used'){
+                $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
+                $user->drop_hand = $maxDropHand;
+                $lastLoginDate = $user->last_login_at;
+                $today = now()->startOfDay();
+                if (!$lastLoginDate || $lastLoginDate < $today) {
+                    $user->last_login_at = now();
+                    $user->save();
+                }
+//                $user->save();
+            }
+            $userNew = $this->modal->with('purchases', 'subscription')->where("username", $user->username)->first();
+            $credentials = $request->only('username', 'password');
+
+            if (auth()->attempt($credentials)) {
+                $userNew->tokens()->where('name', 'access_token')->delete();
+                $token = $userNew->createToken('access_token')->plainTextToken;
+                return $this->response(
+                    true,
+                    'Login Successfully',
+                    [
+                        'user' => $userNew,
+                        'achievement' => null,
+                        'token' => $token
+                    ],
+                    Response::HTTP_OK
+                );
+            } else {
+                return $this->response(false, 'Invalid Credentials.', [], Response::HTTP_UNAUTHORIZED);
+            }
         }
+    } catch (Exception $exception) {
+        return $this->response(false, $exception->getMessage(), [], Response::HTTP_UNAUTHORIZED);
     }
+}
     public function logout($request): JsonResponse
     {
         $user = $this->modal->find($request->id);

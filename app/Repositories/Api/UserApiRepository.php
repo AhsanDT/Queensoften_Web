@@ -197,6 +197,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                 $user->save();
                 if ($user->drop_hand == 0){
                     $user->drop_hand_usage = 'used';
+                    $user->save();
                 }
             }
             return $this->response(true, "Drop hand updated successfully", '', Response::HTTP_OK);
