@@ -11,4 +11,5 @@ interface UserApiRepositoryInterface
     public function achievementUnlock($userId):JsonResponse;
     public function customerDataDelete($request):JsonResponse;
     public function getUser($id):JsonResponse;
+    public function differ($id):JsonResponse;
 }

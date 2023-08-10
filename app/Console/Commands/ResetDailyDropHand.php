@@ -28,7 +28,7 @@ class ResetDailyDropHand extends Command
      */
     public function handle()
     {
-        User::query()->update(['drop_hand' => 0]);
+        User::query()->update(['drop_hand' => 0,'drop_hand_usage'=>'not_used']);
 
         $this->info('Daily drop_hand count reset completed.');
     }
