@@ -11,6 +11,7 @@ class Joker extends Model
     protected $fillable =[
       'image',
       'name',
-      'coins'
+      'coins',
+        'type'
     ];
 }

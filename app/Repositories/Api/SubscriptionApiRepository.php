@@ -2,8 +2,10 @@
 
 namespace App\Repositories\Api;
 
+use App\Models\Challenge;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Models\UserChallenge;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +44,21 @@ class SubscriptionApiRepository implements SubscriptionApiInterface
             $user = User::find($request['user_id']);
             if (!$user) {
                 return response()->json(['message' => 'User not found'], 404);
+            }
+            $subscription = Subscription::find($request['subscription_id']);
+            if ($subscription->subscription_type == 'premium'){
+                $user->coins += 700;
+
+                $mostRecentChallenge = Challenge::latest()->first();
+
+                if ($mostRecentChallenge) {
+                    $userChallenge = new UserChallenge();
+                    $userChallenge->user_id = $user->id;
+                    $userChallenge->challenge_id = $mostRecentChallenge->id;
+                    $userChallenge->win = false;
+                    $userChallenge->status = false;
+                    $userChallenge->save();
+                }
             }
             $user->subscription_id = $request['subscription_id'];
             $user->save();

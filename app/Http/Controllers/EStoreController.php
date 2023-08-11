@@ -89,7 +89,7 @@ class EStoreController extends Controller
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $joker = Joker::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins]);
+        $joker = Joker::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins, 'type'=>$request->type]);
         if($joker){
             return response()->json(
                 [

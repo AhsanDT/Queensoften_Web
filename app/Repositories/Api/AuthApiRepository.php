@@ -3,8 +3,10 @@
 namespace App\Repositories\Api;
 
 
+use App\Models\Joker;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Models\UserPurchase;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +28,7 @@ class AuthApiRepository implements AuthApiInterface
         $user = $this->modal->with('purchases', 'subscription')->where("username", $userName)->first();
         if($user){
             $subscriptionType = $user->subscription->subscription_type;
+//            dd($subscriptionType);
             if ($user->drop_hand_usage != 'used'){
                 $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
                 $user->drop_hand = $maxDropHand;
@@ -33,9 +36,22 @@ class AuthApiRepository implements AuthApiInterface
                 $today = now()->startOfDay();
                 if (!$lastLoginDate || $lastLoginDate < $today) {
                     $user->last_login_at = now();
-                    $user->save();
+                    if ($subscriptionType == 'standard') {
+                        $user->save();
+                        $jokerTypes = ['big', 'small'];
+                        $jokerIds = Joker::whereIn('type', $jokerTypes)->pluck('id');
+                        foreach ($jokerIds as $jokerId) {
+                            $jokerPurchase = new UserPurchase([
+                                'user_id' => $user->id,
+                                'type' => 'joker',
+                                'purchase_id' => $jokerId,
+                            ]);
+                            $jokerPurchase->save();
+                        }
+                    } else {
+                        $user->save();
+                    }
                 }
-//                $user->save();
             }
             $checkTrashUser = $this->modal->where("username",$userName)->onlyTrashed()->first();
             $checkUser = $this->modal->where("username",$userName)->where('account_status', 0)->first();

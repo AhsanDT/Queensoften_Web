@@ -26,7 +26,8 @@ class AddJokerRequest extends FormRequest
         return [
             'image'=>'required|mimes:jpeg,jpg,png',
             'name'=>'required',
-            'coins'=>'required'
+            'coins'=>'required',
+            'type'=>'required'
         ];
     }
 }
