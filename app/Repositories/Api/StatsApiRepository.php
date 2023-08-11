@@ -5,8 +5,10 @@ namespace App\Repositories\Api;
 
 use App\Models\Challenge;
 use App\Models\Statistics;
+use App\Models\Suit;
 use App\Models\User;
 use App\Models\UserChallenge;
+use App\Models\UserPurchase;
 use App\Services\AchievementService;
 use App\Services\ChallengeService;
 use App\Traits\AchievementTrait;
@@ -55,12 +57,23 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                     'status'=>true,
                 ]);
             }
+            if ($request->win == 1){
+                if($user->wins % 150 === 0){
+                    $firstSuit = Suit::first();
+                    $suitPurchase = new UserPurchase([
+                        'user_id' => $userId,
+                        'type' => 'suit',
+                        'purchase_id' => $firstSuit,
+                    ]);
+                    $suitPurchase->save();
+                }
+                $user->wins += 1;
+            }
             if($stats){
                 $achievementUnlock= null;
                 if(isset($request->challenge_id)){
                     $achievementUnlock = $this->unlockAchievement($request->challenge_id,$user,$request->hardcoded,$request);
                 }
-
                 if($achievementUnlock){
                     return $this->response(true,'Achievement Unlocked',$achievementUnlock, Response::HTTP_OK);
                 }

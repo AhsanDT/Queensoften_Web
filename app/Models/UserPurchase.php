@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class UserPurchase extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'type',
+        'purchase_id',
+    ];
 }
