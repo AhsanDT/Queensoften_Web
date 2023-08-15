@@ -3,11 +3,17 @@
 namespace App\Repositories\Api;
 
 use App\Models\Achievement;
+use App\Models\Deck;
+use App\Models\Joker;
 use App\Models\Purchase;
+use App\Models\Shuffle;
+use App\Models\Skin;
 use App\Models\Statistics;
 use App\Models\Subscription;
+use App\Models\Suit;
 use App\Models\SupportTicket;
 use App\Models\User;
+use App\Models\UserPurchase;
 use App\Services\AchievementService;
 use App\Services\ChallengeService;
 use App\Traits\AchievementTrait;
@@ -186,7 +192,47 @@ class UserApiRepository implements UserApiRepositoryInterface
         if (!$user) {
             return $this->response(false, 'User not found', '', Response::HTTP_NOT_FOUND);
         }
-        return $this->response(true, "User fetched successfully", $user, Response::HTTP_OK);
+        $userPurchases = UserPurchase::where('user_id', $user->id)->get();
+        $purchasesWithImages = [];
+
+        foreach ($userPurchases as $purchase) {
+            $purchaseType = $purchase->type;
+            $purchaseId = $purchase->purchase_id;
+
+            switch ($purchaseType) {
+                case 'shuffle':
+                    $purchaseItem = Shuffle::find($purchaseId);
+                    break;
+                case 'joker':
+                    $purchaseItem = Joker::find($purchaseId);
+                    break;
+                case 'suit':
+                    $purchaseItem = Suit::find($purchaseId);
+                    break;
+                case 'deck':
+                    $purchaseItem = Deck::find($purchaseId);
+                    break;
+                case 'skin':
+                    $purchaseItem = Skin::find($purchaseId);
+                    break;
+                default:
+                    $purchaseItem = null;
+            }
+
+            if ($purchaseItem) {
+                $purchasesWithImages[] = [
+                    'id' => $purchaseItem->id,
+                    'purchase_id' => $purchaseId,
+                    'type' => $purchaseType,
+                    'image' => $purchaseItem->image,
+                ];
+            }
+        }
+        return $this->response(true, "User fetched successfully", [
+            'user' => $user,
+            'achievement' => null,
+            'purchases_with_images' => $purchasesWithImages,
+        ], Response::HTTP_OK);
     }
     public function differ($id):JsonResponse
     {
