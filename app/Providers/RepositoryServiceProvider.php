@@ -10,6 +10,8 @@ use App\Repositories\Api\SubscriptionApiInterface;
 use App\Repositories\Api\SubscriptionApiRepository;
 use App\Repositories\Api\TutorialApiInterface;
 use App\Repositories\Api\TutorialApiRepository;
+use App\Repositories\Api\WalletApiInterface;
+use App\Repositories\Api\WalletApiRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -33,6 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(TutorialApiInterface::class,TutorialApiRepository::class);
         $this->app->bind(EstoreApiInterface::class,EstoreApiRepository::class);
         $this->app->bind(SubscriptionApiInterface::class,SubscriptionApiRepository::class);
+        $this->app->bind(WalletApiInterface::class,WalletApiRepository::class);
     }
 
     /**

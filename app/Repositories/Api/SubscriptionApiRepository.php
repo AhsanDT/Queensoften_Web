@@ -6,6 +6,7 @@ use App\Models\Challenge;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\UserChallenge;
+use App\Models\Wallet;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,22 +47,33 @@ class SubscriptionApiRepository implements SubscriptionApiInterface
                 return response()->json(['message' => 'User not found'], 404);
             }
             $subscription = Subscription::find($request['subscription_id']);
-            if ($subscription->subscription_type == 'premium'){
-                $user->coins += 700;
+            if ($user->usd > 0 && $user->usd >= $subscription->price){
+                $wallet = new Wallet();
+                $wallet->user_id = $request['user_id'];
+                $wallet->type = 'credit';
+                $wallet->amount = $subscription->price;
+                $wallet->purchase_type = 'subscription';
+                $wallet->save();
+                $user->usd -= $subscription->price;
+                if ($subscription->subscription_type == 'premium'){
+                    $user->coins += 700;
 
-                $mostRecentChallenge = Challenge::latest()->first();
+                    $mostRecentChallenge = Challenge::latest()->first();
 
-                if ($mostRecentChallenge) {
-                    $userChallenge = new UserChallenge();
-                    $userChallenge->user_id = $user->id;
-                    $userChallenge->challenge_id = $mostRecentChallenge->id;
-                    $userChallenge->win = false;
-                    $userChallenge->status = false;
-                    $userChallenge->save();
+                    if ($mostRecentChallenge) {
+                        $userChallenge = new UserChallenge();
+                        $userChallenge->user_id = $user->id;
+                        $userChallenge->challenge_id = $mostRecentChallenge->id;
+                        $userChallenge->win = false;
+                        $userChallenge->status = false;
+                        $userChallenge->save();
+                    }
                 }
+                $user->subscription_id = $request['subscription_id'];
+                $user->save();
+            }else{
+                return $this->response(false,'Insufficient funds','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
             }
-            $user->subscription_id = $request['subscription_id'];
-            $user->save();
             return $this->response(true,'Subscribed Successfully','',Response::HTTP_OK);
         } catch (\Exception $e) {
             return $this->response(true,'','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
