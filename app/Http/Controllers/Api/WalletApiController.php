@@ -18,4 +18,7 @@ class WalletApiController extends Controller
     public function buyCoins(Request $request){
         return $this->walletApiRepository->buyCoins($request);
     }
+    public function buyEstoreItem(Request $request){
+        return $this->walletApiRepository->buyEstoreItem($request);
+    }
 }
