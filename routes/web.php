@@ -70,8 +70,9 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     });
     Route::prefix('storymode')->name('storymode.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\StoryModeController::class, 'index'])->name('index');
-        Route::get('/detail',  [\App\Http\Controllers\StoryModeController::class, 'storyModeDetail'])->name('detail');
+        Route::get('/detail/{id}',  [\App\Http\Controllers\StoryModeController::class, 'storyModeDetail'])->name('detail');
         Route::get('/create',  [\App\Http\Controllers\StoryModeController::class, 'storyModeCreate'])->name('create');
+        Route::post('/store',  [\App\Http\Controllers\StoryModeController::class, 'storyModeStory'])->name('store');
     });
     Route::prefix('support')->name('support.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\SupportController::class, 'index'])->name('index');

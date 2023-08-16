@@ -14,13 +14,13 @@
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-3 text-center">
-                    <h1>SEASON 1</h1>
-                    <div class="mb-3">12 January 2023 - 12 February 2023</div>
+                    <h1>{{$story->title}}</h1>
+                    <div class="mb-3">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $story->start_date)->format('d F Y') }}
+                        - {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $story->end_date)->format('d F Y') }}</div>
                     <div class="img-box mb-3">
-                        <img src="{{asset('images/storyD1.svg')}}" />
+                        <img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/{{$story->image}}" />
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>{{$story->description}}</p>
                 </div>
             </div>
         </div>
