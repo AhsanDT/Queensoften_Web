@@ -43,6 +43,9 @@ Route::prefix('v1')->group(function () {
             Route::get('/list', [\App\Http\Controllers\Api\ChallengeApiController::class, 'list']);
             Route::get('/{userId}/get', [\App\Http\Controllers\Api\ChallengeApiController::class, 'get']);
         });
+        Route::prefix('storymode')->group(function () {
+            Route::get('/list', [\App\Http\Controllers\Api\StoryModeApiController::class, 'list']);
+        });
         Route::prefix('tutorial')->group(function () {
             Route::get('/list', [\App\Http\Controllers\Api\TutorialApiController::class, 'list']);
         });
