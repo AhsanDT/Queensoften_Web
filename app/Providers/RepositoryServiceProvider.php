@@ -6,6 +6,8 @@ use App\Repositories\Api\AuthApiInterface;
 use App\Repositories\Api\AuthApiRepository;
 use App\Repositories\Api\EstoreApiInterface;
 use App\Repositories\Api\EstoreApiRepository;
+use App\Repositories\Api\StoryModeApiInterface;
+use App\Repositories\Api\StoryModeApiRepository;
 use App\Repositories\Api\SubscriptionApiInterface;
 use App\Repositories\Api\SubscriptionApiRepository;
 use App\Repositories\Api\TutorialApiInterface;
@@ -36,6 +38,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(EstoreApiInterface::class,EstoreApiRepository::class);
         $this->app->bind(SubscriptionApiInterface::class,SubscriptionApiRepository::class);
         $this->app->bind(WalletApiInterface::class,WalletApiRepository::class);
+        $this->app->bind(StoryModeApiInterface::class,StoryModeApiRepository::class);
     }
 
     /**
