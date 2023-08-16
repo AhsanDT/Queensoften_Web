@@ -225,6 +225,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                     'purchase_id' => $purchaseId,
                     'type' => $purchaseType,
                     'image' => $purchaseItem->image,
+                    'name'=> ($purchaseItem->name) ? $purchaseItem->name :'',
                 ];
             }
         }
