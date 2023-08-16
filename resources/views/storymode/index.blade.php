@@ -20,46 +20,16 @@
                      </div>
                  </div>
                     <div class="colList">
-                        <div class="col">
-                            <div class="box">
-                                <a href="storymode/detail" class="imgBox">
-                                    <img src="images/s1.jpg"/>
-                                </a>
-                                <div class="description">Season 1</div>
+                        @foreach($stories  as $story)
+                            <div class="col">
+                                <div class="box">
+                                    <a href="{{route('storymode.detail',$story->id)}}" class="imgBox">
+                                        <img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/{{$story->image}}"/>
+                                    </a>
+                                    <div class="description">{{$story->title}}</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="box">
-                                <a href="storymode/detail" class="imgBox">
-                                    <img src="images/s2.jpg"/>
-                                </a>
-                                <div class="description">Season 2</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="box">
-                                <a href="storymode/detail" class="imgBox">
-                                    <img src="images/s3.jpg"/>
-                                </a>
-                                <div class="description">Season 3</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="box">
-                                <a href="storymode/detail" class="imgBox">
-                                    <img src="images/s4.jpg"/>
-                                </a>
-                                <div class="description">Season 4</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="box">
-                                <a href="storymode/detail" class="imgBox">
-                                    <img src="images/s5.jpg"/>
-                                </a>
-                                <div class="description">Season 5</div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
