@@ -105,6 +105,9 @@ Route::group(['middleware'=> ['auth:admin']],function() {
     });
     Route::prefix('spin-wheel')->name('spin-wheel.')->group(function () {
         Route::get('/index',  [\App\Http\Controllers\SpinTheWheelController::class, 'index'])->name('index');
+        Route::post('/store',  [\App\Http\Controllers\SpinTheWheelController::class, 'store'])->name('store');
+        Route::get('/list',  [\App\Http\Controllers\SpinTheWheelController::class, 'list'])->name('list');
+        Route::delete('/delete/{id}',  [\App\Http\Controllers\SpinTheWheelController::class, 'destroy'])->name('delete');
     });
     Route::post('/profile/update/{id}',  [\App\Http\Controllers\AuthController::class, 'profileUpdate'])->name('profile.update');
 });

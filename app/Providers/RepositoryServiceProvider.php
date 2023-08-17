@@ -6,12 +6,16 @@ use App\Repositories\Api\AuthApiInterface;
 use App\Repositories\Api\AuthApiRepository;
 use App\Repositories\Api\EstoreApiInterface;
 use App\Repositories\Api\EstoreApiRepository;
+use App\Repositories\Api\SpinWheelApiInterface;
+use App\Repositories\Api\SpinWheelApiRepository;
 use App\Repositories\Api\StoryModeApiInterface;
 use App\Repositories\Api\StoryModeApiRepository;
 use App\Repositories\Api\SubscriptionApiInterface;
 use App\Repositories\Api\SubscriptionApiRepository;
 use App\Repositories\Api\TutorialApiInterface;
 use App\Repositories\Api\TutorialApiRepository;
+use App\Repositories\Api\UserRewardApiInterface;
+use App\Repositories\Api\UserRewardApiRepository;
 use App\Repositories\Api\WalletApiInterface;
 use App\Repositories\Api\WalletApiRepository;
 use Illuminate\Support\ServiceProvider;
@@ -39,6 +43,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(SubscriptionApiInterface::class,SubscriptionApiRepository::class);
         $this->app->bind(WalletApiInterface::class,WalletApiRepository::class);
         $this->app->bind(StoryModeApiInterface::class,StoryModeApiRepository::class);
+        $this->app->bind(SpinWheelApiInterface::class,SpinWheelApiRepository::class);
+        $this->app->bind(UserRewardApiInterface::class,UserRewardApiRepository::class);
     }
 
     /**
