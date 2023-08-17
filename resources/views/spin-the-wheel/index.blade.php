@@ -7,11 +7,11 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="py-3 text-right">
-                        <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#addValuePopup">Define Reward</a>
-                    </div>
+{{--                    <div class="py-3 text-right">--}}
+{{--                        <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#addValuePopup">Define Reward</a>--}}
+{{--                    </div>--}}
                     <div class="table-responsive">
-                        <table class="table datatable">
+                        <table class="table" id="table">
                             <thead>
                             <tr>
                                 <th>Month</th>
@@ -21,47 +21,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>500</td>
-                                <td>c50</td>
-                                <td>06/23/23</td>
-                                <td>
-                                    <a href="#" class="btn action bg-danger text-white">
-                                        <i class="fal fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1,100</td>
-                                <td>$1</td>
-                                <td>06/23/23</td>
-                                <td>
-                                    <a href="#" class="btn action bg-danger text-white">
-                                        <i class="fal fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12,000</td>
-                                <td>$10</td>
-                                <td>06/23/23</td>
-                                <td>
-                                    <a href="#" class="btn action bg-danger text-white">
-                                        <i class="fal fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>25,000</td>
-                                <td>$20</td>
-                                <td>06/23/23</td>
-                                <td>
-                                    <a href="#" class="btn action bg-danger text-white">
-                                        <i class="fal fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -78,29 +37,31 @@
                 <div class="modal-body">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h4 class="text-center mb-4 pt-4">Select Prize</h4>
-                    <form  method="POST" class="ajax-form">
+                    <form  method="POST" class="ajax-form" data-action="{{route('spin-wheel.store')}}">
+                        @csrf
                         <div class="row">
                             <div class="form-group col-md-12">
                             </div>
                             <div class="col-md-12 form-group">
-                                <select class="col-md-12 form-group">
-                                    <option selected>January</option>
-                                    <option>February</option>
-                                    <option>March</option>
-                                    <option>April</option>
-                                    <option>May</option>
-                                    <option>June</option>
-                                    <option>July</option>
-                                    <option>August</option>
-                                    <option>September</option>
-                                    <option>October</option>
-                                    <option>November</option>
-                                    <option>December</option>
+                                <select class="col-md-12 form-group" name="month">
+                                    <option value="January" selected>January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
                                 </select>
                             </div>
                             <div class="col-md-12 form-group">
-                                <select class="col-md-12 form-group">
-                                    <option selected>Roulete</option>
+                                <select class="col-md-12 form-group" name="type">
+                                    <option selected value="roulete">Roulete</option>
+                                    <option value="scratch">Scratch</option>
                                 </select>
                             </div>
                             <div class="col-md-12 d-flex flex-column align-items-center">
@@ -115,6 +76,91 @@
     </div>
 @endsection
 @section('extra-js')
-
+    <script>
+        var table =   $('#table').DataTable({
+            dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+            buttons: [
+                {
+                    text: 'Define Reward',
+                    className: 'btn btn-dark btn-challenge datatable-custom-btn',
+                    action: function (e, dt, node, config) {
+                        $('#addValuePopup').modal('show')
+                    }
+                }
+            ],
+            processing: true,
+            serverSide: true,
+            "searching": true,
+            "paging": true,
+            'bSortable': false,
+            "bInfo": true,
+            iDisplayLength: 10,
+            "lengthChange": true,
+            "autoWidth": false,
+            "bDestroy": true,
+            "bSort" : false,
+            "scrollX": true,
+            sAjaxSource: '{{route('spin-wheel.list')}}',
+            language: {
+                searchPlaceholder: 'Search Wheel',
+                "emptyTable": "No Wheel found",
+                "zeroRecords": "No Wheel found"
+            },
+            "columnDefs": [
+                {"width": "150px", "targets": 0},
+                {"width": "150px", "targets": 1},
+                {"width": "120px", "targets": 2},
+            ],
+            "columns": [
+                // {
+                //     "data": "serial_no",
+                //     orderable: false,
+                //     render: function (data, type, row) {
+                //         return getPolarisCheckbox(row.id);
+                //     }
+                // },
+                {
+                    "data": "month"
+                    , "orderable": true,
+                    className: 'description',
+                    render:function (data){
+                        return "<p  class='text-center'>"+data+"</p>"
+                    }
+                },
+                {
+                    "data": "type"
+                    , "orderable": true,
+                    className: 'description',
+                    render:function (data){
+                        return "<p  class='text-center'>"+data+"</p>"
+                    }
+                },
+                {
+                    "data": "created_at"
+                    , "orderable": true,
+                    render:function (data){
+                        var datePart = data.split('T')[0];
+                        var dateParts = datePart.split('-');
+                        if (dateParts.length === 3) {
+                            var day = dateParts[0];
+                            var month = dateParts[1];
+                            var year = dateParts[2];
+                            return "<p class='text-center text-truncate'>" + day + "-" + month + "-" + year + "</p>";
+                        }
+                    }
+                },
+                {
+                    "data": "actions",
+                    "orderable": false,
+                    className: 'actions custom-action',
+                    'render': function (data, type, row) {
+                        var delUrl = "{{ route('spin-wheel.delete', ':id') }}";
+                        delUrl = delUrl.replace(':id', row.id);
+                        return '<td class="actions d-flex" style="width: 60px"><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                    }
+                },
+            ],
+        });
+    </script>
 @endsection
 

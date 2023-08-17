@@ -64,6 +64,12 @@ Route::prefix('v1')->group(function () {
         Route::prefix('support')->group(function () {
             Route::post('create', [SupportApiController::class, 'create']);
         });
+        Route::prefix('spin-wheel')->group(function () {
+            Route::get('/this-month/{id}', [SpinWheelApiController::class, 'thisMonth']);
+        });
+        Route::prefix('reward')->group(function () {
+            Route::post('/store', [UserRewardApiController::class, 'store']);
+        });
         Route::post('/auth-logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
         Route::post('/add-fund', [WalletApiController::class, 'addFund']);
         Route::post('/buy-coins', [WalletApiController::class, 'buyCoins']);
