@@ -220,12 +220,20 @@ class UserApiRepository implements UserApiRepositoryInterface
             }
 
             if ($purchaseItem) {
+                $displayName = '';
+                if ($purchaseItem->name) {
+                    $displayName = $purchaseItem->name;
+                } elseif ($purchaseItem->title) {
+                    $displayName = $purchaseItem->title;
+                } else {
+                    $displayName = $purchaseItem->coins;
+                }
                 $purchasesWithImages[] = [
                     'id' => $purchaseItem->id,
                     'purchase_id' => $purchaseId,
                     'type' => $purchaseType,
                     'image' => $purchaseItem->image,
-                    'name'=> ($purchaseItem->name) ? $purchaseItem->name :'',
+                    'name'=> $displayName,
                 ];
             }
         }
