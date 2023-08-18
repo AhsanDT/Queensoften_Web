@@ -23,7 +23,7 @@
                                                min="<?php echo date('Y-m-d'); ?>"/>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label class="fw-bold">End Start</label>
+                                        <label class="fw-bold">Date End</label>
                                         <input type="date" class="form-control" placeholder="01/05/2023" name="end_date"
                                                min="<?php echo date('Y-m-d'); ?>"/>
                                     </div>

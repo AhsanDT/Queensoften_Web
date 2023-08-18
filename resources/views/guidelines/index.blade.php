@@ -38,9 +38,11 @@
                                         <div class="form-group">
                                             <textarea name="about_us">{{$guideline->about_us ?? ''}}</textarea>
                                         </div>
-                                        <button type="submit">
-                                            Save
-                                        </button>
+                                        <div class="text-center">
+                                            <button type="submit">
+                                                Save
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                                 <div id="stab3" class="tab editSection">
@@ -50,9 +52,11 @@
                                         <div class="form-group">
                                             <textarea name="faqs">{{$guideline->faqs ?? ''}}</textarea>
                                         </div>
-                                        <button type="submit">
-                                            Save
-                                        </button>
+                                        <div class="text-center">
+                                            <button type="submit">
+                                                Save
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
