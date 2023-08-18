@@ -132,7 +132,7 @@
                     , "orderable": true,
                     className: 'description',
                     render:function (data){
-                        return "<p  class='text-center'>"+data+"</p>"
+                        return "<p  class='text-center' style='text-transform: capitalize'>"+data+"</p>"
                     }
                 },
                 {
