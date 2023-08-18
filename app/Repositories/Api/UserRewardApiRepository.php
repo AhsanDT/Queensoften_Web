@@ -58,7 +58,7 @@ class UserRewardApiRepository implements UserRewardApiInterface
             }
             return $this->response(true,'',$reward,Response::HTTP_OK);
         }catch (\Exception $exception){
-            return $this->response(false,'Something went wrong please try again later.','',Response::HTTP_UNAUTHORIZED);
+            return $this->response(false,$exception->getMessage(),'',Response::HTTP_UNAUTHORIZED);
         }
     }
 }
