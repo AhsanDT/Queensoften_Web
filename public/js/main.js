@@ -32,7 +32,7 @@ $("#imageUpload").change(function() {
 });
 $('#addTutorial').on('hidden.bs.modal', function () {
     $('#imgCoverPhoto').val('');
-    $('.previewImage').attr('src', '');
+    $('.removeBtn').click();
     $('.ajax-form :input').val('');
 });
 $('#selectWinner').on('hidden.bs.modal', function () {
@@ -41,27 +41,27 @@ $('#selectWinner').on('hidden.bs.modal', function () {
 });
 $('#updateTutorial').on('hidden.bs.modal', function () {
     $('#editImgCoverPhoto').val('');
-    $('.previewImage').attr('src', '');
+    $('.removeBtn').click();
     $('.edit-ajax-form :input').val('');
 });
 $('#addJokerValuePopup').on('hidden.bs.modal', function () {
     $('#jokerImgCoverPhoto').val('');
-    $('.previewImage').attr('src', '');
+    $('.removeBtn').click();
     $('.ajax-form :input').val('');
 });
 $('#addValuePopup').on('hidden.bs.modal', function () {
     $('#imgCoverPhoto').val('');
-    $('.previewImage').attr('src', '');
+    $('.removeBtn').click();
     $('.ajax-form :input').val('');
 });
 $('#addSuitsValuePopup').on('hidden.bs.modal', function () {
     $('#imgCoverPhoto').val('');
-    $('.previewImage').attr('src', '');
+    $('.removeBtn').click();
     $('.ajax-form :input').val('');
 });
 $('#addSkinValuePopup').on('hidden.bs.modal', function () {
     $('#skinImgCoverPhoto').val('');
-    $('.previewImage').attr('src', '');
+    $('.removeBtn').click();
     $('.ajax-form :input').val('');
 });
 

@@ -269,6 +269,14 @@
             //     }
             // }
         });
+        $('#user-datatable thead th:first-child input[type="checkbox"]').on('change', function() {
+            var isChecked = $(this).prop('checked');
+
+            // Update the status of individual checkboxes in the column
+            $('#user-datatable tbody tr').each(function() {
+                $(this).find('td:first-child input[type="checkbox"]').prop('checked', isChecked);
+            });
+        });
         var premiumTable =   $('#PremiumSubscribersDatatable').DataTable({
             dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
             buttons: [

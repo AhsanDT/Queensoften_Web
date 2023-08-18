@@ -174,7 +174,7 @@
                         Coin Rewards
                     </a>
                 </li> -->
-                
+
                 <li class="{{ request()->routeIs('support.index') ? "active" : ""}}">
                     <a href="{{route('support.index')}}">
                         <i class="fas fa-envelope"></i>
@@ -187,12 +187,12 @@
                         Guidelines
                     </a>
                 </li>
-                <li class="{{ request()->routeIs('setting.index') ? "active" : ""}}">
-                    <a href="{{route('setting.index')}}">
-                        <i class="fas fa-gear"></i>
-                        Settings
-                    </a>
-                </li>
+{{--                <li class="{{ request()->routeIs('setting.index') ? "active" : ""}}">--}}
+{{--                    <a href="{{route('setting.index')}}">--}}
+{{--                        <i class="fas fa-gear"></i>--}}
+{{--                        Settings--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li>
                     <a href="{{route('logout')}}">
                         <i class="icon-qLogoutIcon"></i>

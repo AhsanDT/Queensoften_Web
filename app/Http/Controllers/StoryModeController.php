@@ -45,6 +45,14 @@ class StoryModeController extends Controller
             ])  ;
         }
     }
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('searchTerm');
+
+        $stories = StoryMode::where('title', 'like', '%' . $searchTerm . '%')->get();
+
+        return view('partials.story_list', compact('stories'));
+    }
 
 
 }

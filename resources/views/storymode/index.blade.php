@@ -9,21 +9,23 @@
                 <div class="col-md-12">
                  <div class="row py-3gi">
                      <div class="col-sm-6">
-                         <div id="table_filter" class="dataTables_filter"><label><input type="search" class=""
-                                                                                        placeholder="Search Tutorial"
-                                                                                        aria-controls="table"></label></div>
+                         <div id="table_filter" class="dataTables_filter">
+                             <label>
+                                 <input type="search" class="form-control" id="searchSeason" placeholder="Search Season" aria-controls="table">
+                             </label>
+                         </div>
                      </div>
                      <div class="col-sm-6">
                          <div class="text-right">
-                             <a href="storymode/create" class="btn">Add Season</a>
+                             <a href="storymode/create" class="btn btn-dark btn-challenge datatable-custom-btn">Add Season</a>
                          </div>
                      </div>
                  </div>
-                    <div class="colList">
-                        @foreach($stories  as $story)
+                    <div class="colList" id="storyList">
+                        @foreach($stories as $story)
                             <div class="col">
                                 <div class="box">
-                                    <a href="{{route('storymode.detail',$story->id)}}" class="imgBox">
+                                    <a href="{{ route('storymode.detail', $story->id) }}" class="imgBox">
                                         <img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/{{$story->image}}"/>
                                     </a>
                                     <div class="description">{{$story->title}}</div>
@@ -39,6 +41,20 @@
 @endsection
 
 @section('extra-js')
-
+    <script>
+        $(document).ready(function () {
+            $('#searchSeason').on('keyup', function () {
+                var searchTerm = $(this).val();
+                $.ajax({
+                    url: '{{ route('storymode.search') }}',
+                    method: 'GET',
+                    data: { searchTerm: searchTerm },
+                    success: function (response) {
+                        $('#storyList').html(response);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
 
