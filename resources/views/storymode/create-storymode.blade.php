@@ -18,21 +18,21 @@
                             <div class="col-md-7">
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <label>Date Start</label>
+                                        <label class="fw-bold">Date Start</label>
                                         <input type="date" class="form-control" placeholder="01/05/2023" name="start_date"
                                                min="<?php echo date('Y-m-d'); ?>"/>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label>End Start</label>
+                                        <label class="fw-bold">End Start</label>
                                         <input type="date" class="form-control" placeholder="01/05/2023" name="end_date"
                                                min="<?php echo date('Y-m-d'); ?>"/>
                                     </div>
                                     <div class="col-md-12 form-group">
-                                        <label>Season Title</label>
+                                        <label class="fw-bold">Season Title</label>
                                         <input type="text" class="form-control" placeholder="Season 1" name="title"/>
                                     </div>
                                     <div class="col-md-12 form-group">
-                                        <label>Story (Description)</label>
+                                        <label class="fw-bold">Story (Description)</label>
                                         <textarea placeholder="Enter here"  style="height: 300px" name="description"></textarea>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="pt-3">
+                                <div class="py-3 ">
                                     <button class="btn">Save</button>
                                 </div>
                             </div>
