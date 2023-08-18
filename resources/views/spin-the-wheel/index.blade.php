@@ -3,7 +3,7 @@
     <main id="main">
         <div class="container">
             <div class="page-title">
-                <h1>Spin the Wheel</h1>
+                <h1>Spin The Wheel</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -31,11 +31,11 @@
 
 @endsection
 @section('addValuePopup')
-    <div class="modal fade" id="addValuePopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addRewardPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+{{--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
                     <h4 class="text-center mb-4 pt-4">Select Prize</h4>
                     <form  method="POST" class="ajax-form" data-action="{{route('spin-wheel.store')}}">
                         @csrf
@@ -43,7 +43,7 @@
                             <div class="form-group col-md-12">
                             </div>
                             <div class="col-md-12 form-group">
-                                <select class="col-md-12 form-group" name="month">
+                                <select class="col-md-12 form-select" name="month">
                                     <option value="January" selected>January</option>
                                     <option value="February">February</option>
                                     <option value="March">March</option>
@@ -59,7 +59,7 @@
                                 </select>
                             </div>
                             <div class="col-md-12 form-group">
-                                <select class="col-md-12 form-group" name="type">
+                                <select class="col-md-12 form-select" name="type">
                                     <option selected value="roulete">Roulete</option>
                                     <option value="scratch">Scratch</option>
                                 </select>
@@ -78,13 +78,13 @@
 @section('extra-js')
     <script>
         var table =   $('#table').DataTable({
-            dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
+            dom: '<"topFooter"B>rt<"bottomFooter"lip>',
             buttons: [
                 {
                     text: 'Define Reward',
                     className: 'btn btn-dark btn-challenge datatable-custom-btn',
                     action: function (e, dt, node, config) {
-                        $('#addValuePopup').modal('show')
+                        $('#addRewardPopup').modal('show')
                     }
                 }
             ],

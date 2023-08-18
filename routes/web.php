@@ -72,6 +72,7 @@ Route::group(['middleware'=> ['auth:admin']],function() {
         Route::get('/',  [\App\Http\Controllers\StoryModeController::class, 'index'])->name('index');
         Route::get('/detail/{id}',  [\App\Http\Controllers\StoryModeController::class, 'storyModeDetail'])->name('detail');
         Route::get('/create',  [\App\Http\Controllers\StoryModeController::class, 'storyModeCreate'])->name('create');
+        Route::get('/search',  [\App\Http\Controllers\StoryModeController::class, 'search'])->name('search');
         Route::post('/store',  [\App\Http\Controllers\StoryModeController::class, 'storyModeStory'])->name('store');
     });
     Route::prefix('support')->name('support.')->group(function () {

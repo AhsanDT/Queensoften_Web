@@ -19,11 +19,13 @@
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label>Date Start</label>
-                                        <input type="date" class="form-control" placeholder="01/05/2023" name="start_date" />
+                                        <input type="date" class="form-control" placeholder="01/05/2023" name="start_date"
+                                               min="<?php echo date('Y-m-d'); ?>"/>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label>End Start</label>
-                                        <input type="date" class="form-control" placeholder="01/05/2023" name="end_date"/>
+                                        <input type="date" class="form-control" placeholder="01/05/2023" name="end_date"
+                                               min="<?php echo date('Y-m-d'); ?>"/>
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <label>Season Title</label>
@@ -38,7 +40,7 @@
                             <div class="col-md-5">
                                 <div class="imgUpload">
                                     <label for='imgCoverPhoto'>
-                                        <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload" name="image">
+                                        <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload" name="image" accept="image/*">
                                         <div class="placeholderBox">
                                             <div class="iconBox"></div>
                                             Upload Image
@@ -63,7 +65,6 @@
 
         </div>
     </main>
-
 @endsection
 
 @section('extra-js')

@@ -100,6 +100,7 @@
 
                 if (response.success === true) {
                     toastr.success(response.message);
+                    premiumTable.ajax.reload(null, false);
                     @if(request()->routeIs('users.index'))
                     if(tableClass == 'datatable1') {
                         active.draw();
