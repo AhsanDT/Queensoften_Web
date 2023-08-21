@@ -187,11 +187,12 @@ class StatsApiRepository implements StatsApiRepositoryInterface
     }
     public function topTen():JsonResponse
     {
-        $currentMonth = Carbon::now()->format('Y-m');
+        $currentYear = Carbon::now()->year;
+        $currentMonth = Carbon::now()->month;
 
-        $topTenUsers = Statistics::select('user_id', 'game_type', 'won')
-            ->where('game_type', '<>', null)
-            ->whereRaw("DATE_FORMAT(date, '%Y-%m') = '$currentMonth'")
+        $topTenUsers = Statistics::select('user_id', 'won')
+            ->whereYear('date', '=', $currentYear)
+            ->whereMonth('date', '=', $currentMonth)
             ->orderBy('won', 'desc')
             ->limit(10)
             ->get();
