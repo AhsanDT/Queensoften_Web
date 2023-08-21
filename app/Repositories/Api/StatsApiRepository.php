@@ -208,7 +208,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
         $topUsersMonthly = [];
 
         foreach ($months as $month) {
-            $filteredStatistics = Statistic::whereYear('date', $currentYear)
+            $filteredStatistics = Statistics::whereYear('date', $currentYear)
                 ->whereMonth('date', $month)
                 ->get();
 
