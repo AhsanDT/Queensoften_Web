@@ -187,31 +187,40 @@ class StatsApiRepository implements StatsApiRepositoryInterface
     }
     public function topTen():JsonResponse
     {
-        $currentYear = now()->year;
-        $currentMonth = now()->month;
+        $currentYear = Carbon::now()->year;
+        $currentMonth = Carbon::now()->month;
 
-        $topTenUsers = DB::select("
-    SELECT user_id, SUM(won) as total_wins
-    FROM statistics
-    WHERE EXTRACT(year FROM date) = $currentYear
-    AND EXTRACT(month FROM date) = $currentMonth
-    GROUP BY user_id
-    ORDER BY total_wins DESC
-    LIMIT 10
-");
+        $statistics = Statistics::whereRaw("DATE_PART('year', date) = $currentYear")
+            ->whereRaw("DATE_PART('month', date) = $currentMonth")
+            ->get();
 
-        $userIds = array_map(function ($user) {
-            return $user->user_id;
-        }, $topTenUsers);
+        $userWins = [];
 
-        $users = User::whereIn('id', $userIds)->get(); // Assuming User is your user model
+        foreach ($statistics as $statistic) {
+            $userId = $statistic->user_id;
 
-        $topTenUsersWithDetails = [];
-        foreach ($topTenUsers as $userStats) {
-            $user = $users->find($userStats->user_id);
-            $userStats->user = $user;
-            $topTenUsersWithDetails[] = $userStats;
+            if (!isset($userWins[$userId])) {
+                $userWins[$userId] = 0;
+            }
+
+            $userWins[$userId] += $statistic->won;
         }
-        return $this->response(true,'top ten users in current month',$topTenUsersWithDetails,Response::HTTP_OK);
+
+        arsort($userWins);
+
+        $topUserIds = array_slice(array_keys($userWins), 0, 10);
+
+        $users = User::whereIn('id', $topUserIds)->get(); // Assuming User is your user model
+
+        $topTenUsers = [];
+        foreach ($topUserIds as $userId) {
+            $user = $users->find($userId);
+
+            $topTenUsers[] = [
+                'user' => $user,
+                'won' => $userWins[$userId],
+            ];
+        }
+        return $this->response(true,'top ten users in current month',$topTenUsers,Response::HTTP_OK);
     }
 }
