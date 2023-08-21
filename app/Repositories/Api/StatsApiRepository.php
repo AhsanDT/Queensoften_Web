@@ -190,14 +190,18 @@ class StatsApiRepository implements StatsApiRepositoryInterface
         $currentYear = Carbon::now()->year;
         $currentMonth = Carbon::now()->month;
 
-        $topTenUsers = Statistics::select('user_id', 'won')
+        $topTenUsers = Statistics::selectRaw('user_id, SUM(won) as total_wins')
             ->whereYear('date', '=', $currentYear)
             ->whereMonth('date', '=', $currentMonth)
-            ->orderBy('won', 'desc')
+            ->groupBy('user_id')
+            ->orderByDesc('total_wins')
             ->limit(10)
             ->get();
+
+        $userIds = $topTenUsers->pluck('user_id');
+        $users = User::whereIn('id', $userIds)->get();
         foreach ($topTenUsers as $userStats) {
-            $user = User::find($userStats->user_id);
+            $user = $users->find($userStats->user_id);
             $userStats->user = $user;
         }
         return $this->response(true,'top ten users in current month',$topTenUsers,Response::HTTP_OK);
