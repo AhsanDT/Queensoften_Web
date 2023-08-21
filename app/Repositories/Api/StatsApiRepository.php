@@ -221,8 +221,9 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 $userId = $statistic->user_id;
 
                 if (!isset($userStats[$userId])) {
+                    $user = User::find($userId);
                     $userStats[$userId] = [
-                        'user' => User::find($userId),
+                        'username' => $user->username,
                         'won' => 0,
                         'total' => 0,
                     ];
