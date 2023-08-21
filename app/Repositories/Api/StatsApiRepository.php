@@ -13,8 +13,8 @@ use App\Services\AchievementService;
 use App\Services\ChallengeService;
 use App\Traits\AchievementTrait;
 use App\Traits\ResponseTrait;
-use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Exception;
 use Symfony\Component\HttpFoundation\Response;
@@ -187,11 +187,12 @@ class StatsApiRepository implements StatsApiRepositoryInterface
     }
     public function topTen():JsonResponse
     {
-        $currentMonth = Carbon::now()->format('Y-m');
+        $currentYear = Carbon::now()->year;
+        $currentMonth = Carbon::now()->month;
 
-        $topTenUsers = Statistics::select('user_id', 'game_type', 'won')
-            ->where('game_type', '<>', null)
-            ->where(DB::raw("DATE_TRUNC('month', date)"), $currentMonth)
+        $topTenUsers = Statistics::select('user_id', 'won')
+            ->whereYear('date', '=', $currentYear)
+            ->whereMonth('date', '=', $currentMonth)
             ->orderBy('won', 'desc')
             ->limit(10)
             ->get();
