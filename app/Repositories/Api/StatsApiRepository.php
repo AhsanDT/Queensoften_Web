@@ -188,7 +188,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
     public function topTen():JsonResponse
     {
         $currentYear = Carbon::now()->year;
-        $months = range(1, Carbon::now()->month);
+        $months = range(1, 12);
 
         $monthNames = [
             1 => 'January',
@@ -205,12 +205,15 @@ class StatsApiRepository implements StatsApiRepositoryInterface
             12 => 'December',
         ];
 
+        $allStatistics = Statistics::all(); // Fetch all records
+
         $topUsersMonthly = [];
 
         foreach ($months as $month) {
-            $filteredStatistics = Statistics::whereYear('date', $currentYear)
-                ->whereMonth('date', $month)
-                ->get();
+            $filteredStatistics = $allStatistics->filter(function ($statistic) use ($currentYear, $month) {
+                $statisticDate = Carbon::createFromFormat('m-d-Y', $statistic->date); // Adjust format as needed
+                return $statisticDate->year == $currentYear && $statisticDate->month == $month;
+            });
 
             $userStats = [];
 
