@@ -193,7 +193,8 @@ class StatsApiRepository implements StatsApiRepositoryInterface
         $statistics = Statistics::all(); // Fetch all records
 
         $filteredStatistics = $statistics->filter(function ($statistic) use ($currentYear, $currentMonth) {
-            return $statistic->date->year == $currentYear && $statistic->date->month == $currentMonth;
+            $statisticDate = Carbon::createFromFormat('m-d-Y', $statistic->date); // Adjust format as needed
+            return $statisticDate->year == $currentYear && $statisticDate->month == $currentMonth;
         });
 
         $userWins = [];
