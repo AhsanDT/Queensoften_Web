@@ -197,33 +197,35 @@ class StatsApiRepository implements StatsApiRepositoryInterface
             return $statisticDate->year == $currentYear && $statisticDate->month == $currentMonth;
         });
 
-        $userWins = [];
+        $userStats = [];
 
         foreach ($filteredStatistics as $statistic) {
             $userId = $statistic->user_id;
 
-            if (!isset($userWins[$userId])) {
-                $userWins[$userId] = 0;
+            if (!isset($userStats[$userId])) {
+                $user = User::find($userId);
+                $userStats[$userId] = [
+                    'username' => $user->username,
+                    'won' => 0,
+                    'total' => 0,
+                ];
             }
 
-            $userWins[$userId] += $statistic->won;
+            $userStats[$userId]['won'] += $statistic->won;
+            $userStats[$userId]['total']++;
         }
 
-        arsort($userWins);
-
-        $topUserIds = array_slice(array_keys($userWins), 0, 10);
-
-        $users = User::whereIn('id', $topUserIds)->get(); // Assuming User is your user model
-
-        $topTenUsers = [];
-        foreach ($topUserIds as $userId) {
-            $user = $users->find($userId);
-
-            $topTenUsers[] = [
-                'username' => $user->username,
-                'won' => $userWins[$userId],
-            ];
+        foreach ($userStats as &$userStat) {
+            $userStat['win_percentage'] = ($userStat['total'] > 0) ?
+                ($userStat['won'] / $userStat['total']) * 100 : 0;
         }
-        return $this->response(true,'top ten users in current month',$topTenUsers,Response::HTTP_OK);
+
+        usort($userStats, function ($a, $b) {
+            return $b['win_percentage'] - $a['win_percentage'];
+        });
+
+        $topTenUserStats = array_slice($userStats, 0, 10);
+
+        return $this->response(true,'top ten users in current month',$topTenUserStats,Response::HTTP_OK);
     }
 }
