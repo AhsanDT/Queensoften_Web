@@ -29,6 +29,7 @@ Route::prefix('v1')->group(function () {
         Route::prefix('stats')->group(function () {
             Route::post('/{userId}/create', [\App\Http\Controllers\Api\StatisticsController::class, 'create']);
             Route::get('/{userId}/list/{gameType}', [\App\Http\Controllers\Api\StatisticsController::class, 'list']);
+            Route::get('/top-ten', [\App\Http\Controllers\Api\StatisticsController::class, 'topTen']);
         });
         Route::prefix('store')->group(function () {
             Route::get('/{userId}/items', [\App\Http\Controllers\Api\StoreController::class, 'userItems']);

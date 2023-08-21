@@ -33,4 +33,7 @@ class StatisticsController extends Controller
     function test(){
         return $this->statsRepositoryInterface->test();
     }
+    function topTen(){
+        return $this->statsRepositoryInterface->topTen();
+    }
 }

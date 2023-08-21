@@ -13,6 +13,7 @@ use App\Services\AchievementService;
 use App\Services\ChallengeService;
 use App\Traits\AchievementTrait;
 use App\Traits\ResponseTrait;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Exception;
@@ -183,5 +184,21 @@ class StatsApiRepository implements StatsApiRepositoryInterface
 
             }
         }
+    }
+    public function topTen():JsonResponse
+    {
+        $currentMonth = Carbon::now()->format('Y-m');
+
+        $topTenUsers = Statistics::select('user_id', 'game_type', 'won')
+            ->where('game_type', '<>', null)
+            ->whereRaw("DATE_FORMAT(date, '%Y-%m') = '$currentMonth'")
+            ->orderBy('won', 'desc')
+            ->limit(10)
+            ->get();
+        foreach ($topTenUsers as $userStats) {
+            $user = User::find($userStats->user_id);
+            $userStats->user = $user;
+        }
+        return $this->response(true,'top ten users in current month',$topTenUsers,Response::HTTP_OK);
     }
 }
