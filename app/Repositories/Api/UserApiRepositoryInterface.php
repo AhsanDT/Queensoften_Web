@@ -12,4 +12,6 @@ interface UserApiRepositoryInterface
     public function customerDataDelete($request):JsonResponse;
     public function getUser($id):JsonResponse;
     public function differ($id):JsonResponse;
+    public function updatePassword($request):JsonResponse;
+    public function updateGamerTag($request):JsonResponse;
 }

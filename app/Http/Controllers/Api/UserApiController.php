@@ -34,5 +34,11 @@ class UserApiController extends Controller
     public function differ($id){
         return $this->userApiRepository->differ($id);
     }
+    public function updatePassword(Request $request){
+        return $this->userApiRepository->updatePassword($request);
+    }
+    public function updateGamerTag(Request $request){
+        return $this->userApiRepository->updateGamerTag($request);
+    }
 
 }
