@@ -190,13 +190,15 @@ class StatsApiRepository implements StatsApiRepositoryInterface
         $currentYear = Carbon::now()->year;
         $currentMonth = Carbon::now()->month;
 
-        $statistics = Statistics::whereRaw("DATE_PART('year', date) = $currentYear")
-            ->whereRaw("DATE_PART('month', date) = $currentMonth")
-            ->get();
+        $statistics = Statistics::all(); // Fetch all records
+
+        $filteredStatistics = $statistics->filter(function ($statistic) use ($currentYear, $currentMonth) {
+            return $statistic->date->year == $currentYear && $statistic->date->month == $currentMonth;
+        });
 
         $userWins = [];
 
-        foreach ($statistics as $statistic) {
+        foreach ($filteredStatistics as $statistic) {
             $userId = $statistic->user_id;
 
             if (!isset($userWins[$userId])) {
