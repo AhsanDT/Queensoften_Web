@@ -188,7 +188,9 @@ class StatsApiRepository implements StatsApiRepositoryInterface
     public function topTen():JsonResponse
     {
         $currentYear = Carbon::now()->year;
-        $months = [
+        $months = range(1, Carbon::now()->month);
+
+        $monthNames = [
             1 => 'January',
             2 => 'February',
             3 => 'March',
@@ -205,8 +207,8 @@ class StatsApiRepository implements StatsApiRepositoryInterface
 
         $topUsersMonthly = [];
 
-        foreach ($months as $month => $monthName) {
-            $filteredStatistics = Statistics::whereYear('date', $currentYear)
+        foreach ($months as $month) {
+            $filteredStatistics = Statistic::whereYear('date', $currentYear)
                 ->whereMonth('date', $month)
                 ->get();
 
@@ -238,7 +240,10 @@ class StatsApiRepository implements StatsApiRepositoryInterface
             });
 
             $topTenUserStats = array_slice($userStats, 0, 10);
-            $topUsersMonthly[$monthName] = $topTenUserStats;
+            $topUsersMonthly[] = [
+                'month' => $monthNames[$month],
+                'data' => $topTenUserStats,
+            ];
         }
         return $this->response(true,'top ten users in current month',$topUsersMonthly,Response::HTTP_OK);
     }
