@@ -8,4 +8,5 @@ interface StatsApiRepositoryInterface
 {
     public function create($request,$userId):JsonResponse;
     public function list($userId,$gameType):JsonResponse;
+    public function topTen():JsonResponse;
 }
