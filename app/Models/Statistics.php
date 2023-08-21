@@ -23,5 +23,8 @@ class Statistics extends Model
         'score',
         'user_id'
     ];
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
 }
