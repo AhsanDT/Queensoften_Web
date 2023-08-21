@@ -220,7 +220,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
             $user = $users->find($userId);
 
             $topTenUsers[] = [
-                'user' => $user,
+                'username' => $user->username,
                 'won' => $userWins[$userId],
             ];
         }
