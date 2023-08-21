@@ -188,44 +188,46 @@ class StatsApiRepository implements StatsApiRepositoryInterface
     public function topTen():JsonResponse
     {
         $currentYear = Carbon::now()->year;
-        $currentMonth = Carbon::now()->month;
+        $months = range(1, 12);
 
-        $statistics = Statistics::all(); // Fetch all records
+        $topUsersMonthly = [];
 
-        $filteredStatistics = $statistics->filter(function ($statistic) use ($currentYear, $currentMonth) {
-            $statisticDate = Carbon::createFromFormat('m-d-Y', $statistic->date); // Adjust format as needed
-            return $statisticDate->year == $currentYear && $statisticDate->month == $currentMonth;
-        });
+        foreach ($months as $month) {
+            $filteredStatistics = Statistics::whereYear('date', $currentYear)
+                ->whereMonth('date', $month)
+                ->get();
 
-        $userStats = [];
+            $userStats = [];
 
-        foreach ($filteredStatistics as $statistic) {
-            $userId = $statistic->user_id;
+            foreach ($filteredStatistics as $statistic) {
+                $userId = $statistic->user_id;
 
-            if (!isset($userStats[$userId])) {
-                $user = User::find($userId);
-                $userStats[$userId] = [
-                    'username' => $user->username,
-                    'won' => 0,
-                    'total' => 0,
-                ];
+                if (!isset($userStats[$userId])) {
+                    $userStats[$userId] = [
+                        'user' => User::find($userId),
+                        'won' => 0,
+                        'total' => 0,
+                    ];
+                }
+
+                $userStats[$userId]['won'] += $statistic->won;
+                $userStats[$userId]['total']++;
             }
 
-            $userStats[$userId]['won'] += $statistic->won;
-            $userStats[$userId]['total']++;
+            foreach ($userStats as &$userStat) {
+                $userStat['win_percentage'] = ($userStat['total'] > 0) ?
+                    ($userStat['won'] / $userStat['total']) * 100 : 0;
+            }
+
+            // Sort userStats by win_percentage in descending order
+            usort($userStats, function ($a, $b) {
+                return $b['win_percentage'] - $a['win_percentage'];
+            });
+
+            $topTenUserStats = array_slice($userStats, 0, 10);
+            $topUsersMonthly[$month] = $topTenUserStats;
         }
 
-        foreach ($userStats as &$userStat) {
-            $userStat['win_percentage'] = ($userStat['total'] > 0) ?
-                ($userStat['won'] / $userStat['total']) * 100 : 0;
-        }
-
-        usort($userStats, function ($a, $b) {
-            return $b['win_percentage'] - $a['win_percentage'];
-        });
-
-        $topTenUserStats = array_slice($userStats, 0, 10);
-
-        return $this->response(true,'top ten users in current month',$topTenUserStats,Response::HTTP_OK);
+        return $this->response(true,'top ten users in current month',$topUsersMonthly,Response::HTTP_OK);
     }
 }
