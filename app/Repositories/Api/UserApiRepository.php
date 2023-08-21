@@ -22,6 +22,7 @@ use App\Traits\ResponseTrait;
 use App\Traits\SendGridTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use PHPUnit\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -259,5 +260,23 @@ class UserApiRepository implements UserApiRepositoryInterface
         }else{
             return $this->response(false, 'You have reached the limit', '', Response::HTTP_UNAUTHORIZED);
         }
+    }
+    public function updatePassword($request):JsonResponse
+    {
+        $user = User::find($request->id);
+        if ($user && Hash::check($request->old_password, $user->password)){
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return $this->response(true, "Password updated successfully", '', Response::HTTP_OK);
+        }else{
+            return $this->response(false, 'Old password incorrect', '', Response::HTTP_UNAUTHORIZED);
+        }
+    }
+    public function updateGamerTag($request):JsonResponse
+    {
+        $user = User::find($request->id);
+        $user->username = $request->username;
+        $user->save();
+        return $this->response(true, "Gamertag updated successfully", '', Response::HTTP_OK);
     }
 }
