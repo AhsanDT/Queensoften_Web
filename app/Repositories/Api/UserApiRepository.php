@@ -56,11 +56,12 @@ class UserApiRepository implements UserApiRepositoryInterface
 
             if ($request->driver == 'apple') {
                 $appleUser = $this->modal::where('apple_id', $request->driver_id)->first();
+                $newPicture = $this->modal::where('email', $request->email)->first();
                 if ($appleUser) {
                     $name = $name ?? $appleUser->name;
                     $email = $email ?? $appleUser->email;
                     $userName = $userName ?? $appleUser->username;
-                    $picture = $picture ?? $appleUser->picture;
+                    $picture = $newPicture->picture ?? $picture;
                 }
                 $key = 'apple_id';
                 $value = $request->driver_id;
