@@ -41,6 +41,7 @@ Route::prefix('v1')->group(function () {
            Route::get('/{id}',[UserApiController::class,'getUser']);
            Route::post('/update-password',[UserApiController::class,'updatePassword']);
            Route::post('/update-gamertag',[UserApiController::class,'updateGamerTag']);
+           Route::post('/update-profile-image',[UserApiController::class,'updateProfileImage']);
         });
         Route::prefix('challenges')->group(function () {
             Route::get('/list', [\App\Http\Controllers\Api\ChallengeApiController::class, 'list']);

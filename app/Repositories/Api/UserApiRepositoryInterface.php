@@ -14,4 +14,5 @@ interface UserApiRepositoryInterface
     public function differ($id):JsonResponse;
     public function updatePassword($request):JsonResponse;
     public function updateGamerTag($request):JsonResponse;
+    public function updateProfileImage($request):JsonResponse;
 }

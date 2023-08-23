@@ -23,6 +23,7 @@ use App\Traits\SendGridTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use PHPUnit\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -275,8 +276,22 @@ class UserApiRepository implements UserApiRepositoryInterface
     public function updateGamerTag($request):JsonResponse
     {
         $user = User::find($request->id);
+        $request->validate([
+            'username' => 'required|unique:users,username,' . $user->id,
+        ]);
         $user->username = $request->username;
         $user->save();
         return $this->response(true, "Gamertag updated successfully", '', Response::HTTP_OK);
+    }
+    public function updateProfileImage($request):JsonResponse
+    {
+        $user = User::find($request->id);
+        $file = $request->file('image');
+        $name = time() . $file->getClientOriginalName();
+        $filePath = 'images/' . $name;
+        Storage::disk('s3')->put($filePath, file_get_contents($file));
+        $user->picture = 'https://queensoftenimages.s3.us-west-1.amazonaws.com/'.$filePath;
+        $user->save();
+        return $this->response(true, "Profile picture updated successfully", '', Response::HTTP_OK);
     }
 }

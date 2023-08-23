@@ -40,5 +40,8 @@ class UserApiController extends Controller
     public function updateGamerTag(Request $request){
         return $this->userApiRepository->updateGamerTag($request);
     }
+    public function updateProfileImage(Request $request){
+        return $this->userApiRepository->updateProfileImage($request);
+    }
 
 }
