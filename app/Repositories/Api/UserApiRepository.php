@@ -286,9 +286,9 @@ class UserApiRepository implements UserApiRepositoryInterface
     public function updateProfileImage($request):JsonResponse
     {
         $user = User::find($request->id);
-        if ($user->picture) {
-            $previousFilePath = str_replace('https://queensoftenimages.s3.us-west-1.amazonaws.com/', '', $user->picture);
-            Storage::disk('s3')->delete($previousFilePath);
+        if ($user->picture !== '') {
+//            $previousFilePath = str_replace('https://queensoftenimages.s3.us-west-1.amazonaws.com/', '', $user->picture);
+            Storage::disk('s3')->delete($user->picture);
         }
         $file = $request->file('image');
         $name = time() . $file->getClientOriginalName();
