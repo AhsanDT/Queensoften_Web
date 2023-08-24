@@ -61,7 +61,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                     $name = $name ?? $appleUser->name;
                     $email = $email ?? $appleUser->email;
                     $userName = $userName ?? $appleUser->username;
-                    $picture = $newPicture->picture ?? $picture;
+                    $picture = $newPicture->picture ?? $appleUser->picture ?? $picture;
                 }
                 $key = 'apple_id';
                 $value = $request->driver_id;
