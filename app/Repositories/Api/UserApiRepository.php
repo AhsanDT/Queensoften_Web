@@ -280,6 +280,10 @@ class UserApiRepository implements UserApiRepositoryInterface
         $request->validate([
             'username' => 'required|unique:users,username,' . $user->id,
         ]);
+        if($user->coins < 1000){
+            return $this->response(false, 'Insufficient coins', '', Response::HTTP_UNAUTHORIZED);
+        }
+        $user->coins -= 1000;
         $user->username = $request->username;
         $user->save();
         return $this->response(true, "Gamertag updated successfully", '', Response::HTTP_OK);
