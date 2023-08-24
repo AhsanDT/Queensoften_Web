@@ -71,7 +71,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                     $name = $name ?? $googleUser->name;
                     $email = $email ?? $googleUser->email;
                     $userName = $userName ?? $googleUser->username;
-                    $picture = $googleUser->picture ?? $request->picture;
+                    $picture = $googleUser->picture ?? $picture;
                 }
                 $key = 'google_id';
                 $value = $request->driver_id;
@@ -79,12 +79,19 @@ class UserApiRepository implements UserApiRepositoryInterface
                 $key = 'email';
                 $value = $email;
             }
-
+            $existingUser = $this->modal->where("$key", $value)->first();
             $checkTrashUser = $this->modal->where("$key", $value)->onlyTrashed()->first();
 
             $checkUser = $this->modal->where("$key", $value)->where('account_status', 0)->first();
             $newUser = $this->modal->where("$key", $value)->where('account_status', 1)->first();
-
+            if ($existingUser) {
+                return $this->response(
+                    false,
+                    'Your account is deleted or disabled by admin. Please contact support.',
+                    '',
+                    Response::HTTP_UNAUTHORIZED
+                );
+            }
             if ($checkTrashUser || $checkUser)
                 return $this->response(
                     false,
