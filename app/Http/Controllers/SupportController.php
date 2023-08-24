@@ -129,7 +129,7 @@ class SupportController extends Controller
     function update_status(Request $request)
     {
         try {
-            SupportTicket::where('support_ticket_id', $request->support_ticket_id)->update(['read' => $request->status]);
+            SupportTicket::where('support_ticket_id', $request->support_ticket_id)->update(['read' => $request->status,'resolved' => $request->status,'status'=> $request->status]);
             return $this->response(true, "Status changed successfully", '', Response::HTTP_OK);
 
         } catch (\Exception $exception) {
