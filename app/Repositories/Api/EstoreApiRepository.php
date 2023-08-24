@@ -4,6 +4,7 @@ namespace App\Repositories\Api;
 
 use App\Models\Coin;
 use App\Models\Deck;
+use App\Models\DeckAttachment;
 use App\Models\Joker;
 use App\Models\Shuffle;
 use App\Models\Skin;
@@ -45,6 +46,20 @@ class EstoreApiRepository implements EstoreApiInterface
                 'coin_count' => $coin->count(),
             ];
 
+            return $this->response(true,'',$data,Response::HTTP_OK);
+
+        }catch (\Exception $exception){
+            return $this->response(true,'','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
+        }
+    }
+    public function deckAttachments($id): JsonResponse
+    {
+        try {
+            $deck =  DeckAttachment::where('deck_id',$id)->get();
+            $data = [
+                'deck_attachments' => $deck,
+                'count' => $deck->count(),
+            ];
             return $this->response(true,'',$data,Response::HTTP_OK);
 
         }catch (\Exception $exception){
