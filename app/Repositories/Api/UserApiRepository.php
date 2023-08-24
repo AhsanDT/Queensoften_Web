@@ -54,7 +54,17 @@ class UserApiRepository implements UserApiRepositoryInterface
             $userName = $request->username;
             $picture = $request->picture;
 
-            if ($request->driver == 'apple') {
+            if ($request->driver == 'google') {
+                $googleUser = $this->modal::where('google_id', $request->driver_id)->first();
+                if ($googleUser) {
+                    $name = $name ?? $googleUser->name;
+                    $email = $email ?? $googleUser->email;
+                    $userName = $userName ?? $googleUser->username;
+                    $picture = $googleUser->picture ?? $picture;
+                }
+                $key = 'google_id';
+                $value = $request->driver_id;
+            }else if ($request->driver == 'apple') {
                 $appleUser = $this->modal::where('apple_id', $request->driver_id)->first();
 //                $newPicture = $this->modal::where('email', $request->email)->first();
                 if ($appleUser) {
@@ -65,33 +75,16 @@ class UserApiRepository implements UserApiRepositoryInterface
                 }
                 $key = 'apple_id';
                 $value = $request->driver_id;
-            }elseif ($request->driver == 'google') {
-                $googleUser = $this->modal::where('google_id', $request->driver_id)->first();
-                if ($googleUser) {
-                    $name = $name ?? $googleUser->name;
-                    $email = $email ?? $googleUser->email;
-                    $userName = $userName ?? $googleUser->username;
-                    $picture = $googleUser->picture ?? $picture;
-                }
-                $key = 'google_id';
-                $value = $request->driver_id;
             } else {
                 $key = 'email';
                 $value = $email;
             }
-            $existingUser = $this->modal->where("$key", $value)->first();
+
             $checkTrashUser = $this->modal->where("$key", $value)->onlyTrashed()->first();
 
             $checkUser = $this->modal->where("$key", $value)->where('account_status', 0)->first();
             $newUser = $this->modal->where("$key", $value)->where('account_status', 1)->first();
-            if ($existingUser) {
-                return $this->response(
-                    false,
-                    'Your account is deleted or disabled by admin. Please contact support.',
-                    '',
-                    Response::HTTP_UNAUTHORIZED
-                );
-            }
+
             if ($checkTrashUser || $checkUser)
                 return $this->response(
                     false,
@@ -140,6 +133,21 @@ class UserApiRepository implements UserApiRepositoryInterface
                         $this->achievementService->save($challenge, $user);
                         $achievement = $this->achievementResponse($challenge);
                     }
+                }
+                if ($request->driver == 'google') {
+                    Auth::login($user);
+                    $user->tokens()->where('name', 'access_token')->delete();
+
+                    $token = $user->createToken('access_token')->plainTextToken;
+                    $userNew = $this->modal->with('purchases', 'subscription')->where("username", $user->username)->first();
+                    return $this->response(true, 'Login Successfully',
+                        [
+                            'user' => $userNew,
+                            'achievement' => $achievement,
+                            'token' => $token,
+                            'picture' => $picture,  // Adding the user picture to the response
+                        ]
+                        , Response::HTTP_OK);
                 }
                 Auth::login($user);
                 $user->tokens()->where('name', 'access_token')->delete();
