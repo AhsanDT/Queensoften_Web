@@ -65,6 +65,16 @@ class UserApiRepository implements UserApiRepositoryInterface
                 }
                 $key = 'apple_id';
                 $value = $request->driver_id;
+            }elseif ($request->driver == 'google') {
+                $googleUser = $this->modal::where('google_id', $request->driver_id)->first();
+                if ($googleUser) {
+                    $name = $name ?? $googleUser->name;
+                    $email = $email ?? $googleUser->email;
+                    $userName = $userName ?? $googleUser->username;
+                    $picture = $googleUser->picture ?? $request->picture;
+                }
+                $key = 'google_id';
+                $value = $request->driver_id;
             } else {
                 $key = 'email';
                 $value = $email;
