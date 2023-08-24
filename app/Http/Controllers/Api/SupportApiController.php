@@ -18,4 +18,8 @@ class SupportApiController extends Controller
     function create(SupportApiRequest $request){
         return  $this->supportApiRepository->create($request);
     }
+
+    function myTickets($id){
+        return  $this->supportApiRepository->myTickets($id);
+    }
 }
