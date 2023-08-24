@@ -54,24 +54,14 @@ class UserApiRepository implements UserApiRepositoryInterface
             $userName = $request->username;
             $picture = $request->picture;
 
-            if ($request->driver == 'google') {
-                $googleUser = $this->modal::where('google_id', $request->driver_id)->first();
-                if ($googleUser) {
-                    $name = $name ?? $googleUser->name;
-                    $email = $email ?? $googleUser->email;
-                    $userName = $userName ?? $googleUser->username;
-                    $picture = $googleUser->picture ?? $picture;
-                }
-                $key = 'google_id';
-                $value = $request->driver_id;
-            }else if ($request->driver == 'apple') {
+            if ($request->driver == 'apple') {
                 $appleUser = $this->modal::where('apple_id', $request->driver_id)->first();
-//                $newPicture = $this->modal::where('email', $request->email)->first();
+                $newPicture = $this->modal::where('email', $request->email)->first();
                 if ($appleUser) {
                     $name = $name ?? $appleUser->name;
                     $email = $email ?? $appleUser->email;
                     $userName = $userName ?? $appleUser->username;
-                    $picture = $appleUser->picture ?? $picture;
+                    $picture = $newPicture->picture ?? $picture;
                 }
                 $key = 'apple_id';
                 $value = $request->driver_id;
@@ -133,21 +123,6 @@ class UserApiRepository implements UserApiRepositoryInterface
                         $this->achievementService->save($challenge, $user);
                         $achievement = $this->achievementResponse($challenge);
                     }
-                }
-                if ($request->driver == 'google') {
-                    Auth::login($user);
-                    $user->tokens()->where('name', 'access_token')->delete();
-
-                    $token = $user->createToken('access_token')->plainTextToken;
-                    $userNew = $this->modal->with('purchases', 'subscription')->where("username", $user->username)->first();
-                    return $this->response(true, 'Login Successfully',
-                        [
-                            'user' => $userNew,
-                            'achievement' => $achievement,
-                            'token' => $token,
-                            'picture' => $picture,  // Adding the user picture to the response
-                        ]
-                        , Response::HTTP_OK);
                 }
                 Auth::login($user);
                 $user->tokens()->where('name', 'access_token')->delete();
@@ -316,6 +291,7 @@ class UserApiRepository implements UserApiRepositoryInterface
     public function updateProfileImage($request):JsonResponse
     {
         $user = User::find($request->id);
+
         if ($user && strpos($user->picture, 'https://queensoftenimages.s3.us-west-1.amazonaws.com/') !== false) {
             $picturePath = str_replace('https://queensoftenimages.s3.us-west-1.amazonaws.com/', '', $user->picture);
             Storage::disk('s3')->delete($picturePath);
