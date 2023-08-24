@@ -15,4 +15,7 @@ class EstoreApiController extends Controller
     public function list(){
         return $this->eStoreApiRepository->list();
     }
+    public function deckAttachments($id){
+        return $this->eStoreApiRepository->deckAttachments($id);
+    }
 }

@@ -55,6 +55,7 @@ Route::prefix('v1')->group(function () {
         });
         Route::prefix('e-store')->group(function () {
             Route::get('/list', [\App\Http\Controllers\Api\EstoreApiController::class, 'list']);
+            Route::get('/deck-attachments/{id}', [\App\Http\Controllers\Api\EstoreApiController::class, 'deckAttachments']);
         });
         Route::prefix('subscription')->group(function () {
             Route::get('/list', [\App\Http\Controllers\Api\SubscriptionController::class, 'list']);
