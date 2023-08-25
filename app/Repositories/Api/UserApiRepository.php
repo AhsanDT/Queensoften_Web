@@ -74,6 +74,7 @@ class UserApiRepository implements UserApiRepositoryInterface
 
             $checkUser = $this->modal->where("$key", $value)->where('account_status', 0)->first();
             $newUser = $this->modal->where("$key", $value)->where('account_status', 1)->first();
+            $userModel = $this->modal->where("$key", $value)->first();
 
             if ($checkTrashUser || $checkUser)
                 return $this->response(
@@ -87,7 +88,7 @@ class UserApiRepository implements UserApiRepositoryInterface
             ], [
                 'name' => $name,
                 'username' => $userName,
-                'picture' => $picture ?? null,
+                'picture' => $picture?: $userModel?? $userModel->picture ,
                 'online_status' => '1',
                 'google_id' => ($request->driver == 'google') ? $request->driver_id : null,
                 'facebook_id' => ($request->driver == 'facebook') ? $request->driver_id : null,
