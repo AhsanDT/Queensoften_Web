@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('user_purchases', function (Blueprint $table) {
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
         });
     }
 
