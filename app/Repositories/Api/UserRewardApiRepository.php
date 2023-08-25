@@ -4,6 +4,8 @@ namespace App\Repositories\Api;
 
 use App\Models\Joker;
 use App\Models\Shuffle;
+use App\Models\Skin;
+use App\Models\Suit;
 use App\Models\User;
 use App\Models\UserPurchase;
 use App\Models\UserReward;
@@ -33,27 +35,73 @@ class UserRewardApiRepository implements UserRewardApiInterface
                 $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
             }elseif($request['type'] == 'small_joker'){
                 $joker = Joker::where('type','small')->get()->first();
-                $userPurchase = new UserPurchase();
-                $userPurchase->user_id = $request['user_id'];
-                $userPurchase->type = $request['type'];
-                $userPurchase->purchase_id = $joker->id;
-                $userPurchase->save();
+                $item = UserPurchase::where('user_id',$request['user_id'])->where('purchase_id',$joker->id)->where('type',$request['type'])->first();
+                if($item){
+                    $item->quantity = $item->quantity + 1;
+                    $item->save();
+                }else {
+                    $userPurchase = new UserPurchase();
+                    $userPurchase->user_id = $request['user_id'];
+                    $userPurchase->type = $request['type'];
+                    $userPurchase->purchase_id = $joker->id;
+                    $userPurchase->save();
+                }
                 $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
             }elseif($request['type'] == 'big_joker'){
                 $joker = Joker::where('type','big')->get()->first();
-                $userPurchase = new UserPurchase();
-                $userPurchase->user_id = $request['user_id'];
-                $userPurchase->type = $request['type'];
-                $userPurchase->purchase_id = $joker->id;
-                $userPurchase->save();
+                $item = UserPurchase::where('user_id',$request['user_id'])->where('purchase_id',$joker->id)->where('type',$request['type'])->first();
+                if($item){
+                    $item->quantity = $item->quantity + 1;
+                    $item->save();
+                }else {
+                    $userPurchase = new UserPurchase();
+                    $userPurchase->user_id = $request['user_id'];
+                    $userPurchase->type = $request['type'];
+                    $userPurchase->purchase_id = $joker->id;
+                    $userPurchase->save();
+                }
                 $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
             }elseif($request['type'] == 'shuffle'){
                 $shuffle = Shuffle::first();
-                $userPurchase = new UserPurchase();
-                $userPurchase->user_id = $request['user_id'];
-                $userPurchase->type = $request['type'];
-                $userPurchase->purchase_id = $shuffle->id;
-                $userPurchase->save();
+                $item = UserPurchase::where('user_id',$request['user_id'])->where('purchase_id',$shuffle->id)->where('type',$request['type'])->first();
+                if($item){
+                    $item->quantity = $item->quantity + 1;
+                    $item->save();
+                }else {
+                    $userPurchase = new UserPurchase();
+                    $userPurchase->user_id = $request['user_id'];
+                    $userPurchase->type = $request['type'];
+                    $userPurchase->purchase_id = $shuffle->id;
+                    $userPurchase->save();
+                }
+                $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
+            }elseif($request['type'] == 'skin'){
+                $skin = Skin::first();
+                $item = UserPurchase::where('user_id',$request['user_id'])->where('purchase_id',$skin->id)->where('type',$request['type'])->first();
+                if($item){
+                    $item->quantity = $item->quantity + 1;
+                    $item->save();
+                }else {
+                    $userPurchase = new UserPurchase();
+                    $userPurchase->user_id = $request['user_id'];
+                    $userPurchase->type = $request['type'];
+                    $userPurchase->purchase_id = $skin->id;
+                    $userPurchase->save();
+                }
+                $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
+            }elseif($request['type'] == 'suit'){
+                $suit = Suit::first();
+                $item = UserPurchase::where('user_id',$request['user_id'])->where('purchase_id',$suit->id)->where('type',$request['type'])->first();
+                if($item){
+                    $item->quantity = $item->quantity + 1;
+                    $item->save();
+                }else {
+                    $userPurchase = new UserPurchase();
+                    $userPurchase->user_id = $request['user_id'];
+                    $userPurchase->type = $request['type'];
+                    $userPurchase->purchase_id = $suit->id;
+                    $userPurchase->save();
+                }
                 $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
             }
             return $this->response(true,'',$reward,Response::HTTP_OK);

@@ -41,12 +41,19 @@ class AuthApiRepository implements AuthApiInterface
                         $jokerTypes = ['big', 'small'];
                         $jokerIds = Joker::whereIn('type', $jokerTypes)->pluck('id');
                         foreach ($jokerIds as $jokerId) {
-                            $jokerPurchase = new UserPurchase([
-                                'user_id' => $user->id,
-                                'type' => 'joker',
-                                'purchase_id' => $jokerId,
-                            ]);
-                            $jokerPurchase->save();
+                            $item = UserPurchase::where('user_id',$user->id)->where('purchase_id',$jokerId)->where('type','joker')->first();
+                            if($item){
+                                $item->quantity = $item->quantity + 1;
+                                $item->save();
+                            }else{
+                                $jokerPurchase = new UserPurchase([
+                                    'user_id' => $user->id,
+                                    'type' => 'joker',
+                                    'purchase_id' => $jokerId,
+                                    'quantity' => 1,
+                                ]);
+                                $jokerPurchase->save();
+                            }
                         }
                     } else {
                         $user->save();

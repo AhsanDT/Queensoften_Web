@@ -7,6 +7,7 @@ use App\Models\Purchase;
 use App\Models\Statistics;
 use App\Models\Item;
 use App\Models\User;
+use App\Models\UserPurchase;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -77,13 +78,7 @@ class StoreApiRepository implements StoreApiRepositoryInterface
     public function itemUse($request,$userId):JsonResponse
     {
         try {
-
-            $item = Item::find($request->item_id);
-            if(!$item){
-                return $this->response(false,'Item not found.',[], Response::HTTP_UNAUTHORIZED);
-            }
-
-            $userItem = Purchase::where('user_id',$userId)->where('item_id',$request->item_id)->first();
+            $userItem = UserPurchase::where('user_id',$userId)->where('purchase_id',$request->purchase_id)->where('type',$request->type)->first();
 
             if($userItem){
                 $userItem->quantity = $userItem->quantity - 1;

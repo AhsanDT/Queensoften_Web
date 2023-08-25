@@ -12,5 +12,6 @@ class UserPurchase extends Model
         'user_id',
         'type',
         'purchase_id',
+        'quantity',
     ];
 }

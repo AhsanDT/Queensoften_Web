@@ -43,11 +43,18 @@ class SubscriptionWinnerController extends Controller
         $user = User::find($randomUserId)->get();
         foreach ($selectedOptions as $type => $purchaseId) {
             if ($purchaseId) {
-                $userPurchase = new UserPurchase();
-                $userPurchase->user_id = $randomUserId;
-                $userPurchase->type = $type;
-                $userPurchase->purchase_id = $purchaseId;
-                $userPurchase->save();
+                $item = UserPurchase::where('user_id',$randomUserId)->where('purchase_id',$purchaseId)->where('type',$type)->first();
+                if($item){
+                    $item->quantity = $item->quantity + 1;
+                    $item->save();
+                }else{
+                    $userPurchase = new UserPurchase();
+                    $userPurchase->user_id = $randomUserId;
+                    $userPurchase->type = $type;
+                    $userPurchase->purchase_id = $purchaseId;
+                    $userPurchase->quantity = 1;
+                    $userPurchase->save();
+                }
             }
         }
         if($request->input('coins')){
