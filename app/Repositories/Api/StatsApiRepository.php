@@ -61,12 +61,19 @@ class StatsApiRepository implements StatsApiRepositoryInterface
             if ($request->win == 1){
                 if($user->wins % 150 === 0){
                     $firstSuit = Suit::first();
-                    $suitPurchase = new UserPurchase([
-                        'user_id' => $userId,
-                        'type' => 'suit',
-                        'purchase_id' => $firstSuit,
-                    ]);
-                    $suitPurchase->save();
+                    $item = UserPurchase::where('user_id',$userId)->where('purchase_id',$firstSuit)->where('type','suit')->first();
+                    if($item){
+                        $item->quantity = $item->quantity + 1;
+                        $item->save();
+                    }else{
+                        $suitPurchase = new UserPurchase([
+                            'user_id' => $userId,
+                            'type' => 'suit',
+                            'purchase_id' => $firstSuit,
+                            'quantity' => 1,
+                        ]);
+                        $suitPurchase->save();
+                    }
                 }
                 $user->wins += 1;
             }
