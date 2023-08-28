@@ -68,11 +68,11 @@
 
         $("th.selectAllPremium .Polaris-Checkbox__Input").on("click", function (e) {
             if ($(this).is(":checked")) {
-                table.rows().select();
+                premiumTable.rows().select();
                 $('#PremiumSubscribersDatatable tbody .Polaris-Checkbox__Input').prop('checked', true)
 
             } else {
-                table.rows().deselect();
+                premiumTable.rows().deselect();
                 $('#PremiumSubscribersDatatable tbody .Polaris-Checkbox__Input').prop('checked', false)
             }
         });
@@ -87,6 +87,39 @@
                 row.select()
             } else {
                 $("th.selectAllPremium input").prop('checked', false);
+                row.deselect()
+            }
+            e.stopPropagation();
+        });
+        function getAllPolarisCheckbox(id) {
+            return checkboxAllTemplate.replace(/@id/g, id);
+        }
+
+        var checkboxAllTemplate = $('#checkbox-template-all').text();
+        $('th.selectAll-checkbox').html(getAllPolarisCheckbox('selectAll'))
+
+
+        $("th.selectAll-checkbox .Polaris-Checkbox__Input").on("click", function (e) {
+            if ($(this).is(":checked")) {
+                table.rows().select();
+                $('#user-datatable tbody .Polaris-Checkbox__Input').prop('checked', true)
+
+            } else {
+                table.rows().deselect();
+                $('#user-datatable tbody .Polaris-Checkbox__Input').prop('checked', false)
+            }
+        });
+
+        $(".per_page_length").on("change", function (e) {
+            $('th.selectAll-checkbox input').prop("checked", false);
+        });
+        $('#user-datatable tbody').on('click', 'input', function (e) {
+            var checked = $(this).prop('checked');
+            var row = table.rows($(this).closest('tr').get()[0]);
+            if (checked) {
+                row.select()
+            } else {
+                $("th.selectAll-checkbox input").prop('checked', false);
                 row.deselect()
             }
             e.stopPropagation();
@@ -186,7 +219,7 @@
                     "orderable": false,
                     // className: 'select-checkbox',
                     render: function (data, type, row) {
-                        return getPolarisCheckbox(row.id);
+                        return getAllPolarisCheckbox(row.id);
                     }
                 },
                 {
@@ -269,14 +302,15 @@
             //     }
             // }
         });
-        $('#user-datatable thead th:first-child input[type="checkbox"]').on('change', function() {
-            var isChecked = $(this).prop('checked');
-
-            // Update the status of individual checkboxes in the column
-            $('#user-datatable tbody tr').each(function() {
-                $(this).find('td:first-child input[type="checkbox"]').prop('checked', isChecked);
-            });
-        });
+        // $('#user-datatable thead th:first-child input[type="checkbox"]').on('change', function() {
+        //     console.log('Select All checkbox clicked');
+        //     var isChecked = $(this).prop('checked');
+        //
+        //     // Update the status of individual checkboxes in the column
+        //     $('#user-datatable tbody tr').each(function() {
+        //         $(this).find('td:first-child input[type="checkbox"]').prop('checked', isChecked);
+        //     });
+        // });
         var premiumTable =   $('#PremiumSubscribersDatatable').DataTable({
             dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
             buttons: [
@@ -391,5 +425,32 @@
                 },
             ],
         });
+        $("th.selectAllPremium input[type='checkbox']").on("click", function (e) {
+            var isChecked = $(this).is(":checked");
+
+            // Set the state of all checkboxes in the table body
+            $('#PremiumSubscribersDatatable tbody input[type="checkbox"]').prop('checked', isChecked);
+
+            // Select/deselect rows in DataTable
+            if (isChecked) {
+                premiumTable.rows().select();
+            } else {
+                premiumTable.rows().deselect();
+            }
+        });
+        $("th.selectAll-checkbox input[type='checkbox']").on("click", function (e) {
+            var isChecked = $(this).is(":checked");
+
+            // Set the state of all checkboxes in the table body
+            $('#user-datatable tbody input[type="checkbox"]').prop('checked', isChecked);
+
+            // Select/deselect rows in DataTable
+            if (isChecked) {
+                table.rows().select();
+            } else {
+                table.rows().deselect();
+            }
+        });
+
     </script>
 @endsection
