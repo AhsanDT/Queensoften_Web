@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="py-3 ">
-                                    <button class="btn">Save</button>
+                                    <button class="btn" id="save">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -74,6 +74,7 @@
             var form = $(this);
             var formData = new FormData(this);
             var button = $(this).find(':input[type=submit]');
+            $('#save').attr("disabled", true);
             $.ajax({
                 type: form.attr("method"),
                 url: form.attr("data-action"),
@@ -89,17 +90,19 @@
                     if (response.success === true) {
                         toastr.success(response.message);
                         @if(!request()->routeIs('setting.index'))
-                        setTimeout(function () {
+                        // setTimeout(function () {
                             window.location.href = "{{route('storymode.index')}}";
-                        }, 2000);
+                        // }, 2000);
                         @endif
                     }
+                    $('#save').removeAttr("disabled");
                 },
                 error: function (data) {
                     button.prop('disabled', false);
                     $.each(data.responseJSON.errors, function (field_name, error) {
                         toastr.error(error);
                     })
+                    $('#save').removeAttr("disabled");
                 }
             })
         });
