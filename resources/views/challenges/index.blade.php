@@ -10,7 +10,7 @@
                     <table id='challenge-table' class="table challenges-list">
                         <thead>
                         <tr>
-                            <th class="selectAll"></th>
+                            <th class="selectAll-challenge"></th>
                             <th class="text-left">CHALLENGES</th>
                             <th>DATE</th>
                             <th>OCCURRENCE</th>
@@ -25,6 +25,13 @@
                         <tbody>
                         </tbody>
                     </table>
+                    <script type="text/template" id="checkbox-template-challenge">
+                        <div class="form-check d-inline-block mt-2">
+                            <input class="form-check-input mt-0 challenge-tab-checkbox" id="ChallengeCheckbox_@id" type="checkbox" value="@id" aria-label="Checkbox for following text input">
+                            <label class="form-check-label" for="ChallengeCheckbox_@id"></label>
+                        </div>
+                    </script>
+
                 </div>
             </div>
 
@@ -36,6 +43,39 @@
 @endsection
 @section('extra-js')
     <script>
+        function getChallengePolarisCheckbox(id) {
+            return checkboxAllTemplate.replace(/@id/g, id);
+        }
+
+        var checkboxAllTemplate = $('#checkbox-template-challenge').text();
+        $('th.selectAll-challenge').html(getChallengePolarisCheckbox('selectAll'))
+
+
+        $("th.selectAll-challenge .Polaris-Checkbox__Input").on("click", function (e) {
+            if ($(this).is(":checked")) {
+                table.rows().select();
+                $('#challenge-table tbody .Polaris-Checkbox__Input').prop('checked', true)
+
+            } else {
+                table.rows().deselect();
+                $('#challenge-table tbody .Polaris-Checkbox__Input').prop('checked', false)
+            }
+        });
+
+        $(".per_page_length").on("change", function (e) {
+            $('th.selectAll-challenge input').prop("checked", false);
+        });
+        $('#challenge-table tbody').on('click', 'input', function (e) {
+            var checked = $(this).prop('checked');
+            var row = table.rows($(this).closest('tr').get()[0]);
+            if (checked) {
+                row.select()
+            } else {
+                $("th.selectAll-challenge input").prop('checked', false);
+                row.deselect()
+            }
+            e.stopPropagation();
+        });
         var table =   $('#challenge-table').DataTable({
             dom: '<"topFooter"fB>rt<"bottomFooter"lip>',
             buttons: [
@@ -82,7 +122,7 @@
                     "data": "serial_no",
                     orderable: false,
                     render: function (data, type, row) {
-                        return getPolarisCheckbox(row.id);
+                        return getChallengePolarisCheckbox(row.id);
                     }
                 },
                 {
@@ -147,6 +187,20 @@
             //         renderer: $.fn.dataTable.Responsive.renderer.tableAll()
             //     }
             // }
+        });
+
+        $("th.selectAll-challenge input[type='checkbox']").on("click", function (e) {
+            var isChecked = $(this).is(":checked");
+
+            // Set the state of all checkboxes in the table body
+            $('#challenge-table tbody input[type="checkbox"]').prop('checked', isChecked);
+
+            // Select/deselect rows in DataTable
+            if (isChecked) {
+                table.rows().select();
+            } else {
+                table.rows().deselect();
+            }
         });
     </script>
 @endsection
