@@ -110,6 +110,10 @@ class AuthApiRepository implements AuthApiInterface
 //                $user->save();
             }
             $userNew = $this->modal->with('purchases', 'subscription')->where("username", $user->username)->first();
+            $userExisting = $this->modal->where("email", $userNew->email.'@gmail.com')->first();
+            if ($userExisting) {
+                return $this->response(false, 'Email already exists', [], Response::HTTP_NOT_FOUND);
+            }
             $credentials = $request->only('username', 'password');
 
             if (auth()->attempt($credentials)) {
