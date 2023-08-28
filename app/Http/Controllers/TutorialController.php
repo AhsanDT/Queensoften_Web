@@ -35,21 +35,61 @@ class TutorialController extends Controller
           ])  ;
         }
     }
-    public function tutorialsList(){
+    public function tutorialsList(Request $request){
         $searchTerm = $_REQUEST['sSearch'];
 
         $query = Tutorial::query();
 
         if (!empty($searchTerm)) {
-            $query->where('description', 'like', '%'.$searchTerm.'%');
+            $query->where('description', 'like', '%' . $searchTerm . '%');
         }
 
         $filteredCount = $query->count();
 
+        if ($request->input('iDisplayStart')) {
+            $offset = $request->input('iDisplayStart');
+            $query->offset($offset);
+        }
+
+        if ($request->input('iDisplayLength')) {
+            $limit = $request->input('iDisplayLength');
+            $query->limit($limit);
+        }
+
+        if ($request->input('iSortCol_0') !== null && $request->input('sSortDir_0') !== null) {
+            $sortOrder = $request->input('sSortDir_0');
+            $sortColumnNumber = $request->input('iSortCol_0');
+            $sortColumn = [
+                0 => 'id', // Adjust the column numbers and names as needed
+                1 => 'description', // Adjust the column numbers and names as needed
+                // Add more columns here
+            ];
+
+            if (array_key_exists($sortColumnNumber, $sortColumn)) {
+                $column = $sortColumn[$sortColumnNumber];
+                $query->orderBy($column, $sortOrder);
+            }
+        }
+
         $tutorials = $query->get();
 
+        $data = [];
+
+        if (count($tutorials) > 0) {
+            $serial = $request->input('iDisplayStart', 0);
+
+            foreach ($tutorials as $tutorial) {
+                $serial++;
+                $obj = new \stdClass;
+                $obj->serial_no = $serial;
+                $obj->image = $tutorial->image;
+                $obj->description = $tutorial->description;
+                $data[] = $obj;
+            }
+        }
+
         return response()->json([
-            'data' => $tutorials,
+            'data' => $data,
             'recordsTotal' => count($tutorials),
             'recordsFiltered' => $filteredCount,
         ]);
