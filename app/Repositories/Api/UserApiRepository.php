@@ -88,7 +88,7 @@ class UserApiRepository implements UserApiRepositoryInterface
             ], [
                 'name' => $name,
                 'username' => $userName,
-                'picture' => $picture?: $userModel?? $userModel->picture ,
+                'picture' => $picture?:($userModel->picture ?? ''),
                 'online_status' => '1',
                 'google_id' => ($request->driver == 'google') ? $request->driver_id : null,
                 'facebook_id' => ($request->driver == 'facebook') ? $request->driver_id : null,
