@@ -238,6 +238,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                     'type' => $purchaseType,
                     'image' => $purchaseItem->image,
                     'name'=> $displayName,
+                    'quantity'=> $purchase->quantity,
                 ];
             }
         }
