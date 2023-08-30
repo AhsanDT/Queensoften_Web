@@ -232,14 +232,27 @@ class UserApiRepository implements UserApiRepositoryInterface
                 } else {
                     $displayName = $purchaseItem->coins;
                 }
-                $purchasesWithImages[] = [
-                    'id' => $purchaseItem->id,
-                    'purchase_id' => $purchaseId,
-                    'type' => $purchaseType,
-                    'image' => $purchaseItem->image,
-                    'name'=> $displayName,
-                    'quantity'=> $purchase->quantity,
-                ];
+                if ($purchaseType == 'joker'){
+                    $purchasesWithImages[] = [
+                        'id' => $purchaseItem->id,
+                        'purchase_id' => $purchaseId,
+                        'type' => $purchaseType,
+                        'image' => $purchaseItem->image,
+                        'name'=> $displayName,
+                        'quantity'=> $purchase->quantity,
+                        'joker_type'=> $purchaseItem->type,
+                    ];
+                }else{
+                    $purchasesWithImages[] = [
+                        'id' => $purchaseItem->id,
+                        'purchase_id' => $purchaseId,
+                        'type' => $purchaseType,
+                        'image' => $purchaseItem->image,
+                        'name'=> $displayName,
+                        'quantity'=> $purchase->quantity,
+                        'joker_type'=> '',
+                    ];
+                }
             }
         }
         return $this->response(true, "User fetched successfully", [
