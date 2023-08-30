@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PurchaseRequest;
 use App\Repositories\Api\StoreApiRepositoryInterface;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
@@ -26,7 +27,7 @@ class StoreController extends Controller
     {
         return $this->storeRepositoryInterface->userItems($userId);
     }
-    function itemUse(PurchaseRequest $request,$userId): JsonResponse
+    function itemUse(Request $request,$userId): JsonResponse
     {
         return $this->storeRepositoryInterface->itemUse($request,$userId);
     }
