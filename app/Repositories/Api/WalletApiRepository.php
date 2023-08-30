@@ -99,13 +99,18 @@ class WalletApiRepository implements WalletApiInterface
                     break;
             }
             if ($user->coins > 0 && $user->coins >= $model->coins){
-                $userPurchase = new UserPurchase();
-                $userPurchase->user_id = $request['user_id'];
-                $userPurchase->type = $type;
-                $userPurchase->purchase_id = $model->id;
-                $userPurchase->save();
-                $user->coins -= $model->coins;
-                $user->save();
+                $item = UserPurchase::where('user_id',$request['user_id'])->where('purchase_id',$model->id)->where('type',$type)->first();
+                if($item){
+                    $item->quantity = $item->quantity + 1;
+                    $item->save();
+                }else{
+                    $userPurchase = new UserPurchase();
+                    $userPurchase->user_id = $request['user_id'];
+                    $userPurchase->type = $type;
+                    $userPurchase->purchase_id = $model->id;
+                    $userPurchase->quantity = 1;
+                    $userPurchase->save();
+                }
             }else{
                 return $this->response(false,'Insufficient funds','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
             }

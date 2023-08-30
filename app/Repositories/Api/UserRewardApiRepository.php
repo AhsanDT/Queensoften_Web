@@ -44,6 +44,7 @@ class UserRewardApiRepository implements UserRewardApiInterface
                     $userPurchase->user_id = $request['user_id'];
                     $userPurchase->type = $request['type'];
                     $userPurchase->purchase_id = $joker->id;
+                    $userPurchase->quantity = 1;
                     $userPurchase->save();
                 }
                 $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
@@ -58,6 +59,7 @@ class UserRewardApiRepository implements UserRewardApiInterface
                     $userPurchase->user_id = $request['user_id'];
                     $userPurchase->type = $request['type'];
                     $userPurchase->purchase_id = $joker->id;
+                    $userPurchase->quantity = 1;
                     $userPurchase->save();
                 }
                 $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
@@ -72,6 +74,7 @@ class UserRewardApiRepository implements UserRewardApiInterface
                     $userPurchase->user_id = $request['user_id'];
                     $userPurchase->type = $request['type'];
                     $userPurchase->purchase_id = $shuffle->id;
+                    $userPurchase->quantity = 1;
                     $userPurchase->save();
                 }
                 $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
@@ -86,6 +89,7 @@ class UserRewardApiRepository implements UserRewardApiInterface
                     $userPurchase->user_id = $request['user_id'];
                     $userPurchase->type = $request['type'];
                     $userPurchase->purchase_id = $skin->id;
+                    $userPurchase->quantity = 1;
                     $userPurchase->save();
                 }
                 $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
@@ -100,6 +104,7 @@ class UserRewardApiRepository implements UserRewardApiInterface
                     $userPurchase->user_id = $request['user_id'];
                     $userPurchase->type = $request['type'];
                     $userPurchase->purchase_id = $suit->id;
+                    $userPurchase->quantity = 1;
                     $userPurchase->save();
                 }
                 $reward = UserReward::create(['user_id'=>$request['user_id'],'wheel_id'=>$request['wheel_id'],'type'=>$request['type'],'amount'=>$request['amount']]);
