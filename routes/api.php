@@ -69,6 +69,7 @@ Route::prefix('v1')->group(function () {
         Route::prefix('support')->group(function () {
             Route::post('create', [SupportApiController::class, 'create']);
             Route::get('my-tickets/{id}', [SupportApiController::class, 'myTickets']);
+            Route::post('chat/{id}', [SupportApiController::class, 'chat']);
         });
         Route::prefix('spin-wheel')->group(function () {
             Route::get('/this-month/{id}', [SpinWheelApiController::class, 'thisMonth']);
