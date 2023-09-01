@@ -22,4 +22,8 @@ class SupportApiController extends Controller
     function myTickets($id){
         return  $this->supportApiRepository->myTickets($id);
     }
+
+    function chat(Request $request,$id){
+        return  $this->supportApiRepository->chat($request,$id);
+    }
 }

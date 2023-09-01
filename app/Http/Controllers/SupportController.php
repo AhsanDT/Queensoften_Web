@@ -64,7 +64,7 @@ class SupportController extends Controller
                 return $this->error(false, "There is no email is attached for this user.Email is required for this action.That's way you can't send the reply. ", '', Response::HTTP_UNAUTHORIZED);
             }
 
-            die();
+//            die();
             $filePath = null;
             if ($request->hasFile('file')) {
                 $destinationPath = public_path('SupportTicketAttachments');
