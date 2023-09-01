@@ -25,7 +25,9 @@ class SupportApiRepository implements SupportApiRepositoryInterface
     function create($request): JsonResponse
     {
         try{
-            if($request->ticket === ''){
+//            dd($request->ticket);
+            if($request->ticket === ""){
+                dd($request->ticket);
                 $this->model::create([
                     'subject'=> $request->subject,
                     'message'=> $request->message,
@@ -34,6 +36,7 @@ class SupportApiRepository implements SupportApiRepositoryInterface
                 ]);
                 $this->notification_save($request->user_id,3);
             }else{
+                dd($request->ticket);
                 $this->model::create([
                     'subject'=> $request->subject,
                     'message'=> $request->message,
