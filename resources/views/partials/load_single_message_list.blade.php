@@ -1,5 +1,5 @@
 <div class="userImg">
-    <img src="{{$userPicture}}" alt="username" />
+    <img src="{{optional($supportTicket->user->picture)}}" alt="username" />
 </div>
 <div class="description">
     <h6>{{ucwords($supportTicket->user->name)}}</h6>
