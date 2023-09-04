@@ -64,7 +64,7 @@ class SupportApiRepository implements SupportApiRepositoryInterface
     function chat($request,$id): JsonResponse
     {
         try{
-           $tickets = $this->model::where('user_id',$id)->where('reply', '==', 1)->where('support_ticket_id',$request->ticket)->orderBy('id', 'DESC')->first();
+           $tickets = $this->model::where('user_id',$id)->where('reply', 1)->where('support_ticket_id',$request->ticket)->orderBy('id', 'DESC')->first();
             return $this->response(true,'chat fetched successfully.',$tickets, Response::HTTP_OK);
         }catch (Exception $exception){
             return $this->response(false,'Something went wrong please try again later.',[], Response::HTTP_UNAUTHORIZED);
