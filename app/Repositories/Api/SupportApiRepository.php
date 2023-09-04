@@ -55,7 +55,7 @@ class SupportApiRepository implements SupportApiRepositoryInterface
     function myTickets($id): JsonResponse
     {
         try{
-           $tickets = $this->model::where('user_id',$id)->get();
+           $tickets = $this->model::where('user_id',$id)->where('reply', '!=', 1)->orderBy('id', 'DESC')->get();
             return $this->response(true,'Ticket fetched successfully.',$tickets, Response::HTTP_OK);
         }catch (Exception $exception){
             return $this->response(false,'Something went wrong please try again later.',[], Response::HTTP_UNAUTHORIZED);
