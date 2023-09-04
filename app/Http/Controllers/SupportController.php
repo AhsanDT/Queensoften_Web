@@ -120,11 +120,22 @@ class SupportController extends Controller
 
     function load_single_message_list(Request $request)
     {
+        $supportTicket = SupportTicket::where('reply', '!=', 1)
+            ->where('support_ticket_id', $request->support_ticket_id)
+            ->with('user')
+            ->orderBy('id', 'DESC')
+            ->first();
 
-        $supportTicket = SupportTicket::where('reply', '!=', 1)->where('support_ticket_id', $request->support_ticket_id)
-            ->with('user')->orderBy('id', 'DESC')->first();
-        return view('partials.load_single_message_list', compact('supportTicket'))->render();
+        // Check if the user object exists
+        if ($supportTicket && $supportTicket->user) {
+            return view('partials.load_single_message_list', compact('supportTicket'));
+        } else {
+            // Handle the case where the user object is null or doesn't exist
+            return view('partials.load_single_message_list', compact('supportTicket'))
+                ->with('userPicture', ''); // Provide an empty value for the user picture
+        }
     }
+
 
     function update_status(Request $request)
     {
