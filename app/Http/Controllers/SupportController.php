@@ -125,16 +125,15 @@ class SupportController extends Controller
             ->with('user')
             ->orderBy('id', 'DESC')
             ->first();
-
-        // Check if the user object exists
         if ($supportTicket && $supportTicket->user) {
-            return view('partials.load_single_message_list', compact('supportTicket'));
+            $userPicture = $supportTicket->user->picture ?? '';
+            return view('partials.load_single_message_list', compact('supportTicket', 'userPicture'));
         } else {
-            // Handle the case where the user object is null or doesn't exist
-            return view('partials.load_single_message_list', compact('supportTicket'))
-                ->with('userPicture', ''); // Provide an empty value for the user picture
+            $userPicture = '';
+            return view('partials.load_single_message_list', compact('supportTicket', 'userPicture'));
         }
     }
+
 
 
     function update_status(Request $request)
