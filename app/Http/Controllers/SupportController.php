@@ -120,11 +120,16 @@ class SupportController extends Controller
 
     function load_single_message_list(Request $request)
     {
+        $supportTicket = SupportTicket::where('reply', '!=', 1)
+            ->where('support_ticket_id', $request->support_ticket_id)
+            ->with('user')
+            ->orderBy('id', 'DESC')
+            ->first();
+        $userPicture = optional($supportTicket->user)->picture ?? '';
 
-        $supportTicket = SupportTicket::where('reply', '!=', 1)->where('support_ticket_id', $request->support_ticket_id)
-            ->with('user')->orderBy('id', 'DESC')->first();
-        return view('partials.load_single_message_list', compact('supportTicket'));
+        return view('partials.load_single_message_list', compact('supportTicket', 'userPicture'));
     }
+
 
     function update_status(Request $request)
     {
