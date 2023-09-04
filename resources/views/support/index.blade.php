@@ -237,6 +237,9 @@
                     'support_ticket_id': supportTicketId
                 },
                 success: function (response) {
+                    if (response.supportTicket.user && response.supportTicket.user.picture) {
+                        $('#message-' + supportTicketId + ' .userImg img').attr('src', response.supportTicket.user.picture);
+                    }
                     $('#message-' + supportTicketId).html(response);
                 }, error: function (response) {
                     Swal.fire('Warning', response.responseJSON.message);
