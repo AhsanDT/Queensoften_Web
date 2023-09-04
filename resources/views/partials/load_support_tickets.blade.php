@@ -4,7 +4,7 @@
             <img src="{{$supportTicket->user->picture}}" alt="username"/>
         </div>
         <div class="description">
-            <h6>{{ucwords($supportTicket->user->name)}}</h6>
+            <h6>{{ucwords($supportTicket->user->username)}}</h6>
             <div class="text">#{{$supportTicket->support_ticket_id}}</div>
         </div>
     </div>
