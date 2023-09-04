@@ -37,7 +37,7 @@
             @foreach($replies as $reply)
                 <div class="outgoing">
                     <div class="userImg">
-                        <img src="{{$reply?->admins?->picture}}" alt="username"/>
+                        <img src="{{$reply?->admins?->picture ?? 'https://appscorridor.com/queens-of-ten-admin/AdminProfileImages/16680593681159262659.png'}}" alt="username"/>
                     </div>
                     <div class="description">
                         <div class="text">
