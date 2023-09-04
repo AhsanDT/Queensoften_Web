@@ -2,7 +2,7 @@
     <img src="{{$supportTicket->user->picture ?? ''}}" alt="username" />
 </div>
 <div class="description">
-    <h6>{{ucwords($supportTicket->user->name)}}</h6>
+    <h6>{{ucwords($supportTicket->user->username)}}</h6>
     <div class="text-muted">
         <time>{{changeTimeFormat($supportTicket->getLastTicket($supportTicket->support_ticket_id)->created_at->diffForHumans())}}</time>
         <div class="text">
