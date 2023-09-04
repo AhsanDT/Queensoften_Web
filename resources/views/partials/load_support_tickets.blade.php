@@ -23,7 +23,7 @@
         </div>
         <div class="incoming">
             <div class="userImg">
-                <img src="{{optional($supportTicket->user->picture)}}" alt="username"/>
+                <img src="{{$supportTicket?->user?->picture}}" alt="username"/>
             </div>
             <div class="description">
                 <div class="text">{{$supportTicket->message}}
@@ -37,7 +37,7 @@
             @foreach($replies as $reply)
                 <div class="outgoing">
                     <div class="userImg">
-                        <img src="{{optional($reply->admins->picture)}}" alt="username"/>
+                        <img src="{{$reply?->admins?->picture}}" alt="username"/>
                     </div>
                     <div class="description">
                         <div class="text">
