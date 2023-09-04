@@ -126,7 +126,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php for($i=1;$i<=10;$i++){?>
+                                <?php for($i=2;$i<=10;$i++){?>
                                 <div class="form-group">
                                     <label><?php echo $i ?></label>
                                     <div class="imgUpload small">
@@ -211,7 +211,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php for($i=1;$i<=10;$i++){?>
+                                <?php for($i=2;$i<=10;$i++){?>
                                 <div class="form-group">
                                     <label><?php echo $i ?></label>
                                     <div class="imgUpload small">
@@ -296,7 +296,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php for($i=1;$i<=10;$i++){?>
+                                <?php for($i=2;$i<=10;$i++){?>
                                 <div class="form-group">
                                     <label><?php echo $i ?></label>
                                     <div class="imgUpload small">
@@ -381,7 +381,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php for($i=1;$i<=10;$i++){?>
+                                <?php for($i=2;$i<=10;$i++){?>
                                 <div class="form-group">
                                     <label><?php echo $i ?></label>
                                     <div class="imgUpload small">
