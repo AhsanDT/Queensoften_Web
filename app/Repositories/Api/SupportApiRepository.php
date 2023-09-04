@@ -40,7 +40,8 @@ class SupportApiRepository implements SupportApiRepositoryInterface
                     'subject'=> $request->subject,
                     'message'=> $request->message,
                     'user_id'=> $request->user_id,
-                    'support_ticket_id' => $request->ticket
+                    'support_ticket_id' => $request->ticket,
+                    'reply'=>true,
                 ]);
                 $this->notification_save($request->user_id,3);
             }
@@ -63,7 +64,7 @@ class SupportApiRepository implements SupportApiRepositoryInterface
     function chat($request,$id): JsonResponse
     {
         try{
-           $tickets = $this->model::where('user_id',$id)->where('support_ticket_id',$request->ticket)->get();
+           $tickets = $this->model::where('user_id',$id)->where('reply', '!=', 1)->where('support_ticket_id',$request->ticket)->with('user')->orderBy('id', 'DESC')->first();
             return $this->response(true,'chat fetched successfully.',$tickets, Response::HTTP_OK);
         }catch (Exception $exception){
             return $this->response(false,'Something went wrong please try again later.',[], Response::HTTP_UNAUTHORIZED);
