@@ -165,7 +165,13 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
                 ->take(3)
                 ->get();
             foreach ($todayChallenges as $challenge) {
-                $challenge->topUser = Statistics::select('users.username','statistics.time')
+                $challenge->topUser = Statistics::select('users.username')
+                    ->join('users', 'statistics.user_id', '=', 'users.id')
+                    ->where('statistics.game_type', $challenge->title)
+                    ->orderByDesc('statistics.score')
+                    ->orderBy('statistics.time')
+                    ->first();
+                $challenge->topUserTime = Statistics::select('statistics.time')
                     ->join('users', 'statistics.user_id', '=', 'users.id')
                     ->where('statistics.game_type', $challenge->title)
                     ->orderByDesc('statistics.score')
