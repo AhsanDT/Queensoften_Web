@@ -1,5 +1,13 @@
 @extends('partials.master')
 @section('content')
+    <style>
+        #table_info{
+            width: 70px;
+            overflow: hidden;
+            margin: 0 5px;
+            padding-left: 0 !important;
+        }
+    </style>
     <main id="main">
         <div class="container">
             <div class="page-title">
