@@ -30,7 +30,7 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
             $challenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
                 ->leftJoin('challenge_attachments', 'challenges.id', '=', 'challenge_attachments.challenge_id')
                 ->select('challenges.id', 'challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
-                    'challenges.occurrence', 'challenges.active', 'prizes.name as prize', 'challenges.deck')
+                    'challenges.occurrence', 'challenges.active', 'prizes.name as prize', 'challenges.deck','challenges.description')
                 ->with('special_cards') // Eager load the special_cards relationship
                 ->where('challenges.active', 1)
                 ->get()
