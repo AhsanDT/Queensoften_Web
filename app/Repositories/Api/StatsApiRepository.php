@@ -42,7 +42,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 return $this->response(false, 'User not found!', [], Response::HTTP_UNAUTHORIZED);
             }
 
-            $stats = $this->model::Create([
+            $stats = $this->model::create([
                 'game_type' => $request->game_type,
                 'won' => $request->won ?? 0,
                 'lost' => $request->lost ?? 0,
@@ -54,30 +54,29 @@ class StatsApiRepository implements StatsApiRepositoryInterface
 
             if ($request->game_type == 'Challenge') {
                 $challenge = Challenge::find($request->challenge_id);
+                $userChallenge = UserChallenge::where('user_id', $userId)
+                    ->where('challenge_id', $request->challenge_id)
+                    ->first();
 
-                if (!$challenge) {
-                    return $this->response(false, 'Challenge not found!', [], Response::HTTP_NOT_FOUND);
+                if (!$userChallenge) {
+                    // Create a new user_challenge record if it doesn't exist
+                    $userChallenge = UserChallenge::create([
+                        'user_id' => $userId,
+                        'challenge_id' => $request->challenge_id,
+                        'win' => $request->won == 1,
+                        'status' => false, // Initialize status to false
+                    ]);
+                } else {
+                    // Update win status if the user won a game
+                    $userChallenge->win = $request->won == 1;
                 }
 
-                if ($request->won == 1) {
-                    // Check if the user has won all the games in the challenge
-                    $challengeGamesCount = count(explode(',', $challenge->games));
-                    $userWinsInChallenge = User::where('id', $userId)
-                        ->whereHas('statistics', function ($query) use ($request, $challenge) {
-                            $query->where('challenge_id', $request->challenge_id)
-                                ->where('won', 1);
-                        })
-                        ->count();
-
-                    if ($userWinsInChallenge >= $challengeGamesCount) {
-                        $user_challenge = UserChallenge::create([
-                            'user_id' => $userId,
-                            'challenge_id' => $request->challenge_id,
-                            'win' => $request->won,
-                            'status' => true,
-                        ]);
-                    }
+                // Check if the user has won all the games in the challenge
+                if ($challenge->total_games == $userChallenge->where('win', true)->count()) {
+                    $userChallenge->status = true;
                 }
+
+                $userChallenge->save();
             }
 
             if ($stats) {
@@ -92,11 +91,12 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 return $this->response(true, 'Statistics saved successfully', $stats, Response::HTTP_OK);
             }
 
-            return $this->response(false, 'Something went wrong, please try again later.', [], Response::HTTP_UNAUTHORIZED);
+            return $this->response(false, 'Something went wrong please try again later.', [], Response::HTTP_UNAUTHORIZED);
         } catch (Exception $exception) {
-            return $this->response(false, 'Something went wrong, please try again later.', [], Response::HTTP_UNAUTHORIZED);
+            return $this->response(false, 'Something went wrong please try again later.', [], Response::HTTP_UNAUTHORIZED);
         }
     }
+
     public function list($userId, $gameType): JsonResponse
     {
         $data = [];
