@@ -105,8 +105,8 @@
                     className: 'actions custom-action',
                     'render': function (data, type, row) {
                         var delUrl = "{{ route('tutorials.delete', ':id') }}";
-                        delUrl = delUrl.replace(':id', row.id);
-                        return '<td class="actions d-flex" style="width: 60px"><a href="#" onclick="editTutorial(' + row.id + ')" class="m-1 btn action bg-edit text-white"><icon class="fas fa-edit"></icon></a><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
+                        delUrl = delUrl.replace(':id', row.serial_no);
+                        return '<td class="actions d-flex" style="width: 60px"><a href="#" onclick="editTutorial(' + row.serial_no + ')" class="m-1 btn action bg-edit text-white"><icon class="fas fa-edit"></icon></a><a href="javascript:" class="delete-record btn action bg-danger text-white" data-action-target="' + delUrl + '"><icon class="fas fa-trash"></icon></a></td>';
                     }
                 },
             ],
