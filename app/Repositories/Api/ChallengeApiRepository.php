@@ -138,7 +138,7 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
 //                }
 //            }
             $challenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
-                ->select('challenges.id', 'challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
+                ->select('challenges.id', 'challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games','challenges.description', 'challenges.days',
                     'challenges.occurrence', 'challenges.weekly', 'challenges.monthly', 'challenges.active', 'prizes.name as prize', 'challenges.hard_coded')
                 ->where('challenges.active', 1)
                 ->where('visibility', 1);
