@@ -175,7 +175,7 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
             return $this->response(true,'',$data,Response::HTTP_OK);
 
         }catch (\Exception $exception){
-            return $this->response(true,'','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
+            return $this->response(true,$exception->getMessage(),'Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
         }
 
     }
