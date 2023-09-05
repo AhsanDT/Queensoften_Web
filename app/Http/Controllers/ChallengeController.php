@@ -46,6 +46,7 @@ class ChallengeController extends Controller
             $challenge->prize_id = $request->prize;
             $challenge->quantity = $request->quantity;
             $challenge->deck = $request->deck;
+            $challenge->description = $request->description;
             $challenge->save();
             $challenge_attachment = new $this->challenge_attachment;
             $specialCards = json_decode($request->special_cards, true); // Convert JSON string to PHP array
