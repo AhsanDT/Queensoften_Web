@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EditTutorialRequest;
 use App\Http\Requests\TutorialRequest;
 use App\Models\Tutorial;
+use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 class TutorialController extends Controller
 {
+    use ResponseTrait;
     public function index(){
         return view('tutorials.index');
     }

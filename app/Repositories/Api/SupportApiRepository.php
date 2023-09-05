@@ -31,7 +31,10 @@ class SupportApiRepository implements SupportApiRepositoryInterface
                     'subject'=> $request->subject,
                     'message'=> $request->message,
                     'user_id'=> $request->user_id,
-                    'support_ticket_id' => rand(0,10).Str::random(10).Str::random(10)
+                    'support_ticket_id' => rand(0,10).Str::random(10).Str::random(10),
+                    'status' => false,
+                    'resolved' => false,
+                    'read' => false,
                 ]);
                 $this->notification_save($request->user_id,3);
             }else{
