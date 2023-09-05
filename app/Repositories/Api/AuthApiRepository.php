@@ -92,7 +92,7 @@ class AuthApiRepository implements AuthApiInterface
             $subscription = Subscription::where('price',0)->first();
             $userExisting = $this->modal->where("email", $request->username.'@gmail.com')->first();
             if ($userExisting) {
-                return $this->response(false, 'Email already exists', [], Response::HTTP_NOT_FOUND);
+                return $this->response(false, 'Email/GamerTag already exists', [], Response::HTTP_NOT_FOUND);
             }
             $user = $this->modal->create(['name'=>$request->username,
                 'username'=>$request->username,
