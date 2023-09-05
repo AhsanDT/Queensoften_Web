@@ -62,9 +62,8 @@ class TutorialController extends Controller
             $sortOrder = $request->input('sSortDir_0');
             $sortColumnNumber = $request->input('iSortCol_0');
             $sortColumn = [
-                0 => 'id', // Adjust the column numbers and names as needed
-                1 => 'description', // Adjust the column numbers and names as needed
-                // Add more columns here
+                0 => 'id',
+                1 => 'description',
             ];
 
             if (array_key_exists($sortColumnNumber, $sortColumn)) {
@@ -83,6 +82,7 @@ class TutorialController extends Controller
             foreach ($tutorials as $tutorial) {
                 $serial++;
                 $obj = new \stdClass;
+                $obj->id = $tutorial->id;
                 $obj->serial_no = $serial;
                 $obj->image = $tutorial->image;
                 $obj->description = $tutorial->description;
