@@ -30,7 +30,7 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
             $challenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
                 ->leftJoin('challenge_attachments', 'challenges.id', '=', 'challenge_attachments.challenge_id')
                 ->select('challenges.id', 'challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games', 'challenges.days',
-                    'challenges.occurrence', 'challenges.active', 'prizes.name as prize', 'challenges.deck','challenges.description')
+                    'challenges.occurrence', 'challenges.active', 'prizes.name as prize', 'challenges.deck','challenges.description','challenges.quantity')
                 ->with('special_cards') // Eager load the special_cards relationship
                 ->where('challenges.active', 1)
                 ->get()
@@ -138,7 +138,7 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
 //                }
 //            }
             $challenges = Challenge::join('prizes', 'challenges.prize_id', '=', 'prizes.id', 'inner')
-                ->select('challenges.id', 'challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games','challenges.description', 'challenges.days',
+                ->select('challenges.id', 'challenges.title', 'challenges.date', 'challenges.hour', 'challenges.minute', 'challenges.games','challenges.description','challenges.quantity', 'challenges.days',
                     'challenges.occurrence', 'challenges.weekly', 'challenges.monthly', 'challenges.active', 'prizes.name as prize', 'challenges.hard_coded')
                 ->where('challenges.active', 1)
                 ->where('visibility', 1);
