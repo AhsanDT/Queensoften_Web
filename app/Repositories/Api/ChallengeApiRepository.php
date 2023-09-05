@@ -165,8 +165,12 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
                 ->take(3)
                 ->get();
             foreach ($todayChallenges as $challenge) {
-                $topUser = $this->getTopUserForChallenge($challenge->id);
-                $challenge->top_user = $topUser ? $topUser->name : null;
+                $challenge->topUser = Statistics::select('users.username')
+                    ->join('users', 'statistics.user_id', '=', 'users.id')
+                    ->where('statistics.game_type', $challenge->title)
+                    ->orderByDesc('statistics.score')
+                    ->orderBy('statistics.time')
+                    ->first();
             }
             $data = [
                 'challenge' => $todayChallenges
@@ -189,15 +193,4 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
         }
         return $flag;
     }
-    private function getTopUserForChallenge($challengeId)
-    {
-        return UserChallenge::select('users.name')
-            ->join('users', 'user_challenges.user_id', '=', 'users.id')
-            ->where('user_challenges.challenge_id', $challengeId)
-            ->where('user_challenges.status', 1)
-            ->orderByDesc('user_challenges.score')
-            ->orderBy('user_challenges.time')
-            ->first();
-    }
-
 }
