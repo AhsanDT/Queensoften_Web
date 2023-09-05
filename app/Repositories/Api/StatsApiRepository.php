@@ -34,12 +34,13 @@ class StatsApiRepository implements StatsApiRepositoryInterface
         $this->challengeService = $challengeService;
     }
 
-    function create($request,$userId): JsonResponse
+    function create($request, $userId): JsonResponse
     {
         try {
             $user = User::find($userId);
-            if(!$user)
-                return $this->response(false,'User not found!',[], Response::HTTP_UNAUTHORIZED);
+            if (!$user) {
+                return $this->response(false, 'User not found!', [], Response::HTTP_UNAUTHORIZED);
+            }
 
             $stats = $this->model::Create([
                 'game_type' => $request->game_type,
@@ -50,48 +51,50 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 'score' => $request->score ?? 0,
                 'user_id' => $userId,
             ]);
-            if ($request->game_type ==  'Challenge'){
-                $user_challenge = UserChallenge::create([
-                    'user_id'=>$userId,
-                    'challenge_id'=>$request->challenge_id,
-                    'win'=>$request->won,
-                    'status'=>true,
-                ]);
-            }
-            if ($request->win == 1){
-                if($user->wins % 150 === 0){
-                    $firstSuit = Suit::first();
-                    $item = UserPurchase::where('user_id',$userId)->where('purchase_id',$firstSuit)->where('type','suit')->first();
-                    if($item){
-                        $item->quantity = $item->quantity + 1;
-                        $item->save();
-                    }else{
-                        $suitPurchase = new UserPurchase([
+
+            if ($request->game_type == 'Challenge') {
+                $challenge = Challenge::find($request->challenge_id);
+
+                if (!$challenge) {
+                    return $this->response(false, 'Challenge not found!', [], Response::HTTP_NOT_FOUND);
+                }
+
+                if ($request->won == 1) {
+                    // Check if the user has won all the games in the challenge
+                    $challengeGamesCount = count(explode(',', $challenge->games));
+                    $userWinsInChallenge = User::where('id', $userId)
+                        ->whereHas('statistics', function ($query) use ($request, $challenge) {
+                            $query->where('challenge_id', $request->challenge_id)
+                                ->where('won', 1);
+                        })
+                        ->count();
+
+                    if ($userWinsInChallenge >= $challengeGamesCount) {
+                        $user_challenge = UserChallenge::create([
                             'user_id' => $userId,
-                            'type' => 'suit',
-                            'purchase_id' => $firstSuit,
-                            'quantity' => 1,
+                            'challenge_id' => $request->challenge_id,
+                            'win' => $request->won,
+                            'status' => true,
                         ]);
-                        $suitPurchase->save();
                     }
                 }
-                $user->wins += 1;
             }
-            if($stats){
-                $achievementUnlock= null;
-                if(isset($request->challenge_id)){
-                    $achievementUnlock = $this->unlockAchievement($request->challenge_id,$user,$request->hardcoded,$request);
+
+            if ($stats) {
+                $achievementUnlock = null;
+                if (isset($request->challenge_id)) {
+                    $achievementUnlock = $this->unlockAchievement($request->challenge_id, $user, $request->hardcoded, $request);
                 }
-                if($achievementUnlock){
-                    return $this->response(true,'Achievement Unlocked',$achievementUnlock, Response::HTTP_OK);
+                if ($achievementUnlock) {
+                    return $this->response(true, 'Achievement Unlocked', $achievementUnlock, Response::HTTP_OK);
                 }
 
-                return $this->response(true,'Statistics saved successfully',$stats, Response::HTTP_OK);
+                return $this->response(true, 'Statistics saved successfully', $stats, Response::HTTP_OK);
             }
-            return $this->response(false,'Something went wrong please try again later.',[], Response::HTTP_UNAUTHORIZED);
 
-        }catch (Exception $exception){
-            return $this->response(false,'Something went wrong please try again later.',[], Response::HTTP_UNAUTHORIZED);
+            return $this->response(false, 'Something went wrong, please try again later.', [], Response::HTTP_UNAUTHORIZED);
+        } catch (Exception $exception) {
+            return $this->response(false, 'Something went wrong, please try again later.', [], Response::HTTP_UNAUTHORIZED);
         }
     }
     public function list($userId, $gameType): JsonResponse
