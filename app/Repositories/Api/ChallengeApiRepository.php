@@ -6,7 +6,9 @@ namespace App\Repositories\Api;
 use App\Models\Achievement;
 use App\Models\Challenge;
 use App\Models\ChallengeAttachment;
+use App\Models\Statistics;
 use App\Models\User;
+use App\Models\UserChallenge;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +44,17 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
                 $challenge = $challengeData->first(); // Since challenges have the same data, just take the first one
                 $attachments = $challengeData->pluck('special_cards')->flatten()->toArray();
                 $challenge['attachments'] = $attachments;
+                $challenge['top_wins'] = UserChallenge::where('challenge_id', $challengeId)
+                    ->where('win', true)
+                    ->orderBy('created_at', 'desc')
+                    ->take(1)
+                    ->get();
+
+                $challenge['top_times'] = Statistics::where('game_type', 'challenge')
+                ->where('challenge_id', $challengeId)
+                    ->orderBy('score', 'desc')
+                    ->take(1)
+                    ->get();
                 $challengesWithAttachments[] = $challenge;
             }
 
