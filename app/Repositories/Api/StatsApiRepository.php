@@ -106,7 +106,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 if($achievementUnlock){
                     $challenges = Challenge::find($request->challenge_id);
                     $user_challenge_exists = UserChallenge::where('user_id',$userId)->where('challenge_id',$request->challenge_id)->first();
-                    if ($user_challenge_exists->games >= $challenges->games) {
+                    if ($user_challenge_exists->games == $challenges->games) {
                         return $this->response(true, 'Achievement Unlocked', $achievementUnlock, Response::HTTP_OK);
                     }else{
                         return $this->response(true, 'Achievement still locked', $achievementUnlock, Response::HTTP_OK);
