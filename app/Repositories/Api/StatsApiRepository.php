@@ -50,9 +50,9 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 'score' => $request->score ?? 0,
                 'user_id' => $userId,
             ]);
-            if ($request->game_type ==  'Challenge'){
+            if ($request->game_type == 'Challenge') {
                 $challenge = Challenge::find($request->challenge_id);
-                $user_challenge_exist = UserChallenge::where('user_id',$userId)->where('challenge_id',$request->challenge_id)->first();
+                $user_challenge_exist = UserChallenge::where('user_id', $userId)->where('challenge_id', $request->challenge_id)->first();
                 if ($request->won == 1) {
                     if ($user_challenge_exist) {
                         if ($user_challenge_exist->games < $challenge->games) {
@@ -73,8 +73,8 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                             'challenge_id' => $request->challenge_id,
                             'win' => $request->won,
                             'status' => true,
-                            'games' => 1,
-                            'complete' => $challenge_complete,
+                            'games' => 1, // Set a default value of 1 for games
+                            'complete' => $challenge_complete, // Set a default value for complete
                         ]);
                     }
                 }
