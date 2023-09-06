@@ -109,7 +109,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                     if ($user_challenge_exists->games >= $challenges->games) {
                         return $this->response(true, 'Achievement Unlocked', $achievementUnlock, Response::HTTP_OK);
                     }else{
-                        return $this->response(true, 'Achievement still locked', $achievementUnlock, Response::HTTP_NO_CONTENT);
+                        return $this->response(true, 'Achievement still locked', $achievementUnlock, Response::HTTP_OK);
                     }
                 }
 
