@@ -59,6 +59,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                             $user_challenge_exist->games = $user_challenge_exist->games + 1;
                             if ($user_challenge_exist->games == $challenge->games) {
                                 $user_challenge_exist->complete = true;
+                                $user_challenge_exist->status = false;
                             }
                             $user_challenge_exist->save();
                         }
