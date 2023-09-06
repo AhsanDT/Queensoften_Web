@@ -104,7 +104,13 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                     $achievementUnlock = $this->unlockAchievement($request->challenge_id,$user,$request->hardcoded,$request);
                 }
                 if($achievementUnlock){
-                    return $this->response(true,'Achievement Unlocked',$achievementUnlock, Response::HTTP_OK);
+                    $challenges = Challenge::find($request->challenge_id);
+                    $user_challenge_exists = UserChallenge::where('user_id',$userId)->where('challenge_id',$request->challenge_id)->first();
+                    if ($user_challenge_exist->games == $challenge->games) {
+                        return $this->response(true, 'Achievement Unlocked', $achievementUnlock, Response::HTTP_OK);
+                    }else{
+                        return $this->response(true, 'Achievement still locked', $achievementUnlock, Response::HTTP_OK);
+                    }
                 }
 
                 return $this->response(true,'Statistics saved successfully',$stats, Response::HTTP_OK);
