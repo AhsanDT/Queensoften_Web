@@ -159,7 +159,7 @@ class ChallengeApiRepository implements ChallengeApiRepositoryInterface
             // Get the top 3 challenges for today that are not in user_challenges
             $todayChallenges = $challenges->where('challenges.date', $this->date)
                 ->whereNotIn('challenges.id', function ($query) use ($userId) {
-                    $query->select('challenge_id')->from('user_challenges')->where('user_id', $userId)->where('win',true);
+                    $query->select('challenge_id')->from('user_challenges')->where('user_id', $userId)->where('complete',false);
                 })
                 ->orderBy('challenges.id')
                 ->take(3)

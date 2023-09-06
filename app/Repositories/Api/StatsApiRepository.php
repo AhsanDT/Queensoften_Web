@@ -34,15 +34,14 @@ class StatsApiRepository implements StatsApiRepositoryInterface
         $this->challengeService = $challengeService;
     }
 
-    function create($request, $userId): JsonResponse
+    function create($request,$userId): JsonResponse
     {
         try {
             $user = User::find($userId);
-            if (!$user) {
-                return $this->response(false, 'User not found!', [], Response::HTTP_UNAUTHORIZED);
-            }
+            if(!$user)
+                return $this->response(false,'User not found!',[], Response::HTTP_UNAUTHORIZED);
 
-            $stats = $this->model::create([
+            $stats = $this->model::Create([
                 'game_type' => $request->game_type,
                 'won' => $request->won ?? 0,
                 'lost' => $request->lost ?? 0,
@@ -51,52 +50,71 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 'score' => $request->score ?? 0,
                 'user_id' => $userId,
             ]);
-
-            if ($request->game_type == 'Challenge') {
+            if ($request->game_type ==  'Challenge'){
                 $challenge = Challenge::find($request->challenge_id);
-                $userChallenge = UserChallenge::where('user_id', $userId)
-                    ->where('challenge_id', $request->challenge_id)
-                    ->first();
-
-                if (!$userChallenge) {
-                    // Create a new user_challenge record if it doesn't exist
-                    $userChallenge = UserChallenge::create([
-                        'user_id' => $userId,
-                        'challenge_id' => $request->challenge_id,
-                        'win' => $request->won == 1,
-                        'status' => false, // Initialize status to false
-                    ]);
-                } else {
-                    // Update win status if the user won a game
-                    $userChallenge->win = $request->won == 1;
+                $user_challenge_exist = UserChallenge::where('user_id',$userId)->where('challenge_id',$request->challenge_id);
+                if($request->won == 1){
+                    if($user_challenge_exist){
+                        if($user_challenge_exist->games < $challenge->games){
+                            $user_challenge_exist->games = $user_challenge_exist->games+1;
+                            $user_challenge_exist->save();
+                            if($user_challenge_exist->games == $challenge->games){
+                                $user_challenge_exist->complete = true;
+                                $user_challenge_exist->save();
+                            }
+                        }
+                    }else{
+                        $challenge_complete = false;
+                        if($challenge->games == 1){
+                            $challenge_complete = true;
+                        }
+                        $user_challenge = UserChallenge::create([
+                            'user_id'=>$userId,
+                            'challenge_id'=>$request->challenge_id,
+                            'win'=>$request->won,
+                            'status'=>true,
+                            'games'=>1,
+                            'complete'=>$challenge_complete,
+                        ]);
+                    }
                 }
-
-                // Check if the user has won all the games in the challenge
-                if ($challenge->total_games == $userChallenge->where('win', true)->count()) {
-                    $userChallenge->status = true;
-                }
-
-                $userChallenge->save();
             }
-
-            if ($stats) {
-                $achievementUnlock = null;
-                if (isset($request->challenge_id)) {
-                    $achievementUnlock = $this->unlockAchievement($request->challenge_id, $user, $request->hardcoded, $request);
+            if ($request->win == 1){
+                if($user->wins % 150 === 0){
+                    $firstSuit = Suit::first();
+                    $item = UserPurchase::where('user_id',$userId)->where('purchase_id',$firstSuit)->where('type','suit')->first();
+                    if($item){
+                        $item->quantity = $item->quantity + 1;
+                        $item->save();
+                    }else{
+                        $suitPurchase = new UserPurchase([
+                            'user_id' => $userId,
+                            'type' => 'suit',
+                            'purchase_id' => $firstSuit,
+                            'quantity' => 1,
+                        ]);
+                        $suitPurchase->save();
+                    }
                 }
-                if ($achievementUnlock) {
-                    return $this->response(true, 'Achievement Unlocked', $achievementUnlock, Response::HTTP_OK);
-                }
-
-                return $this->response(true, 'Statistics saved successfully', $stats, Response::HTTP_OK);
+                $user->wins += 1;
             }
+            if($stats){
+                $achievementUnlock= null;
+                if(isset($request->challenge_id)){
+                    $achievementUnlock = $this->unlockAchievement($request->challenge_id,$user,$request->hardcoded,$request);
+                }
+                if($achievementUnlock){
+                    return $this->response(true,'Achievement Unlocked',$achievementUnlock, Response::HTTP_OK);
+                }
 
-            return $this->response(false, 'Something went wrong please try again later.', [], Response::HTTP_UNAUTHORIZED);
-        } catch (Exception $exception) {
-            return $this->response(false, 'Something went wrong please try again later.', [], Response::HTTP_UNAUTHORIZED);
+                return $this->response(true,'Statistics saved successfully',$stats, Response::HTTP_OK);
+            }
+            return $this->response(false,'Something went wrong please try again later.',[], Response::HTTP_UNAUTHORIZED);
+
+        }catch (Exception $exception){
+            return $this->response(false,'Something went wrong please try again later.',[], Response::HTTP_UNAUTHORIZED);
         }
     }
-
     public function list($userId, $gameType): JsonResponse
     {
         $data = [];
