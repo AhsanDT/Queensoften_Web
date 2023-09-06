@@ -12,6 +12,8 @@ class UserChallenge extends Model
       'user_id',
       'challenge_id',
       'win',
-      'status'
+      'status',
+      'games',
+      'complete'
     ];
 }
