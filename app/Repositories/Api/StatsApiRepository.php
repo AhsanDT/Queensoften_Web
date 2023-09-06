@@ -52,29 +52,29 @@ class StatsApiRepository implements StatsApiRepositoryInterface
             ]);
             if ($request->game_type ==  'Challenge'){
                 $challenge = Challenge::find($request->challenge_id);
-                $user_challenge_exist = UserChallenge::where('user_id',$userId)->where('challenge_id',$request->challenge_id);
-                if($request->won == 1){
-                    if($user_challenge_exist){
-                        if($user_challenge_exist->games < $challenge->games){
-                            $user_challenge_exist->games = $user_challenge_exist->games+1;
+                $user_challenge_exist = UserChallenge::where('user_id',$userId)->where('challenge_id',$request->challenge_id)->first();
+                if ($request->won == 1) {
+                    if ($user_challenge_exist) {
+                        if ($user_challenge_exist->games < $challenge->games) {
+                            $user_challenge_exist->games = $user_challenge_exist->games + 1;
                             $user_challenge_exist->save();
-                            if($user_challenge_exist->games == $challenge->games){
+                            if ($user_challenge_exist->games == $challenge->games) {
                                 $user_challenge_exist->complete = true;
                                 $user_challenge_exist->save();
                             }
                         }
-                    }else{
+                    } else {
                         $challenge_complete = false;
-                        if($challenge->games == 1){
+                        if ($challenge->games == 1) {
                             $challenge_complete = true;
                         }
                         $user_challenge = UserChallenge::create([
-                            'user_id'=>$userId,
-                            'challenge_id'=>$request->challenge_id,
-                            'win'=>$request->won,
-                            'status'=>true,
-                            'games'=>1,
-                            'complete'=>$challenge_complete,
+                            'user_id' => $userId,
+                            'challenge_id' => $request->challenge_id,
+                            'win' => $request->won,
+                            'status' => true,
+                            'games' => 1,
+                            'complete' => $challenge_complete,
                         ]);
                     }
                 }
