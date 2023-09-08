@@ -83,11 +83,17 @@ class UserApiRepository implements UserApiRepositoryInterface
                     '',
                     Response::HTTP_UNAUTHORIZED);
             $subscription = Subscription::where('price',0)->first();
+
+            if($userModel){
+                $newUserName = $userModel->username;
+            }else{
+                $newUserName = $userName;
+            }
             $user = $this->modal::updateOrCreate([
                 "$key" => $value,
             ], [
                 'name' => $name,
-                'username' => $userName,
+                'username' => $newUserName,
                 'picture' => $picture?:($userModel->picture ?? ''),
                 'online_status' => '1',
                 'google_id' => ($request->driver == 'google') ? $request->driver_id : null,
