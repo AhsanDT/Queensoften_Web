@@ -121,4 +121,24 @@ class WalletApiRepository implements WalletApiInterface
             return $this->response(false,'','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
         }
     }
+    public function suitReward($id,$user_id):JsonResponse
+    {
+        $suit =  Suit::find($id);
+        if (!$suit){
+            return $this->response(false,'Suit not found','Something went wrong please try again later.',Response::HTTP_NOT_FOUND);
+        }
+        $item = UserPurchase::where('user_id',$user_id)->where('purchase_id',$id)->where('type','suit')->first();
+        if($item){
+            $item->quantity = $item->quantity + 1;
+            $item->save();
+        }else{
+            $userPurchase = new UserPurchase();
+            $userPurchase->user_id = $user_id;
+            $userPurchase->type = 'suit';
+            $userPurchase->purchase_id = $id;
+            $userPurchase->quantity = 1;
+            $userPurchase->save();
+        }
+        return $this->response(true,'Reward Given Successfully','',Response::HTTP_OK);
+    }
 }

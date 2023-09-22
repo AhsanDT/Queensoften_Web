@@ -81,6 +81,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/add-fund', [WalletApiController::class, 'addFund']);
         Route::post('/buy-coins', [WalletApiController::class, 'buyCoins']);
         Route::post('/buy-estore-item', [WalletApiController::class, 'buyEstoreItem']);
+        Route::get('/suit-reward/{id}/{user_id}', [WalletApiController::class, 'suitReward']);
     });
 });
 

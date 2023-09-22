@@ -79,22 +79,24 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                     }
                 }
             }
+            $suit_boolean = false;
             if ($request->win == 1){
-                if($user->wins % 150 === 0){
-                    $firstSuit = Suit::first();
-                    $item = UserPurchase::where('user_id',$userId)->where('purchase_id',$firstSuit)->where('type','suit')->first();
-                    if($item){
-                        $item->quantity = $item->quantity + 1;
-                        $item->save();
-                    }else{
-                        $suitPurchase = new UserPurchase([
-                            'user_id' => $userId,
-                            'type' => 'suit',
-                            'purchase_id' => $firstSuit,
-                            'quantity' => 1,
-                        ]);
-                        $suitPurchase->save();
-                    }
+                if($user->wins % 1 === 0){
+//                    $firstSuit = Suit::first();
+//                    $item = UserPurchase::where('user_id',$userId)->where('purchase_id',$firstSuit)->where('type','suit')->first();
+//                    if($item){
+//                        $item->quantity = $item->quantity + 1;
+//                        $item->save();
+//                    }else{
+//                        $suitPurchase = new UserPurchase([
+//                            'user_id' => $userId,
+//                            'type' => 'suit',
+//                            'purchase_id' => $firstSuit,
+//                            'quantity' => 1,
+//                        ]);
+//                        $suitPurchase->save();
+//                    }
+                    $suit_boolean = true;
                 }
                 $user->wins += 1;
             }
@@ -106,10 +108,14 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 if($achievementUnlock){
                     $challenges = Challenge::find($request->challenge_id);
                     $user_challenge_exists = UserChallenge::where('user_id',$userId)->where('challenge_id',$request->challenge_id)->first();
+                    $data = [
+                        'achievement_unlock' => $achievementUnlock,
+                        'suit_boolean'=>$suit_boolean,
+                    ];
                     if ($user_challenge_exists->games == $challenges->games) {
-                        return $this->response(true, 'Achievement Unlocked', $achievementUnlock, Response::HTTP_OK);
+                        return $this->response(true, 'Achievement Unlocked', $data, Response::HTTP_OK);
                     }else{
-                        return $this->response(true, 'Achievement still locked', $achievementUnlock, Response::HTTP_OK);
+                        return $this->response(true, 'Achievement still locked', $data, Response::HTTP_OK);
                     }
                 }
 
