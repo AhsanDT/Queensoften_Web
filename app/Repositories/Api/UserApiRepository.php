@@ -145,7 +145,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                         $userNew->drop_hand = $maxDropHand;
                         $lastLoginDate = $userNew->last_login_at;
                         $today = now()->startOfDay();
-                        if (!$lastLoginDate || $lastLoginDate < $today) {
+//                        if (!$lastLoginDate || $lastLoginDate < $today) {
                             $userNew->last_login_at = now();
                             if ($subscriptionType == 'standard') {
                                 $userNew->save();
@@ -175,7 +175,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                             } else {
                                 $user->save();
                             }
-                        }
+//                        }
                     }
                     return $this->response(true, 'Login Successfully',
                         [
