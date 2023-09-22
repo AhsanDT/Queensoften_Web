@@ -145,13 +145,13 @@ class UserApiRepository implements UserApiRepositoryInterface
                         $userNew->drop_hand = $maxDropHand;
                         $lastLoginDate = $userNew->last_login_at;
                         $today = now()->startOfDay();
-//                        if (!$lastLoginDate || $lastLoginDate < $today) {
+                        if (!$lastLoginDate || $lastLoginDate < $today) {
                             $userNew->last_login_at = now();
                             if ($subscriptionType == 'standard') {
                                 $userNew->save();
                                 $jokerTypes = ['big', 'small'];
                                 $jokerIds = Joker::whereIn('type', $jokerTypes)->pluck('id');
-                                $jokerNew = Joker::whereIn('type', $jokerTypes);
+                                $jokerNew = Joker::find($jokerIds);
                                 foreach ($jokerIds as $jokerId) {
                                     $item = UserPurchase::where('user_id', $userNew->id)->where('purchase_id', $jokerId)->where('type', 'joker')->first();
                                     if ($item) {
@@ -175,7 +175,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                             } else {
                                 $user->save();
                             }
-//                        }
+                        }
                     }
                     return $this->response(true, 'Login Successfully',
                         [
