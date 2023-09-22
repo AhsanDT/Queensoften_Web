@@ -40,16 +40,6 @@ class StatsApiRepository implements StatsApiRepositoryInterface
             $user = User::find($userId);
             if(!$user)
                 return $this->response(false,'User not found!',[], Response::HTTP_UNAUTHORIZED);
-
-            $stats = $this->model::Create([
-                'game_type' => $request->game_type,
-                'won' => $request->won ?? 0,
-                'lost' => $request->lost ?? 0,
-                'date' => $request->date ?? null,
-                'time' => $request->time ?? null,
-                'score' => $request->score ?? 0,
-                'user_id' => $userId,
-            ]);
             if ($request->game_type == 'Challenge') {
                 $challenge = Challenge::find($request->challenge_id);
                 $user_challenge_exist = UserChallenge::where('user_id', $userId)->where('challenge_id', $request->challenge_id)->first();
@@ -100,6 +90,16 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 }
                 $user->wins += 1;
             }
+            $stats = $this->model::Create([
+                'game_type' => $request->game_type,
+                'won' => $request->won ?? 0,
+                'lost' => $request->lost ?? 0,
+                'date' => $request->date ?? null,
+                'time' => $request->time ?? null,
+                'score' => $request->score ?? 0,
+                'user_id' => $userId,
+                'suit_boolean'=>$suit_boolean,
+            ]);
             if($stats){
                 $achievementUnlock= null;
                 if(isset($request->challenge_id)){
