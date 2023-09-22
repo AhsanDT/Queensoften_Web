@@ -169,7 +169,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                                 }
                                 $reward = [
                                     'type' => 'joker',
-                                    'sub_type'=>$jokerNew->type,
+                                    'sub_type'=>$jokerNew[0]->type,
                                     'quantity'=> 1
                                 ];
                             } else {
