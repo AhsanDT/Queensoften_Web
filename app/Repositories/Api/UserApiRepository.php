@@ -151,6 +151,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                                 $userNew->save();
                                 $jokerTypes = ['big', 'small'];
                                 $jokerIds = Joker::whereIn('type', $jokerTypes)->pluck('id');
+                                $jokerNew = Joker::find($jokerIds);
                                 foreach ($jokerIds as $jokerId) {
                                     $item = UserPurchase::where('user_id', $userNew->id)->where('purchase_id', $jokerId)->where('type', 'joker')->first();
                                     if ($item) {
@@ -168,7 +169,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                                 }
                                 $reward = [
                                     'type' => 'joker',
-                                    'sub_type'=>$jokerTypes,
+                                    'sub_type'=>$jokerNew->type,
                                     'quantity'=> 1
                                 ];
                             } else {
