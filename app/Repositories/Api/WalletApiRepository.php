@@ -66,7 +66,7 @@ class WalletApiRepository implements WalletApiInterface
                 $user->coins += $coins->coins;
                 $user->save();
             }else{
-                return $this->response(false,'Insufficient funds','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
+                return $this->response(false,'Insufficient funds in wallet','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
             }
             return $this->response(true,'Coins Purchased Successfully','',Response::HTTP_OK);
         } catch (\Exception $e) {

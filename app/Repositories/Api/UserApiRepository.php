@@ -136,13 +136,55 @@ class UserApiRepository implements UserApiRepositoryInterface
 
                 $token = $user->createToken('access_token')->plainTextToken;
                 $userNew = $this->modal->with('purchases', 'subscription')->where("username", $user->username)->first();
-                return $this->response(true, 'Login Successfully',
-                    [
-                        'user' => $userNew,
-                        'achievement' => $achievement,
-                        'token' => $token
-                    ]
-                    , Response::HTTP_OK);
+                $reward = null;
+                if ($userNew) {
+                    $subscriptionType = $user->subscription->subscription_type;
+//            dd($subscriptionType);
+                    if ($userNew->drop_hand_usage != 'used') {
+                        $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
+                        $userNew->drop_hand = $maxDropHand;
+                        $lastLoginDate = $userNew->last_login_at;
+                        $today = now()->startOfDay();
+                        if (!$lastLoginDate || $lastLoginDate < $today) {
+                            $userNew->last_login_at = now();
+                            if ($subscriptionType == 'standard') {
+                                $userNew->save();
+                                $jokerTypes = ['big', 'small'];
+                                $jokerIds = Joker::whereIn('type', $jokerTypes)->pluck('id');
+                                foreach ($jokerIds as $jokerId) {
+                                    $item = UserPurchase::where('user_id', $userNew->id)->where('purchase_id', $jokerId)->where('type', 'joker')->first();
+                                    if ($item) {
+                                        $item->quantity = $item->quantity + 1;
+                                        $item->save();
+                                    } else {
+                                        $jokerPurchase = new UserPurchase([
+                                            'user_id' => $userNew->id,
+                                            'type' => 'joker',
+                                            'purchase_id' => $jokerId,
+                                            'quantity' => 1,
+                                        ]);
+                                        $jokerPurchase->save();
+                                    }
+                                }
+                                $reward = [
+                                    'type' => 'joker',
+                                    'sub_type'=>$jokerTypes,
+                                    'quantity'=> 1
+                                ];
+                            } else {
+                                $user->save();
+                            }
+                        }
+                    }
+                    return $this->response(true, 'Login Successfully',
+                        [
+                            'user' => $userNew,
+                            'achievement' => $achievement,
+                            'token' => $token,
+                            'reward'=> $reward
+                        ]
+                        , Response::HTTP_OK);
+                }
             }
             return $this->response(false, 'Login failed.', [], Response::HTTP_UNAUTHORIZED);
         } catch (Exception $exception) {
