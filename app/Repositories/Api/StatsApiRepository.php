@@ -98,7 +98,6 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                 'time' => $request->time ?? null,
                 'score' => $request->score ?? 0,
                 'user_id' => $userId,
-                'suit_boolean'=>$suit_boolean,
             ]);
             if($stats){
                 $achievementUnlock= null;
@@ -118,6 +117,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
                         return $this->response(true, 'Achievement still locked', $data, Response::HTTP_OK);
                     }
                 }
+                $stats['suit_boolean'] = $suit_boolean;
 
                 return $this->response(true,'Statistics saved successfully',$stats, Response::HTTP_OK);
             }
