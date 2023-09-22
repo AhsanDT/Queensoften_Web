@@ -21,4 +21,7 @@ class WalletApiController extends Controller
     public function buyEstoreItem(Request $request){
         return $this->walletApiRepository->buyEstoreItem($request);
     }
+    public function suitReward($id,$user_id){
+        return $this->walletApiRepository->suitReward($id,$user_id);
+    }
 }
