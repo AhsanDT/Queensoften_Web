@@ -71,7 +71,7 @@ class StatsApiRepository implements StatsApiRepositoryInterface
             }
             $suit_boolean = false;
             if ($request->win == 1){
-                if($user->wins % 1 === 0){
+                if($user->wins % 150 === 0){
 //                    $firstSuit = Suit::first();
 //                    $item = UserPurchase::where('user_id',$userId)->where('purchase_id',$firstSuit)->where('type','suit')->first();
 //                    if($item){
