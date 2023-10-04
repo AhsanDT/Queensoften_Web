@@ -173,7 +173,7 @@ class UserApiRepository implements UserApiRepositoryInterface
                                     'quantity'=> 1
                                 ];
                             } else {
-                                $user->save();
+                                $userNew->save();
                             }
                         }
                     }
