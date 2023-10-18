@@ -22448,6 +22448,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
 }
 .btn:focus {
   outline: none !important;
+  box-shadow: none;
 }
 @media (max-width: 991px) {
   .btn {

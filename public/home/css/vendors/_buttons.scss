@@ -11,6 +11,7 @@
 	background: var(--Yellow, linear-gradient(180deg, #ffe384 0%, #ffcf35 100%));
 	&:focus {
 		outline: none !important;
+		box-shadow: none;
 	}
 	@include media("<tablet-x"){
 		font-size: 12px;
