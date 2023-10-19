@@ -184,7 +184,7 @@
 <!-- our product slider for small devices -->
 <section class="section our_product">
     <div class="sec-banner our_products">
-        <h2><span class="text-warning">our </span> latest products
+        <h2><span class="text-warning">our </span> latest products</h2>
     </div>
     <div class="product_slider">
     <div class="product_card">
