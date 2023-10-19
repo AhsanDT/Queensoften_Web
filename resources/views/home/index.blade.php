@@ -14,7 +14,7 @@
             </div>
             <div class="section banner_contant">
                 <h1>PLAY THE AMAZING GAME </h1>
-                <img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
+                <img src="{{asset('home/images/bannerlogo.png')}}"  alt="img">
                 <a class="btn" href="">Download the App</a>
 
             </div>
