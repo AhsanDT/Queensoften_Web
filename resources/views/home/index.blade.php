@@ -14,8 +14,9 @@
             </div>
             <div class="section banner_contant">
                 <h1>PLAY THE AMAZING GAME </h1>
-                <img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
+                <img src="{{asset('home/images/bannerlogo.png')}}"  alt="img">
                 <a class="btn" href="">Download the App</a>
+
             </div>
         </div>
     </div>
@@ -34,19 +35,13 @@
                                         has
                                         the same game flow and the only difference is the timer and unlockable
                                         achievements.</p>
-                                    <p>Hard Mode - is an exciting way to test your quick thinking ability and luck.
-                                    </p>
-                                    <p>Easy and Medium - lets you play the game with easier and relax way. You have
-                                        the
-                                        ability to skip a card.</p>
                                 </div>
-                                <div class="double_img">
+                                <div class="imag_box">
                                 <img src="{{asset('home/images/queencard1.png')}}" alt="img">
-                                <img src="{{asset('home/images/queencard0.png')}}" alt="img">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-xl-3 mb-3">
                             <div class="section card_contant counter">
                                 <div class="box-contant">
                                     <p>The game starts with 12 playing cards, shuffled from the deck randomly. Cards
@@ -58,20 +53,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-xl-3 mb-3">
                             <div class="section card_contant counter">
                                 <div class="box-contant">
                                     <p>The game automatically replaces the face cards, Face cards must be replaced
                                         to
                                         start the game</p>
                                 </div>
-                                <div class="double_img">
+                                <div class="imag_box">
                                 <img src="{{asset('home/images/queencard3.png')}}" alt="img">
-                                <img src="{{asset('home/images/queencard4.png')}}" alt="img">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-xl-3 mb-3">
                             <div class="section card_contant counter">
                                 <div class="box-contant">
                                     <p>Once all face cards are replaced, the player must select two (2) cards on the
@@ -83,9 +77,8 @@
                                         pair
                                         with and lastly select a card on the right Deck</p>
                                 </div>
-                                <div class="double_img">
-                                <img src="{{asset('home/images/queencard5.png')}}" alt="img">
-                                <img src="{{asset('home/images/queencard5.png')}}" alt="img">
+                                <div class="imag_box">
+                                <img src="{{asset('home/images/queencard4.png')}}" alt="img">
                                 </div>
                             </div>
                         </div>
@@ -99,11 +92,11 @@
         <!-- our product -->
         <section class="section our_product">
             <div class="sec-banner our_products">
-                <h2><span class="text-warning">our </span> latest products
+                <h2><span class="text-warning">our </span> latest products</h2>
             </div>
             <div class="product_card">
                 <div class="container">
-                    <div class=" row">
+                    <div class=" row product_slider">
                         <div class=" col-lg-4 col-md-4 col-sm-6">
                             <div class="section card_contant ">
                                 <div class="imag_box">
@@ -191,7 +184,7 @@
 <!-- our product slider for small devices -->
 <section class="section our_product">
     <div class="sec-banner our_products">
-        <h2><span class="text-warning">our </span> latest products
+        <h2><span class="text-warning">our </span> latest products</h2>
     </div>
     <div class="product_slider">
     <div class="product_card">
@@ -324,7 +317,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>

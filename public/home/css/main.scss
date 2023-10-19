@@ -111,8 +111,13 @@ $breakpoints: (
 						padding: 0 15px;
 						margin: 5px 0;
 
+
 						@include media("<tablet-x") {
 							padding: 0;
+                            border-bottom: 1px solid #4c2c6c ;
+                            &.toggle{
+                                display: none;
+                            }
 						}
 
 						a {
@@ -150,7 +155,7 @@ $breakpoints: (
 				align-items: center;
 				justify-content: center;
 				background: #fff;
-				border-radius: 50%;
+                border-radius: 10px 0;
 				width: 40px;
 				height: 40px;
 				margin: 15px 0;
@@ -306,26 +311,28 @@ $breakpoints: (
 	position: relative;
 
 	.slick-prev {
-		position: absolute;
-		color: #fff;
-		border-radius: 5px;
-		border: 1px solid #fff;
-		padding: 5px;
-		bottom: -50px;
-		left: 46%;
-		margin-top: 145px;
+        position: absolute;
+        color: #fff;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        padding: 5px;
+        bottom: -50px;
+        left: 50%;
+        margin-top: 145px;
+        transform: translateX(15%);
 	}
 
 	.slick-next {
-		position: absolute;
-		color: #fff;
-		border-radius: 5px;
-		border: 1px solid #fff;
-		padding: 5px;
-		background: transparent;
-		bottom: -50px;
-		right: 46%;
-		margin-top: 145px;
+        position: absolute;
+        color: #fff;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        padding: 5px;
+        background: transparent;
+        bottom: -50px;
+        right: 50%;
+        margin-top: 145px;
+        transform: translateX(-15%);
 	}
 }
 
@@ -336,7 +343,6 @@ $breakpoints: (
 	position: relative;
 	padding: 35px 0;
 	margin: 0 0 50px;
-
 	&::after,
 	&::before {
 		position: absolute;
@@ -609,7 +615,7 @@ $breakpoints: (
 			font-size: 16px;
 			font-weight: 600;
 			min-height: 375px;
-			margin: 0 0 20px;
+			margin: 10px;
 
 			.imag_box {
 				max-width: 280px;
@@ -648,7 +654,7 @@ $breakpoints: (
 						margin: 0;
 						text-decoration: none;
 						text-align: center;
-						line-height: 23px;
+						line-height: 28px;
 						color: #fff;
 
 						&:hover {
@@ -682,7 +688,6 @@ $breakpoints: (
 			.card_contant {
 				padding: 15px 12px;
 				font-size: 14px;
-				margin: 0 0 20px;
 				min-height: auto;
 				.imag_box {
 					max-width: 190px;

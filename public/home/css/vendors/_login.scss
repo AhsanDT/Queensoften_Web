@@ -366,7 +366,7 @@
 				flex: 0 0 30.33%;
 			}
 		}
-		
+
 		.edit1{
 			display: flex;
 			.form-group {
@@ -375,7 +375,7 @@
 				margin: 0 45px 0 0;
 			}
 		}
-		
+
 
 		.card_table {
 			table {
@@ -425,9 +425,7 @@
 				flex-direction: column;
 			}
 			.edit, .edit1 {
-				.form-group {
 					flex-direction: column;
-				}
 			}
 		}
 	}
