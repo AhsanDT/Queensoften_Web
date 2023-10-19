@@ -25232,11 +25232,13 @@ input[type=submit] {
   justify-content: center;
 }
 .play_queens .product_card .card_contant .double_img img {
-  width: 100px;
   padding: 30px 5px;
 }
 .play_queens .product_card .card_contant .imag_box img {
   padding: 10px 50px;
+  display: block;
+  height: auto;
+  width: 100%;
 }
 .play_queens .box-contant {
   padding: 12px 0;

@@ -565,7 +565,7 @@ $breakpoints: (
 				justify-content: center;
 
 				img {
-					width: 100px;
+
 					padding: 30px 5px;
 				}
 			}
@@ -573,6 +573,9 @@ $breakpoints: (
 			.imag_box {
 				img {
 					padding: 10px 50px;
+                    display: block;
+                    height: auto;
+                    width: 100%;
 				}
 			}
 		}
