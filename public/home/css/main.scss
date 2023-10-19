@@ -320,6 +320,9 @@ $breakpoints: (
         left: 50%;
         margin-top: 145px;
         transform: translateX(15%);
+        i{
+            transform: rotate(180deg);
+        }
 	}
 
 	.slick-next {
@@ -333,6 +336,9 @@ $breakpoints: (
         right: 50%;
         margin-top: 145px;
         transform: translateX(-15%);
+        i{
+            transform: rotate(180deg);
+        }
 	}
 }
 

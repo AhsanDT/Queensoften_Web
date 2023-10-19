@@ -25027,6 +25027,9 @@ input[type=submit] {
   margin-top: 145px;
   transform: translateX(15%);
 }
+.banner-slider .slick-prev i {
+  transform: rotate(180deg);
+}
 .banner-slider .slick-next {
   position: absolute;
   color: #fff;
@@ -25038,6 +25041,9 @@ input[type=submit] {
   right: 50%;
   margin-top: 145px;
   transform: translateX(-15%);
+}
+.banner-slider .slick-next i {
+  transform: rotate(180deg);
 }
 
 .sec-banner {
