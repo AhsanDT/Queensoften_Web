@@ -109,6 +109,7 @@ $breakpoints: (
 
 					li {
 						padding: 0 15px;
+						margin: 5px 0;
 
 						@include media("<tablet-x") {
 							padding: 0;
@@ -117,14 +118,19 @@ $breakpoints: (
 						a {
 							color: #fff;
 							text-decoration: none;
+							display: flex !important;
+							i {
+								padding-right: 12px;
+							}
 
 							@include media("<tablet-x") {
 								display: block;
-								padding: 10px 20px;
-							}
-
-							&:hover {
-								color: white;
+								padding: 10px;
+								width: 230px;
+								&:hover{
+									color: #450e61;
+									background-color: #fff;
+								}
 							}
 						}
 					}
@@ -132,19 +138,8 @@ $breakpoints: (
 			}
 
 			@include media("<tablet-x") {
-				.nav-1 {
-					display: none !important;
-				}
-
 				.nav-2 {
 					display: block !important;
-					li {
-						padding: 0 10px !important;
-						&:hover{
-							background-color: #fff;
-							color: #450e61;
-						}
-					}
 				}
 			}
 
@@ -178,7 +173,7 @@ $breakpoints: (
 					border: none;
 					background: transparent;
 				}
-				.dropdown-menu{
+				.dropdown-menu {
 					padding: 0;
 				}
 				.dropdown {
