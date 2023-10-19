@@ -24029,8 +24029,9 @@ input[type=submit] {
   display: flex;
   background-image: url(../images/wave.png);
   background-position: right;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: bottom;
 }
 .our_product .product_card .card_contant {
   background-image: url(../images/product1bg.png);
@@ -24247,7 +24248,10 @@ input[type=submit] {
   text-shadow: 0px 3px 65px #01295b;
 }
 .story-texts .story_title .storybg {
-  background-image: url(../images/shopimage.jpg);
+  background-image: url(../images/shopimage.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @media (max-width: 991px) {

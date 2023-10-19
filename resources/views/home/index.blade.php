@@ -189,7 +189,7 @@
         </section>
 
 <!-- our product slider for small devices -->
-<!-- <section class="section our_product">
+<section class="section our_product">
     <div class="sec-banner our_products">
         <h2><span class="text-warning">our </span> latest products
     </div>
@@ -331,7 +331,7 @@
     <div class="product-btn mt-4">
         <a class="btn" href="#">View More</a>
     </div>
-</section> -->
+</section>
 
 <!-- Story Section -->
 <section>
