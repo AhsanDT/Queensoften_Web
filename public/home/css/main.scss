@@ -40,12 +40,6 @@ $breakpoints: (
 			left: 0;
 		}
 	}
-    &.header-fixed{
-        #header{
-            position: fixed;
-            top: 0;
-        }
-    }
 }
 
 .container {
@@ -115,6 +109,7 @@ $breakpoints: (
 
 					li {
 						padding: 0 15px;
+						margin: 5px 0;
 
 						@include media("<tablet-x") {
 							padding: 0;
@@ -123,14 +118,19 @@ $breakpoints: (
 						a {
 							color: #fff;
 							text-decoration: none;
+							display: flex !important;
+							i {
+								padding-right: 12px;
+							}
 
 							@include media("<tablet-x") {
 								display: block;
-								padding: 10px 20px;
-							}
-
-							&:hover {
-								color: white;
+								padding: 10px;
+								width: 230px;
+								&:hover{
+									color: #450e61;
+									background-color: #fff;
+								}
 							}
 						}
 					}
@@ -138,23 +138,8 @@ $breakpoints: (
 			}
 
 			@include media("<tablet-x") {
-				.nav-1 {
-					display: none !important;
-				}
-
 				.nav-2 {
 					display: block !important;
-					li {
-						padding: 0 10px !important;
-                        border-bottom: 1px solid #4c2c6c ;
-						&:hover{
-							background-color: #fff;
-							color: #450e61;
-                            a{
-                                color: #450e61 !important;
-                            }
-						}
-					}
 				}
 			}
 
@@ -165,7 +150,7 @@ $breakpoints: (
 				align-items: center;
 				justify-content: center;
 				background: #fff;
-				border-radius: 10px 0;
+				border-radius: 50%;
 				width: 40px;
 				height: 40px;
 				margin: 15px 0;
@@ -188,7 +173,7 @@ $breakpoints: (
 					border: none;
 					background: transparent;
 				}
-				.dropdown-menu{
+				.dropdown-menu {
 					padding: 0;
 				}
 				.dropdown {
@@ -321,28 +306,26 @@ $breakpoints: (
 	position: relative;
 
 	.slick-prev {
-        position: absolute;
-        color: #fff;
-        border-radius: 5px;
-        border: 1px solid #fff;
-        padding: 5px;
-        bottom: -50px;
-        left: 50%;
-        margin-top: 145px;
-        transform: translateX(15%);
+		position: absolute;
+		color: #fff;
+		border-radius: 5px;
+		border: 1px solid #fff;
+		padding: 5px;
+		bottom: -50px;
+		left: 46%;
+		margin-top: 145px;
 	}
 
 	.slick-next {
-        position: absolute;
-        color: #fff;
-        border-radius: 5px;
-        border: 1px solid #fff;
-        padding: 5px;
-        background: transparent;
-        bottom: -50px;
-        right: 50%;
-        margin-top: 145px;
-        transform: translateX(-15%);
+		position: absolute;
+		color: #fff;
+		border-radius: 5px;
+		border: 1px solid #fff;
+		padding: 5px;
+		background: transparent;
+		bottom: -50px;
+		right: 46%;
+		margin-top: 145px;
 	}
 }
 
@@ -571,7 +554,7 @@ $breakpoints: (
 				justify-content: center;
 
 				img {
-
+					width: 100px;
 					padding: 30px 5px;
 				}
 			}
@@ -579,9 +562,6 @@ $breakpoints: (
 			.imag_box {
 				img {
 					padding: 10px 50px;
-                    display: block;
-                    height: auto;
-                    width: 100%;
 				}
 			}
 		}
@@ -616,8 +596,9 @@ $breakpoints: (
 		display: flex;
 		background-image: url(../images/wave.png);
 		background-position: right;
-		background-size: contain;
+		background-size: cover;
 		background-repeat: no-repeat;
+		background-position: bottom;
 
 		.card_contant {
 			background-image: url(../images/product1bg.png);
@@ -628,7 +609,7 @@ $breakpoints: (
 			font-size: 16px;
 			font-weight: 600;
 			min-height: 375px;
-			margin: 10px;
+			margin: 0 0 20px;
 
 			.imag_box {
 				max-width: 280px;
@@ -667,7 +648,7 @@ $breakpoints: (
 						margin: 0;
 						text-decoration: none;
 						text-align: center;
-						line-height: 28px;
+						line-height: 23px;
 						color: #fff;
 
 						&:hover {
@@ -701,7 +682,7 @@ $breakpoints: (
 			.card_contant {
 				padding: 15px 12px;
 				font-size: 14px;
-
+				margin: 0 0 20px;
 				min-height: auto;
 				.imag_box {
 					max-width: 190px;
@@ -852,7 +833,10 @@ $breakpoints: (
 			text-shadow: 0px 3px 65px #01295b;
 		}
 		.storybg {
-			background-image: url(../images/shopimage.jpg);
+			background-image: url(../images/shopimage.png);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 	}
 }
