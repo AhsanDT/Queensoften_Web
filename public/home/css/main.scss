@@ -841,7 +841,8 @@ $breakpoints: (
 			background-image: url(../images/shopimage.png);
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: cover;
+			background-size: contain;
+			height: 200px;
 		}
 	}
 }
