@@ -254,7 +254,7 @@ $breakpoints: (
 			position: fixed;
 			top: 0;
 			left: -280px;
-			width: 270px;
+			width: 250px;
 			height: 100vh;
 			background: linear-gradient(0deg, #450e61 0%, #450e61 100%), #fff;
 			overflow-y: scroll;
@@ -837,12 +837,13 @@ $breakpoints: (
 			padding: 70px 170px 60px 170px;
 			text-shadow: 0px 3px 65px #01295b;
 		}
-		.storybg {
-			background-image: url(../images/shopimage.png);
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
+        .storybg {
+            background-image: url(../images/shopimage.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            min-height:200px; /* Changed min-height to 100vh for full viewport height */
+        }
 	}
 }
 @include media("<tablet-x") {

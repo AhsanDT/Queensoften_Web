@@ -85,11 +85,11 @@
 
         <!-- second last section -->
         <section class="story-texts">
-            <div class="d-flex story_title">
+            <div class="row flex-md-row flex-column-reverse story_title">
                 <div class="col-md-8 d-flex justify-content-center align-items-center">
                     <h1>get amazing discount if you buy on our first ever sale!</h1>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 ">
                     <div class="storybg">
                 </div>
             </div>
