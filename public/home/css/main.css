@@ -24774,6 +24774,10 @@ input[type=submit] {
 #wrapper.nav-active #nav {
   left: 0;
 }
+#wrapper.header-fixed #header {
+  position: fixed;
+  top: 0;
+}
 
 .container {
   max-width: 1270px;

@@ -40,6 +40,12 @@ $breakpoints: (
 			left: 0;
 		}
 	}
+    &.header-fixed{
+        #header{
+            position: fixed;
+            top: 0;
+        }
+    }
 }
 
 .container {
