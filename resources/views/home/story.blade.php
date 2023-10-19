@@ -90,7 +90,7 @@
                     <h1>get amazing discount if you buy on our first ever sale!</h1>
                 </div>
                 <div class="col-md-4 ">
-                    <div class="storybg">
+                    <div class="storybg"></div>
                 </div>
             </div>
         </section>
