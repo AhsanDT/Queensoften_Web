@@ -99,11 +99,11 @@
         <!-- our product -->
         <section class="section our_product">
             <div class="sec-banner our_products">
-                <h2><span class="text-warning">our </span> latest products
+                <h2><span class="text-warning">our </span> latest products</h2>
             </div>
             <div class="product_card">
                 <div class="container">
-                    <div class=" row">
+                    <div class=" row product_slider">
                         <div class=" col-lg-4 col-md-4 col-sm-6">
                             <div class="section card_contant ">
                                 <div class="imag_box">
@@ -324,7 +324,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>

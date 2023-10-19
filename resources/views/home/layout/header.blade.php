@@ -24,7 +24,8 @@
 
             <!-- for small devices  -->
             <nav id="nav" class="nav-2">
-            <a href="#" class="nav-opener" for="toggle"><i class="fa-solid fa-xmark"></i></a>
+            <a href="#" class="nav-opener float-end" for="toggle"><i class="fa-solid fa-xmark"></i></a>
+                <div class="clearfix"></div>
                 <ul>
                     <li><i class="fa fa-book"></i><a class="active" href="#">Story</a></li>
                     <li><i class="fa fa-shopping-cart"></i><a href="#">Store</a></li>
