@@ -6,7 +6,13 @@
         </div>
         <div class="header-right">
             <nav id="nav">
-            <a href="#" class="nav-opener" for="toggle"><i class="fa-solid fa-xmark"></i></a>
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="logo d-lg-none d-block">
+                        <a href="{{route('home')}}"><img src="{{asset('home/images/logo.svg')}}" alt="logo"> </a>
+                    </div>
+                    <a href="#" class="nav-opener" for="toggle"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+
                 <ul>
                     <li><a class="active" href="{{route('story')}}"><i class="fa fa-book nav-2"></i>Story</a></li>
                     <li><a href="#"><i class="fa fa-shopping-cart nav-2"></i>Store</a></li>
