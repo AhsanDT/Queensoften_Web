@@ -23743,7 +23743,7 @@ input[type=submit] {
     position: fixed;
     top: 0;
     left: -280px;
-    width: 270px;
+    width: 250px;
     height: 100vh;
     background: linear-gradient(0deg, #450e61 0%, #450e61 100%), #fff;
     overflow-y: scroll;
@@ -24258,7 +24258,7 @@ input[type=submit] {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  height: 200px;
+  min-height: 200px; /* Changed min-height to 100vh for full viewport height */
 }
 
 @media (max-width: 991px) {
