@@ -3103,3 +3103,37 @@ $('.product_slider').slick({
     ]
 });
 
+
+// $('.product_card').slick({
+//     dots: false,
+//     infinite: true,
+//     speed: 300,
+//     slidesToShow: 3,
+//     slidesToScroll: 1,
+//     arrows: false,
+//     responsive: [
+//         {
+//             breakpoint: 4000,
+//             settings: {
+//                 slidesToShow: 4,
+//                 unslick: false,
+//             }
+//         },
+//         {
+//             breakpoint: 767,
+//             settings: {
+//                 slidesToShow: 2,
+//                 unslick: true,
+//             }
+//         },
+//         {
+//             breakpoint: 500,
+//             settings: {
+//                 slidesToShow: 1,
+
+//             }
+//         }
+//     ]
+// });
+
+
