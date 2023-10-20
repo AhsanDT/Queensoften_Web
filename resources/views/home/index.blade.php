@@ -35,6 +35,8 @@
                                         has
                                         the same game flow and the only difference is the timer and unlockable
                                         achievements.</p>
+                                        <p>Hard Mode - is an exciting way to test your quick thinking ability and luck.</p>
+                                        <p>Easy and Medium - lets you play the game with easier and relax way. You have the ability to skip a card.</p>
                                 </div>
                                 <div class="imag_box">
                                 <img src="{{asset('home/images/queencard1.png')}}" alt="img">
