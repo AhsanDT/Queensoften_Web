@@ -24,11 +24,11 @@
         <!-- play queen -->
         <section class="section play_queens">
             <div class="sec-banner  play_queen">
-                <h2>How to play<span class="text-warning"> queens of 10!</span>
+                <h2>How to play<span class="text-warning"> queens of 10!</span></h2>
             </div>
-            <div class="container-fluid">
+            <div class="container">
                     <div class="product_card row">
-                        <div class="col-md-3 mb-3 ">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-3 ">
                             <div class="section card_contant counter ">
                                 <div class="box-contant">
                                     <p>Queens of Ten has 3 game modes. (Freeplay, Timed and Challenges). Each game
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 mb-3">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-3">
                             <div class="section card_contant counter">
                                 <div class="box-contant">
                                     <p>The game starts with 12 playing cards, shuffled from the deck randomly. Cards
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 mb-3">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-3">
                             <div class="section card_contant counter">
                                 <div class="box-contant">
                                     <p>The game automatically replaces the face cards, Face cards must be replaced
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 mb-3">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-3">
                             <div class="section card_contant counter">
                                 <div class="box-contant">
                                     <p>Once all face cards are replaced, the player must select two (2) cards on the

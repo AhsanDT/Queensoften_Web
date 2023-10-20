@@ -25232,14 +25232,6 @@ input[type=submit] {
   padding: 15px;
   min-height: 100%;
 }
-.play_queens .product_card .card_contant .double_img {
-  display: flex;
-  justify-content: center;
-}
-.play_queens .product_card .card_contant .double_img img {
-  width: 100px;
-  padding: 30px 5px;
-}
 .play_queens .product_card .card_contant .imag_box img {
   padding: 10px 50px;
 }

@@ -20,10 +20,9 @@
                                     the
                                     ability to skip a card.</p>
                             </div>
-                            <div class="double_img">
-                            <img src="{{asset('home/images/queencard1.png')}}" alt="img">
-                            <img src="{{asset('home/images/queencard0.png')}}" alt="img">
-                            </div>
+                            <div class="imag_box">
+                                <img src="{{asset('home/images/queencard1.png')}}" alt="img">
+                                </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -34,8 +33,8 @@
                                     positioned in 3 rows and 4 columns.</p>
                             </div>
                             <div class="imag_box">
-                            <img src="{{asset('home/images/queencard2.png')}}" alt="img">
-                            </div>
+                                <img src="{{asset('home/images/queencard2.png')}}" alt="img">
+                                </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -45,10 +44,9 @@
                                     to
                                     start the game</p>
                             </div>
-                            <div class="double_img">
-                            <img src="{{asset('home/images/queencard3.png')}}" alt="img">
-                            <img src="{{asset('home/images/queencard4.png')}}" alt="img">
-                            </div>
+                            <div class="imag_box">
+                                <img src="{{asset('home/images/queencard3.png')}}" alt="img">
+                                </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -63,10 +61,9 @@
                                     pair
                                     with and lastly select a card on the right Deck</p>
                             </div>
-                            <div class="double_img">
-                            <img src="{{asset('home/images/queencard5.png')}}" alt="img">
-                            <img src="{{asset('home/images/queencard5.png')}}" alt="img">
-                            </div>
+                            <div class="imag_box">
+                                <img src="{{asset('home/images/queencard4.png')}}" alt="img">
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -110,9 +107,8 @@
                                 <div class="box-contant">
                                     <p>If there are No two (2) cards on the field that sums up to ten (10) the player loses the game. </p>
                                 </div>
-                                <div     class="double_img">
-                                <img src="{{asset('home/images/queencard10.png')}}" alt="img">
-                                <img src="{{asset('home/images/queencard11.png')}}" alt="img">
+                                <div class="imag_box">
+                                    <img src="{{asset('home/images/queencard10.png')}}" alt="img">
                                     </div>
                                 </div>
                     </div>
@@ -126,9 +122,8 @@
                                 <div class="box-contant">
                                     <p>If there are No two (2) cards on the field that sums up to ten (10) the player loses the game.  </p>
                                 </div>
-                                <div     class="double_img">
-                                <img src="{{asset('home/images/queencard10.png')}}" alt="img">
-                                <img src="{{asset('home/images/queencard11.png')}}" alt="img">
+                                <div class="imag_box">
+                                    <img src="{{asset('home/images/queencard10.png')}}" alt="img">
                                     </div>
                                 </div>
                     </div>
@@ -137,9 +132,8 @@
                                 <div class="box-contant">
                                     <p>Jokers are available to use to control the winning to strategically make a move and replace 1 card on the table</p>
                                 </div>
-                                <div class="double_img">
-                                <img src="{{asset('home/images/queencard14.png')}}" alt="img">
-                                <img src="{{asset('home/images/queencard13.png')}}" alt="img">
+                                <div class="imag_box">
+                                    <img src="{{asset('home/images/queencard11.png')}}" alt="img">
                                     </div>
                                 </div>
                     </div>
