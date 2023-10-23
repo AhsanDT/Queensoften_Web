@@ -6,7 +6,7 @@
         </div>
         <div class="header-right">
             <nav id="nav">
-                <div class="d-flex align-items-center justify-content-between mb-4">
+                <div class="d-flex align-items-center justify-content-between mb-4 d-lg-none d-block">
                     <div class="logo d-lg-none d-block">
                         <a href="{{route('home')}}"><img src="{{asset('home/images/logo.svg')}}" alt="logo"> </a>
                     </div>

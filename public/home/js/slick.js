@@ -3069,7 +3069,7 @@ $('.product_slider').slick({
 });
 
 
-$('.product_cards').slick({
+$('.product-card-slider').slick({
     dots: false,
     infinite: true,
     speed: 300,
@@ -3084,7 +3084,7 @@ $('.product_cards').slick({
                 unslick: false,
             }
         },
-        
+
         {
             breakpoint: 1200,
             settings: {

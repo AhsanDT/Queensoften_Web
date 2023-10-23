@@ -233,7 +233,7 @@ $breakpoints: (
                                     padding-right: 10px;
                                 }
                             }
-                         
+
                         }
 
                         .showdow {
@@ -602,9 +602,6 @@ $breakpoints: (
                 width: 100%;
                 display: flex;
                 align-items: center;
-                @include media("<tablet"){
-                    height: unset !important;
-                }
                 img {
                     display: block;
                     width: 100%;
@@ -890,7 +887,7 @@ $breakpoints: (
 
     .story_title {
         justify-content: center;
-        
+
 
         h1 {
             padding: 50px 192px;
@@ -954,7 +951,7 @@ $breakpoints: (
             letter-spacing: normal;
         }
     }
-	
+
 }
 
 
@@ -1019,6 +1016,18 @@ $breakpoints: (
             border-bottom-color: transparent;
             color: #2db34a;
             cursor: default;
+        }
+    }
+}
+
+.product-card-slider{
+    .slick-track{
+        height: 100%;
+        .slick-slide{
+            display: flex;
+            [class*="col"]{
+              height: 100%;
+            }
         }
     }
 }
