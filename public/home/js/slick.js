@@ -3069,7 +3069,7 @@ $('.product_slider').slick({
 });
 
 
-$('.product_card').slick({
+$('.product_cards').slick({
     dots: false,
     infinite: true,
     speed: 300,

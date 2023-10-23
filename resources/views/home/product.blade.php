@@ -446,7 +446,6 @@
                 </div>
             </div>
 
-
             <div id="MERCH" class="tabcontent" style="display:none">
                 <div class="our_product">
                     <div class="product_card">
@@ -870,8 +869,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </section>
 </main>
