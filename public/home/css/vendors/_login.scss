@@ -431,6 +431,13 @@
             .edit1 {
                 flex-direction: column;
             }
+            .wallet{
+                flex-direction: column;
+                .my_wallet{
+                    padding: 0 0 10px 0 !important;
+
+                }
+            }
         }
     }
 }
