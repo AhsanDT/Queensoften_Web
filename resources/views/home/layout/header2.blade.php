@@ -25,12 +25,12 @@
                 <span><a href=""></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                 <div class="dropdown">
                     <button id="dropdownMenuButton" data-toggle="dropdown">
-                        <img src="images/profileimg.svg" alt="Profile Image">
+                        <img src="{{asset('home/images/profileimg.svg')}}"  alt="Profile Image">
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <ul>
                             <li class="showdow">
-                                <div class="p-icon"><a href="#"><img src="images/profileimg.svg" alt="Profile Image"></a>
+                                <div class="p-icon"><a href="#"><img src="{{asset('home/images/profileimg.svg')}}"  alt="Profile Image"></a>
                                 <span>
                                         <p>Ava Johns <br> avajohns123</p>
                                     </span>

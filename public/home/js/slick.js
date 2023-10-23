@@ -3034,42 +3034,7 @@ jQuery(document).ready(function ($) {
 });
 
 
-// product slider
-// $('.product_slider').slick({
-//     dots: true,
-//     infinite: false,
-//     speed: 300,
-//     slidesToShow: 3,
-//     slidesToScroll: 1,
-//     responsive: [
-//       {
-//         breakpoint: 1024,
-//         settings: {
-//           slidesToShow: 3,
-//           slidesToScroll: 3,
-//           infinite: true,
-//           dots: true
-//         }
-//       },
-//       {
-//         breakpoint: 600,
-//         settings: {
-//           slidesToShow: 2,
-//           slidesToScroll: 2
-//         }
-//       },
-//       {
-//         breakpoint: 480,
-//         settings: {
-//           slidesToShow: 1,
-//           slidesToScroll: 1
-//         }
-//       }
-//       // You can unslick at a given breakpoint now by adding:
-//       // settings: "unslick"
-//       // instead of a settings object
-//     ]
-//   });
+
 
 $('.product_slider').slick({
     dots: false,
@@ -3104,36 +3069,44 @@ $('.product_slider').slick({
 });
 
 
-// $('.product_card').slick({
-//     dots: false,
-//     infinite: true,
-//     speed: 300,
-//     slidesToShow: 3,
-//     slidesToScroll: 1,
-//     arrows: false,
-//     responsive: [
-//         {
-//             breakpoint: 4000,
-//             settings: {
-//                 slidesToShow: 4,
-//                 unslick: false,
-//             }
-//         },
-//         {
-//             breakpoint: 767,
-//             settings: {
-//                 slidesToShow: 2,
-//                 unslick: true,
-//             }
-//         },
-//         {
-//             breakpoint: 500,
-//             settings: {
-//                 slidesToShow: 1,
+$('.product_card').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+        {
+            breakpoint: 4000,
+            settings: {
+                slidesToShow: 4,
+                unslick: false,
+            }
+        },
+        
+        {
+            breakpoint: 1200,
+            settings: {
+                slidesToShow: 3,
+                unslick: true,
+            }
+        },
+        {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 2,
+                unslick: true,
+            }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1,
 
-//             }
-//         }
-//     ]
-// });
+            }
+        }
+    ]
+});
 
 

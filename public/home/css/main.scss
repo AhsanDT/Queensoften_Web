@@ -111,7 +111,6 @@ $breakpoints: (
                         padding: 0 15px;
                         margin: 5px 0;
 
-
                         @include media("<tablet-x") {
                             padding: 0;
                             border-bottom: 1px solid #4c2c6c;
@@ -124,7 +123,30 @@ $breakpoints: (
                             color: #fff;
                             text-decoration: none;
                             display: flex !important;
+                            position: relative;
 
+                            &::before{
+                                content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 2px;
+                            bottom: 0;
+                            left: 0;
+                            top: 25px;
+                            text-shadow: 0px -2px 0px rgba(0,0,0,1), 0 0 5px rgb(213 73 213 / 80%), 0 -4px 15px rgb(226 52 218 / 50%);
+                            height: 1px;
+                            background: rgb(235 235 235 / 50%);
+                            box-shadow: 0 0 10px rgb(251, 252, 252);
+                            visibility: hidden;
+                            border-radius: 2px;
+                            transform: scaleX(0);
+                            transition: .25s linear;
+                            }
+                            &:hover:before,
+                            &:focus:before {
+                              visibility: visible;
+                              transform: scaleX(1);
+                            }
                             i {
                                 padding-right: 12px;
                             }
@@ -178,6 +200,9 @@ $breakpoints: (
                 #dropdownMenuButton {
                     border: none;
                     background: transparent;
+                    img{
+                        width: 35px;
+                    }
                 }
 
                 .dropdown-menu {
@@ -208,6 +233,7 @@ $breakpoints: (
                                     padding-right: 10px;
                                 }
                             }
+                         
                         }
 
                         .showdow {
@@ -215,14 +241,16 @@ $breakpoints: (
                                 display: flex;
                                 align-items: center;
                                 box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.28);
-
+                                img{
+                                    width: 35px;
+                                }
                                 &:hover {
                                     background-color: #552771;
                                     color: #fff !important;
                                 }
 
                                 span {
-                                    margin: 0 5px 0 0;
+                                    margin: 12px 5px 0 0;
                                     font-size: 14px;
                                 }
                             }
@@ -568,6 +596,7 @@ $breakpoints: (
             font-size: 14px;
             padding: 15px;
             min-height: 100%;
+            margin: 0 10px;
 
             .imag_box {
                 width: 100%;
@@ -942,8 +971,9 @@ $breakpoints: (
         .product_card {
             background-image: url(../images/wave.png);
             background-position: right;
-            background-size: contain;
-            padding: 0 20px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom;
 
             .sec_tab {
                 background: linear-gradient(360deg, hsla(0, 0%, 48%, 1) 0%, hsla(0, 0%, 100%, 1) 33%);

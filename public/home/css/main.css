@@ -22440,7 +22440,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   font-weight: bold;
   color: #000;
   cursor: pointer;
-  padding: 12px;
+  padding: 11px;
   text-align: center;
   border: none;
   border-radius: 10.136px;
@@ -23672,6 +23672,31 @@ input[type=submit] {
   color: #fff;
   text-decoration: none;
   display: flex !important;
+  position: relative;
+}
+#header .container .header-right #nav ul li a::before,
+#header .container .header-right .nav_btn ul li a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  top: 25px;
+  text-shadow: 0px -2px 0px rgb(0, 0, 0), 0 0 5px rgba(213, 73, 213, 0.8), 0 -4px 15px rgba(226, 52, 218, 0.5);
+  height: 1px;
+  background: rgba(235, 235, 235, 0.5);
+  box-shadow: 0 0 10px rgb(251, 252, 252);
+  visibility: hidden;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: 0.25s linear;
+}
+#header .container .header-right #nav ul li a:hover:before, #header .container .header-right #nav ul li a:focus:before,
+#header .container .header-right .nav_btn ul li a:hover:before,
+#header .container .header-right .nav_btn ul li a:focus:before {
+  visibility: visible;
+  transform: scaleX(1);
 }
 #header .container .header-right #nav ul li a i,
 #header .container .header-right .nav_btn ul li a i {
@@ -23724,6 +23749,9 @@ input[type=submit] {
   border: none;
   background: transparent;
 }
+#header .container .header-right .profile #dropdownMenuButton img {
+  width: 35px;
+}
 #header .container .header-right .profile .dropdown-menu {
   padding: 0;
 }
@@ -23753,12 +23781,15 @@ input[type=submit] {
   align-items: center;
   box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.28);
 }
+#header .container .header-right .profile .dropdown ul .showdow .p-icon img {
+  width: 35px;
+}
 #header .container .header-right .profile .dropdown ul .showdow .p-icon:hover {
   background-color: #552771;
   color: #fff !important;
 }
 #header .container .header-right .profile .dropdown ul .showdow .p-icon span {
-  margin: 0 5px 0 0;
+  margin: 12px 5px 0 0;
   font-size: 14px;
 }
 #header #nav {
@@ -24042,6 +24073,7 @@ input[type=submit] {
   font-size: 14px;
   padding: 15px;
   min-height: 100%;
+  margin: 0 10px;
 }
 .play_queens .product_card .card_contant .imag_box {
   width: 100%;
@@ -24374,8 +24406,9 @@ input[type=submit] {
 .tab .our_product .product_card {
   background-image: url(../images/wave.png);
   background-position: right;
-  background-size: contain;
-  padding: 0 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 .tab .our_product .product_card .sec_tab {
   background: linear-gradient(360deg, hsl(0, 0%, 48%) 0%, hsl(0, 0%, 100%) 33%);

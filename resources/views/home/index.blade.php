@@ -26,9 +26,9 @@
             <div class="sec-banner  play_queen">
                 <h2>How to play<span class="text-warning"> queens of 10!</span></h2>
             </div>
-            <div class="container">
+            <div class="container-fluid">
                     <div class="product_card row">
-                        <div class="col-xl-3 col-md-4 col-sm-6 mb-3 ">
+                        <div class="col-xl-3 col-md-4 col-sm-6 mb-3 my-2">
                             <div class="section card_contant counter ">
                                 <div class="box-contant">
                                     <p>Queens of Ten has 3 game modes. (Freeplay, Timed and Challenges). Each game
