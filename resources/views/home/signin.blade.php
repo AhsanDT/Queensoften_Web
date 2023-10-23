@@ -14,8 +14,11 @@
                     </div>
                     <div class="form-group">
                         <label class="py-1" type="password">Password</label>
-                        <input class="form-control" type="password" id="password" name="password" placeholder="Password"
+                       <div class="position-relative showBox">
+                       <input class="form-control" type="password" id="password" name="password" placeholder="Password"
                             required>
+                            <i class="fa fa-eye"></i>
+                       </div>
                     </div>
                     <div class="forget">
                         <p>Forgot Password</p>

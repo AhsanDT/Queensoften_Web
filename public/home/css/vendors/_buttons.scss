@@ -1,10 +1,9 @@
-
 .btn {
 	font-size: 14px;
 	font-weight: bold;
 	color: #000;
 	cursor: pointer;
-	padding: 12px;
+	padding: 11px;
 	text-align: center;
 	border: none;
 	border-radius: 10.136px;
@@ -13,17 +12,30 @@
 		outline: none !important;
 		box-shadow: none;
 	}
-	@include media("<tablet-x"){
+	@include media("<tablet-x") {
 		font-size: 12px;
 	}
-	@include media("<xs-phone"){
+	@include media("<xs-phone") {
 		width: auto;
 	}
 	&:hover {
 		background: var(--Yellow, linear-gradient(180deg, #ffcf35 0%, #ffe384 100%));
 		color: #000;
 	}
+	&.labalbtn {
+		background: transparent;
+		border: 1px solid #dcdce4;
+		border-radius: 5px;
+		font-size: 12px;
+		padding: 10px;
+		color: #dcdce4;
+		width: 65px;
 
+		&:hover,:focus {
+			border-color: #450e61;
+			color: #450e61;
+		}
+	}
 }
 
 .form_btn {
@@ -40,13 +52,13 @@
 		width: 225px;
 		margin: 0 0 0 40px;
 	}
-	@include media("<tablet"){
+	@include media("<tablet") {
 		.btn {
 			width: 200px;
 			margin: 0 0 0 10px;
 		}
 	}
-	@include media("<phone"){
+	@include media("<phone") {
 		.btn {
 			width: auto;
 			margin: 0 0 0 10px;
@@ -60,7 +72,7 @@
 	a {
 		background: #000;
 		color: #fff;
-		&:hover{
+		&:hover {
 			background: var(--Yellow, linear-gradient(180deg, #ffe384 0%, #ffcf35 100%));
 			color: #000;
 		}

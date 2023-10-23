@@ -6,8 +6,8 @@
         <div class="section box">
             <div class="container">
                 <h4 class="title">My Wallet</h4>
-                <div class="d-flex mb-3 mt-3">
-                    <div style="padding-right: 10px;" class="col-md-4 ">
+                <div class="d-flex mb-3 mt-3 wallet">
+                    <div style="padding-right: 10px;" class="col-md-4 wallets">
                         <div class="card_box">
                             <h5>Wallet Balance<span class="badge text-warning">TOPUP</span></h5>
                             <div class="form-group pt-2">

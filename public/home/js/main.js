@@ -46,7 +46,7 @@ function initMobileNav() {
         hideOnClickOutside: true,
         menuActiveClass: 'nav-active',
         menuOpener: '.nav-opener',
-        menuDrop: '#nav ,.nav_2'
+        menuDrop: '#nav'
     });;
 }
 
