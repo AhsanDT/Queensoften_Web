@@ -428,10 +428,16 @@
                 flex-direction: column;
             }
             .edit,
-            .edit1 {
+            .edit1{
                 flex-direction: column;
             }
+            .wallet{
+            flex-direction: column;
+            .wallets{
+                padding: 0 0 10px 0 !important;
+            }
         }
+        
     }
 }
 

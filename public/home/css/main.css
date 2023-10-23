@@ -22885,7 +22885,8 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
     flex-direction: column;
   }
   .box .container .edit,
-  .box .container .edit1 {
+  .box .container .edit1,
+  .box .container .wallet {
     flex-direction: column;
   }
 }
@@ -23559,7 +23560,8 @@ input[type=submit] {
     flex-direction: column;
   }
   .box .container .edit,
-  .box .container .edit1 {
+  .box .container .edit1,
+  .box .container .wallet {
     flex-direction: column;
   }
 }
