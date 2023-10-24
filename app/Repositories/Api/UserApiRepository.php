@@ -141,44 +141,42 @@ class UserApiRepository implements UserApiRepositoryInterface
                 if ($userNew) {
                     $subscriptionType = $user->subscription->subscription_type;
 //            dd($subscriptionType);
-                    if ($userNew->drop_hand_usage != 'used') {
-                        $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
-                        $userNew->drop_hand = $maxDropHand;
-                        $lastLoginDate = $userNew->last_login_at;
+                    $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
+                    $userNew->drop_hand = $maxDropHand;
+                    $lastLoginDate = $userNew->last_login_at;
 //                        $today = now()->startOfDay();
-                        $today = Carbon::now()->addMinute();
-                        if (!$lastLoginDate || $lastLoginDate < $today) {
-                            $userNew->last_login_at = now();
-                            if ($subscriptionType == 'standard') {
-                                $userNew->save();
-                                $jokerTypes = ['big', 'small'];
-                                $jokerIds = Joker::whereIn('type', $jokerTypes)->pluck('id');
-                                $jokerNew = Joker::find($jokerIds);
-                                foreach ($jokerIds as $jokerId) {
-                                    $item = UserPurchase::where('user_id', $userNew->id)->where('purchase_id', $jokerId)->where('type', 'joker')->first();
-                                    if ($item) {
-                                        $item->quantity = $item->quantity + 1;
-                                        $item->save();
-                                    } else {
-                                        $jokerPurchase = new UserPurchase([
-                                            'user_id' => $userNew->id,
-                                            'type' => 'joker',
-                                            'purchase_id' => $jokerId,
-                                            'quantity' => 1,
-                                        ]);
-                                        $jokerPurchase->save();
-                                    }
+                    $today = Carbon::now()->addMinute();
+                    if (!$lastLoginDate || $lastLoginDate < $today) {
+                        $userNew->last_login_at = now();
+                        if ($subscriptionType == 'standard') {
+                            $userNew->save();
+                            $jokerTypes = ['big', 'small'];
+                            $jokerIds = Joker::whereIn('type', $jokerTypes)->pluck('id');
+                            $jokerNew = Joker::find($jokerIds);
+                            foreach ($jokerIds as $jokerId) {
+                                $item = UserPurchase::where('user_id', $userNew->id)->where('purchase_id', $jokerId)->where('type', 'joker')->first();
+                                if ($item) {
+                                    $item->quantity = $item->quantity + 1;
+                                    $item->save();
+                                } else {
+                                    $jokerPurchase = new UserPurchase([
+                                        'user_id' => $userNew->id,
+                                        'type' => 'joker',
+                                        'purchase_id' => $jokerId,
+                                        'quantity' => 1,
+                                    ]);
+                                    $jokerPurchase->save();
                                 }
-                                $reward = [
-                                    'type' => 'joker',
-                                    'sub_type'=>$jokerNew[0]->type,
-                                    'quantity'=> 1
-                                ];
-                            } else {
-                                $userNew->save();
                             }
+                            $reward = [
+                                'type' => 'joker',
+                                'sub_type'=>$jokerNew[0]->type,
+                                'quantity'=> 1
+                            ];
+                        } else {
                             $userNew->save();
                         }
+                        $userNew->save();
                     }
                     return $this->response(true, 'Login Successfully',
                         [
