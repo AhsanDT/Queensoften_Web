@@ -143,6 +143,7 @@ class UserApiRepository implements UserApiRepositoryInterface
 //            dd($subscriptionType);
                     $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
                     $userNew->drop_hand = $maxDropHand;
+                    $userNew->drop_hand_usage = 'not_used';
                     $lastLoginDate = $userNew->last_login_at;
 //                        $today = now()->startOfDay();
                     $today = Carbon::now()->addMinute();
