@@ -177,8 +177,8 @@ class UserApiRepository implements UserApiRepositoryInterface
                             } else {
                                 $userNew->save();
                             }
+                            $userNew->save();
                         }
-                        $userNew->save();
                     }
                     return $this->response(true, 'Login Successfully',
                         [
