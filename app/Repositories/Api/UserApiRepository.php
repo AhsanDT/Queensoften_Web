@@ -20,6 +20,7 @@ use App\Traits\AchievementTrait;
 use App\Traits\NotificationTrait;
 use App\Traits\ResponseTrait;
 use App\Traits\SendGridTrait;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -144,16 +145,27 @@ class UserApiRepository implements UserApiRepositoryInterface
                         $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
                         $userNew->drop_hand = $maxDropHand;
                         $lastLoginDate = $userNew->last_login_at;
-                        $today = now()->startOfDay();
+                        //$today = now()->startOfDay();
+                        $today = Carbon::now()->subMinutes(1);
                         if (!$lastLoginDate || $lastLoginDate < $today) {
                             $userNew->last_login_at = now();
+
+                            // Update the "drop hand" and other rewards
                             if ($subscriptionType == 'standard') {
-                                $userNew->save();
+                                $userNew->drop_hand_usage = 'used';
+                                $maxDropHand = 3; // The maximum "drop hand" for standard subscribers
+                                $userNew->drop_hand = $maxDropHand;
+
+                                // Check for other rewards and assign them
                                 $jokerTypes = ['big', 'small'];
                                 $jokerIds = Joker::whereIn('type', $jokerTypes)->pluck('id');
-                                $jokerNew = Joker::find($jokerIds);
+
                                 foreach ($jokerIds as $jokerId) {
-                                    $item = UserPurchase::where('user_id', $userNew->id)->where('purchase_id', $jokerId)->where('type', 'joker')->first();
+                                    $item = UserPurchase::where('user_id', $userNew->id)
+                                        ->where('purchase_id', $jokerId)
+                                        ->where('type', 'joker')
+                                        ->first();
+
                                     if ($item) {
                                         $item->quantity = $item->quantity + 1;
                                         $item->save();
@@ -167,14 +179,15 @@ class UserApiRepository implements UserApiRepositoryInterface
                                         $jokerPurchase->save();
                                     }
                                 }
+
                                 $reward = [
                                     'type' => 'joker',
-                                    'sub_type'=>$jokerNew[0]->type,
-                                    'quantity'=> 1
+                                    'sub_type' => $jokerTypes[0], // Assuming you want the first joker type
+                                    'quantity' => 1,
                                 ];
-                            } else {
-                                $userNew->save();
                             }
+
+                            $userNew->save();
                         }
                     }
                     return $this->response(true, 'Login Successfully',
