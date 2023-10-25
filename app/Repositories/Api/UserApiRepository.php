@@ -85,25 +85,42 @@ class UserApiRepository implements UserApiRepositoryInterface
                     '',
                     Response::HTTP_UNAUTHORIZED);
             $subscription = Subscription::where('price',0)->first();
-
+            if ($key != 'apple'){
             if($userModel){
-                $newUserName = $userModel->username;
+                    $newUserName = $userModel->username;
             }else{
                 $newUserName = $userName;
             }
-            $user = $this->modal::updateOrCreate([
-                "$key" => $value,
-            ], [
-                'name' => $name,
-                'username' => $newUserName,
-                'picture' => $picture?:($userModel->picture ?? ''),
-                'online_status' => '1',
-                'google_id' => ($request->driver == 'google') ? $request->driver_id : null,
-                'facebook_id' => ($request->driver == 'facebook') ? $request->driver_id : null,
-                'apple_id' => ($request->driver == 'apple') ? $request->driver_id : null,
-                'activeAt' => now(),
-                'subscription_id' => $newUser?$newUser->subscription_id: $subscription->id,
-            ]);
+            }
+            if ($key == 'apple'){
+                $user = $this->modal::updateOrCreate([
+                    "$key" => $value,
+                ], [
+                    'name' => $name,
+                    'username' => $newUserName ?? '',
+                    'picture' => $picture?:($userModel->picture ?? ''),
+                    'online_status' => '1',
+                    'google_id' => ($request->driver == 'google') ? $request->driver_id : null,
+                    'facebook_id' => ($request->driver == 'facebook') ? $request->driver_id : null,
+                    'apple_id' => ($request->driver == 'apple') ? $request->driver_id : null,
+                    'activeAt' => now(),
+                    'subscription_id' => $newUser?$newUser->subscription_id: $subscription->id,
+                ]);
+            }else{
+                $user = $this->modal::updateOrCreate([
+                    "$key" => $value,
+                ], [
+                    'name' => $name,
+                    'username' => $newUserName,
+                    'picture' => $picture?:($userModel->picture ?? ''),
+                    'online_status' => '1',
+                    'google_id' => ($request->driver == 'google') ? $request->driver_id : null,
+                    'facebook_id' => ($request->driver == 'facebook') ? $request->driver_id : null,
+                    'apple_id' => ($request->driver == 'apple') ? $request->driver_id : null,
+                    'activeAt' => now(),
+                    'subscription_id' => $newUser?$newUser->subscription_id: $subscription->id,
+                ]);
+            }
 
             $user->email = $email;
 
