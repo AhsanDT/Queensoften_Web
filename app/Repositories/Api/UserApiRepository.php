@@ -57,6 +57,7 @@ class UserApiRepository implements UserApiRepositoryInterface
 
             if ($request->driver == 'apple') {
                 $appleUser = $this->modal::where('apple_id', $request->driver_id)->first();
+                dd($appleUser);
                 $newPicture = $this->modal::where('email', $request->email)->first();
                 if ($appleUser) {
                     $name = $name ?? $appleUser->name;
