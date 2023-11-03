@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        return view('home.index');
+        $tutorials = Tutorial::take(4)->get();
+        return view('home.index',compact('tutorials'));
     }
     public function billing(){
         return view('home.billingaddress');
