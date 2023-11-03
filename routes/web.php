@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/login',[\App\Http\Controllers\AuthController::class,'index'])->name('login');
+Route::get('/',[\App\Http\Controllers\HomeController::class,'index'])->name('home');
+Route::get('/billing',[\App\Http\Controllers\HomeController::class,'billing'])->name('billing');
+Route::get('/tutorial',[\App\Http\Controllers\HomeController::class,'tutorial'])->name('tutorial');
+Route::get('/story',[\App\Http\Controllers\HomeController::class,'story'])->name('story');
+Route::get('/signup',[\App\Http\Controllers\HomeController::class,'signup'])->name('signup');
+Route::get('/signin',[\App\Http\Controllers\HomeController::class,'signin'])->name('signin');
+Route::get('/product',[\App\Http\Controllers\HomeController::class,'product'])->name('product');
+Route::get('/mywallet',[\App\Http\Controllers\HomeController::class,'mywallet'])->name('mywallet');
+Route::get('/manageaccount',[\App\Http\Controllers\HomeController::class,'manageaccount'])->name('manageaccount');
+Route::get('/editprofile',[\App\Http\Controllers\HomeController::class,'editprofile'])->name('editprofile');
+Route::get('/contactus',[\App\Http\Controllers\HomeController::class,'contactus'])->name('contactus');
 Route::post('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('login.authenticate');
 Route::get('/forgot-password',[\App\Http\Controllers\AuthController::class,'forgot_request'])->name('password.request');
 Route::post('/forgot-password',[\App\Http\Controllers\AuthController::class,'forgot_password'])->name('password.email');
@@ -24,7 +35,7 @@ Route::get('/fb-data-deletion',  [\App\Http\Controllers\GuidelineController::cla
 Route::get('/about',  [\App\Http\Controllers\GuidelineController::class, 'about']);
 
 Route::group(['middleware'=> ['auth:admin']],function() {
-    Route::get('/',  [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
+    Route::get('/dashboard',  [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\UserController::class, 'index'])->name('index');
         Route::get('/premium',  [\App\Http\Controllers\UserController::class, 'premium'])->name('premium');
