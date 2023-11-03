@@ -156,30 +156,6 @@ function initMobileNav() {
     };
 }(jQuery));
 
-//counter
-
-$(document).ready(function() {
-    $('.quantity__minus').click(function(e) {
-      e.preventDefault();
-      var input = $(this).siblings('.quantity__input');
-      var value = input.val();
-      if (value > 1) {
-        value--;
-      }
-      input.val(value);
-    });
-    
-    $('.quantity__plus').click(function(e) {
-      e.preventDefault();
-      var input = $(this).siblings('.quantity__input');
-      var value = input.val();
-      value++;
-      input.val(value);
-    });
-});
-
-
-
 //   tab
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;

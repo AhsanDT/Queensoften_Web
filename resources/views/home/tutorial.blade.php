@@ -66,10 +66,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="product_card product-card-slider row">
                 <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
                     <div class="section card_contant counter">
                         <div class="box-contant">
@@ -117,11 +113,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="container-fluid">
-            <div class="product_card product-card-slider row">
                 <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
                     <div class="section card_contant counter">
                         <div class="box-contant">

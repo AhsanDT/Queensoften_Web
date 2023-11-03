@@ -3069,44 +3069,44 @@ $('.product_slider').slick({
 });
 
 
-$('.product-card-slider').slick({
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    arrows: false,
-    responsive: [
-        {
-            breakpoint: 4000,
-            settings: {
-                slidesToShow: 4,
-                unslick: false,
-            }
-        },
+// $('.product-card-slider').slick({
+//     dots: false,
+//     infinite: true,
+//     speed: 300,
+//     slidesToShow: 4,
+//     slidesToScroll: 1,
+//     arrows: false,
+//     responsive: [
+//         {
+//             breakpoint: 4000,
+//             settings: {
+//                 slidesToShow: 4,
+//                 unslick: false,
+//             }
+//         },
 
-        {
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 3,
-                unslick: true,
-            }
-        },
-        {
-            breakpoint: 767,
-            settings: {
-                slidesToShow: 2,
-                unslick: true,
-            }
-        },
-        {
-            breakpoint: 500,
-            settings: {
-                slidesToShow: 1,
+//         {
+//             breakpoint: 1200,
+//             settings: {
+//                 slidesToShow: 3,
+//                 unslick: true,
+//             }
+//         },
+//         {
+//             breakpoint: 767,
+//             settings: {
+//                 slidesToShow: 2,
+//                 unslick: true,
+//             }
+//         },
+//         {
+//             breakpoint: 500,
+//             settings: {
+//                 slidesToShow: 1,
 
-            }
-        }
-    ]
-});
+//             }
+//         }
+//     ]
+// });
 
 

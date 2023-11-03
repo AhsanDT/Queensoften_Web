@@ -4,7 +4,7 @@
     @foreach($story_modes as $story_mode)
         <!-- banner -->
         <section>
-            <div>
+            <div class="story_banners">
                 <img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/{{$story_mode->image}}" alt="img">
             </div>
         </section>
