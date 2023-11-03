@@ -24211,7 +24211,6 @@ input[type=submit] {
   position: relative;
 }
 .play_queens .counter::before {
-  counter-increment: section;
   content: "" counter(section) ".";
   position: relative;
   padding: 3px 5px;
@@ -24431,6 +24430,10 @@ input[type=submit] {
   color: #000;
   text-align: center;
   padding: 0 0 20px 0;
+}
+
+.story_banners img {
+  width: 100%;
 }
 
 .story-texts {
