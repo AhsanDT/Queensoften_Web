@@ -3,52 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\StoryMode;
+use App\Models\Tutorial;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
-        // dd(12);
         return view('home.index');
     }
     public function billing(){
-        // dd(12);
         return view('home.billingaddress');
     }
     public function tutorial(){
-        // dd(12);
-        return view('home.tutorial');
+        $tutorials = Tutorial::all();
+        return view('home.tutorial',compact('tutorials'));
     }
     public function story(){
-        // dd(12);
-        return view('home.story');
+        $story_modes = StoryMode::all();
+        return view('home.story',compact('story_modes'));
     }
     public function signup(){
-        // dd(12);
         return view('home.signup');
     }
     public function signin(){
-        // dd(12);
         return view('home.signin');
     }
     public function product(){
-        // dd(12);
         return view('home.product');
     }
     public function mywallet(){
-        // dd(12);
         return view('home.mywallet');
     }
     public function manageaccount(){
-        // dd(12);
         return view('home.manageaccount');
     }
     public function editprofile(){
-        // dd(12);
         return view('home.editprofile');
     }
     public function contactus(){
-        // dd(12);
         return view('home.contactus');
     }
 

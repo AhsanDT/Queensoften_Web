@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/login',[\App\Http\Controllers\AuthController::class,'index'])->name('login');
-Route::get('/landingPage',[\App\Http\Controllers\HomeController::class,'index'])->name('home');
+Route::get('/',[\App\Http\Controllers\HomeController::class,'index'])->name('home');
 Route::get('/billing',[\App\Http\Controllers\HomeController::class,'billing'])->name('billing');
 Route::get('/tutorial',[\App\Http\Controllers\HomeController::class,'tutorial'])->name('tutorial');
 Route::get('/story',[\App\Http\Controllers\HomeController::class,'story'])->name('story');
@@ -35,7 +35,7 @@ Route::get('/fb-data-deletion',  [\App\Http\Controllers\GuidelineController::cla
 Route::get('/about',  [\App\Http\Controllers\GuidelineController::class, 'about']);
 
 Route::group(['middleware'=> ['auth:admin']],function() {
-    Route::get('/',  [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
+    Route::get('/dashboard',  [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/',  [\App\Http\Controllers\UserController::class, 'index'])->name('index');
         Route::get('/premium',  [\App\Http\Controllers\UserController::class, 'premium'])->name('premium');
