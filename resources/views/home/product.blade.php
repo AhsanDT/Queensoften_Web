@@ -21,7 +21,7 @@
                 <div class="our_product">
                     <div class="product_card">
                         <div class="container">
-                            <div class=" row product_slider">
+                            <div class="row ">
                                 @foreach($allItems as $item)
                                     <div class=" col-lg-4 col-md-4 col-sm-6">
                                         <div class="section card_contant ">

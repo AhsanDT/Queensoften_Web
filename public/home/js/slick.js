@@ -3047,27 +3047,19 @@ $('.product_slider').slick({
         {
             breakpoint: 4000,
             settings: {
-                slidesToShow: 3,
-                unslick: false,
+                unslick: true // Disable the Slick Slider at this breakpoint
             }
         },
         {
             breakpoint: 767,
             settings: {
                 slidesToShow: 2,
-                unslick: true,
+                unslick: false
             }
         },
-        {
-            breakpoint: 500,
-            settings: {
-                slidesToShow: 1,
-
-            }
-        }
+       
     ]
 });
-
 
 // $('.product-card-slider').slick({
 //     dots: false,
