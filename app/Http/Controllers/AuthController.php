@@ -6,22 +6,39 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
 use App\Http\Requests\ForgotRequest;
 use App\Http\Requests\ProfileRequest;
+use App\Models\Joker;
 use App\Models\Notification;
 use App\Models\NotificationType;
+use App\Models\Subscription;
 use App\Models\SupportTicket;
 use App\Models\User;
+use App\Models\UserPurchase;
 use App\Repositories\AuthRepositoryInterface;
+use App\Services\ChallengeService;
+use App\Traits\AchievementTrait;
+use App\Traits\NotificationTrait;
+use App\Traits\ResponseTrait;
+use App\Traits\SendGridTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use PHPUnit\Exception;
+use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
+    use ResponseTrait;
+    use AchievementTrait;
+    use NotificationTrait;
+    use SendGridTrait;
     private AuthRepositoryInterface $authRepository;
+    protected $challengeService;
 
-    public function __construct(AuthRepositoryInterface $authRepository)
+    public function __construct(AuthRepositoryInterface $authRepository,ChallengeService $challengeService)
     {
         $this->authRepository = $authRepository;
+        $this->challengeService = $challengeService;
     }
 
     function index()
@@ -78,7 +95,177 @@ class AuthController extends Controller
     }
     public function socialCallback($driver){
         $user = Socialite::driver($driver)->user();
-        dd($user->email);
+        try {
+            $useremail = $user->email;
+            $parts = explode('@', $useremail);
 
+            if (count($parts) == 2) {
+                $textBeforeAtSymbol = $parts[0];
+                $userName = $textBeforeAtSymbol;
+            } else {
+                $userName = $user->user->name;
+            }
+
+            $name = $user->name;
+            $email = $user->email;
+            $picture = $user->picture;
+            $driver_id = $driver;
+
+            if ($driver == 'apple') {
+                $appleUser = User::where('apple_id', $driver_id)->first();
+//                dd($appleUser);
+//                $newPicture = $this->modal::where('email', $request->email)->first();
+                if ($appleUser) {
+                    $name = $name ?? $appleUser->name;
+                    $email = $email ?? $appleUser->email;
+                    $userName = $userName ?? $appleUser->username;
+                    $picture = $appleUser->picture ?? $picture;
+                }
+                $key = 'apple_id';
+                $value = $driver_id;
+            } else {
+                $key = 'email';
+                $value = $email;
+            }
+
+            $checkTrashUser = User::where("$key", $value)->onlyTrashed()->first();
+
+            $checkUser = User::where("$key", $value)->where('account_status', 0)->first();
+            $newUser = User::where("$key", $value)->where('account_status', 1)->first();
+            $userModel = User::where("$key", $value)->first();
+
+            if ($checkTrashUser || $checkUser)
+                return $this->response(
+                    false,
+                    'Your account is deleted or disabled by admin. Please contact with support.',
+                    '',
+                    Response::HTTP_UNAUTHORIZED);
+            $subscription = Subscription::where('price',0)->first();
+            if ($key != 'apple'){
+                if($userModel){
+                    $newUserName = $userModel->username;
+                }else{
+                    $newUserName = $userName;
+                }
+            }
+            if ($key == 'apple'){
+                $user = User::updateOrCreate([
+                    "$key" => $value,
+                ], [
+                    'name' => $name,
+                    'username' => $newUserName ?? '',
+                    'picture' => $picture?:($userModel->picture ?? ''),
+                    'online_status' => '1',
+                    'google_id' => ($driver == 'google') ? $driver_id : null,
+                    'facebook_id' => ($driver == 'facebook') ? $driver_id : null,
+                    'apple_id' => ($driver == 'apple') ? $driver_id : null,
+                    'activeAt' => now(),
+                    'subscription_id' => $newUser?$newUser->subscription_id: $subscription->id,
+                ]);
+            }else{
+                $user = User::updateOrCreate([
+                    "$key" => $value,
+                ], [
+                    'name' => $name,
+                    'username' => $newUserName,
+                    'picture' => $picture?:($userModel->picture ?? ''),
+                    'online_status' => '1',
+                    'google_id' => ($driver == 'google') ? $driver_id : null,
+                    'facebook_id' => ($driver == 'facebook') ? $driver_id : null,
+                    'apple_id' => ($driver == 'apple') ? $driver_id : null,
+                    'activeAt' => now(),
+                    'subscription_id' => $newUser?$newUser->subscription_id: $subscription->id,
+                ]);
+            }
+
+            $user->email = $email;
+
+
+            if (!isset($newUser) || (($user->id) && ($user->skin == null))) {
+                $user->skin = 0;
+                $user->save();
+            }
+
+            if (!isset($newUser)) {
+                if ($user->email) {
+                    if (config('app.sendgrid_api_key')) {
+                        $this->createOrUpdateSubscriber($user);
+                    }
+                }
+                $this->notification_save($user->id, 2);
+            } else {
+                $this->notification_save($user->id, 1);
+            }
+
+            if ($user->id) {
+                $achievement = null;
+                if ($driver == 'facebook') {
+                    $challenge = $this->challengeService->getChallengeByName('Connect your Facebook account and receive a free reshuffle');
+                    if (!$this->achievementService->getAchievement($challenge->id, $user->id)) {
+                        $this->achievementService->save($challenge, $user);
+                        $achievement = $this->achievementResponse($challenge);
+                    }
+                }
+                Auth::login($user);
+                $user->tokens()->where('name', 'access_token')->delete();
+
+                $token = $user->createToken('access_token')->plainTextToken;
+                $userNew = User::with('purchases', 'subscription')->where("username", $user->username)->first();
+                $reward = null;
+                if ($userNew) {
+                    $subscriptionType = $user->subscription->subscription_type;
+//            dd($subscriptionType);
+                    $maxDropHand = ($subscriptionType === 'free') ? 1 : 3;
+                    $userNew->drop_hand = $maxDropHand;
+                    $userNew->drop_hand_usage = 'not_used';
+                    $lastLoginDate = $userNew->last_login_at;
+                    $today = now()->startOfDay();
+//                    $today = Carbon::now()->addMinute();
+                    if (!$lastLoginDate || $lastLoginDate < $today) {
+                        $userNew->last_login_at = now();
+                        if ($subscriptionType == 'standard') {
+                            $userNew->save();
+                            $jokerTypes = ['big', 'small'];
+                            $jokerIds = Joker::whereIn('type', $jokerTypes)->pluck('id');
+                            $jokerNew = Joker::find($jokerIds);
+                            foreach ($jokerIds as $jokerId) {
+                                $item = UserPurchase::where('user_id', $userNew->id)->where('purchase_id', $jokerId)->where('type', 'joker')->first();
+                                if ($item) {
+                                    $item->quantity = $item->quantity + 1;
+                                    $item->save();
+                                } else {
+                                    $jokerPurchase = new UserPurchase([
+                                        'user_id' => $userNew->id,
+                                        'type' => 'joker',
+                                        'purchase_id' => $jokerId,
+                                        'quantity' => 1,
+                                    ]);
+                                    $jokerPurchase->save();
+                                }
+                            }
+                            $reward = [
+                                'type' => 'joker',
+                                'sub_type'=>$jokerNew[0]->type,
+                                'quantity'=> 1
+                            ];
+                        } else {
+                            $userNew->save();
+                        }
+                        $userNew->save();
+                    }
+                    return $this->response(true, 'Login Successfully',
+                        [
+                            'user' => $userNew,
+                            'achievement' => $achievement,
+                            'token' => $token,
+                            'reward'=> $reward
+                        ]
+                        , Response::HTTP_OK);
+                }
+            }
+            return response(false, 'Login failed.', [], Response::HTTP_UNAUTHORIZED);
+        } catch (Exception $exception) {
+            return response(false, $exception->getMessage(), [], Response::HTTP_UNAUTHORIZED);
+        }
     }
 }
