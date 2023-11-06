@@ -18,7 +18,6 @@
             <button class="tablinks active" onclick="openCity(event, 'GAME')">IN GAME</button>
             <button class="tablinks" onclick="openCity(event, 'MERCH')">MERCH</button>
             <div id="GAME" class="tabcontent">
-               
                 <div class="our_product">
                     <div class="product_card">
                         <div class="container">
@@ -461,7 +460,7 @@
             <div class="our_product">
                 <div class="product_card">
                     <div class="container">
-                        <div class=" row product_slider">
+                         <div class="row ">
                             <div class=" col-lg-4 col-md-4 col-sm-6">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
@@ -537,12 +536,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product_card">
-                    <div class="container">
-                        <div class=" row product_slider">
                             <div class=" col-lg-4 col-md-4 col-sm-6">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
@@ -618,12 +611,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product_card">
-                    <div class="container">
-                        <div class=" row product_slider">
                             <div class=" col-lg-4 col-md-4 col-sm-6">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
@@ -699,12 +686,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product_card">
-                    <div class="container">
-                        <div class=" row product_slider">
                             <div class=" col-lg-4 col-md-4 col-sm-6">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
@@ -780,12 +761,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product_card">
-                    <div class="container">
-                        <div class=" row product_slider pb-4">
                             <div class=" col-lg-4 col-md-4 col-sm-6">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
@@ -861,12 +836,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
         </div>
-
         </div>
     </section>
 </main>
