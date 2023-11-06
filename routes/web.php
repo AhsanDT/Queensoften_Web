@@ -34,6 +34,7 @@ Route::get('/logout/',[\App\Http\Controllers\AuthController::class,'logout'] )->
 Route::get('/privacy-policy',  [\App\Http\Controllers\GuidelineController::class, 'privacyPolicy']);
 Route::get('/fb-data-deletion',  [\App\Http\Controllers\GuidelineController::class, 'fbDataDeletion']);
 Route::get('/about',  [\App\Http\Controllers\GuidelineController::class, 'about']);
+Route::post('/contact',  [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 Route::get('/auth/redirect/{driver}',[AuthController::class,'socialRedirect']);
 Route::get('/auth/callback/{driver}',[AuthController::class,'socialCallback']);
 
