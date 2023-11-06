@@ -15,6 +15,9 @@ use App\Models\User;
 use App\Models\UserPurchase;
 use App\Repositories\AuthRepositoryInterface;
 use App\Services\ChallengeService;
+use App\Traits\AchievementTrait;
+use App\Traits\NotificationTrait;
+use App\Traits\ResponseTrait;
 use App\Traits\SendGridTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +28,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
+    use ResponseTrait;
+    use AchievementTrait;
+    use NotificationTrait;
     use SendGridTrait;
     private AuthRepositoryInterface $authRepository;
     protected $challengeService;
@@ -257,9 +263,9 @@ class AuthController extends Controller
                         , Response::HTTP_OK);
                 }
             }
-            return $this->response(false, 'Login failed.', [], Response::HTTP_UNAUTHORIZED);
+            return response(false, 'Login failed.', [], Response::HTTP_UNAUTHORIZED);
         } catch (Exception $exception) {
-            return $this->response(false, $exception->getMessage(), [], Response::HTTP_UNAUTHORIZED);
+            return response(false, $exception->getMessage(), [], Response::HTTP_UNAUTHORIZED);
         }
     }
 }
