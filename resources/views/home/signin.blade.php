@@ -7,6 +7,7 @@
                     <div class="form-logo">
                     <img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
                     </div>
+                    <div class="login-btns">
                     <div class="btn-group">
                         <a href="{{url('/auth/redirect/google')}}" class="btn">
                             <div class="icon-box">
@@ -14,6 +15,15 @@
                             </div>
                             Sign in with Google
                         </a>
+                    </div>
+                    <div class="btn-group">
+                        <a href="{{url('/auth/redirect/google')}}" class="btn">
+                            <div class="icon-box">
+                                <img src="{{asset('images/google.svg')}}" alt="">
+                            </div>
+                            Sign in with Facebook
+                        </a>
+                    </div>
                     </div>
                 </form>
             </div>

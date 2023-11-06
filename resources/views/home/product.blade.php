@@ -18,11 +18,12 @@
             <button class="tablinks active" onclick="openCity(event, 'GAME')">IN GAME</button>
             <button class="tablinks" onclick="openCity(event, 'MERCH')">MERCH</button>
             <div id="GAME" class="tabcontent">
-                @foreach($allItems as $item)
+               
                 <div class="our_product">
                     <div class="product_card">
                         <div class="container">
                             <div class="row ">
+                                @foreach($allItems as $item)
                                 <div class=" col-lg-4 col-md-4 col-sm-6">
                                     <div class="section card_contant ">
                                         <div class="imag_box">
@@ -50,11 +51,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
+            </div>
+        
                 <!-- {{-- <div class=" col-lg-4 col-md-4 col-sm-6">--}}
                     {{-- <div class="section card_contant ">--}}
                         {{-- <div class="imag_box">--}}

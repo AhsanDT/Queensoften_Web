@@ -656,11 +656,10 @@ $breakpoints: (
 
 // our_product section
 .our_product {
-    background-image: url(../images/tabbg.png);
+    // background-image: url(../images/tabbg.png);
 
     .product_card {
         display: flex;
-        background-image: url(../images/wave.png);
         background-position: right;
         background-size: cover;
         background-repeat: no-repeat;
@@ -980,7 +979,8 @@ $breakpoints: (
     background-image: url(../images/tabbg.png);
     text-align: center;
     color: #fff;
-    background-position: unset;
+    background-position: cover;
+    background-repeat: no-repeat;
 
     .our_product {
         background: transparent;
@@ -988,7 +988,7 @@ $breakpoints: (
         .product_card {
             background-image: url(../images/wave.png);
             background-position: right;
-            background-size: cover;
+            background-size: contain;
             background-repeat: no-repeat;
             background-position: bottom;
 
