@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\UserPurchase;
 use App\Repositories\AuthRepositoryInterface;
 use App\Services\ChallengeService;
+use App\Traits\SendGridTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -24,6 +25,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
+    use SendGridTrait;
     private AuthRepositoryInterface $authRepository;
     protected $challengeService;
 
