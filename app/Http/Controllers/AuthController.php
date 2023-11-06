@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Repositories\AuthRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -70,5 +71,14 @@ class AuthController extends Controller
     function profileUpdate(ProfileRequest $request, $id)
     {
         return $this->authRepository->profileUpdate($request, $id);
+    }
+    public function socialRedirect($driver)
+    {
+        return Socialite::driver($driver)->redirect();
+    }
+    public function socialCallback($driver){
+        $user = Socialite::driver($driver)->user();
+        dd($user->email);
+
     }
 }
