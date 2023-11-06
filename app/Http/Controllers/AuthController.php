@@ -88,7 +88,7 @@ class AuthController extends Controller
     public function socialCallback($driver){
         $user = Socialite::driver($driver)->user();
         try {
-            $useremail = $user->user->email;
+            $useremail = $user->email;
             $parts = explode('@', $useremail);
 
             if (count($parts) == 2) {
@@ -98,9 +98,9 @@ class AuthController extends Controller
                 $userName = $user->user->name;
             }
 
-            $name = $user->user->name;
-            $email = $user->user->email;
-            $picture = $user->user->picture;
+            $name = $user->name;
+            $email = $user->email;
+            $picture = $user->picture;
             $driver_id = $driver;
 
             if ($driver == 'apple') {
