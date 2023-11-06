@@ -1053,3 +1053,17 @@ $breakpoints: (
         }
     }
 }
+.iti{
+    width: 100%;
+}
+.iti__country-list{
+    li {
+        span{
+            color: #333 !important;
+        }
+    }
+}
+
+.iti__selected-flag{
+    color: #333;
+}
