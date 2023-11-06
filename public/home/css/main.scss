@@ -125,28 +125,30 @@ $breakpoints: (
                             display: flex !important;
                             position: relative;
 
-                            &::before{
+                            &::before {
                                 content: "";
-                            position: absolute;
-                            width: 100%;
-                            height: 2px;
-                            bottom: 0;
-                            left: 0;
-                            top: 25px;
-                            text-shadow: 0px -2px 0px rgba(0,0,0,1), 0 0 5px rgb(213 73 213 / 80%), 0 -4px 15px rgb(226 52 218 / 50%);
-                            height: 1px;
-                            background: rgb(235 235 235 / 50%);
-                            box-shadow: 0 0 10px rgb(251, 252, 252);
-                            visibility: hidden;
-                            border-radius: 2px;
-                            transform: scaleX(0);
-                            transition: .25s linear;
+                                position: absolute;
+                                width: 100%;
+                                height: 2px;
+                                bottom: 0;
+                                left: 0;
+                                top: 25px;
+                                text-shadow: 0px -2px 0px rgba(0, 0, 0, 1), 0 0 5px rgb(213 73 213 / 80%), 0 -4px 15px rgb(226 52 218 / 50%);
+                                height: 1px;
+                                background: rgb(235 235 235 / 50%);
+                                box-shadow: 0 0 10px rgb(251, 252, 252);
+                                visibility: hidden;
+                                border-radius: 2px;
+                                transform: scaleX(0);
+                                transition: .25s linear;
                             }
+
                             &:hover:before,
                             &:focus:before {
-                              visibility: visible;
-                              transform: scaleX(1);
+                                visibility: visible;
+                                transform: scaleX(1);
                             }
+
                             i {
                                 padding-right: 12px;
                             }
@@ -200,7 +202,8 @@ $breakpoints: (
                 #dropdownMenuButton {
                     border: none;
                     background: transparent;
-                    img{
+
+                    img {
                         width: 35px;
                     }
                 }
@@ -241,9 +244,11 @@ $breakpoints: (
                                 display: flex;
                                 align-items: center;
                                 box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.28);
-                                img{
+
+                                img {
                                     width: 35px;
                                 }
+
                                 &:hover {
                                     background-color: #552771;
                                     color: #fff !important;
@@ -602,6 +607,7 @@ $breakpoints: (
                 width: 100%;
                 display: flex;
                 align-items: center;
+
                 img {
                     display: block;
                     width: 100%;
@@ -619,24 +625,33 @@ $breakpoints: (
         position: relative;
     }
 
-	.box-contant {
-		padding: 12px;
-	}
+    .box-contant {
+        padding: 12px;
+    }
 
-	.counter {
-		position: relative;
-	}
+    .counter {
+        position: relative;
 
-	.counter::before {
-		content: "" counter(section) ".";
-		position: relative;
-		padding: 3px 5px;
-		background: linear-gradient(180deg, #ffe486 0%, #ffcc4e 51.56%, #ffd02b 100%, #d2a61b 100%);
-		color: #000;
-		border-radius: 50%;
-		font-size: 12px;
-		font-weight: 800;
-	}
+        span {
+
+            position: absolute;
+            left: 14px;
+            top: 15px;
+            background: linear-gradient(180deg, #ffe486 0%, #ffcc4e 51.56%, #ffd02b 100%, #d2a61b 100%);
+            color: #000;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 800;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+    }
+
+
 }
 
 // our_product section
@@ -878,10 +893,11 @@ $breakpoints: (
         text-align: center;
         padding: 0 0 20px 0;
     }
-    
+
 }
-.story_banners{
-    img{
+
+.story_banners {
+    img {
         width: 100%;
     }
 }
@@ -897,15 +913,15 @@ $breakpoints: (
         h1 {
             padding: 50px 192px;
             text-shadow: 0px 3px 65px #01295b;
-			font-size: 35px;
-            @include media("<widescreen"){
+            font-size: 35px;
+            @include media("<widescreen") {
                 padding: 50px 112px;
                 font-size: 30px;
             }
-            @include media("<tablet-x"){
+            @include media("<tablet-x") {
                 padding: 50px;
             }
-            @include media("<tablet"){
+            @include media("<tablet") {
                 padding: 40px;
                 font-size: 26px;
             }
@@ -922,10 +938,10 @@ $breakpoints: (
             background-position: bottom;
             background-repeat: no-repeat;
             background-size: contain;
-			height: 100%;
-			@include media("<tablet"){
-				height: 180px;
-			}
+            height: 100%;
+            @include media("<tablet") {
+                height: 180px;
+            }
             @include media("<phone") {
                 height: 150px;
             }
@@ -942,7 +958,6 @@ $breakpoints: (
         }
     }
 }
-
 
 
 @include media("<xs-phone") {
@@ -1025,13 +1040,15 @@ $breakpoints: (
     }
 }
 
-.product-card-slider{
-    .slick-track{
+.product-card-slider {
+    .slick-track {
         height: 100%;
-        .slick-slide{
+
+        .slick-slide {
             display: flex;
-            [class*="col"]{
-              height: 100%;
+
+            [class*="col"] {
+                height: 100%;
             }
         }
     }

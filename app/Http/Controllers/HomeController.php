@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deck;
+use App\Models\Joker;
+use App\Models\Shuffle;
+use App\Models\Skin;
 use App\Models\StoryMode;
+use App\Models\Suit;
 use App\Models\Tutorial;
 use Illuminate\Http\Request;
 
@@ -11,7 +16,40 @@ class HomeController extends Controller
 {
     public function index(){
         $tutorials = Tutorial::take(4)->get();
-        return view('home.index',compact('tutorials'));
+        $shuffles = Shuffle::all();
+        $jokers = Joker::all();
+        $suits = Suit::all();
+        $decks = Deck::all();
+        $skins = Skin::all();
+        $shuffles = $shuffles->map(function ($item) {
+            $item['origin'] = 'Shuffles';
+            return $item;
+        });
+
+        $jokers = $jokers->map(function ($item) {
+            $item['origin'] = 'Jokers';
+            return $item;
+        });
+
+        $suits = $suits->map(function ($item) {
+            $item['origin'] = 'Suits';
+            return $item;
+        });
+
+        $decks = $decks->map(function ($item) {
+            $item['origin'] = 'Decks';
+            return $item;
+        });
+
+        $skins = $skins->map(function ($item) {
+            $item['origin'] = 'Skins';
+            return $item;
+        });
+        $allItems = $shuffles->concat($jokers)->concat($suits)->concat($decks)->concat($skins);
+        $allItems = $allItems->sortByDesc('created_at');
+        $recentItems = $allItems->take(3);
+//        dd($recentItems);
+        return view('home.index',compact('tutorials','recentItems'));
     }
     public function billing(){
         return view('home.billingaddress');
@@ -31,7 +69,38 @@ class HomeController extends Controller
         return view('home.signin');
     }
     public function product(){
-        return view('home.product');
+        $shuffles = Shuffle::all();
+        $jokers = Joker::all();
+        $suits = Suit::all();
+        $decks = Deck::all();
+        $skins = Skin::all();
+        $shuffles = $shuffles->map(function ($item) {
+            $item['origin'] = 'Shuffles';
+            return $item;
+        });
+
+        $jokers = $jokers->map(function ($item) {
+            $item['origin'] = 'Jokers';
+            return $item;
+        });
+
+        $suits = $suits->map(function ($item) {
+            $item['origin'] = 'Suits';
+            return $item;
+        });
+
+        $decks = $decks->map(function ($item) {
+            $item['origin'] = 'Decks';
+            return $item;
+        });
+
+        $skins = $skins->map(function ($item) {
+            $item['origin'] = 'Skins';
+            return $item;
+        });
+        $allItems = $shuffles->concat($jokers)->concat($suits)->concat($decks)->concat($skins);
+        $allItems = $allItems->sortByDesc('created_at');
+        return view('home.product',compact('allItems'));
     }
     public function mywallet(){
         return view('home.mywallet');

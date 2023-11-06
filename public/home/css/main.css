@@ -24210,15 +24210,20 @@ input[type=submit] {
 .play_queens .counter {
   position: relative;
 }
-.play_queens .counter::before {
-  content: "" counter(section) ".";
-  position: relative;
-  padding: 3px 5px;
+.play_queens .counter span {
+  position: absolute;
+  left: 14px;
+  top: 15px;
   background: linear-gradient(180deg, #ffe486 0%, #ffcc4e 51.56%, #ffd02b 100%, #d2a61b 100%);
   color: #000;
   border-radius: 50%;
   font-size: 12px;
   font-weight: 800;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .our_product {
