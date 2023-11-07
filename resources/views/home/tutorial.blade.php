@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="product_card product-card-slider row">
                 @foreach($tutorials as $tutorial)
-                    <div class="col-xl-3 col-md-4 col-sm-6 mb-3 my-2">
+                    <div class=" col-xl-3 col-md-6 col-sm-6 mb-3">
                         <div class="section card_contant counter ">
                             <span>{{$tutorial->sequence}}</span>
                             <div class="box-contant">
@@ -16,7 +16,7 @@
                                     {{$tutorial->description}}
                                 </p>
                             </div>
-                            <div class="imag_box" style="height: 280px">
+                            <div class="imag_box">
                                 <img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/{{$tutorial->image}}" alt="img">
                             </div>
                         </div>

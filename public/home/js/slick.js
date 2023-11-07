@@ -3060,6 +3060,30 @@ $('.product_slider').slick({
        
     ]
 });
+// $('.product-card-slider').slick({
+//     dots: false,
+//     infinite: true,
+//     speed: 300,
+//     slidesToShow: 4,
+//     slidesToScroll: 1,
+//     arrows: false,
+//     responsive: [
+//         {
+//             breakpoint: 9999,
+//             settings: {
+//                 unslick: true // Disable Slick Slider on desktop
+//             }
+//         },
+//         {
+//             breakpoint: 991,
+//             settings: {
+//                 slidesToShow: 3,
+//                 unslick: false // Enable Slick Slider on tablets
+//             }
+//         },
+//     ]
+// });
+
 
 // $('.product-card-slider').slick({
 //     dots: false,

@@ -1,5 +1,5 @@
 @include('home.layout.head')
-@include('home.layout.header')
+@include('home.layout.header2')
 @yield('main')
 @include('home.layout.footer')
 @include('home.layout.end-page')

@@ -1,6 +1,5 @@
 <header id="header">
     <div class="container">
-        <div class=""></div>
         <div class="logo">
             <a href="{{route('home')}}"><img src="{{asset('home/images/logo.svg')}}" alt="logo"> </a>
         </div>
