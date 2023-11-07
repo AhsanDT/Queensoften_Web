@@ -190,6 +190,56 @@
                 </div>
             </div>
         </section>
+                <!--Business Queen  -->
+        <section class="sec-banner business_queen">
+            <div class="container">
+                <h2>elevate YOUR BUSINESS WITH QUEENS OF TEN</h2>
+                <div class="product_card row">
+                    <div class="col-xl-3 col-md-4 col-sm-6">
+                        <div class="section card_contant ">
+                            <div class="imag_box">
+                                <img src="{{asset('home/images/business1.png')}}" alt="img">
+                            </div>
+                            <div class="title">
+                                <h6>REACH AUDIENCES ACROSS GOOGLE AND APPLE PLATFORMS</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-4 col-sm-6">
+                        <div class="section card_contant ">
+                            <div class="imag_box">
+                                <img src="{{asset('home/images/business2.png')}}" alt="img">
+                            </div>
+                            <div class="title">
+                                <h6>CROSS ADVERTISEMENT BUSINESS PROJECT</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-4 col-sm-6">
+                        <div class="section card_contant ">
+                            <div class="imag_box">
+                                <img src="{{asset('home/images/business3.png')}}" alt="img">
+                            </div>
+                            <div class="title">
+                                <h6> PERFORMANCE PARTNER PROGRAM</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-4 col-sm-6">
+                        <div class="section card_contant">
+                            <div class="imag_box">
+                                <img src="{{asset('home/images/business4.png')}}" alt="img">
+                            </div>
+                            <div class="title">
+                                <h6>TERMS AND CONDITIONS</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 <!-- Story Section -->
 <section>
