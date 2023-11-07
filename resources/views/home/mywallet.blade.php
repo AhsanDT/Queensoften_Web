@@ -12,7 +12,7 @@
                             <h5>Wallet Balance<span class="badge text-warning">TOPUP</span></h5>
                             <div class="form-group pt-2">
                                 <div class="manage">
-                                <h2>${{$user->usd}}.00</h2>
+                                <h2>${{$user->usd ?? '0'}}.00</h2>
                                 <input class="form-control" type="email" id="email" name="email"
                                     placeholder="12 Jan 2023 last Update" required>
                                     </div>
