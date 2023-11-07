@@ -1,5 +1,9 @@
 @include('home.layout.head')
-@include('home.layout.header')
+@if(\Illuminate\Support\Facades\Auth::check())
+    @include('home.layout.header2')
+@else
+    @include('home.layout.header')
+@endif
 @yield('main')
 @include('home.layout.footer')
 @include('home.layout.end-page')

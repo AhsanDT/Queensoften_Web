@@ -13,13 +13,13 @@
                     <li><a href="#"><i class="fa fa-download nav-2"></i>Download App</a></li>
                     <li><a href="{{route('contactus')}}"><i class="fa fa-envelope nav-2"></i>Contact Us</a></li>
                 </ul>
-                <div class="nav_btn">
-                    <ul>
-                        <li><a href="{{route('signin')}}"><i class="fa fa-sign-in nav-2"></i>Log In</a></li>
-                        <li><a href="{{route('signup')}}"><i class="fa fa-user nav-2"></i>Sign Up</a></li>
-                        <li class="toggle"><span class="bars"></span></li>
-                    </ul>
-                </div>
+{{--                <div class="nav_btn">--}}
+{{--                    <ul>--}}
+{{--                        <li><a href="{{route('signin')}}"><i class="fa fa-sign-in nav-2"></i>Log In</a></li>--}}
+{{--                        <li><a href="{{route('signup')}}"><i class="fa fa-user nav-2"></i>Sign Up</a></li>--}}
+{{--                        <li class="toggle"><span class="bars"></span></li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
             </nav>
             <div class="profile">
                 <span><a href=""></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
