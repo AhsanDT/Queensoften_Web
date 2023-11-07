@@ -25,7 +25,7 @@
                 <span><a href=""></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                 <div class="dropdown">
                     <button id="dropdownMenuButton" data-toggle="dropdown">
-                        <img src="{{asset('home/images/profileimg.svg')}}"  alt="Profile Image">
+                        <img src="{{\Illuminate\Support\Facades\Auth::user()->picture}}"  alt="Profile Image">
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <ul>
