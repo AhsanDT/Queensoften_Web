@@ -201,10 +201,10 @@ class AuthController extends Controller
                 $achievement = null;
                 if ($driver == 'facebook') {
                     $challenge = $this->challengeService->getChallengeByName('Connect your Facebook account and receive a free reshuffle');
-                    if (!$this->achievementService->getAchievement($challenge->id, $user->id)) {
-                        $this->achievementService->save($challenge, $user);
-                        $achievement = $this->achievementResponse($challenge);
-                    }
+//                    if (!$this->achievementService->getAchievement($challenge->id, $user->id)) {
+//                        $this->achievementService->save($challenge, $user);
+//                        $achievement = $this->achievementResponse($challenge);
+//                    }
                 }
                 Auth::login($user);
                 $user->tokens()->where('name', 'access_token')->delete();
