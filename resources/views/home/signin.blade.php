@@ -17,7 +17,7 @@
                         </a>
                     </div>
                     <div class="btn-group">
-                        <a href="{{url('/auth/redirect/google')}}" class="btn">
+                        <a href="{{url('/auth/redirect/facebook')}}" class="btn">
                             <div class="icon-box">
                                 <img src="{{asset('images/google.svg')}}" alt="">
                             </div>
