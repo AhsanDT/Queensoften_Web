@@ -19,7 +19,7 @@
                     <div class="btn-group">
                         <a href="{{url('/auth/redirect/facebook')}}" class="btn">
                             <div class="icon-box">
-                                <img src="{{asset('images/fb.png')}}" alt="">
+                                <img src="{{asset('images/fb.png')}}" width="50px" alt="">
                             </div>
                             Sign in with Facebook
                         </a>
