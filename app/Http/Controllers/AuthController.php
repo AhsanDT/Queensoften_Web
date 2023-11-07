@@ -207,6 +207,7 @@ class AuthController extends Controller
 //                    }
                 }
                 Auth::login($user);
+                dd($user);
                 $user->tokens()->where('name', 'access_token')->delete();
 
                 $token = $user->createToken('access_token')->plainTextToken;

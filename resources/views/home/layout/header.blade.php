@@ -21,8 +21,10 @@
                 </ul>
                 <div class="nav_btn">
                     <ul>
-                        <li><a href="{{route('signin')}}"><i class="fa fa-sign-in nav-2"></i>Log In</a></li>
-                        <li><a href="{{route('signup')}}"><i class="fa fa-user nav-2"></i>Sign Up</a></li>
+                        @if(!Auth::check())
+                            <li><a href="{{route('signin')}}"><i class="fa fa-sign-in nav-2"></i>Log In</a></li>
+                        @endif
+{{--                        <li><a href="{{route('signup')}}"><i class="fa fa-user nav-2"></i>Sign Up</a></li>--}}
                         <li class="toggle"><span class="bars"></span></li>
                     </ul>
                 </div>
