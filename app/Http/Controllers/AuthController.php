@@ -254,14 +254,7 @@ class AuthController extends Controller
                         }
                         $userNew->save();
                     }
-                    return $this->response(true, 'Login Successfully',
-                        [
-                            'user' => $userNew,
-                            'achievement' => $achievement,
-                            'token' => $token,
-                            'reward'=> $reward
-                        ]
-                        , Response::HTTP_OK);
+                    return redirect()->route('home')->with('success','Logged in successfully');
                 }
             }
             return response(false, 'Login failed.', [], Response::HTTP_UNAUTHORIZED);

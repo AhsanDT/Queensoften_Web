@@ -291,4 +291,14 @@
 </section>
 
     </main>
+<script>
+    @if(session('success'))
+    Swal.fire({
+        title: 'Success!',
+        text: '{{ session('success') }}',
+        icon: 'success',
+        timer: 3000
+    });
+    @endif
+</script>
 @endsection
