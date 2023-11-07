@@ -55,39 +55,31 @@
                         <div class="table-responsive">
                             <table>
                                 <thead>
-                                    <tr>
-                                        <th>Order #</th>
-                                        <th>Placed On</th>
-                                        <th colspan="4">Items</th>
-                                        <th>Total</th>
-                                    </tr>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Placed On</th>
+                                    <th colspan="4">Items</th>
+                                    <th>Total</th>
+                                </tr>
                                 </thead>
                                 <tbody>
+                                @if(count($wallets) > 0)
+                                    @foreach($wallets as $wallet)
+                                        <tr>
+                                            <td>{{ str_pad($wallet->id, 10, '0', STR_PAD_LEFT) }}</td>
+                                            <td>{{$wallet->created_at}}</td>
+                                            <td colspan="4">{{$wallet->purchase_type}}
+{{--                                                <img src="{{ asset('home/images/bannerlogo.png') }}" alt="img">--}}
+{{--                                                <img src="{{ asset('home/images/bannerlogo.png') }}" alt="img">--}}
+                                            </td>
+                                            <td>{{$wallet->amount}}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <td>0987456321</td>
-                                        <td>19/07/2023</td>
-                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
-                                        <img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>
-                                        <td>332.23</td>
+                                        <td colspan="7">No transaction history</td>
                                     </tr>
-                                    <tr>
-                                        <td>0987456321</td>
-                                        <td>19/07/2023</td>
-                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="images/logo.svg" alt=""><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>
-                                        <td>332.23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>0987456321</td>
-                                        <td>19/07/2023</td>
-                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>
-                                        <td>332.23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>0987456321</td>
-                                        <td>19/07/2023</td>
-                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="images/logo.svg" alt=""><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>
-                                        <td>332.23</td>
-                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                         </div>

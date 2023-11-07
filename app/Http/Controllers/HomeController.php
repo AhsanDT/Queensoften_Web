@@ -123,7 +123,8 @@ class HomeController extends Controller
     }
     public function manageaccount($id){
         $user = User::find($id);
-        return view('home.manageaccount',compact('user'));
+        $wallets = Wallet::where('user_id',$id)->get();
+        return view('home.manageaccount',compact('user','wallets'));
     }
     public function editprofile(){
         return view('home.editprofile');
