@@ -105,6 +105,9 @@ class HomeController extends Controller
     public function mywallet(){
         return view('home.mywallet');
     }
+    public function reachaudience(){
+        return view('home.reachaudience');
+    }
     public function manageaccount(){
         return view('home.manageaccount');
     }
