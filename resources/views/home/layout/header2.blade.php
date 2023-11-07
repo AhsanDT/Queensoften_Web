@@ -40,7 +40,7 @@
                                     Account</a></li>
                             <li><a href="{{route('mywallet')}}"><i class="fa fa-cog" aria-hidden="true"></i> My Wallet</a>
                             </li>
-                            <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></li>
+                            <li><a href="{{route('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></li>
                         </ul>
                     </div>
                 </div>
