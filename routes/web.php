@@ -26,7 +26,7 @@ Route::get('/reachaudience',[\App\Http\Controllers\HomeController::class,'reacha
 Route::get('/cross-advertisement',[\App\Http\Controllers\HomeController::class,'crossAdvertisement'])->name('cross-advertisement');
 Route::get('/performance',[\App\Http\Controllers\HomeController::class,'performance'])->name('performance');
 Route::get('/terms',[\App\Http\Controllers\HomeController::class,'terms'])->name('terms');
-Route::get('/manageaccount',[\App\Http\Controllers\HomeController::class,'manageaccount'])->name('manageaccount');
+Route::get('/manageaccount/{id}',[\App\Http\Controllers\HomeController::class,'manageaccount'])->name('manageaccount');
 Route::get('/editprofile',[\App\Http\Controllers\HomeController::class,'editprofile'])->name('editprofile');
 Route::get('/contactus',[\App\Http\Controllers\HomeController::class,'contactus'])->name('contactus');
 Route::post('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('login.authenticate');

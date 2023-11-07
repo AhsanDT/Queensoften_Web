@@ -10,6 +10,7 @@ use App\Models\Skin;
 use App\Models\StoryMode;
 use App\Models\Suit;
 use App\Models\Tutorial;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -117,8 +118,9 @@ class HomeController extends Controller
     public function terms(){
         return view('home.terms');
     }
-    public function manageaccount(){
-        return view('home.manageaccount');
+    public function manageaccount($id){
+        $user = User::find($id);
+        return view('home.manageaccount',compact('user'));
     }
     public function editprofile(){
         return view('home.editprofile');

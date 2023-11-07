@@ -25,18 +25,18 @@
                 <span><a href=""></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                 <div class="dropdown">
                     <button id="dropdownMenuButton" data-toggle="dropdown">
-                        <img src="{{\Illuminate\Support\Facades\Auth::user()->picture}}"  alt="Profile Image">
+                        <img src="{{\Illuminate\Support\Facades\Auth::user()->picture ?? asset('images/user1.png')}}"  alt="Profile Image">
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <ul>
                             <li class="showdow">
-                                <div class="p-icon"><a href="#"><img src="{{asset('home/images/profileimg.svg')}}"  alt="Profile Image"></a>
+                                <div class="p-icon"><a href="#"><img src="{{\Illuminate\Support\Facades\Auth::user()->picture ?? asset('images/user1.png')}}"  alt="Profile Image"></a>
                                 <span>
                                         <p>{{Auth::user()->name}} <br> {{\Illuminate\Support\Facades\Auth::user()->username}}</p>
                                     </span>
                                 </div>
                             </li>
-                            <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Manage
+                            <li><a href="{{route('manageaccount',\Illuminate\Support\Facades\Auth::user()->id)}}"><i class="fa fa-user" aria-hidden="true"></i> Manage
                                     Account</a></li>
                             <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i> My Wallet</a>
                             </li>
