@@ -10,9 +10,9 @@
                             <h5>Personal Profile<span class="badge text-warning">EDIT</span></h5>
                             <div class="form-group p-0">
                                 <div class="manage">
-                                    <input class="form-control" type="email" id="email" name="email"
+                                    <input class="form-control" type="text" id="username" name="username" value="{{$user->name}}"
                                         placeholder="Username" required>
-                                    <input class="form-control" type="email" id="email" name="email"
+                                    <input class="form-control" type="email" id="email" name="email" value="{{$user->email}}"
                                         placeholder="username@yahoo.com" required>
                                 </div>
                             </div>
