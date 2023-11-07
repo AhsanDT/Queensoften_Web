@@ -2,7 +2,7 @@
 @section('main')
 <main>
     <section>
-        
+
         <div class="section box">
             <div class="container">
                 <h4 class="title">My Wallet</h4>
@@ -12,7 +12,7 @@
                             <h5>Wallet Balance<span class="badge text-warning">TOPUP</span></h5>
                             <div class="form-group pt-2">
                                 <div class="manage">
-                                <h2>$25.00</h2>
+                                <h2>${{$user->usd}}.00</h2>
                                 <input class="form-control" type="email" id="email" name="email"
                                     placeholder="12 Jan 2023 last Update" required>
                                     </div>
@@ -40,7 +40,7 @@
                                     <p class="sub-title pt-4">Contact</p>
                                     <div class="form-group  py-0">
                                     <div class="manage">
-                                        <input class="form-control" type="email" id="email" name="email"
+                                        <input class="form-control" type="email" id="email" name="email" value="{{$user->email}}"
                                             placeholder="avajohns123@gmail,com" required>
                                         <input class="form-control" type="text" id="email" name="email"
                                             placeholder="(123) 456-7890" required>
@@ -98,7 +98,7 @@
                 </div>
             </div>
         </div>
-    
+
         </section>
         </main>
 @endsection

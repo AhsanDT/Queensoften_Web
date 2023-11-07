@@ -37,9 +37,9 @@
                                     <p class="sub-title pt-4">DEFAULT SHIPPING ADDRESS</p>
                                     <div class="form-group  py-0">
                                         <div class="manage">
-                                            <input class="form-control" type="email" id="email" name="email"
+                                            <input class="form-control" type="text" id="address" name="address"
                                                 placeholder="Address" required>
-                                            <input class="form-control" type="email" id="email" name="email"
+                                            <input class="form-control" type="text" id="phone" name="phone"
                                                 placeholder="Contact Number" required>
                                         </div>
                                     </div>

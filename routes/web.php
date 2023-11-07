@@ -21,7 +21,7 @@ Route::get('/story',[\App\Http\Controllers\HomeController::class,'story'])->name
 Route::get('/signup',[\App\Http\Controllers\HomeController::class,'signup'])->name('signup');
 Route::get('/signin',[\App\Http\Controllers\HomeController::class,'signin'])->name('signin');
 Route::get('/product',[\App\Http\Controllers\HomeController::class,'product'])->name('product');
-Route::get('/mywallet',[\App\Http\Controllers\HomeController::class,'mywallet'])->name('mywallet');
+Route::get('/mywallet/{id}',[\App\Http\Controllers\HomeController::class,'mywallet'])->name('mywallet');
 Route::get('/reachaudience',[\App\Http\Controllers\HomeController::class,'reachaudience'])->name('reachaudience');
 Route::get('/cross-advertisement',[\App\Http\Controllers\HomeController::class,'crossAdvertisement'])->name('cross-advertisement');
 Route::get('/performance',[\App\Http\Controllers\HomeController::class,'performance'])->name('performance');

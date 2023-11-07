@@ -103,8 +103,9 @@ class HomeController extends Controller
         $allItems = $allItems->sortByDesc('created_at');
         return view('home.product',compact('allItems'));
     }
-    public function mywallet(){
-        return view('home.mywallet');
+    public function mywallet($id){
+        $user = User::find($id);
+        return view('home.mywallet',compact('user'));
     }
     public function reachaudience(){
         return view('home.reachaudience');

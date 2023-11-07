@@ -38,7 +38,7 @@
                             </li>
                             <li><a href="{{route('manageaccount',\Illuminate\Support\Facades\Auth::user()->id)}}"><i class="fa fa-user" aria-hidden="true"></i> Manage
                                     Account</a></li>
-                            <li><a href="{{route('mywallet')}}"><i class="fa fa-cog" aria-hidden="true"></i> My Wallet</a>
+                            <li><a href="{{route('mywallet',\Illuminate\Support\Facades\Auth::user()->id)}}"><i class="fa fa-cog" aria-hidden="true"></i> My Wallet</a>
                             </li>
                             <li><a href="{{route('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></li>
                         </ul>
