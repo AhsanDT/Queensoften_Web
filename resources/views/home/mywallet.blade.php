@@ -68,11 +68,7 @@
                                 <tbody>
                                 @foreach($wallets as $wallet) @endforeach
                                     <tr>
-                                        @php
-                                            $tenDigitNumber = 0;
-                                            $tenDigitNumber = str_pad($wallet->id, 10, '0', STR_PAD_LEFT);
-                                        @endphp
-                                        <td>{{$tenDigitNumber}}</td>
+                                        <td>{{str_pad($wallet->id, 10, '0', STR_PAD_LEFT)}}</td>
                                         <td>19/07/2023</td>
                                         <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
                                         <img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>
