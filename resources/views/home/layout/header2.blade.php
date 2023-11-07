@@ -32,7 +32,7 @@
                             <li class="showdow">
                                 <div class="p-icon"><a href="#"><img src="{{asset('home/images/profileimg.svg')}}"  alt="Profile Image"></a>
                                 <span>
-                                        <p>Ava Johns <br> avajohns123</p>
+                                        <p>{{Auth::user()->name}} <br> {{\Illuminate\Support\Facades\Auth::user()->username}}</p>
                                     </span>
                                 </div>
                             </li>
