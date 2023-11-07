@@ -6,7 +6,8 @@
             <div class="authlayout">
                 <div class="container">
                     <div class="authbox">
-                        <form class="login-form contactus">
+                        <form class="login-form contactus ajax-form" data-action="{{route('contact')}}" method="post">
+                            @csrf()
                             <h2>Contact Us</h2>
                             <div class="link py-3" style="
                             text-align: left !important; font-size: 15px;">
@@ -14,27 +15,27 @@
                                         game@queensoften.com</a></span>
                             </div>
                             <div class="form-group">
-                                <label class="py-1" type="text">Name</label>
-                                <input class="form-control" type="email" id="email" name="email" placeholder="Your name"
+                                <label class="py-1">Name</label>
+                                <input class="form-control" type="text" id="name" name="name" placeholder="Your name"
                                     required>
                             </div>
                             <div class="form-group">
-                                <label class="py-1" type="email">Email</label>
+                                <label class="py-1">Email</label>
                                 <input class="form-control" type="email" id="email" name="email"
-                                    placeholder="you@company.com" required>
+                                    placeholder="you@company.com"  >
                                 <div class="form-group">
                                     <label for="phone">Phone No.</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="tel" id="phone" />
+                                        <input class="form-control" type="tel" id="phone" name="phone" >
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="py-1" type="text">How can we help?</label>
-                                    <textarea class="form-control" id="subject" name="subject"
+                                    <label class="py-1">How can we help?</label>
+                                    <textarea class="form-control" id="subject" name="comment"
                                         placeholder="Comment here ..." style="height:150px"></textarea>
                                 </div>
                                 <div class="form-group text-center ">
-                                    <a href="#" class="btn w-100">Submit</a>
+                                    <button type="submit" class="btn w-100" value="submit">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -48,7 +49,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
 <script>
-        $(document).on('submit', ".ajax-form", function (e) {
+    $(document).ready(function (){
+        $("body").on('submit', ".ajax-form", function (e) {
             e.preventDefault();
             var form = $(this);
             var formData = new FormData(this);
@@ -89,5 +91,6 @@
                 }
             })
         });
+    })
     </script>
 @endsection
