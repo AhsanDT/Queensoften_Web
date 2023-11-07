@@ -66,31 +66,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($wallets as $wallet) @endforeach
                                     <tr>
-                                        <td>0987456321</td>
+                                        @php
+                                            $tenDigitNumber = 0;
+                                            $tenDigitNumber = str_pad($wallet->id, 10, '0', STR_PAD_LEFT);
+                                        @endphp
+                                        <td>{{$tenDigitNumber}}</td>
                                         <td>19/07/2023</td>
                                         <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
                                         <img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>
                                         <td>332.23</td>
                                     </tr>
-                                    <tr>
-                                        <td>0987456321</td>
-                                        <td>19/07/2023</td>
-                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="images/logo.svg" alt=""><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>
-                                        <td>332.23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>0987456321</td>
-                                        <td>19/07/2023</td>
-                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>
-                                        <td>332.23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>0987456321</td>
-                                        <td>19/07/2023</td>
-                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="images/logo.svg" alt=""><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>
-                                        <td>332.23</td>
-                                    </tr>
+{{--                                    <tr>--}}
+{{--                                        <td>0987456321</td>--}}
+{{--                                        <td>19/07/2023</td>--}}
+{{--                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="images/logo.svg" alt=""><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>--}}
+{{--                                        <td>332.23</td>--}}
+{{--                                    </tr>--}}
+{{--                                    <tr>--}}
+{{--                                        <td>0987456321</td>--}}
+{{--                                        <td>19/07/2023</td>--}}
+{{--                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>--}}
+{{--                                        <td>332.23</td>--}}
+{{--                                    </tr>--}}
+{{--                                    <tr>--}}
+{{--                                        <td>0987456321</td>--}}
+{{--                                        <td>19/07/2023</td>--}}
+{{--                                        <td colspan="4"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"><img src="images/logo.svg" alt=""><img src="{{asset('home/images/bannerlogo.png')}}" alt="img"></td>--}}
+{{--                                        <td>332.23</td>--}}
+{{--                                    </tr>--}}
                                 </tbody>
                             </table>
                         </div>

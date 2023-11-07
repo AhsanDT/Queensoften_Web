@@ -11,6 +11,7 @@ use App\Models\StoryMode;
 use App\Models\Suit;
 use App\Models\Tutorial;
 use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -105,7 +106,8 @@ class HomeController extends Controller
     }
     public function mywallet($id){
         $user = User::find($id);
-        return view('home.mywallet',compact('user'));
+        $wallets = Wallet::where('user_id',$id)->get();
+        return view('home.mywallet',compact('user','wallets'));
     }
     public function reachaudience(){
         return view('home.reachaudience');
