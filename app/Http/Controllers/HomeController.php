@@ -107,6 +107,7 @@ class HomeController extends Controller
     public function mywallet($id){
         $user = User::find($id);
         $wallets = Wallet::where('user_id',$id)->get();
+        dd($wallets);
         return view('home.mywallet',compact('user','wallets'));
     }
     public function reachaudience(){
