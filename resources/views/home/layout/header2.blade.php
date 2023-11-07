@@ -25,12 +25,12 @@
                 <span><a href=""></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                 <div class="dropdown">
                     <button id="dropdownMenuButton" data-toggle="dropdown">
-                        <img src="{{\Illuminate\Support\Facades\Auth::user()->picture ?? asset('images/user1.png')}}"  alt="Profile Image">
+                        <img src="{{\Illuminate\Support\Facades\Auth::user()->picture ?? asset('images/profile.jpg')}}"  alt="Profile Image">
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <ul>
                             <li class="showdow">
-                                <div class="p-icon"><a href="#"><img src="{{\Illuminate\Support\Facades\Auth::user()->picture ?? asset('images/user1.png')}}"  alt="Profile Image"></a>
+                                <div class="p-icon"><a href="#"><img src="{{\Illuminate\Support\Facades\Auth::user()->picture ?? asset('images/profile.jpg')}}"  alt="Profile Image"></a>
                                 <span>
                                         <p>{{Auth::user()->name}} <br> {{\Illuminate\Support\Facades\Auth::user()->username}}</p>
                                     </span>

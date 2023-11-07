@@ -108,7 +108,7 @@ class AuthController extends Controller
 
             $name = $user->name;
             $email = $user->email;
-            $picture = $user->user['picture'];
+            $picture = $user->user['picture'] ?? asset('images/profile.jpg');
             $driver_id = $driver;
 
             if ($driver == 'apple') {
