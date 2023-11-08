@@ -113,9 +113,9 @@ class AuthController extends Controller
         return redirect($url);
     }
     public function socialCallbackApple(Request $request){
-        if ($request->input('state') !== session('apple_auth_state')) {
-            return redirect('/login')->with('error', 'Invalid state parameter.');
-        }
+//        if ($request->input('state') !== session('apple_auth_state')) {
+//            return redirect('/login')->with('error', 'Invalid state parameter.');
+//        }
         $code = $request->code;
         $token_url = 'https://appleid.apple.com/auth/token';
         $data = [
