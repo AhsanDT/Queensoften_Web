@@ -122,52 +122,27 @@ class AuthController extends Controller
         // Verify the state to prevent CSRF attacks
         $state = $request->input('state');
         $yourClientSecret = env('APPLE_CLIENT_SECRET');
-        $yourGeneratedState = bin2hex(random_bytes(5));
-        if ($state !== $yourGeneratedState) {
-            // Handle the error or redirect to an error page
-            // You can also log an error for debugging purposes
-            return redirect()->route('error');
-        }
-
-        // Get the authorization code from the callback
         $authorizationCode = $request->input('code');
-
-        // Exchange the authorization code for an access token and user information
         $response = Http::asForm()->post('https://appleid.apple.com/auth/token', [
             'grant_type' => 'authorization_code',
             'code' => $authorizationCode,
             'client_id' => 'com.qot.queensoftenweb',
-            'client_secret' => $yourClientSecret, // Your Apple client secret
+            'client_secret' => $yourClientSecret,
             'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
         ]);
-
-        // Check if the request to exchange code for access token was successful
         if ($response->successful()) {
             $data = $response->json();
             $accessToken = $data['access_token'];
-
-            // Use the access token to get the user information
             $userResponse = Http::withToken($accessToken)->get('https://api.apple.com/userinfo');
-
-            // Check if the request to get user information was successful
             if ($userResponse->successful()) {
                 $userInfo = $userResponse->json();
-
-                // Now, $userInfo contains the user's information, including username and email
-                // You can access them like this:
                 $username = $userInfo['username'];
                 $email = $userInfo['email'];
-
-                // Do something with the username and email
             } else {
-                // Handle the error or redirect to an error page
-                // You can also log an error for debugging purposes
-                return redirect()->route('error');
+                return redirect()->route('home');
             }
         } else {
-            // Handle the error or redirect to an error page
-            // You can also log an error for debugging purposes
-            return redirect()->route('error');
+            return redirect()->route('home');
         }
     }
     public function socialCallback($driver){
