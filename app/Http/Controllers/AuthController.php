@@ -119,7 +119,7 @@ class AuthController extends Controller
         $state = $request->input('state');
         $yourClientSecret = $this->generateAppleClientSecret();
 //        dd($yourClientSecret);
-        $authorizationCode = $request->input('code');
+        $authorizationCode = $request->code;
         $response = Http::asForm()->post('https://appleid.apple.com/auth/token', [
             'grant_type' => 'authorization_code',
             'code' => $authorizationCode,
