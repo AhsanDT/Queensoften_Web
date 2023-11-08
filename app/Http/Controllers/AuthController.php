@@ -113,38 +113,62 @@ class AuthController extends Controller
         return redirect($url);
     }
     public function socialCallbackApple(Request $request){
-//        if ($request->input('state') !== session('apple_auth_state')) {
-//            return redirect('/login')->with('error', 'Invalid state parameter.');
-//        }
-        $code = $request->code;
-        $token_url = 'https://appleid.apple.com/auth/token';
-        $data = [
-            'client_id'=> 'com.qot.queensoftenweb',
-            'client_secret'=> 'd1e8f611a1a64592a441d4ef3a8de9fa',
-            'code'=> $code,
-            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
-            'grant_type'=> 'authorization_code'
-        ];
+        if (!$request->has('code') || !$request->has('state')) {
+            // Handle the error or redirect to an error page
+            // You can also log an error for debugging purposes
+            return redirect()->route('error');
+        }
 
-        $client = new Client();
-        $response = $client->post('https://appleid.apple.com/auth/token', [
-            'form_params' => $data,
+        // Verify the state to prevent CSRF attacks
+        $state = $request->input('state');
+        $yourClientSecret = env('APPLE_CLIENT_SECRET');
+        $yourGeneratedState = bin2hex(random_bytes(5));
+        if ($state !== $yourGeneratedState) {
+            // Handle the error or redirect to an error page
+            // You can also log an error for debugging purposes
+            return redirect()->route('error');
+        }
+
+        // Get the authorization code from the callback
+        $authorizationCode = $request->input('code');
+
+        // Exchange the authorization code for an access token and user information
+        $response = Http::asForm()->post('https://appleid.apple.com/auth/token', [
+            'grant_type' => 'authorization_code',
+            'code' => $authorizationCode,
+            'client_id' => 'com.qot.queensoftenweb',
+            'client_secret' => $yourClientSecret, // Your Apple client secret
+            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
         ]);
 
-        $body = json_decode((string) $response->getBody(), true);
-        dd($body);
+        // Check if the request to exchange code for access token was successful
+        if ($response->successful()) {
+            $data = $response->json();
+            $accessToken = $data['access_token'];
 
-        // The $body variable should contain the access token and ID token.
-        $accessToken = $body['access_token'];
-        $idToken = $body['id_token'];
+            // Use the access token to get the user information
+            $userResponse = Http::withToken($accessToken)->get('https://api.apple.com/userinfo');
 
-        // You can decode the ID token to get user details.
-        $userDetails = json_decode(base64_decode(explode('.', $idToken)[1]), true);
+            // Check if the request to get user information was successful
+            if ($userResponse->successful()) {
+                $userInfo = $userResponse->json();
 
-        // Now you can access the user's Apple ID and other details.
-        $appleId = $userDetails['sub'];
-        $email = $userDetails['email'];
-        dd($email);
+                // Now, $userInfo contains the user's information, including username and email
+                // You can access them like this:
+                $username = $userInfo['username'];
+                $email = $userInfo['email'];
+
+                // Do something with the username and email
+            } else {
+                // Handle the error or redirect to an error page
+                // You can also log an error for debugging purposes
+                return redirect()->route('error');
+            }
+        } else {
+            // Handle the error or redirect to an error page
+            // You can also log an error for debugging purposes
+            return redirect()->route('error');
+        }
     }
     public function socialCallback($driver){
         $user = Socialite::driver($driver)->user();
