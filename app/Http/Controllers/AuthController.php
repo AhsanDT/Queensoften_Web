@@ -132,6 +132,7 @@ class AuthController extends Controller
         ]);
 
         $body = json_decode((string) $response->getBody(), true);
+        dd($body);
 
         // The $body variable should contain the access token and ID token.
         $accessToken = $body['access_token'];
