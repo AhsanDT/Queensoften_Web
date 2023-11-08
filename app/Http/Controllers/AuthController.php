@@ -19,6 +19,7 @@ use App\Traits\AchievementTrait;
 use App\Traits\NotificationTrait;
 use App\Traits\ResponseTrait;
 use App\Traits\SendGridTrait;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -112,16 +113,37 @@ class AuthController extends Controller
         return redirect($url);
     }
     public function socialCallbackApple(Request $request){
+        if ($request->input('state') !== session('apple_auth_state')) {
+            return redirect('/login')->with('error', 'Invalid state parameter.');
+        }
         $code = $request->code;
         $token_url = 'https://appleid.apple.com/auth/token';
-        $payload = [
+        $data = [
             'client_id'=> 'com.qot.queensoftenweb',
             'client_secret'=> 'd1e8f611a1a64592a441d4ef3a8de9fa',
             'code'=> $code,
+            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
             'grant_type'=> 'authorization_code'
-    ];
-        $response = Http::post($token_url,$payload);
-        dd($response);
+        ];
+
+        $client = new Client();
+        $response = $client->post('https://appleid.apple.com/auth/token', [
+            'form_params' => $data,
+        ]);
+
+        $body = json_decode((string) $response->getBody(), true);
+
+        // The $body variable should contain the access token and ID token.
+        $accessToken = $body['access_token'];
+        $idToken = $body['id_token'];
+
+        // You can decode the ID token to get user details.
+        $userDetails = json_decode(base64_decode(explode('.', $idToken)[1]), true);
+
+        // Now you can access the user's Apple ID and other details.
+        $appleId = $userDetails['sub'];
+        $email = $userDetails['email'];
+        dd($email);
     }
     public function socialCallback($driver){
         $user = Socialite::driver($driver)->user();
