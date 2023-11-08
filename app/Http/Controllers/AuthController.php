@@ -22,6 +22,7 @@ use App\Traits\SendGridTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Laravel\Socialite\Facades\Socialite;
 use PHPUnit\Exception;
 use Symfony\Component\HttpFoundation\Response;
@@ -111,7 +112,16 @@ class AuthController extends Controller
         return redirect($url);
     }
     public function socialCallbackApple(Request $request){
-        dd($request->all());
+        $code = $request->code;
+        $token_url = 'https://appleid.apple.com/auth/token';
+        $payload = [
+            'client_id'=> 'com.qot.queensoftenweb',
+            'client_secret'=> 'd1e8f611a1a64592a441d4ef3a8de9fa',
+            'code'=> $code,
+            'grant_type'=> 'authorization_code'
+    ];
+        $response = Http::post($token_url,$payload);
+        dd($response);
     }
     public function socialCallback($driver){
         $user = Socialite::driver($driver)->user();
