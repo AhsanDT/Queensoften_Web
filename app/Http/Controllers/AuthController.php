@@ -93,6 +93,25 @@ class AuthController extends Controller
     {
         return Socialite::driver($driver)->redirect();
     }
+    public function socialRedirectApple()
+    {
+        $state = bin2hex(random_bytes(5));
+        $nonce = bin2hex(random_bytes(5));
+        $url = 'https://appleid.apple.com/auth/authorize?' . http_build_query([
+                'response_type' => 'code',
+                'response_mode' => 'form_post',
+                'client_id' => 'com.qot.queensoftenweb',
+                'redirect_uri' => 'https://admin.queensoften.com/auth/callback/apple',
+                'scope' => 'name email',
+                'state' => $state,
+                'nonce' => $nonce,
+            ]);
+
+        return redirect($url);
+    }
+    public function socialCallbackApple(Request $request){
+        dd($request->all());
+    }
     public function socialCallback($driver){
         $user = Socialite::driver($driver)->user();
         try {

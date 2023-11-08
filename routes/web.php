@@ -40,7 +40,9 @@ Route::get('/fb-data-deletion',  [\App\Http\Controllers\GuidelineController::cla
 Route::get('/about',  [\App\Http\Controllers\GuidelineController::class, 'about']);
 Route::post('/contact',  [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 Route::get('/auth/redirect/{driver}',[AuthController::class,'socialRedirect']);
+Route::get('/auth/redirect-apple',[AuthController::class,'socialRedirectApple']);
 Route::get('/auth/callback/{driver}',[AuthController::class,'socialCallback']);
+Route::post('/auth/callback/apple',[AuthController::class,'socialCallbackApple']);
 
 Route::group(['middleware'=> ['auth:admin']],function() {
     Route::get('/dashboard',  [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
