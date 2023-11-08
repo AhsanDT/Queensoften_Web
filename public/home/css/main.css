@@ -24208,17 +24208,20 @@ input[type=submit] {
   font-size: 14px;
   padding: 15px;
   min-height: 100%;
-  margin: 0 10px;
 }
 .play_queens .product_card .card_contant .imag_box {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  height: 250px;
+  overflow: hidden;
 }
 .play_queens .product_card .card_contant .imag_box img {
   display: block;
-  width: 100%;
   height: auto;
+  max-height: 250px;
+  max-width: 100%;
 }
 .play_queens .box-contant {
   padding: 12px 0;
@@ -24269,7 +24272,7 @@ input[type=submit] {
 .our_product .product_card .card_contant .imag_box {
   max-width: 280px;
   height: 280px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24564,10 +24567,9 @@ input[type=submit] {
 }
 .tab .our_product .product_card {
   background-image: url(../images/wave.png);
-  background-position: right;
   background-size: contain;
-  background-repeat: repeat;
-  background-position: bottom;
+  background-repeat: repeat-y;
+  background-position: center -90px;
 }
 .tab .our_product .product_card .sec_tab {
   background: linear-gradient(360deg, hsl(0, 0%, 48%) 0%, hsl(0, 0%, 100%) 33%);
@@ -24688,8 +24690,9 @@ input[type=submit] {
   height: 100%;
 }
 .product-card-slider .slick-track .slick-slide {
-  display: flex;
+  padding: 10px;
 }
+.product-card-slider .slick-track .slick-slide > div,
 .product-card-slider .slick-track .slick-slide [class*=col] {
   height: 100%;
 }
