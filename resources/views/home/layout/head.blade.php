@@ -13,6 +13,5 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 </head>
-
 <body>
     <div id="wrapper">
