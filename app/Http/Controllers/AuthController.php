@@ -101,7 +101,7 @@ class AuthController extends Controller
                 'response_type' => 'code',
                 'response_mode' => 'form_post',
                 'client_id' => 'com.qot.queensoftenweb',
-                'redirect_uri' => 'https://admin.queensoften.com/auth/callback/apple',
+                'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
                 'scope' => 'name email',
                 'state' => $state,
                 'nonce' => $nonce,
