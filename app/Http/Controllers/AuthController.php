@@ -130,6 +130,7 @@ class AuthController extends Controller
             'client_secret' => $yourClientSecret,
             'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
         ]);
+        dd($response);
         if ($response->successful()) {
             $data = $response->json();
             $accessToken = $data['access_token'];
