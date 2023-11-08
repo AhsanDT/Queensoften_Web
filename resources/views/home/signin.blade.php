@@ -25,7 +25,7 @@
                         </a>
                     </div>
                     <div class="btn-group">
-                        <a href="{{url('/auth/redirect/sign-in-with-apple')}}" class="btn">
+                        <a href="{{url('/auth/redirect-apple')}}" class="btn">
                             <div class="icon-box">
                                 <img src="{{asset('images/fb.png')}}" width="50px" alt="">
                             </div>
