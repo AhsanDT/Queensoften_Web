@@ -105,6 +105,7 @@ class AuthController extends Controller
                 'scope' => 'name email',
                 'state' => $state,
                 'nonce' => $nonce,
+                '_token' => csrf_token(),
             ]);
 
         return redirect($url);
