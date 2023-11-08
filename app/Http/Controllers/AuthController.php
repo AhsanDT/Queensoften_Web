@@ -114,14 +114,11 @@ class AuthController extends Controller
     }
     public function socialCallbackApple(Request $request){
         if (!$request->has('code') || !$request->has('state')) {
-            // Handle the error or redirect to an error page
-            // You can also log an error for debugging purposes
-            return redirect()->route('error');
+            return redirect()->route('home');
         }
-
-        // Verify the state to prevent CSRF attacks
         $state = $request->input('state');
-        $yourClientSecret = env('APPLE_CLIENT_SECRET');
+        $yourClientSecret = $this->generateAppleClientSecret();
+        dd($yourClientSecret);
         $authorizationCode = $request->input('code');
         $response = Http::asForm()->post('https://appleid.apple.com/auth/token', [
             'grant_type' => 'authorization_code',
@@ -315,5 +312,29 @@ class AuthController extends Controller
         } catch (Exception $exception) {
             return response(false, $exception->getMessage(), [], Response::HTTP_UNAUTHORIZED);
         }
+    }
+    private function generateAppleClientSecret()
+    {
+        $header = base64_encode(json_encode([
+            'alg' => 'ES256',
+            'kid' => '65H92Z42L4',
+        ]));
+
+        $privateKeyPath = asset('apple/AuthKey_65H92Z42L4.p8');
+        $privateKey = file_get_contents($privateKeyPath);
+
+        $payload = base64_encode(json_encode([
+            'iss' => '8YVY4D9WF9',
+            'iat' => time(),
+            'exp' => time() + 3600,
+            'aud' => 'https://appleid.apple.com',
+            'sub' => 'com.qot.queensoftenweb',
+        ]));
+
+        openssl_sign("$header.$payload", $signature, $privateKey, OPENSSL_ALGO_SHA256);
+
+        $signature = base64_encode($signature);
+
+        return "$header.$payload.$signature";
     }
 }
