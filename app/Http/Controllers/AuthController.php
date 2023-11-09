@@ -125,7 +125,7 @@ class AuthController extends Controller
             'grant_type' => 'authorization_code',
             'code' => $authorizationCode,
             'client_id' => 'com.qot.queensoftens',
-            'client_secret' => $yourClientSecret,
+            'client_secret' => 'd1e8f611a1a64592a441d4ef3a8de9fa',
             'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
         ]);
         dd($response->body());
