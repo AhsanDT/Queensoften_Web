@@ -113,48 +113,34 @@ class AuthController extends Controller
         return redirect($url);
     }
     public function socialCallbackApple(Request $request){
-        $code = $request->code;
-        $state = $request->state;
-        $tokenEndpoint = 'https://appleid.apple.com/auth/token';
+        $state = request('state');
+        if ($state !== session('apple_auth_state')) {
+            // Handle error - Invalid state
+            // You may redirect the user back to the login page with an error message
+        }
 
-        $tokenParams = [
+        // Exchange authorization code for access token and ID token
+        $response = Http::post('https://appleid.apple.com/auth/token', [
             'grant_type' => 'authorization_code',
-            'code' => $code,
+            'code' => request('code'),
             'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
             'client_id' => 'com.qot.queensoftenweb',
             'client_secret' => 'd1e8f611a1a64592a441d4ef3a8de9fa',
-        ];
-
-        $response = $this->makeTokenRequest($tokenEndpoint, $tokenParams);
-        dd($response);
-        $idToken = $response['id_token'];
-
-        // Decode the ID token to get user information
-        $userInfo = $this->decodeIdToken($idToken);
-
-        // Now you can access user information like username and email
-        $username = $userInfo['sub']; // User ID
-        $email = $userInfo['email'];
-        dd($email);
+        ]);
+        $data = $response->json();
+        $idToken = $data['id_token'];
+        $userInfo = $this->getUserInfoFromIdToken($idToken);
+        dd($userInfo);
     }
-    private function makeTokenRequest($tokenEndpoint, $tokenParams)
+    private function getUserInfoFromIdToken($idToken)
     {
-        $ch = curl_init($tokenEndpoint);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $tokenParams);
+        // Decode the ID token
+        $decodedIdToken = base64_decode(str_replace(['-', '_'], ['+', '/'], explode('.', $idToken)[1]));
 
-        $response = curl_exec($ch);
-        curl_close($ch);
+        // Parse the JSON data
+        $userInfo = json_decode($decodedIdToken, true);
 
-        return json_decode($response, true);
-    }
-
-    private function decodeIdToken($idToken)
-    {
-        $segments = explode('.', $idToken);
-        $decodedSegments = array_map('base64_decode', $segments);
-
-        return json_decode($decodedSegments[1], true);
+        return $userInfo;
     }
     public function socialCallback($driver){
         $user = Socialite::driver($driver)->user();
