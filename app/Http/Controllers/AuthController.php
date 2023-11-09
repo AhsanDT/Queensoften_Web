@@ -113,38 +113,48 @@ class AuthController extends Controller
         return redirect($url);
     }
     public function socialCallbackApple(Request $request){
-        if (!$request->has('code') || !$request->has('state')) {
-            return redirect()->route('home');
-        }
-        $state = $request->input('state');
-        $yourClientSecret = $this->generateAppleClientSecret();
-//        dd($yourClientSecret);
-        $authorizationCode = $request->code;
-//        dd($request->code);
-        dd($request->all());
-        $response = Http::asForm()->post('https://appleid.apple.com/auth/token', [
+        $code = $request->code;
+        $state = $request->state;
+        $tokenEndpoint = 'https://appleid.apple.com/auth/token';
+
+        $tokenParams = [
             'grant_type' => 'authorization_code',
-            'code' => $authorizationCode,
-            'client_id' => 'signinappleKey',
+            'code' => $code,
+            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
+            'client_id' => 'com.qot.queensoftenweb',
             'client_secret' => 'd1e8f611a1a64592a441d4ef3a8de9fa',
-            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple-access-token',
-        ]);
-        dd($response->body());
-        if ($response->successful()) {
-            $data = $response->json();
-            $accessToken = $data['access_token'];
-            $userResponse = Http::withToken($accessToken)->get('https://api.apple.com/userinfo');
-            dd($userResponse);
-            if ($userResponse->successful()) {
-                $userInfo = $userResponse->json();
-                $username = $userInfo['username'];
-                $email = $userInfo['email'];
-            } else {
-                return redirect()->route('home');
-            }
-        } else {
-            return redirect()->route('home');
-        }
+        ];
+
+        $response = $this->makeTokenRequest($tokenEndpoint, $tokenParams);
+
+        $idToken = $response['id_token'];
+
+        // Decode the ID token to get user information
+        $userInfo = $this->decodeIdToken($idToken);
+
+        // Now you can access user information like username and email
+        $username = $userInfo['sub']; // User ID
+        $email = $userInfo['email'];
+        dd($email);
+    }
+    private function makeTokenRequest($tokenEndpoint, $tokenParams)
+    {
+        $ch = curl_init($tokenEndpoint);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $tokenParams);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        return json_decode($response, true);
+    }
+
+    private function decodeIdToken($idToken)
+    {
+        $segments = explode('.', $idToken);
+        $decodedSegments = array_map('base64_decode', $segments);
+
+        return json_decode($decodedSegments[1], true);
     }
     public function socialCallback($driver){
         $user = Socialite::driver($driver)->user();
