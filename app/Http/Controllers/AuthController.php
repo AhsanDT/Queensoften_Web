@@ -32,6 +32,7 @@ use Jose\Component\Signature\Serializer\CompactSerializer;
 use Laravel\Socialite\Facades\Socialite;
 use PHPUnit\Exception;
 use Symfony\Component\HttpFoundation\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -134,9 +135,10 @@ class AuthController extends Controller
         $data = json_decode($response);
 //        dd($data);
         if ($data->access_token) {
-            $accessToken = $data->access_token;
-            $userResponse = Http::withToken($accessToken)->post('https://appleid.apple.com');
-            dd($userResponse);
+            $accessToken = $data->id_token;
+            $decoded = JWTAuth::decode($accessToken);
+//            $userResponse = Http::withToken($accessToken)->post('https://appleid.apple.com');
+            dd($decoded);
             if ($userResponse->successful()) {
                 $userInfo = $userResponse->json();
                 $username = $userInfo['username'];
