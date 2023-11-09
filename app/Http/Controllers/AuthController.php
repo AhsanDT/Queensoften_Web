@@ -125,7 +125,7 @@ class AuthController extends Controller
         $response = Http::asForm()->post('https://appleid.apple.com/auth/token', [
             'grant_type' => 'authorization_code',
             'code' => $authorizationCode,
-            'client_id' => '65H92Z42L4',
+            'client_id' => 'signinappleKey',
             'client_secret' => 'd1e8f611a1a64592a441d4ef3a8de9fa',
             'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple-access-token',
         ]);
