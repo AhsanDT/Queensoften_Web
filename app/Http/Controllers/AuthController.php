@@ -128,20 +128,11 @@ class AuthController extends Controller
         $keyFileId = '65H92Z42L4';
         $code = $request->code;
         $redirect_uri = 'https://admin.queensoften.com/auth/callback-apple';
-        $yourClientSecret = $this->generateAppleClientSecret($teamId,$clientId,$keyFile,$keyFileId,$code,$redirect_uri);
-        dd($yourClientSecret);
-        $authorizationCode = $request->code;
-//        dd($request->all());
-        $response = Http::asForm()->post('https://appleid.apple.com/auth/token', [
-            'grant_type' => 'authorization_code',
-            'code' => $authorizationCode,
-            'client_id' => 'com.qot.queensoftenweb',
-            'client_secret' => 'd1e8f611a1a64592a441d4ef3a8de9fa',
-            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
-        ]);
-        dd($response->body());
-        if ($response->successful()) {
-            $data = $response->json();
+        $response = $this->generateAppleClientSecret($teamId,$clientId,$keyFile,$keyFileId,$code,$redirect_uri);
+
+//        dd($response->body());
+        $data = json_decode($response);
+        if ($data['access_token']) {
             $accessToken = $data['access_token'];
             $userResponse = Http::withToken($accessToken)->get('https://api.apple.com/userinfo');
             dd($userResponse);
