@@ -128,6 +128,7 @@ class AuthController extends Controller
             'client_secret' => 'd1e8f611a1a64592a441d4ef3a8de9fa',
         ]);
         $data = $response->json();
+        dd($data);
         $idToken = $data['id_token'];
         $userInfo = $this->getUserInfoFromIdToken($idToken);
         dd($userInfo);
