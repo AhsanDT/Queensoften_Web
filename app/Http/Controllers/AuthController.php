@@ -123,7 +123,7 @@ class AuthController extends Controller
         }
         $state = $request->input('state');
         $teamId = '8YVY4D9WF9';
-        $clientId = 'com.qot.queensoftens';
+        $clientId = 'com.qot.queensoftenweb';
         $keyFile = asset('apple/AuthKey_65H92Z42L4.p8');
         $keyFileId = '65H92Z42L4';
         $code = $request->code;
@@ -135,7 +135,7 @@ class AuthController extends Controller
         $response = Http::asForm()->post('https://appleid.apple.com/auth/token', [
             'grant_type' => 'authorization_code',
             'code' => $authorizationCode,
-            'client_id' => 'com.qot.queensoftens',
+            'client_id' => 'com.qot.queensoftenweb',
             'client_secret' => 'd1e8f611a1a64592a441d4ef3a8de9fa',
             'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
         ]);
