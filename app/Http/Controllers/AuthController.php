@@ -136,9 +136,23 @@ class AuthController extends Controller
 //        dd($data);
         if ($data->access_token) {
             $accessToken = $data->id_token;
-            $decoded = JWTAuth::decode($accessToken);
+            $tokenParts = explode('.', $accessToken);
+
+            if (count($tokenParts) === 3) {
+                // Extract and decode the payload part
+                $payload = base64_decode($tokenParts[1]);
+                $decodedPayload = json_decode($payload);
+
+                // Now $decodedPayload contains the data from the token's payload
+                dd($decodedPayload);
+            } else {
+                dd('not working');
+                // Handle the case where the token is not in the expected format
+                // This may indicate an issue with the token itself
+            }
+//            $decoded = JWTAuth::decode($accessToken);
 //            $userResponse = Http::withToken($accessToken)->post('https://appleid.apple.com');
-            dd($decoded);
+//            dd($decoded);
             if ($userResponse->successful()) {
                 $userInfo = $userResponse->json();
                 $username = $userInfo['username'];
