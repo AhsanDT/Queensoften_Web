@@ -126,7 +126,7 @@ class AuthController extends Controller
         ];
 
         $response = $this->makeTokenRequest($tokenEndpoint, $tokenParams);
-
+        dd($response);
         $idToken = $response['id_token'];
 
         // Decode the ID token to get user information
