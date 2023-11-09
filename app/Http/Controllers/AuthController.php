@@ -24,6 +24,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Jose\Component\Core\AlgorithmManager;
+use Jose\Component\KeyManagement\JWKFactory;
+use Jose\Component\Signature\Algorithm\ES256;
+use Jose\Component\Signature\JWSBuilder;
+use Jose\Component\Signature\Serializer\CompactSerializer;
 use Laravel\Socialite\Facades\Socialite;
 use PHPUnit\Exception;
 use Symfony\Component\HttpFoundation\Response;
@@ -113,35 +118,43 @@ class AuthController extends Controller
         return redirect($url);
     }
     public function socialCallbackApple(Request $request){
-        $state = request('state');
-        if ($state !== session('apple_auth_state')) {
-            // Handle error - Invalid state
-            // You may redirect the user back to the login page with an error message
+        if (!$request->has('code') || !$request->has('state')) {
+            return redirect()->route('home');
         }
-
-        // Exchange authorization code for access token and ID token
-        $response = Http::post('https://appleid.apple.com/auth/token', [
+        $state = $request->input('state');
+        $teamId = '8YVY4D9WF9';
+        $clientId = 'com.qot.queensoftens';
+        $keyFile = asset('apple/AuthKey_65H92Z42L4.p8');
+        $keyFileId = '65H92Z42L4';
+        $code = $request->code;
+        $redirect_uri = 'https://admin.queensoften.com/auth/callback-apple';
+        $yourClientSecret = $this->generateAppleClientSecret($teamId,$clientId,$keyFile,$keyFileId,$code,$redirect_uri);
+        dd($yourClientSecret);
+        $authorizationCode = $request->code;
+//        dd($request->all());
+        $response = Http::asForm()->post('https://appleid.apple.com/auth/token', [
             'grant_type' => 'authorization_code',
-            'code' => request('code'),
-            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
-            'client_id' => 'com.qot.queensoftenweb',
+            'code' => $authorizationCode,
+            'client_id' => 'com.qot.queensoftens',
             'client_secret' => 'd1e8f611a1a64592a441d4ef3a8de9fa',
+            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
         ]);
-        $data = $response->json();
-        dd($data);
-        $idToken = $data['id_token'];
-        $userInfo = $this->getUserInfoFromIdToken($idToken);
-        dd($userInfo);
-    }
-    private function getUserInfoFromIdToken($idToken)
-    {
-        // Decode the ID token
-        $decodedIdToken = base64_decode(str_replace(['-', '_'], ['+', '/'], explode('.', $idToken)[1]));
-
-        // Parse the JSON data
-        $userInfo = json_decode($decodedIdToken, true);
-
-        return $userInfo;
+        dd($response->body());
+        if ($response->successful()) {
+            $data = $response->json();
+            $accessToken = $data['access_token'];
+            $userResponse = Http::withToken($accessToken)->get('https://api.apple.com/userinfo');
+            dd($userResponse);
+            if ($userResponse->successful()) {
+                $userInfo = $userResponse->json();
+                $username = $userInfo['username'];
+                $email = $userInfo['email'];
+            } else {
+                return redirect()->route('home');
+            }
+        } else {
+            return redirect()->route('home');
+        }
     }
     public function socialCallback($driver){
         $user = Socialite::driver($driver)->user();
@@ -312,29 +325,45 @@ class AuthController extends Controller
             return response(false, $exception->getMessage(), [], Response::HTTP_UNAUTHORIZED);
         }
     }
-    private function generateAppleClientSecret()
+    private function generateAppleClientSecret($teamId,$clientId,$keyFileName,$keyFileId,$code,$redirectUri)
     {
-        $header = base64_encode(json_encode([
-            'alg' => 'ES256',
-            'kid' => '65H92Z42L4',
-        ]));
+        $algorithmManager = new AlgorithmManager([new ES256()]);
 
-        $privateKeyPath = asset('apple/AuthKey_65H92Z42L4.p8');
-        $privateKey = file_get_contents($privateKeyPath);
+        $jwsBuilder = new JWSBuilder($algorithmManager);
+        $jws = $jwsBuilder
+            ->create()
+            ->withPayload(json_encode([
+                'iat' => time(),
+                'exp' => time() + 3600,
+                'iss' => $teamId,
+                'aud' => 'https://appleid.apple.com',
+                'sub' => $clientId
+            ]))
+            ->addSignature(JWKFactory::createFromKeyFile($keyFileName), [
+                'alg' => 'ES256',
+                'kid' => $keyFileId
+            ])
+            ->build();
 
-        $payload = base64_encode(json_encode([
-            'iss' => '8YVY4D9WF9',
-            'iat' => time(),
-            'exp' => time() + 3600,
-            'aud' => 'https://appleid.apple.com',
-            'sub' => 'com.qot.queensoftenweb',
-        ]));
+        $serializer = new CompactSerializer();
+        $token = $serializer->serialize($jws, 0);
 
-        openssl_sign("$header.$payload", $signature, $privateKey, OPENSSL_ALGO_SHA256);
+        $data = [
+            'client_id' => $clientId,
+            'client_secret' => $token,
+            'code' => $code,
+            'grant_type' => 'authorization_code',
+            'redirect_uri' => $redirectUri
+        ];
 
-        $signature = base64_encode($signature);
-
-        return "$header.$payload.$signature";
+        $ch = curl_init();
+        curl_setopt_array ($ch, [
+            CURLOPT_URL => 'https://appleid.apple.com/auth/token',
+            CURLOPT_POSTFIELDS => http_build_query($data),
+            CURLOPT_RETURNTRANSFER => true
+        ]);
+        $response = curl_exec($ch);
+        return $response;
     }
     public function socialCallbackAppleAccess(Request $request){
         dd($request->all());
