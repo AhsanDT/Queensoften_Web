@@ -43,6 +43,7 @@ Route::get('/auth/redirect/{driver}',[AuthController::class,'socialRedirect']);
 Route::get('/auth/redirect-apple',[AuthController::class,'socialRedirectApple']);
 Route::get('/auth/callback/{driver}',[AuthController::class,'socialCallback']);
 Route::post('/auth/callback-apple',[AuthController::class,'socialCallbackApple']);
+Route::post('/auth/callback-apple-access-token',[AuthController::class,'socialCallbackAppleAccess']);
 
 Route::group(['middleware'=> ['auth:admin']],function() {
     Route::get('/dashboard',  [\App\Http\Controllers\IndexController::class, 'index'])->name('index');

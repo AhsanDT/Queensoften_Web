@@ -126,7 +126,7 @@ class AuthController extends Controller
             'code' => $authorizationCode,
             'client_id' => 'com.qot.queensoftens',
             'client_secret' => 'd1e8f611a1a64592a441d4ef3a8de9fa',
-            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
+            'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple-access-token',
         ]);
         dd($response->body());
         if ($response->successful()) {
@@ -337,5 +337,8 @@ class AuthController extends Controller
         $signature = base64_encode($signature);
 
         return "$header.$payload.$signature";
+    }
+    public function socialCallbackAppleAccess(Request $request){
+        dd($request->all());
     }
 }
