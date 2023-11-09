@@ -132,7 +132,7 @@ class AuthController extends Controller
 
 //        dd($response->body());
         $data = json_decode($response);
-        dd($data);
+//        dd($data);
         if ($data->access_token) {
             $accessToken = $data->access_token;
             $userResponse = Http::withToken($accessToken)->post('https://appleid.apple.com/auth/userinfo');
