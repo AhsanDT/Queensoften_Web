@@ -136,6 +136,7 @@ class AuthController extends Controller
 //        dd($data);
         if ($data->access_token) {
             $accessToken = $data->id_token;
+            dd($accessToken);
             $tokenParts = explode('.', $accessToken);
 
             if (count($tokenParts) === 3) {
