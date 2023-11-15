@@ -7,7 +7,7 @@
                 <div class="d-flex flex-wrap  mb-3 mt-3">
                     <div style="padding-right: 10px;" class="col-md-4  col-12  account ">
                         <div class="card_box">
-                            <h5>Personal Profile<span class="badge text-warning">EDIT</span></h5>
+                            <h5>Personal Profile<span class="badge text-warning"><a href="{{route('editprofile')}}">EDIT</a></span></h5>
                             <div class="form-group p-0">
                                 <div class="manage">
                                     <input class="form-control" type="text" id="username" name="username" value="{{$user->name}}"

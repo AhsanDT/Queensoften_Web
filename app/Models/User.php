@@ -32,7 +32,10 @@ class User extends Authenticatable
         'online_status',
         'subscription_id',
         'updated_at',
-        'activeAt'
+        'activeAt',
+        'l_name',
+        'dob',
+        'phone',
     ];
 
     /**

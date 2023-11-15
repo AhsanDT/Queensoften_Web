@@ -142,7 +142,8 @@ class HomeController extends Controller
         }
     }
     public function editprofile(){
-        return view('home.editprofile');
+        $user = Auth::user()->id;
+        return view('home.editprofile',compact('user'));
     }
     public function contactus(){
         return view('home.contactus');
@@ -185,5 +186,8 @@ class HomeController extends Controller
                 'status_code' => 200,
             ]
         );
+    }
+    public function updateprofile(Request $request){
+        dd($request->all());
     }
 }

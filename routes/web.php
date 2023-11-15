@@ -29,6 +29,7 @@ Route::get('/performance',[\App\Http\Controllers\HomeController::class,'performa
 Route::get('/terms',[\App\Http\Controllers\HomeController::class,'terms'])->name('terms');
 Route::get('/manageaccount/{id}',[\App\Http\Controllers\HomeController::class,'manageaccount'])->name('manageaccount');
 Route::get('/editprofile',[\App\Http\Controllers\HomeController::class,'editprofile'])->name('editprofile');
+Route::post('/updateprofile',[\App\Http\Controllers\HomeController::class,'updateprofile'])->name('updateprofile');
 Route::get('/contactus',[\App\Http\Controllers\HomeController::class,'contactus'])->name('contactus');
 Route::post('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('login.authenticate');
 Route::get('/forgot-password',[\App\Http\Controllers\AuthController::class,'forgot_request'])->name('password.request');
