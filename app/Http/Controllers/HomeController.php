@@ -142,8 +142,7 @@ class HomeController extends Controller
         }
     }
     public function editprofile(){
-        $user = Auth::user()->id;
-        dd($user);
+        $user = Auth::user();
         return view('home.editprofile',compact('user'));
     }
     public function contactus(){
