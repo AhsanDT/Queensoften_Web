@@ -58,7 +58,7 @@ class HomeController extends Controller
     public function billing(){
         $user_id = Auth::user()->id;
         $billings = Billing::where('user_id',$user_id)->get();
-        if ($billings[0]){
+        if (isset($billings[0])){
             $billing = $billings[0];
             return view('home.billingaddress',compact('billing'));
         }else{
