@@ -22,7 +22,7 @@
                         <div class="d-flex direction">
                             <div class="col">
                                 <div class="card_box">
-                                    <h5>Address Book<span class="badge text-warning">EDIT</span></h5>
+                                    <h5>Address Book<span class="badge text-warning"><a href="{{route('billing')}}">EDIT</a></span></h5>
                                     <p class="sub-title py-1">DEFAULT SHIPPING ADDRESS</p>
                                     <div class="check">
                                         <input type="checkbox" id="" name="" value="">
