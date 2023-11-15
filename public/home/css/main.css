@@ -22560,15 +22560,6 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   background: var(--Yellow, linear-gradient(180deg, #ffcf35 0%, #ffe384 100%));
   color: #000;
 }
-.btn.labalbtn {
-  background: transparent;
-  border: 1px solid #dcdce4;
-  border-radius: 5px;
-  font-size: 12px;
-  padding: 10px;
-  color: #dcdce4;
-  width: 65px;
-}
 .btn.labalbtn:hover, .btn.labalbtn :focus {
   border-color: #450e61;
   color: #450e61;
@@ -24278,6 +24269,12 @@ input[type=submit] {
   justify-content: center;
   overflow: hidden;
 }
+.our_product .product_card .card_contant .imag_box img {
+  display: block;
+  height: 280px;
+  width: 100%;
+  object-fit: cover;
+}
 .our_product .product_card .card_contant.product_sec {
   background: #fff;
 }
@@ -24472,7 +24469,7 @@ input[type=submit] {
 }
 
 .story_contant {
-  text-align: left;
+  text-align: center;
   margin: 0 auto;
   padding: 40px 52px;
   max-width: 700px;
@@ -24484,7 +24481,10 @@ input[type=submit] {
 }
 
 .story_banners img {
+  display: block;
+  height: 400px;
   width: 100%;
+  object-fit: cover;
 }
 
 .story-texts {
@@ -24708,6 +24708,29 @@ input[type=submit] {
 
 .iti__selected-flag {
   color: #333;
+}
+
+.custom-radio .radio-label {
+  background: transparent;
+  border: 1px solid #dcdce4;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px;
+  color: #dcdce4;
+  width: 65px;
+  text-align: center;
+}
+.custom-radio .radio-label:hover {
+  background-color: #450d60;
+  border-color: #450d60;
+}
+.custom-radio .hidden-radio {
+  display: none;
+}
+.custom-radio .hidden-radio:checked + .radio-label {
+  background-color: #450d60;
+  border-color: #450d60;
+  color: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */

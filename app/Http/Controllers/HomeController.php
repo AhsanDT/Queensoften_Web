@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Billing;
 use App\Models\Deck;
 use App\Models\Joker;
 use App\Models\Shuffle;
@@ -13,6 +14,7 @@ use App\Models\Tutorial;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -132,5 +134,23 @@ class HomeController extends Controller
     public function contactus(){
         return view('home.contactus');
     }
-
+    public function billingStore(Request $request){
+//        dd($request->all());
+        $user_id = Auth::user()->id;
+        $billing = Billing::updateOrCreate([
+            'name'=>$request->name,
+            'l_name'=>$request->l_name,
+            'number'=>$request->number,
+            'notes'=>$request->notes,
+            'address'=>$request->address,
+            'appartment'=>$request->appartment,
+            'zip'=>$request->zip,
+            'country'=>$request->country,
+            'location'=>$request->location,
+            'user_id'=>$user_id,
+        ]);
+        if ($billing){
+            dd('created');
+        }
+    }
 }
