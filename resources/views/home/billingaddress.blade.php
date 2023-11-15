@@ -10,23 +10,23 @@
             <div class="col-md-5 billing_address">
                 <div class="form-group">
                     <label class="py-1">First Name</label>
-                    <input class="form-control" type="text" id="name" name="name" placeholder="Enter your First Name"
+                    <input class="form-control" type="text" id="name" name="name" placeholder="Enter your First Name" value="{{$billing->name}}"
                         required>
                 </div>
 
                 <div class="form-group">
                     <label class="py-1">Last Name</label>
-                    <input class="form-control" type="text" id="l_name" name="l_name" placeholder="Enter your Last Name"
+                    <input class="form-control" type="text" id="l_name" name="l_name" placeholder="Enter your Last Name" value="{{$billing->l_name}}"
                         required>
                 </div>
                 <div class="form-group">
                     <label class="py-1">Phone number</label>
-                    <input class="form-control" type="number" id="number" name="number"
+                    <input class="form-control" type="number" id="number" name="number" value="{{$billing->phone}}"
                         placeholder="Please enter your mobile number" required>
                 </div>
                 <div class="form-group">
                     <label class="py-1">Other Notes</label>
-                    <input class="form-control" type="text" id="notes" name="notes"
+                    <input class="form-control" type="text" id="notes" name="notes" value="{{$billing->notes}}"
                         placeholder="Please enter your notes" required>
                 </div>
             </div>
@@ -34,28 +34,28 @@
             <div class="col-md-5 billing_address">
                 <div class="form-group">
                     <label class="py-1">Street Number and Name</label>
-                    <input class="form-control" type="text" id="address" name="address" placeholder="Enter here" required>
+                    <input class="form-control" type="text" id="address" name="address" value="{{$billing->address}}" placeholder="Enter here" required>
                 </div>
                 <div class="form-group">
                     <label class="py-1">Apartment or Unit and Number</label>
-                    <input class="form-control" type="number" id="appartment" name="appartment" placeholder="Select" required>
+                    <input class="form-control" type="number" id="appartment" name="appartment" value="{{$billing->apartment}}" placeholder="Select" required>
                 </div>
                 <div class="form-group">
                     <label class="py-1">City, State Zip Code</label>
-                    <input class="form-control" type="number" id="zip" name="zip" placeholder="Select" required>
+                    <input class="form-control" type="number" id="zip" name="zip" value="{{$billing->zip}}" placeholder="Select" required>
                 </div>
                 <div class="form-group">
                     <label class="py-1">Country</label>
-                    <input class="form-control" type="text" id="country" name="country" placeholder="Enter Country here"
+                    <input class="form-control" type="text" id="country" name="country" value="{{$billing->country}}" placeholder="Enter Country here"
                         required>
                 </div>
                 <div class="form-group">
                     <label class="py-1">Select a label for effective delivery:</label>
                     <div class="custom-radio">
-                        <input type="radio" id="office" name="location" class="hidden-radio">
+                        <input type="radio" id="office" name="location" value="office" class="hidden-radio">
                         <label for="office" class="radio-label">OFFICE</label>
 
-                        <input type="radio" id="home" name="location" class="hidden-radio">
+                        <input type="radio" id="home" name="location" value="home" class="hidden-radio">
                         <label for="home" class="radio-label">HOME</label>
                     </div>
                 </div>
