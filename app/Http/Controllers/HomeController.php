@@ -58,8 +58,12 @@ class HomeController extends Controller
     public function billing(){
         $user_id = Auth::user()->id;
         $billings = Billing::where('user_id',$user_id)->get();
-        $billing = $billings[0];
-        return view('home.billingaddress',compact('billing'));
+        if ($billings[0]){
+            $billing = $billings[0];
+            return view('home.billingaddress',compact('billing'));
+        }else{
+            return view('home.billingaddress');
+        }
     }
     public function tutorial(){
         $tutorials = Tutorial::all();
