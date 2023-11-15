@@ -133,7 +133,13 @@ class HomeController extends Controller
     public function manageaccount($id){
         $user = User::find($id);
         $wallets = Wallet::where('user_id',$id)->get();
-        return view('home.manageaccount',compact('user','wallets'));
+        $billings = Billing::where('user_id',$id)->get();
+        if (isset($billings[0])){
+            $billing = $billings[0];
+            return view('home.manageaccount',compact('user','wallets','billing'));
+        }else{
+            return view('home.manageaccount',compact('user','wallets'));
+        }
     }
     public function editprofile(){
         return view('home.editprofile');

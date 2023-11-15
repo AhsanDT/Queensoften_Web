@@ -25,9 +25,9 @@
                                     <h5>Address Book<span class="badge text-warning"><a href="{{route('billing')}}">EDIT</a></span></h5>
                                     <p class="sub-title py-1">DEFAULT SHIPPING ADDRESS</p>
                                     <div class="check">
-                                        <input type="checkbox" id="" name="" value="">
+                                        <input type="checkbox" id="" name="" value="" @if(isset($billing)) @if($billing->location == 'home') checked @endif @endif>
                                         <label for="checkbox">Home</label><br>
-                                        <input type="checkbox" id="" name="" value="">
+                                        <input type="checkbox" id="" name="" value="" @if(isset($billing)) @if($billing->location == 'office') checked @endif @endif>
                                         <label for="checkbox">Office</label><br>
                                     </div>
                                 </div>
@@ -37,9 +37,9 @@
                                     <p class="sub-title pt-4">DEFAULT SHIPPING ADDRESS</p>
                                     <div class="form-group  py-0">
                                         <div class="manage">
-                                            <input class="form-control" type="text" id="address" name="address"
+                                            <input class="form-control" type="text" id="address" name="address" value="{{$billing->address ?? ''}}"
                                                 placeholder="Address" required>
-                                            <input class="form-control" type="text" id="phone" name="phone"
+                                            <input class="form-control" type="text" id="phone" name="phone" value="{{$billing->phone ?? ''}}"
                                                 placeholder="Contact Number" required>
                                         </div>
                                     </div>
