@@ -691,6 +691,12 @@ $breakpoints: (
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
+                img{
+                    display: block;
+                    height: 280px;
+                    width: 100%;
+                    object-fit: cover;
+                }
             }
 
             &.product_sec {
@@ -915,7 +921,7 @@ $breakpoints: (
 
 // story page
 .story_contant {
-    text-align: left;
+    text-align: center;
     // padding: 40px 321px;    max-width: 700px;
     margin: 0 auto;
     padding: 40px 52px;
@@ -930,7 +936,10 @@ $breakpoints: (
 
 .story_banners {
     img {
+        display: block;
+        height: 400px;
         width: 100%;
+        object-fit: cover;
     }
 }
 
@@ -1212,4 +1221,32 @@ $breakpoints: (
 
 .iti__selected-flag {
     color: #333;
+}
+.custom-radio {
+
+
+    .radio-label {
+        background: transparent;
+        border: 1px solid #dcdce4;
+        border-radius: 5px;
+        font-size: 12px;
+        padding: 10px;
+        color: #dcdce4;
+        width: 65px;
+
+
+        &:hover {
+            background-color: #450d60;
+            border-color: #450d60;
+        }
+    }
+
+    .hidden-radio {
+        display: none;
+
+        &:checked + .radio-label {
+            background-color: #450d60;
+            border-color: #450d60;
+        }
+    }
 }

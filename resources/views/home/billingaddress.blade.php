@@ -50,10 +50,13 @@
                 </div>
                 <div class="form-group">
                     <label class="py-1" type="text">Select a label for effective delivery:</label>
-                        <div>
-                            <a class="btn labalbtn" href="#">OFFICE</a>
-                            <a class="btn labalbtn" href="#">HOME</a>
-                        </div>
+                    <div class="custom-radio">
+                        <input type="radio" id="office" name="location" class="hidden-radio">
+                        <label for="office" class="radio-label">OFFICE</label>
+
+                        <input type="radio" id="home" name="location" class="hidden-radio">
+                        <label for="home" class="radio-label">HOME</label>
+                    </div>
                 </div>
 
             </div>
