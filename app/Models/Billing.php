@@ -10,7 +10,7 @@ class Billing extends Model
     use HasFactory;
     protected $fillable =[
         'name',
-        'l-name',
+        'l_name',
         'phone',
         'notes',
         'address',
