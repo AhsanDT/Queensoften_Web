@@ -188,6 +188,32 @@ class HomeController extends Controller
         );
     }
     public function updateprofile(Request $request){
-        dd($request->all());
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
+        if($user){
+            $user->update([
+                'name'=>$request->name,
+                'l_name'=>$request->l_name,
+                'email'=>$request->email,
+                'dob'=>$request->dob,
+                'phone'=>$request->phone
+            ]);
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Updated Successfully',
+                    'status_code' => 200,
+                ]
+            );
+        }else{
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'User not found',
+                    'status_code' => 404,
+                ]
+            );
+        }
+
     }
 }
