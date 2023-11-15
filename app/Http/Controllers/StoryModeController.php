@@ -53,6 +53,12 @@ class StoryModeController extends Controller
 
         return view('partials.story_list', compact('stories'));
     }
+    public function destroy($id){
+        $story = StoryMode::find($id);
+        Storage::disk('s3')->delete($story->image);
+        $story->delete();
+        return redirect()->route('storymode.index');
+    }
 
 
 }
