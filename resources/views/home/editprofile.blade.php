@@ -38,7 +38,7 @@
                     </div>
                     <div class="form_btn pt-5 pb-3">
                         <div class="text-danger">
-                            <a class="btn" href="#">Cancel</a>
+                            <a class="btn" href="{{route('manageaccount',\Illuminate\Support\Facades\Auth::user()->id)}}">Cancel</a>
                         </div>
                         <div class="">
                             <button class="btn" type="submit" value="submit">Save Changes</button>
