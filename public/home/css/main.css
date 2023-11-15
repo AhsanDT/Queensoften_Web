@@ -24276,6 +24276,7 @@ input[type=submit] {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .our_product .product_card .card_contant.product_sec {
   background: #fff;
