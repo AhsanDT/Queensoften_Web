@@ -140,7 +140,7 @@ class HomeController extends Controller
         $billing = Billing::updateOrCreate([
             'name'=>$request->name,
             'l_name'=>$request->l_name,
-            'number'=>$request->number,
+            'phone'=>$request->number,
             'notes'=>$request->notes,
             'address'=>$request->address,
             'appartment'=>$request->appartment,

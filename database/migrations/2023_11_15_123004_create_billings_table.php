@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('billings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('l_name');
-            $table->string('phone');
-            $table->string('notes');
-            $table->string('address');
-            $table->string('apartment');
-            $table->string('zip');
-            $table->string('country');
-            $table->string('location');
-            $table->unsignedBigInteger('user_id');
+            $table->string('name')->nullable();
+            $table->string('l_name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('notes')->nullable();
+            $table->string('address')->nullable();
+            $table->string('apartment')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('country')->nullable();
+            $table->string('location')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }
