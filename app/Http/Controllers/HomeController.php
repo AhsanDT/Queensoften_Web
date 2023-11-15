@@ -143,7 +143,7 @@ class HomeController extends Controller
             'phone'=>$request->number,
             'notes'=>$request->notes,
             'address'=>$request->address,
-            'appartment'=>$request->appartment,
+            'apartment'=>$request->appartment,
             'zip'=>$request->zip,
             'country'=>$request->country,
             'location'=>$request->location,

@@ -14,7 +14,7 @@ class Billing extends Model
         'phone',
         'notes',
         'address',
-        'appartment',
+        'apartment',
         'zip',
         'country',
         'location',
