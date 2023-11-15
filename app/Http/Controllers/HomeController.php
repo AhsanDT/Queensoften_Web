@@ -140,20 +140,40 @@ class HomeController extends Controller
     public function billingStore(Request $request){
 //        dd($request->all());
         $user_id = Auth::user()->id;
-        $billing = Billing::updateOrCreate([
-            'name'=>$request->name,
-            'l_name'=>$request->l_name,
-            'phone'=>$request->number,
-            'notes'=>$request->notes,
-            'address'=>$request->address,
-            'apartment'=>$request->appartment,
-            'zip'=>$request->zip,
-            'country'=>$request->country,
-            'location'=>$request->location,
-            'user_id'=>$user_id,
-        ]);
+        $billing = Billing::where('user_id', $user_id)->first();
         if ($billing){
-            dd('created');
+            $billing->update([
+                'name'=>$request->name,
+                'l_name'=>$request->l_name,
+                'phone'=>$request->number,
+                'notes'=>$request->notes,
+                'address'=>$request->address,
+                'apartment'=>$request->appartment,
+                'zip'=>$request->zip,
+                'country'=>$request->country,
+                'location'=>$request->location,
+                'user_id'=>$user_id,
+            ]);
+        }else{
+            $billing = Billing::create([
+                'name'=>$request->name,
+                'l_name'=>$request->l_name,
+                'phone'=>$request->number,
+                'notes'=>$request->notes,
+                'address'=>$request->address,
+                'apartment'=>$request->appartment,
+                'zip'=>$request->zip,
+                'country'=>$request->country,
+                'location'=>$request->location,
+                'user_id'=>$user_id,
+            ]);
         }
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Updated Successfully',
+                'status_code' => 200,
+            ]
+        );
     }
 }
