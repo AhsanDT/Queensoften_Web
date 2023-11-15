@@ -52,10 +52,10 @@
                 <div class="form-group">
                     <label class="py-1">Select a label for effective delivery:</label>
                     <div class="custom-radio">
-                        <input type="radio" id="office" name="location" value="office" class="hidden-radio">
+                        <input type="radio" id="office" name="location" value="office" @if($billing->location == 'office') checked @endif class="hidden-radio">
                         <label for="office" class="radio-label">OFFICE</label>
 
-                        <input type="radio" id="home" name="location" value="home" class="hidden-radio">
+                        <input type="radio" id="home" name="location" value="home" @if($billing->location == 'home') checked @endif class="hidden-radio">
                         <label for="home" class="radio-label">HOME</label>
                     </div>
                 </div>
