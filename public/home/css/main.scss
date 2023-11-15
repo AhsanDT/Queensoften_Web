@@ -1233,6 +1233,7 @@ $breakpoints: (
         padding: 10px;
         color: #dcdce4;
         width: 65px;
+        text-align: center;
 
 
         &:hover {
@@ -1247,6 +1248,7 @@ $breakpoints: (
         &:checked + .radio-label {
             background-color: #450d60;
             border-color: #450d60;
+            color: #fff;
         }
     }
 }

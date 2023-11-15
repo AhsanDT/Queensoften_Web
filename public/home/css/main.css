@@ -25843,6 +25843,7 @@ input[type=submit] {
   padding: 10px;
   color: #dcdce4;
   width: 65px;
+  text-align: center;
 }
 .custom-radio .radio-label:hover {
   background-color: #450d60;
@@ -25854,6 +25855,7 @@ input[type=submit] {
 .custom-radio .hidden-radio:checked + .radio-label {
   background-color: #450d60;
   border-color: #450d60;
+  color: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */
