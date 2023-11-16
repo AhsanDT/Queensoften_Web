@@ -340,6 +340,7 @@
                     border: none;
                     font-size: 12px;
                     padding: 5px 0 2px 0;
+                    color: #8d8d91;
 
                     &:focus-visible {
                         outline: none;
@@ -357,6 +358,9 @@
             background: #fff;
             padding: 20px;
             min-height: 250px;
+            @include media("<xs-phone") {
+                min-height: 200px;
+            }
 
             h5,
             h2 {
@@ -408,6 +412,7 @@
 
                 td {
                     padding: 1rem 2rem;
+                    color: #8d8d91;
                     img {
                         width: 30px;
                     }
@@ -455,6 +460,7 @@
     input[type="text"] {
         border: none;
         font-size: 12px;
+        color: #8d8d91;
 
         &:focus-visible {
             outline: none;

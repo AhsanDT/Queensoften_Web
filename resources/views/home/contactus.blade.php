@@ -11,7 +11,7 @@
                             <h2>Contact Us</h2>
                             <div class="link py-3" style="
                             text-align: left !important; font-size: 15px;">
-                                <span>You can reach us anytime via <a href="./signup.php" class="text-white">
+                                <span>You can reach us anytime via <a href="#" class="text-white">
                                         game@queensoften.com</a></span>
                             </div>
                             <div class="form-group">
