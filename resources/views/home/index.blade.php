@@ -98,11 +98,11 @@
         </section>
 
         <!-- our product -->
-        <section class="section our_product">
+        <section style="background-image: url(home/images/tabbg.png);" class="section our_product ">
             <div class="sec-banner our_products">
                 <h2><span class="text-warning">our </span> latest products</h2>
             </div>
-            <div class="product_card">
+            <div  style="background-image: url(home/images/wave.png);" class="product_card">
                 <div class="container">
                     <div class=" row product_slider">
                         @foreach($recentItems as $recentItem)

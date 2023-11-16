@@ -24505,9 +24505,9 @@ input[type=submit] {
 }
 
 .story_contant {
-  text-align: center;
+  text-align: left;
   margin: 0 auto;
-  padding: 40px 52px;
+  padding: 40px 0;
   max-width: 700px;
 }
 .story_contant h2 {
