@@ -207,7 +207,7 @@ $breakpoints: (
                     background: transparent;
 
                     img {
-                        width: 35px;
+                        width: 38px;
                         border-radius: 50%;
                     }
                 }
@@ -357,7 +357,7 @@ $breakpoints: (
         padding: 5px;
         bottom: -50px;
         left: 50%;
-        margin-top: 145px;
+        margin-top: 140px;
         transform: translateX(15%);
 
         i {
@@ -374,7 +374,7 @@ $breakpoints: (
         background: transparent;
         bottom: -50px;
         right: 50%;
-        margin-top: 145px;
+        margin-top: 140px;
         transform: translateX(-15%);
 
         i {
@@ -776,7 +776,7 @@ $breakpoints: (
 }
 // business queen
 .business_queen {
-    background-image: url(../images/businessqueenbg.png);
+    background-image: url(../images/tabbg.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,8 +1,8 @@
 <footer id="footer">
 <div class="container">
     <ul class="footer_nav p-0 m-0">
-    <li><a class="active" href="#">Story</a></li>
-    <li><a href="#">Store</a></li>
+    <li><a class="active" href="{{route('story')}}">Story</a></li>
+    <li><a href="{{route('product')}}">Store</a></li>
     <li><a href="#">Download App</a></li>
     </ul>
     <div class="footer_icons">
