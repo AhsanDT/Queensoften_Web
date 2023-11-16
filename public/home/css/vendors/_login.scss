@@ -132,6 +132,9 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            h2{
+                text-transform: unset;
+            }
             .login-btns{
                 text-align: center;
                 padding: 50px 0 0 0;
@@ -352,6 +355,7 @@
         .title {
             padding: 22px 0 0 0;
             font-weight: normal;
+            text-overflow: unset;
         }
 
         .card_box {
@@ -365,6 +369,7 @@
             h5,
             h2 {
                 color: #000;
+                text-transform: unset;
             }
 
             .sub-title,
@@ -408,6 +413,9 @@
                     letter-spacing: 0.1rem;
                     font-size: 14px;
                     font-weight: 600;
+                    @include media("<xs-phone") {
+                        font-size: 12px;
+                    }
                 }
 
                 td {

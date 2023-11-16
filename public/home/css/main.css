@@ -22726,6 +22726,9 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   align-items: center;
   min-height: 100vh;
 }
+#wrapper .authlayout .authbox h2 {
+  text-transform: unset;
+}
 #wrapper .authlayout .authbox .login-btns {
   text-align: center;
   padding: 50px 0 0 0;
@@ -22911,6 +22914,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
 .box .container .title {
   padding: 22px 0 0 0;
   font-weight: normal;
+  text-overflow: unset;
 }
 .box .container .card_box {
   background: #fff;
@@ -22925,6 +22929,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
 .box .container .card_box h5,
 .box .container .card_box h2 {
   color: #000;
+  text-transform: unset;
 }
 .box .container .card_box .sub-title,
 .box .container .card_box .check {
@@ -22963,6 +22968,11 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   letter-spacing: 0.1rem;
   font-size: 14px;
   font-weight: 600;
+}
+@media (max-width: 579px) {
+  .box .container .card_table table th {
+    font-size: 12px;
+  }
 }
 .box .container .card_table table td {
   padding: 1rem 2rem;
@@ -23423,6 +23433,9 @@ input[type=submit] {
   align-items: center;
   min-height: 100vh;
 }
+#wrapper .authlayout .authbox h2 {
+  text-transform: unset;
+}
 #wrapper .authlayout .authbox .login-btns {
   text-align: center;
   padding: 50px 0 0 0;
@@ -23608,6 +23621,7 @@ input[type=submit] {
 .box .container .title {
   padding: 22px 0 0 0;
   font-weight: normal;
+  text-overflow: unset;
 }
 .box .container .card_box {
   background: #fff;
@@ -23622,6 +23636,7 @@ input[type=submit] {
 .box .container .card_box h5,
 .box .container .card_box h2 {
   color: #000;
+  text-transform: unset;
 }
 .box .container .card_box .sub-title,
 .box .container .card_box .check {
@@ -23660,6 +23675,11 @@ input[type=submit] {
   letter-spacing: 0.1rem;
   font-size: 14px;
   font-weight: 600;
+}
+@media (max-width: 579px) {
+  .box .container .card_table table th {
+    font-size: 12px;
+  }
 }
 .box .container .card_table table td {
   padding: 1rem 2rem;
@@ -24287,9 +24307,9 @@ input[type=submit] {
 }
 .our_product .product_card .card_contant .imag_box img {
   display: block;
-  height: 280px;
+  height: 240px;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .our_product .product_card .card_contant.product_sec {
   background: #fff;
