@@ -38,11 +38,11 @@
                 </div>
                 <div class="form-group">
                     <label class="py-1">Apartment or Unit and Number</label>
-                    <input class="form-control" type="number" id="appartment" name="appartment" value="{{$billing->apartment ?? ''}}" placeholder="Select" required>
+                    <input class="form-control" type="text" id="appartment" name="appartment" value="{{$billing->apartment ?? ''}}" placeholder="Select" required>
                 </div>
                 <div class="form-group">
                     <label class="py-1">City, State Zip Code</label>
-                    <input class="form-control" type="number" id="zip" name="zip" value="{{$billing->zip ?? ''}}" placeholder="Select" required>
+                    <input class="form-control" type="text" id="zip" name="zip" value="{{$billing->zip ?? ''}}" placeholder="Select" required>
                 </div>
                 <div class="form-group">
                     <label class="py-1">Country</label>

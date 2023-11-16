@@ -37,7 +37,7 @@
                                     <p class="sub-title pt-4">DEFAULT SHIPPING ADDRESS</p>
                                     <div class="form-group  py-0">
                                         <div class="manage">
-                                            <input class="form-control" type="text" id="address" name="address" value="{{$billing->address ?? ''}}"
+                                            <input class="form-control" type="text" id="address" name="address" value="{{$billing->address ?? ''}} {{$billing->apartment ?? ''}} {{$billing->zip ?? ''}}"
                                                 placeholder="Address" required>
                                             <input class="form-control" type="text" id="phone" name="phone" value="{{$billing->phone ?? ''}}"
                                                 placeholder="Contact Number" required>
