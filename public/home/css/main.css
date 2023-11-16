@@ -24375,7 +24375,7 @@ input[type=submit] {
 }
 
 .business_queen {
-  background-image: url(../images/tabbg.png);
+  background-image: url(../images/businessqueenbg.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24722,6 +24722,58 @@ input[type=submit] {
 .box-contant .box_text .contant .numbers {
   list-style-type: auto;
   list-style-position: inside;
+}
+.box-contant .box_text .audiences-form {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.box-contant .box_text .audiences-form .form-control {
+  font-size: 12px;
+  padding: 10px;
+  border: 1px solid #000;
+}
+.box-contant .box_text .audiences-form .audiences {
+  display: flex;
+  justify-content: space-between;
+}
+.box-contant .box_text .audiences-form .audiences .form-group {
+  padding: 10px 0;
+  flex: 0 0 45%;
+}
+.box-contant .box_text .audiences-form hr {
+  color: #000;
+}
+.box-contant .box_text .checkboxs {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+.box-contant .box_text .checkboxs .form-group {
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 6px 0;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+}
+.box-contant .box_text .checkboxs .form-group label {
+  display: inline-block;
+  font-size: 14px;
+}
+.box-contant .box_text .checkboxs .form-group input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.box-contant .box_text .form-text {
+  text-align: center;
+  color: #000;
+}
+.box-contant .box_text .form-text .btn {
+  width: 150px;
 }
 
 .product-card-slider .slick-track {
