@@ -371,11 +371,16 @@ class AuthController extends Controller
                     $newUserName = $userName;
                 }
             }
+            $fullName = $name;
+            $nameParts = explode(" ", $fullName);
+            $firstName = $nameParts[0];
+            $lastName = isset($nameParts[1]) ? $nameParts[1] : '';
             if ($key == 'apple'){
                 $user = User::updateOrCreate([
                     "$key" => $value,
                 ], [
-                    'name' => $name,
+                    'name' => $firstName,
+                    'l_name' => $lastName,
                     'username' => $newUserName ?? '',
                     'picture' => $picture?:($userModel->picture ?? ''),
                     'online_status' => '1',
@@ -389,7 +394,8 @@ class AuthController extends Controller
                 $user = User::updateOrCreate([
                     "$key" => $value,
                 ], [
-                    'name' => $name,
+                    'name' => $firstName,
+                    'l_name' => $lastName,
                     'username' => $newUserName,
                     'picture' => $picture?:($userModel->picture ?? ''),
                     'online_status' => '1',
