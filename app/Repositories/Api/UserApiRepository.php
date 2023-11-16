@@ -57,11 +57,16 @@ class UserApiRepository implements UserApiRepositoryInterface
 
             if ($request->driver == 'apple') {
                 $appleUser = $this->modal::where('apple_id', $request->driver_id)->first();
+                $emailParts = explode('@', $email);
+                $username = $emailParts[0];
+                $uniqueNumber = uniqid();
+                $newUsername = $username . $uniqueNumber;
+                $newEmail = $newUsername . '@' . $emailParts[1];
 //                dd($appleUser);
 //                $newPicture = $this->modal::where('email', $request->email)->first();
                 if ($appleUser) {
                     $name = $name ?? $appleUser->name;
-                    $email = $email ?? $appleUser->email;
+                    $email = $newEmail ?? $appleUser->email;
                     $userName = $userName ?? $appleUser->username;
                     $picture = $appleUser->picture ?? $picture;
                 }
