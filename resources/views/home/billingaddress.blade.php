@@ -105,7 +105,7 @@
                             text: response.message,
                         });
                         // setTimeout(function (){
-                            window.location.href={{route('manageaccount',\Illuminate\Support\Facades\Auth::user()->id)}};
+                            window.location.href='{{route('manageaccount',\Illuminate\Support\Facades\Auth::user()->id)}}';
                         // }, 3000);
                     }
                 },
