@@ -182,7 +182,13 @@ class HomeController extends Controller
                 'user_id'=>$user_id,
             ]);
         }
-        return redirect()->route('manageaccount',\Illuminate\Support\Facades\Auth::user()->id)->with('success','Billing updated successfully');
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Updated Successfully',
+                'status_code' => 200,
+            ]
+        );
     }
     public function updateprofile(Request $request){
         $user_id = Auth::user()->id;
@@ -195,7 +201,13 @@ class HomeController extends Controller
                 'dob'=>$request->dob,
                 'phone'=>$request->phone
             ]);
-            return redirect()->route('manageaccount',\Illuminate\Support\Facades\Auth::user()->id)->with('success','profile updated successfully');
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Updated Successfully',
+                    'status_code' => 200,
+                ]
+            );
         }else{
             return response()->json(
                 [
