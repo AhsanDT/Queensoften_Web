@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login',[\App\Http\Controllers\AuthController::class,'index'])->name('login');
 Route::get('/',[\App\Http\Controllers\HomeController::class,'index'])->name('home');
 Route::get('/billing',[\App\Http\Controllers\HomeController::class,'billing'])->name('billing');
+Route::get('/form',[\App\Http\Controllers\HomeController::class,'form'])->name('form');
 Route::post('/post-billing',[\App\Http\Controllers\HomeController::class,'billingStore'])->name('post-billing');
 Route::get('/tutorial',[\App\Http\Controllers\HomeController::class,'tutorial'])->name('tutorial');
 Route::get('/story',[\App\Http\Controllers\HomeController::class,'story'])->name('story');

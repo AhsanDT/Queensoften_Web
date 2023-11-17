@@ -130,6 +130,9 @@ class HomeController extends Controller
     public function terms(){
         return view('home.terms');
     }
+    public function form(){
+        return view('home.form');
+    }
     public function manageaccount($id){
         $user = User::find($id);
         $wallets = Wallet::where('user_id',$id)->get();
