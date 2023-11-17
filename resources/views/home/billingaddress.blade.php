@@ -104,9 +104,9 @@
                             title: 'Success',
                             text: response.message,
                         });
-                        // setTimeout(function (){
+                        setTimeout(function (){
                             window.location.href='{{route('manageaccount',\Illuminate\Support\Facades\Auth::user()->id)}}';
-                        // }, 3000);
+                        }, 1000);
                     }
                 },
                 error: function (data) {
