@@ -28,7 +28,7 @@
             </div>
             <div class="container-fluid">
                     <div class="product_card product-card-slider row ">
-                        @foreach($tutorials as $tutorial)
+                        @foreach($tutorials->sortBy('sequence') as $tutorial)
                             <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
                                 <div class="section card_contant counter ">
                                     <span>{{$tutorial->sequence}}</span>
