@@ -10,7 +10,7 @@
                             <h5>Personal Profile<span class="badge text-warning"><a style="color:#ffc107" href="{{route('editprofile')}}">EDIT</a></span></h5>
                             <div class="form-group p-0">
                                 <div class="manage">
-                                    <input class="form-control" type="text" id="username" name="username" value="{{$user->name}}"
+                                    <input class="form-control" type="text" id="username" name="username" value="{{$user->name}} {{$user->l_name}}"
                                         placeholder="Username" required>
                                     <input class="form-control" type="email" id="email" name="email" value="{{$user->email}}"
                                         placeholder="username@yahoo.com" required>
