@@ -22818,7 +22818,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
 .box .container .title {
   padding: 22px 0 0 0;
   font-weight: normal;
-  text-overflow: unset;
+  text-transform: unset;
 }
 .box .container .card_box {
   background: #fff;
@@ -23524,7 +23524,7 @@ input[type=submit] {
 .box .container .title {
   padding: 22px 0 0 0;
   font-weight: normal;
-  text-overflow: unset;
+  text-transform: unset;
 }
 .box .container .card_box {
   background: #fff;
