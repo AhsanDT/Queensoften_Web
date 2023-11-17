@@ -13,7 +13,7 @@
                             <div class="form-group pt-2">
                                 <div class="manage">
                                 <h2>${{$user->usd ?? '0'}}.00</h2>
-                                <input class="form-control" type="email" id="email" name="email"
+                                <input class="form-control" type="email" id="email" name="email" readonly
                                     placeholder="12 Jan 2023 last Update" required>
                                     </div>
                             </div>
@@ -27,9 +27,9 @@
                                     <p class="sub-title pt-2">Apple Card</p>
                                     <div class="form-group  py-0">
                                     <div class="manage">
-                                        <input class="form-control" type="text" id="email" name="email"
+                                        <input class="form-control" type="text" id="email" name="email" readonly
                                             placeholder="10880 Malibu Point Malibu Cal..." required>
-                                        <input class="form-control" type="text" id="email" name="email"
+                                        <input class="form-control" type="text" id="email" name="email" readonly
                                             placeholder="•••• 1234" required>
                                     </div>
                                     </div>
@@ -40,9 +40,9 @@
                                     <p class="sub-title pt-4">Contact</p>
                                     <div class="form-group  py-0">
                                     <div class="manage">
-                                        <input class="form-control" type="email" id="email" name="email" value="{{$user->email}}"
+                                        <input class="form-control" type="email" id="email" name="email" value="{{$user->email}}" readonly
                                             placeholder="avajohns123@gmail,com" required>
-                                        <input class="form-control" type="text" id="email" name="email"
+                                        <input class="form-control" type="text" id="email" name="email" readonly
                                             placeholder="(123) 456-7890" required>
                                     </div>
                                     </div>
