@@ -20,7 +20,7 @@
                     </div>
                     <div class="form-group">
                         <label class="py-1" type="email">Email</label>
-                        <input class="form-control" type="email" id="email" name="email" value="{{$user->email}}" placeholder="Enter your Email"
+                        <input class="form-control" type="email" id="email" name="email" readonly value="{{$user->email}}" placeholder="Enter your Email"
                             required>
                     </div>
                     </div>

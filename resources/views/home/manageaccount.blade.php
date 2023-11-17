@@ -10,9 +10,9 @@
                             <h5>Personal Profile<span class="badge text-warning"><a style="color:#ffc107" href="{{route('editprofile')}}">EDIT</a></span></h5>
                             <div class="form-group p-0">
                                 <div class="manage">
-                                    <input class="form-control" type="text" id="username" name="username" value="{{$user->name}} {{$user->l_name}}"
+                                    <input class="form-control" type="text" id="username" name="username" readonly value="{{$user->name}} {{$user->l_name}}"
                                         placeholder="Username" required>
-                                    <input class="form-control" type="email" id="email" name="email" value="{{$user->email}}"
+                                    <input class="form-control" type="email" id="email" name="email" readonly value="{{$user->email}}"
                                         placeholder="username@yahoo.com" required>
                                 </div>
                             </div>
@@ -25,9 +25,9 @@
                                     <h5>Address Book<span class="badge text-warning"><a style="color:#ffc107" href="{{route('billing')}}">EDIT</a></span></h5>
                                     <p class="sub-title py-1">DEFAULT SHIPPING ADDRESS</p>
                                     <div class="check">
-                                        <input type="checkbox" id="" name="" value="" @if(isset($billing)) @if($billing->location == 'home') checked @endif @endif>
+                                        <input type="checkbox" id="" name="" value="" readonly @if(isset($billing)) @if($billing->location == 'home') checked @endif @endif>
                                         <label for="checkbox">Home</label><br>
-                                        <input type="checkbox" id="" name="" value="" @if(isset($billing)) @if($billing->location == 'office') checked @endif @endif>
+                                        <input type="checkbox" id="" name="" value="" readonly @if(isset($billing)) @if($billing->location == 'office') checked @endif @endif>
                                         <label for="checkbox">Office</label><br>
                                     </div>
                                 </div>
@@ -37,9 +37,9 @@
                                     <p class="sub-title pt-4">DEFAULT SHIPPING ADDRESS</p>
                                     <div class="form-group  py-0">
                                         <div class="manage">
-                                            <input class="form-control" type="text" id="address" name="address" value="{{$billing->address ?? ''}} {{$billing->apartment ?? ''}} {{$billing->zip ?? ''}}"
+                                            <input class="form-control" type="text" id="address" name="address" readonly value="{{$billing->address ?? ''}} {{$billing->apartment ?? ''}} {{$billing->zip ?? ''}}"
                                                 placeholder="Address" required>
-                                            <input class="form-control" type="text" id="phone" name="phone" value="{{$billing->phone ?? ''}}"
+                                            <input class="form-control" type="text" id="phone" name="phone" readonly value="{{$billing->phone ?? ''}}"
                                                 placeholder="Contact Number" required>
                                         </div>
                                     </div>
