@@ -32,16 +32,5 @@
             </div>
         </section>
 
-        <!--discount  -->
-        <section class="section discount">
-            <div class="container">
-                <h1>GET AMAZING DISCOUNT<br>
-                    IF YOU BUY ON OUR FIRST EVER SALE!</h1>
-                <div class="dis-btn">
-                    <a class="btn" href="#">Add to Cart</a>
-                </div>
-            </div>
-        </section>
-
     </main>
 @endsection
