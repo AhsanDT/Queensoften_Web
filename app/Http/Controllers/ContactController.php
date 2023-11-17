@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use App\Mail\AdminMail;
 use App\Mail\ContactMail;
 use App\Models\Contact;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    public function contact(Request $request){
+    public function contact(ContactRequest $request){
         Mail::to($request->email)->send(new ContactMail($request->email,$request->name,$request->comment));
         Mail::to('admin@queensoften@gmail.com')->send(new AdminMail($request->email,$request->name,$request->comment));
         $contact = Contact::create([

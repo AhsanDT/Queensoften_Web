@@ -104,9 +104,9 @@
                             title: 'Success',
                             text: response.message,
                         });
-                        setTimeout(function (){
+                        // setTimeout(function (){
                             window.location.reload();
-                        }, 3000);
+                        // }, 3000);
                     }
                 },
                 error: function (data) {
