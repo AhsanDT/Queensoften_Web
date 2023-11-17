@@ -22805,6 +22805,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   border: none;
   font-size: 12px;
   padding: 5px 0 2px 0;
+  color: #8d8d91;
 }
 .box .container .form-group .manage input[type=text]:focus-visible,
 .box .container .form-group .manage input[type=email]:focus-visible,
@@ -22819,6 +22820,11 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   background: #fff;
   padding: 20px;
   min-height: 250px;
+}
+@media (max-width: 579px) {
+  .box .container .card_box {
+    min-height: 200px;
+  }
 }
 .box .container .card_box h5,
 .box .container .card_box h2 {
@@ -22864,6 +22870,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
 }
 .box .container .card_table table td {
   padding: 1rem 2rem;
+  color: #8d8d91;
 }
 .box .container .card_table table td img {
   width: 30px;
@@ -22899,6 +22906,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
 .manage input[type=text] {
   border: none;
   font-size: 12px;
+  color: #8d8d91;
 }
 .manage .input-container select:focus-visible,
 .manage input[type=text]:focus-visible {
@@ -23002,7 +23010,7 @@ h6,
   margin: 0;
   color: #fff;
   letter-spacing: 1.33px;
-  text-transform: unset;
+  text-transform: uppercase;
 }
 
 h1,
@@ -23493,6 +23501,7 @@ input[type=submit] {
   border: none;
   font-size: 12px;
   padding: 5px 0 2px 0;
+  color: #8d8d91;
 }
 .box .container .form-group .manage input[type=text]:focus-visible,
 .box .container .form-group .manage input[type=email]:focus-visible,
@@ -23507,6 +23516,11 @@ input[type=submit] {
   background: #fff;
   padding: 20px;
   min-height: 250px;
+}
+@media (max-width: 579px) {
+  .box .container .card_box {
+    min-height: 200px;
+  }
 }
 .box .container .card_box h5,
 .box .container .card_box h2 {
@@ -23552,6 +23566,7 @@ input[type=submit] {
 }
 .box .container .card_table table td {
   padding: 1rem 2rem;
+  color: #8d8d91;
 }
 .box .container .card_table table td img {
   width: 30px;
@@ -23587,6 +23602,7 @@ input[type=submit] {
 .manage input[type=text] {
   border: none;
   font-size: 12px;
+  color: #8d8d91;
 }
 .manage .input-container select:focus-visible,
 .manage input[type=text]:focus-visible {
