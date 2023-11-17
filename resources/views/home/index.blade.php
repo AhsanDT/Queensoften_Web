@@ -31,7 +31,7 @@
                         @foreach($tutorials->sortBy('sequence') as $tutorial)
                             <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
                                 <div class="section card_contant counter ">
-                                    <span>{{$tutorial->sequence}}</span>
+                                    <span>{{$tutorial->sequence}}.</span>
                                     <div class="box-contant">
                                         <p class="mt-3">
                                             {{$tutorial->description}}
