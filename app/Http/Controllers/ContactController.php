@@ -18,7 +18,7 @@ class ContactController extends Controller
            'name' => $request->name,
            'email' => $request->email,
            'phone' => $request->phone,
-           'comment' => $request->comment,
+           'comment' => $request->comment ?? '',
         ]);
         if ($contact){
             return response()->json(
