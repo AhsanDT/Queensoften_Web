@@ -4,7 +4,7 @@
         <main> <section class="box-contant"> <div class="container">
                     <div class="box_text">
                         <div class="title">
-                            <div class="logo"> <img src="{{asset('home/images/business1.png')}}" alt="img"></div>
+                        <div class="logo"><img src="{{asset('home/images/business2.png')}}" alt="img"></div>
                             <div class="text">
                                 <h3>CROSS ADVERTISEMENT BUSINESS PROJECT</h3>
                             </div>
