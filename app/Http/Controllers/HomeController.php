@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(){
-        $tutorials = Tutorial::take(4)->get();
+        $tutorials = Tutorial::sortBy('sequence')->take(4)->get();
         $shuffles = Shuffle::all();
         $jokers = Joker::all();
         $suits = Suit::all();
