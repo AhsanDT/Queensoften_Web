@@ -8,6 +8,7 @@ $breakpoints: (
     "widescreen-large": 1400px
 );
 
+
 @import "vendors/include-media";
 @import "vendors/normalize";
 @import "vendors/fonts";
@@ -27,6 +28,7 @@ $breakpoints: (
 @import "base/typography";
 @import "base/forms";
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap');
 @import "vendors/sociallinks";
 @import "vendors/login";
 
@@ -1119,6 +1121,7 @@ $breakpoints: (
             text-align: center;
             line-height: 154.023%;
             padding: 25px 0 0 0;
+
             @include media("<phone") {
                 p {
                     font-size: 14px;

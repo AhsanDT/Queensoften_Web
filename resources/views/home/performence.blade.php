@@ -17,7 +17,7 @@
                             and active players, our game provides an ideal advertising space that can elevate your brand
                             to new heights.</p>
                         </p>
-                            <h6 style="text-transform: none;font-weight: 800;">Why Advertise with Us?</h6>
+                            <h6 style="text-transform: none;font-weight: 700;font-family: 'Inter', sans-serif; letter-spacing: 0;padding-bottom: 15px;">Why Advertise with Us?</h6>
 
                             <ul class="dots">
                                 <li>Targeted Exposure: "Queens of Ten" appeals to a broad demographic, allowing you to
