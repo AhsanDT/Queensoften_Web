@@ -6,13 +6,26 @@
                 <form data-action="{{route('tutorials.store')}}" method="POST" class="ajax-form" enctype="multipart/form-data">
                     @csrf()
                     <div class="row justify-content-center">
-                        <div class="col-md-6 form-group">
-                            <div class="imgUpload">
+                        <div class="col-md-6 form-group d-flex">
+                            <div class="imgUpload m-3">
                                 <label for='imgCoverPhoto'>
                                     <input type="file" class="imageInput" name="image" id='imgCoverPhoto' placeholder="Image upload" accept="image/*">
                                     <div class="placeholderBox">
                                         <div class="iconBox"></div>
                                         Upload Image
+                                    </div>
+                                </label>
+                                <div class="imgPreview">
+                                    <img class="previewImage" src="" />
+                                    <div class="removeBtn"><i class="fal fa-times"></i></div>
+                                </div>
+                            </div>
+                            <div class="imgUpload m-3">
+                                <label for='mobileImgCoverPhoto'>
+                                    <input type="file" class="imageInput" id='mobileImgCoverPhoto' placeholder="Image upload" name="mobile_image" accept="image/*">
+                                    <div class="placeholderBox">
+                                        <div class="iconBox"></div>
+                                        Mobile Image
                                     </div>
                                 </label>
                                 <div class="imgPreview">

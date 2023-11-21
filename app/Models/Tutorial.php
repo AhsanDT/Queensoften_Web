@@ -12,5 +12,6 @@ class Tutorial extends Model
         'image',
         'sequence',
         'description',
+        'mobile_image'
     ];
 }

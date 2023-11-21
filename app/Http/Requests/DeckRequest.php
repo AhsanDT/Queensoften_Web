@@ -25,6 +25,7 @@ class DeckRequest extends FormRequest
     {
         return [
             'image'=>'required|mimes:jpeg,jpg,png',
+            'mobile_image'=>'required|mimes:jpeg,jpg,png',
             'title'=>'required',
             'coins'=>'required|numeric',
             'joker_image'=>'required',

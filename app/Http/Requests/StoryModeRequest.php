@@ -32,6 +32,7 @@ class StoryModeRequest extends FormRequest
             ],
             'title'=>'required',
             'image'=>'required|mimes:jpeg,jpg,png',
+            'mobile_image'=>'required|mimes:jpeg,jpg,png',
             'description'=>'required',
         ];
     }

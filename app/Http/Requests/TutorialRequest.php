@@ -25,6 +25,7 @@ class TutorialRequest extends FormRequest
     {
         return [
             'image'=>'required|mimes:jpeg,jpg,png',
+            'mobile_image'=>'required|mimes:jpeg,jpg,png',
             'sequence'=>'required',
             'description'=>'required',
         ];

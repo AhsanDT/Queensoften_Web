@@ -7,13 +7,26 @@
                 <form  method="POST" class="ajax-form" data-action="{{route('e-store.shuffle')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12 d-flex">
                             <div class="imgUpload mx-auto" style="max-width: 200px">
                                 <label for='imgCoverPhoto'>
                                     <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload" name="image" accept="image/*">
                                     <div class="placeholderBox">
                                         <div class="iconBox"></div>
                                         Upload Photo
+                                    </div>
+                                </label>
+                                <div class="imgPreview">
+                                    <img class="previewImage" src="" />
+                                    <div class="removeBtn"><i class="fal fa-times"></i></div>
+                                </div>
+                            </div>
+                            <div class="imgUpload mx-auto" style="max-width: 200px">
+                                <label for='mobileImgCoverPhoto'>
+                                    <input type="file" class="imageInput" id='mobileImgCoverPhoto' placeholder="Image upload" name="mobile_image" accept="image/*">
+                                    <div class="placeholderBox">
+                                        <div class="iconBox"></div>
+                                        Mobile Image
                                     </div>
                                 </label>
                                 <div class="imgPreview">

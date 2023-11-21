@@ -12,5 +12,6 @@ class Shuffle extends Model
         'image',
         'value',
         'coins',
+        'mobile_image',
     ];
 }

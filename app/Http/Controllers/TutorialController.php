@@ -21,7 +21,11 @@ class TutorialController extends Controller
             $name = time() . $file->getClientOriginalName();
             $filePath = 'images/' . $name;
             Storage::disk('s3')->put($filePath, file_get_contents($file));
-            $tutorial = Tutorial::create(['image' => $filePath, 'sequence' => $request->sequence, 'description' => $request->description]);
+            $file_mobile = $request->file('mobile_image');
+            $name_mobile = time() . $file_mobile->getClientOriginalName();
+            $filePath_mobile = 'images/' . $name_mobile;
+            Storage::disk('s3')->put($filePath, file_get_contents($file));
+            $tutorial = Tutorial::create(['image' => $filePath, 'sequence' => $request->sequence, 'description' => $request->description,'mobile_image'=>$filePath_mobile]);
         if($tutorial){
             return response()->json(
                 [
@@ -102,34 +106,49 @@ class TutorialController extends Controller
            'data'=>$tutorial
         ]);
     }
-    public function update(EditTutorialRequest $request,$id){
-        $tutorial = Tutorial::where('id',$id)->get()->first();
+    public function update(EditTutorialRequest $request, $id)
+    {
+        $tutorial = Tutorial::find($id);
+
+        if (!$tutorial) {
+            return response()->json([
+                'message' => 'Tutorial not found',
+                'success' => false
+            ]);
+        }
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $name = time() . $file->getClientOriginalName();
             $filePath = 'images/' . $name;
             Storage::disk('s3')->delete($tutorial->image);
             Storage::disk('s3')->put($filePath, file_get_contents($file));
-            $tutorial = Tutorial::where('id',$id)->update(['image' => $filePath, 'sequence' => $request->sequence, 'description' => $request->description]);
-        }
-        else{
-            $tutorial = Tutorial::where('id',$id)->update(['sequence' => $request->sequence, 'description' => $request->description]);
-        }
-            if($tutorial){
-                return response()->json(
-                    [
-                        'success' => true,
-                        'message' => 'Tutorial added successfully',
-                        'status_code' => 200,
-                    ]
-                );
-            }else{
-                return response()->json([
-                    'message' => 'error',
-                    'success' => false
-                ])  ;
+            if ($request->hasFile('mobile_image')) {
+                $file_mobile = $request->file('mobile_image');
+                $name_mobile = time() . $file_mobile->getClientOriginalName();
+                $filePath_mobile = 'images/' . $name_mobile;
+                Storage::disk('s3')->put($filePath_mobile, file_get_contents($file_mobile));
+                $tutorial->update(['image' => $filePath, 'sequence' => $request->sequence, 'description' => $request->description, 'mobile_image' => $filePath_mobile]);
+            } else {
+                $tutorial->update(['image' => $filePath, 'sequence' => $request->sequence, 'description' => $request->description]);
             }
+        } else {
+            if ($request->hasFile('mobile_image')) {
+                $file_mobile = $request->file('mobile_image');
+                $name_mobile = time() . $file_mobile->getClientOriginalName();
+                $filePath_mobile = 'images/' . $name_mobile;
+                Storage::disk('s3')->put($filePath_mobile, file_get_contents($file_mobile));
+                $tutorial->update(['sequence' => $request->sequence, 'description' => $request->description, 'mobile_image' => $filePath_mobile]);
+            } else {
+                $tutorial->update(['sequence' => $request->sequence, 'description' => $request->description]);
+            }
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Tutorial updated successfully',
+            'status_code' => 200,
+        ]);
     }
+
     public function destroy($id){
         try {
             $tutorial = Tutorial::where('id',$id)->get()->first();

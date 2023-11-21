@@ -13,6 +13,7 @@ class Deck extends Model
       'coins',
       'image',
       'joker_image',
+        'mobile_image'
     ];
     public function deckAttachment(){
         return $this->hasMany(DeckAttachment::class,'deck_id');

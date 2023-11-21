@@ -26,14 +26,27 @@
                             </div>
                         </div>
                         <div class="row mx-0 mb-5 align-items-end">
-                            <div class="col-md-6 form-group">
-                                <label>Cover Photo</label>
+                            <label>Cover Photo</label>
+                            <div class="col-md-6 form-group d-flex">
                                 <div class="imgUpload" style="max-width: 200px">
                                     <label for='imgCoverPhoto'>
                                         <input type="file" class="imageInput" id='imgCoverPhoto' placeholder="Image upload" name="image">
                                         <div class="placeholderBox">
                                             <div class="iconBox"></div>
                                             Upload Cover Photo
+                                        </div>
+                                    </label>
+                                    <div class="imgPreview">
+                                        <img class="previewImage" src="" />
+                                        <div class="removeBtn"><i class="fal fa-times"></i></div>
+                                    </div>
+                                </div>
+                                <div class="imgUpload mx-auto" style="max-width: 200px">
+                                    <label for='mobileImgCoverPhoto'>
+                                        <input type="file" class="imageInput" id='mobileImgCoverPhoto' placeholder="Image upload" name="mobile_image" accept="image/*">
+                                        <div class="placeholderBox">
+                                            <div class="iconBox"></div>
+                                            Mobile Image
                                         </div>
                                     </label>
                                     <div class="imgPreview">

@@ -50,6 +50,19 @@
                                         <img class="previewImage" src="" />
                                         <div class="removeBtn"><i class="fal fa-times"></i></div>
                                     </div>
+                                </div><br>
+                                <div class="imgUpload">
+                                    <label for='mobileImgCoverPhoto'>
+                                        <input type="file" class="imageInput" id='mobileImgCoverPhoto' placeholder="Image upload" name="mobile_image" accept="image/*">
+                                        <div class="placeholderBox">
+                                            <div class="iconBox"></div>
+                                            Mobile Image
+                                        </div>
+                                    </label>
+                                    <div class="imgPreview">
+                                        <img class="previewImage" src="" />
+                                        <div class="removeBtn"><i class="fal fa-times"></i></div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12">

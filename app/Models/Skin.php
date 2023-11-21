@@ -11,6 +11,7 @@ class Skin extends Model
     protected $fillable =[
         'image',
         'name',
-        'coins'
+        'coins',
+        'mobile_image'
     ];
 }

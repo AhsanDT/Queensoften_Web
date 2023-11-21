@@ -10,6 +10,7 @@ class StoryMode extends Model
     use HasFactory;
     protected $fillable = [
       'image',
+      'mobile_image',
       'title',
       'description',
       'start_date',
