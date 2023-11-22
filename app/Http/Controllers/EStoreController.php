@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddCoinRequest;
 use App\Http\Requests\AddJokerRequest;
 use App\Http\Requests\AddShuffleRequest;
+use App\Http\Requests\AddSkinRequest;
 use App\Http\Requests\AddSuitRequest;
 use App\Http\Requests\DeckRequest;
 use App\Jobs\StoreImageJob;
