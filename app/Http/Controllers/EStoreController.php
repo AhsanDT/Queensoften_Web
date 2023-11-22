@@ -209,7 +209,7 @@ class EStoreController extends Controller
             return $this->response(false,'Something went wrong please try again later',[], Response::HTTP_UNAUTHORIZED);
         }
     }
-    public function addSkin(AddJokerRequest $request){
+    public function addSkin(AddSkinRequest $request){
         $file = $request->file('image');
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
