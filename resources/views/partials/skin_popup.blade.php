@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                             <div class="imgUpload mx-auto" style="max-width: 200px">
-                                <label for='mobileImgCoverPhoto'>
+                                <label for='mobileImgCoverPhoto3'>
                                     <input type="file" class="imageInput" id='mobileImgCoverPhoto3' placeholder="Image upload" name="mobile_image" accept="image/*">
                                     <div class="placeholderBox">
                                         <div class="iconBox"></div>
