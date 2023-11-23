@@ -32,7 +32,7 @@ class StoryModeController extends Controller
         $file_mobile = $request->file('mobile_image');
         $name_mobile = time() . $file_mobile->getClientOriginalName();
         $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath, file_get_contents($file));
+        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file));
         $tutorial = StoryMode::create(['image' => $filePath,'title'=>$request->title, 'start_date' => $request->start_date,'end_date'=>$request->end_date, 'description' => $request->description, 'mobile_image'=>$filePath_mobile]);
         if($tutorial){
             return response()->json(

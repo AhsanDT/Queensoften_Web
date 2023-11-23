@@ -38,7 +38,7 @@ class EStoreController extends Controller
         $file_mobile = $request->file('mobile_image');
         $name_mobile = time() . $file_mobile->getClientOriginalName();
         $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath, file_get_contents($file));
+        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file));
         $shuffle = Shuffle::create(['image' => $filePath, 'value' => $request->value, 'coins' => $request->coins,'mobile_image'=>$filePath_mobile]);
         if($shuffle){
             return response()->json(
@@ -98,7 +98,7 @@ class EStoreController extends Controller
         $file_mobile = $request->file('mobile_image');
         $name_mobile = time() . $file_mobile->getClientOriginalName();
         $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath, file_get_contents($file));
+        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file));
         $joker = Joker::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins, 'type'=>$request->type,'mobile_image'=>$filePath_mobile]);
         if($joker){
             return response()->json(
@@ -158,7 +158,7 @@ class EStoreController extends Controller
         $file_mobile = $request->file('mobile_image');
         $name_mobile = time() . $file_mobile->getClientOriginalName();
         $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath, file_get_contents($file));
+        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file));
         $suit = Suit::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins,'mobile_image'=>$filePath_mobile]);
         if($suit){
             return response()->json(
@@ -218,7 +218,7 @@ class EStoreController extends Controller
         $file_mobile = $request->file('mobile_image');
         $name_mobile = time() . $file_mobile->getClientOriginalName();
         $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath, file_get_contents($file));
+        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file));
         $skin = Skin::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins,'mobile_image'=>$filePath_mobile]);
         if($skin){
             return response()->json(
@@ -334,7 +334,7 @@ class EStoreController extends Controller
         $file_mobile = $request->file('mobile_image');
         $name_mobile = time() . $file_mobile->getClientOriginalName();
         $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath, file_get_contents($file));
+        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file));
         $deck = Deck::create(['image' => $filePath, 'title' => $request->title, 'coins' => $request->coins, 'joker_image' => $joker_filePath,'mobile_image'=>$filePath_mobile]);
         if($deck){
             return response()->json(
