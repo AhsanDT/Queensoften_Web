@@ -8,11 +8,11 @@
                     @csrf()
                     <div class="row justify-content-center">
                         <input id="editTutorialId" type="hidden" class="form-control" name="id">
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-6 form-group d-flex">
 {{--                            <img src="" style="width: 150px" id="tutorialImage"><br>--}}
 {{--                            <label>Image</label>--}}
 {{--                            <input id="editImage" type="file" class="form-control" name="image" placeholder="select image">--}}
-                            <div class="imgUpload">
+                            <div class="imgUpload m-lg-2">
                                 <label for='editImgCoverPhoto'>
                                     <input type="file" class="imageInput" name="image" id='editImgCoverPhoto' placeholder="Image upload" accept="image/*">
                                     <div class="placeholderBox">
@@ -22,6 +22,19 @@
                                 </label>
                                 <div class="imgPreview">
                                     <img class="previewImage" src=""/>
+                                    <div class="removeBtn"><i class="fal fa-times"></i></div>
+                                </div>
+                            </div>
+                            <div class="imgUpload m-lg-2">
+                                <label for='mobileImgCoverPhoto1'>
+                                    <input type="file" class="imageInput" id='mobileImgCoverPhoto1' placeholder="Image upload" name="mobile_image" accept="image/*">
+                                    <div class="placeholderBox">
+                                        <div class="iconBox"></div>
+                                        Mobile Image
+                                    </div>
+                                </label>
+                                <div class="imgPreview">
+                                    <img class="previewImage" src="" />
                                     <div class="removeBtn"><i class="fal fa-times"></i></div>
                                 </div>
                             </div>

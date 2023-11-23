@@ -119,7 +119,9 @@
                 console.log(data)
                 $('#updateTutorial').modal('show');
                 var src = "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.image
-                $('.imageInput').trigger('change', src);
+                var src_mobile = "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.mobile_image
+                $('#editImgCoverPhoto').trigger('change', src);
+                $('#mobileImgCoverPhoto1').trigger('change', src_mobile);
                 // $("#tutorialImage").attr("src", "https://queensoftenimages.s3.us-west-1.amazonaws.com/" + data.data.image);
                 $('#editSequence').val(data.data.sequence)
                 $('#editTutorialId').val(data.data.id)
