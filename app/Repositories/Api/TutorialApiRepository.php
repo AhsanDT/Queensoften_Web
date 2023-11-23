@@ -23,14 +23,18 @@ class TutorialApiRepository implements TutorialApiInterface
     public function list(): JsonResponse
     {
         try {
-            $tutorials =  Tutorial::all();
-
+            $tutorials = Tutorial::all();
+            $imageMapper = function ($tutorial) {
+                $data = $tutorial->toArray();
+                $data['image'] = $tutorial->mobile_image;
+                unset($data['mobile_image']);
+                return $data;
+            };
             $data = [
                 'count' => $tutorials->count(),
-                'tutorials' => $tutorials
+                'tutorials' => $tutorials->map($imageMapper),
             ];
-
-            return $this->response(true,'',$data,Response::HTTP_OK);
+            return $this->response(true, '', $data, Response::HTTP_OK);
 
         }catch (\Exception $exception){
             return $this->response(true,'','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);

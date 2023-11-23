@@ -24,30 +24,34 @@ class EstoreApiRepository implements EstoreApiInterface
     public function list(): JsonResponse
     {
         try {
-            $deck =  Deck::all();
-            $shuffle =  Shuffle::all();
-            $joker =  Joker::all();
-            $suit =  Suit::all();
-            $skin =  Skin::all();
-            $coin =  Coin::all();
+            $deck = Deck::all();
+            $shuffle = Shuffle::all();
+            $joker = Joker::all();
+            $suit = Suit::all();
+            $skin = Skin::all();
+            $coin = Coin::all();
+            $imageMapper = function ($model) {
+                $data = $model->toArray();
+                $data['image'] = $model->mobile_image;
+                unset($data['mobile_image']);
 
+                return $data;
+            };
             $data = [
-                'deck' => $deck,
+                'deck' => $deck->map($imageMapper),
                 'deck_count' => $deck->count(),
-                'joker' => $joker,
+                'joker' => $joker->map($imageMapper),
                 'joker_count' => $joker->count(),
-                'shuffle' => $shuffle,
+                'shuffle' => $shuffle->map($imageMapper),
                 'shuffle_count' => $shuffle->count(),
-                'suit' => $suit,
+                'suit' => $suit->map($imageMapper),
                 'suit_count' => $suit->count(),
-                'skin' => $skin,
+                'skin' => $skin->map($imageMapper),
                 'skin_count' => $skin->count(),
                 'coin' => $coin,
                 'coin_count' => $coin->count(),
             ];
-
-            return $this->response(true,'',$data,Response::HTTP_OK);
-
+            return $this->response(true, '', $data, Response::HTTP_OK);
         }catch (\Exception $exception){
             return $this->response(true,'','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
         }

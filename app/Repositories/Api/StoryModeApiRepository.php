@@ -22,13 +22,18 @@ class StoryModeApiRepository implements StoryModeApiInterface
     public function list(): JsonResponse
     {
         try {
-            $stories = StoryMode::where('end_date', '>=', now())->get();
+            $stories = StoryMode::all();
+            $imageReplacer = function ($story) {
+                $data = $story->toArray();
+                $data['image'] = $story->mobile_image;
+                unset($data['mobile_image']);
+                return $data;
+            };
             $data = [
                 'count' => $stories->count(),
-                'stories' => $stories
+                'stories' => $stories->map($imageReplacer),
             ];
-
-            return $this->response(true,'',$data,Response::HTTP_OK);
+            return $this->response(true, '', $data, Response::HTTP_OK);
 
         }catch (\Exception $exception){
             return $this->response(true,'Something went wrong please try again later.','',Response::HTTP_UNAUTHORIZED);
