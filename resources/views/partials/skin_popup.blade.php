@@ -21,19 +21,6 @@
                                     <div class="removeBtn"><i class="fal fa-times"></i></div>
                                 </div>
                             </div>
-                            <div class="imgUpload mx-auto" style="max-width: 200px">
-                                <label for='mobileImgCoverPhoto3'>
-                                    <input type="file" class="imageInput" id='mobileImgCoverPhoto3' placeholder="Image upload" name="mobile_image" accept="image/*">
-                                    <div class="placeholderBox">
-                                        <div class="iconBox"></div>
-                                        Mobile Image
-                                    </div>
-                                </label>
-                                <div class="imgPreview">
-                                    <img class="previewImage" src="" />
-                                    <div class="removeBtn"><i class="fal fa-times"></i></div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-md-12 form-group">
                             <label> Name</label>

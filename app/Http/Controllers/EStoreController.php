@@ -35,11 +35,7 @@ class EStoreController extends Controller
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $file_mobile = $request->file('mobile_image');
-        $name_mobile = time() . $file_mobile->getClientOriginalName();
-        $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file_mobile));
-        $shuffle = Shuffle::create(['image' => $filePath, 'value' => $request->value, 'coins' => $request->coins,'mobile_image'=>$filePath_mobile]);
+        $shuffle = Shuffle::create(['image' => $filePath, 'value' => $request->value, 'coins' => $request->coins]);
         if($shuffle){
             return response()->json(
                 [
@@ -95,11 +91,7 @@ class EStoreController extends Controller
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $file_mobile = $request->file('mobile_image');
-        $name_mobile = time() . $file_mobile->getClientOriginalName();
-        $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file_mobile));
-        $joker = Joker::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins, 'type'=>$request->type,'mobile_image'=>$filePath_mobile]);
+        $joker = Joker::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins, 'type'=>$request->type]);
         if($joker){
             return response()->json(
                 [
@@ -155,11 +147,7 @@ class EStoreController extends Controller
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $file_mobile = $request->file('mobile_image');
-        $name_mobile = time() . $file_mobile->getClientOriginalName();
-        $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file_mobile));
-        $suit = Suit::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins,'mobile_image'=>$filePath_mobile]);
+        $suit = Suit::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins]);
         if($suit){
             return response()->json(
                 [
@@ -215,11 +203,7 @@ class EStoreController extends Controller
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $file_mobile = $request->file('mobile_image');
-        $name_mobile = time() . $file_mobile->getClientOriginalName();
-        $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file_mobile));
-        $skin = Skin::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins,'mobile_image'=>$filePath_mobile]);
+        $skin = Skin::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins]);
         if($skin){
             return response()->json(
                 [
@@ -331,11 +315,7 @@ class EStoreController extends Controller
         $joker_filePath = 'images/' . $joker_name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
         Storage::disk('s3')->put($joker_filePath, file_get_contents($jokerFile));
-        $file_mobile = $request->file('mobile_image');
-        $name_mobile = time() . $file_mobile->getClientOriginalName();
-        $filePath_mobile = 'images/' . $name_mobile;
-        Storage::disk('s3')->put($filePath_mobile, file_get_contents($file_mobile));
-        $deck = Deck::create(['image' => $filePath, 'title' => $request->title, 'coins' => $request->coins, 'joker_image' => $joker_filePath,'mobile_image'=>$filePath_mobile]);
+        $deck = Deck::create(['image' => $filePath, 'title' => $request->title, 'coins' => $request->coins, 'joker_image' => $joker_filePath]);
         if($deck){
             return response()->json(
                 [

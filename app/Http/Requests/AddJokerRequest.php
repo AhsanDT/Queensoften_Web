@@ -25,7 +25,6 @@ class AddJokerRequest extends FormRequest
     {
         return [
             'image'=>'required|mimes:jpeg,jpg,png',
-            'mobile_image'=>'required|mimes:jpeg,jpg,png',
             'name'=>'required',
             'coins'=>'required',
             'type'=>'required'
