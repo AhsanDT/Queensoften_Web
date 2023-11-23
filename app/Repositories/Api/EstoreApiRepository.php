@@ -45,6 +45,11 @@ class EstoreApiRepository implements EstoreApiInterface
                 'coin' => $coin,
                 'coin_count' => $coin->count(),
             ];
+            foreach ($data as $key => $model) {
+                if (is_object($model) && property_exists($model, 'mobile_image')) {
+                    unset($data[$key]->mobile_image);
+                }
+            }
             return $this->response(true,'',$data,Response::HTTP_OK);
         }catch (\Exception $exception){
             return $this->response(true,'','Something went wrong please try again later.',Response::HTTP_UNAUTHORIZED);
