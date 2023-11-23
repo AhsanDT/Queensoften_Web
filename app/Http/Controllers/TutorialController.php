@@ -24,7 +24,7 @@ class TutorialController extends Controller
             $file_mobile = $request->file('mobile_image');
             $name_mobile = time() . $file_mobile->getClientOriginalName();
             $filePath_mobile = 'images/' . $name_mobile;
-            Storage::disk('s3')->put($filePath_mobile, file_get_contents($file));
+            Storage::disk('s3')->put($filePath_mobile, file_get_contents($file_mobile));
             $tutorial = Tutorial::create(['image' => $filePath, 'sequence' => $request->sequence, 'description' => $request->description,'mobile_image'=>$filePath_mobile]);
         if($tutorial){
             return response()->json(
