@@ -12,6 +12,7 @@ class Shuffle extends Model
         'image',
         'value',
         'coins',
+        'price',
         'mobile_image',
     ];
 }

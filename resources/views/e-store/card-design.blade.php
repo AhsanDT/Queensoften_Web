@@ -16,13 +16,17 @@
                     <form method="POST" class="deck-ajax-form" data-action="{{route('e-store.deck')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="row mx-0">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>Title</label>
                                 <input type="text" class="form-control" placeholder="Enter title here" name="title" />
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>Price in Royal Coins</label>
                                 <input type="text" class="form-control" placeholder="Enter price" name="coins"/>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>Price</label>
+                                <input type="number" class="form-control" placeholder="0" name="price" min="0">
                             </div>
                         </div>
                         <div class="row mx-0 mb-5 align-items-end">

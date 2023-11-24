@@ -11,6 +11,7 @@ class Deck extends Model
     protected $fillable = [
       'title',
       'coins',
+      'price',
       'image',
       'joker_image',
         'mobile_image'

@@ -27,6 +27,7 @@ class AddSkinRequest extends FormRequest
             'image'=>'required|mimes:jpeg,jpg,png',
             'name'=>'required',
             'coins'=>'required',
+            'price'=>'required',
         ];
     }
 }

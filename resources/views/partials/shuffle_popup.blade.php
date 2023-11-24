@@ -24,11 +24,15 @@
                         </div>
                         <div class="col-md-12 form-group">
                             <label>Shuffle Value</label>
-                            <input type="number" class="form-control" placeholder="0" name="value">
+                            <input type="number" class="form-control" placeholder="0" name="value" min="0">
                         </div>
                         <div class="col-md-12 form-group">
                             <label>Coin Value</label>
-                            <input type="number" class="form-control" placeholder="0" name="coins">
+                            <input type="number" class="form-control" placeholder="0" name="coins" min="0">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>Price</label>
+                            <input type="number" class="form-control" placeholder="0" name="price" min="0">
                         </div>
                         <div class="col-md-12 d-flex flex-column align-items-center">
                             <button type="submit" class="btn w-50 mb-3">Add</button>

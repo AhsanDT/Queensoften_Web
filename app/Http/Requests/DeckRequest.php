@@ -27,6 +27,7 @@ class DeckRequest extends FormRequest
             'image'=>'required|mimes:jpeg,jpg,png',
             'title'=>'required',
             'coins'=>'required|numeric',
+            'price'=>'required',
             'joker_image'=>'required',
             'spade_king'=>'required|mimes:jpeg,jpg,png',
             'spade_queen'=>'required|mimes:jpeg,jpg,png',

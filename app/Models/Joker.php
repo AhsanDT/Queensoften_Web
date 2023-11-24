@@ -13,6 +13,7 @@ class Joker extends Model
       'name',
       'coins',
         'type',
+        'price',
         'mobile_image'
     ];
 }

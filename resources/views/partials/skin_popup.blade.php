@@ -30,6 +30,10 @@
                             <label>Coin Value</label>
                             <input type="number" class="form-control" placeholder="0" name="coins">
                         </div>
+                        <div class="col-md-12 form-group">
+                            <label>Price</label>
+                            <input type="number" class="form-control" placeholder="0" name="price" min="0">
+                        </div>
                         <div class="col-md-12 d-flex flex-column align-items-center">
                             <button type="submit" class="btn w-50 mb-3">Add</button>
                             <button type="button" class="btn btn-light w-50" data-bs-dismiss="modal">Cancel</button>

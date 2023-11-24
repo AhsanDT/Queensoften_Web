@@ -35,7 +35,7 @@ class EStoreController extends Controller
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $shuffle = Shuffle::create(['image' => $filePath, 'value' => $request->value, 'coins' => $request->coins]);
+        $shuffle = Shuffle::create(['image' => $filePath, 'value' => $request->value, 'coins' => $request->coins,'price'=>$request->price]);
         if($shuffle){
             return response()->json(
                 [
@@ -91,7 +91,7 @@ class EStoreController extends Controller
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $joker = Joker::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins, 'type'=>$request->type]);
+        $joker = Joker::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins, 'type'=>$request->type,'price'=>$request->price]);
         if($joker){
             return response()->json(
                 [
@@ -147,7 +147,7 @@ class EStoreController extends Controller
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $suit = Suit::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins]);
+        $suit = Suit::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins,'price'=>$request->price]);
         if($suit){
             return response()->json(
                 [
@@ -203,7 +203,7 @@ class EStoreController extends Controller
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $skin = Skin::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins]);
+        $skin = Skin::create(['image' => $filePath, 'name' => $request->name, 'coins' => $request->coins,'price'=>$request->price]);
         if($skin){
             return response()->json(
                 [
@@ -315,7 +315,7 @@ class EStoreController extends Controller
         $joker_filePath = 'images/' . $joker_name;
         Storage::disk('s3')->put($filePath, file_get_contents($file));
         Storage::disk('s3')->put($joker_filePath, file_get_contents($jokerFile));
-        $deck = Deck::create(['image' => $filePath, 'title' => $request->title, 'coins' => $request->coins, 'joker_image' => $joker_filePath]);
+        $deck = Deck::create(['image' => $filePath, 'title' => $request->title, 'coins' => $request->coins, 'joker_image' => $joker_filePath,'price'=>$request->price]);
         if($deck){
             return response()->json(
                 [

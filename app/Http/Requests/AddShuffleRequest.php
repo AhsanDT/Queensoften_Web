@@ -26,7 +26,8 @@ class AddShuffleRequest extends FormRequest
         return [
             'image'=>'required|mimes:jpeg,jpg,png',
             'value'=>'required',
-            'coins'=>'required'
+            'coins'=>'required',
+            'price'=>'required',
         ];
     }
 }

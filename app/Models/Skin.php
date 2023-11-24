@@ -12,6 +12,7 @@ class Skin extends Model
         'image',
         'name',
         'coins',
+        'price',
         'mobile_image'
     ];
 }

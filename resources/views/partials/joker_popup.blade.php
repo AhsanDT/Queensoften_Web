@@ -31,6 +31,10 @@
                             <input type="number" class="form-control" placeholder="0" name="coins">
                         </div>
                         <div class="col-md-12 form-group">
+                            <label>Price</label>
+                            <input type="number" class="form-control" placeholder="0" name="price" min="0">
+                        </div>
+                        <div class="col-md-12 form-group">
                             <label>Type</label>
                             <select class="form-select" name="type">
                                 <option selected value="small">Small</option>
