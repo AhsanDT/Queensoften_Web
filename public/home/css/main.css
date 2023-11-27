@@ -6,6 +6,7 @@
  *    without disabling user zoom.
  */
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap");
 html {
   font-family: sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
@@ -22748,6 +22749,68 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
     margin: 10px;
   }
 }
+#wrapper .authlayout .addtocards {
+  max-height: 630px;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding-top: 50px;
+}
+#wrapper .authlayout .card {
+  max-width: 30em;
+  flex-direction: row;
+  background-color: transparent;
+  margin: 1em auto;
+  color: #fff;
+  border: none;
+}
+#wrapper .authlayout .card .imgbox {
+  background-color: #fff;
+  padding: 15px;
+  max-width: 100px;
+  border-radius: 5px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#wrapper .authlayout .card .imgbox img {
+  width: 100%;
+  display: block;
+}
+#wrapper .authlayout .card .card-body .contant {
+  display: flex;
+  justify-content: space-between;
+}
+#wrapper .authlayout .card .card-body .text-section {
+  max-width: 60%;
+}
+#wrapper .authlayout .card .card-body .text-section .card-title {
+  font-size: 15px;
+}
+#wrapper .authlayout .card .card-body .text-section .card-text {
+  font-size: 12px;
+}
+#wrapper .authlayout .card .cta-section {
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+#wrapper .authlayout .card .cta-section .btn {
+  padding: 0.3em 0.5em;
+  /* color: #696969; */
+}
+#wrapper .authlayout .card .card.bg-light-subtle .cta-section .btn {
+  background-color: #898989;
+  border-color: #898989;
+}
+@media screen and (max-width: 475px) {
+  #wrapper .authlayout .card .card {
+    font-size: 0.9em;
+  }
+}
 #wrapper .contact .box_left .contactbg {
   height: 100%;
   background-image: url(../images/contactbg.jpg);
@@ -22928,6 +22991,15 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   width: 350px;
   height: 40px;
   padding: 10px 16px;
+}
+
+.addcart {
+  display: flex;
+  justify-content: space-between;
+}
+.addcart .form-group {
+  padding: 0 !important;
+  flex: 0 0 49%;
 }
 
 .social-links {
@@ -23454,6 +23526,68 @@ input[type=submit] {
     margin: 10px;
   }
 }
+#wrapper .authlayout .addtocards {
+  max-height: 630px;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding-top: 50px;
+}
+#wrapper .authlayout .card {
+  max-width: 30em;
+  flex-direction: row;
+  background-color: transparent;
+  margin: 1em auto;
+  color: #fff;
+  border: none;
+}
+#wrapper .authlayout .card .imgbox {
+  background-color: #fff;
+  padding: 15px;
+  max-width: 100px;
+  border-radius: 5px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#wrapper .authlayout .card .imgbox img {
+  width: 100%;
+  display: block;
+}
+#wrapper .authlayout .card .card-body .contant {
+  display: flex;
+  justify-content: space-between;
+}
+#wrapper .authlayout .card .card-body .text-section {
+  max-width: 60%;
+}
+#wrapper .authlayout .card .card-body .text-section .card-title {
+  font-size: 15px;
+}
+#wrapper .authlayout .card .card-body .text-section .card-text {
+  font-size: 12px;
+}
+#wrapper .authlayout .card .cta-section {
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+#wrapper .authlayout .card .cta-section .btn {
+  padding: 0.3em 0.5em;
+  /* color: #696969; */
+}
+#wrapper .authlayout .card .card.bg-light-subtle .cta-section .btn {
+  background-color: #898989;
+  border-color: #898989;
+}
+@media screen and (max-width: 475px) {
+  #wrapper .authlayout .card .card {
+    font-size: 0.9em;
+  }
+}
 #wrapper .contact .box_left .contactbg {
   height: 100%;
   background-image: url(../images/contactbg.jpg);
@@ -23634,6 +23768,15 @@ input[type=submit] {
   width: 350px;
   height: 40px;
   padding: 10px 16px;
+}
+
+.addcart {
+  display: flex;
+  justify-content: space-between;
+}
+.addcart .form-group {
+  padding: 0 !important;
+  flex: 0 0 49%;
 }
 
 #wrapper {
@@ -24702,17 +24845,17 @@ input[type=submit] {
 
 .custom-radio .radio-label {
   background: transparent;
-  border: 1px solid #dcdce4;
+  border: 1px solid #9d9da1;
   border-radius: 5px;
   font-size: 12px;
   padding: 10px;
-  color: #dcdce4;
+  color: #9d9da1;
   width: 65px;
   text-align: center;
 }
 .custom-radio .radio-label:hover {
-  background-color: #450d60;
   border-color: #450d60;
+  color: #450d60;
 }
 .custom-radio .hidden-radio {
   display: none;
@@ -24721,4 +24864,55 @@ input[type=submit] {
   background-color: #450d60;
   border-color: #450d60;
   color: #fff;
+}
+
+.form-check-input[type=checkbox] {
+  border-radius: 0.25em;
+  background: #ffcf35;
+}
+.form-check-input[type=checkbox]:focus {
+  box-shadow: none;
+}
+
+.form-check-input:checked {
+  background: #ffcf35;
+  border-color: #ffcf35;
+}
+
+.increment_btn input[type=text] {
+  width: 32px;
+  height: 19px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+.increment_btn .quantity__minus {
+  border: 1px solid #fff;
+  background: #552771;
+  padding: 4px 8px;
+  margin: 0;
+  text-align: center;
+  line-height: 18px;
+  color: #fff;
+}
+.increment_btn .quantity__minus:hover {
+  background: #ffcc4e;
+  color: #000;
+}
+.increment_btn .quantity__plus {
+  border: 1px solid #fff;
+  background: #1f062e;
+  padding: 4px 8px;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  line-height: 21px;
+  color: #fff;
+}
+.increment_btn .quantity__plus:hover {
+  background: #ffcc4e;
+  color: #000;
 }/*# sourceMappingURL=main.css.map */

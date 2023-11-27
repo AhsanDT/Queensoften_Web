@@ -8,7 +8,6 @@ $breakpoints: (
     "widescreen-large": 1400px
 );
 
-
 @import "vendors/include-media";
 @import "vendors/normalize";
 @import "vendors/fonts";
@@ -28,7 +27,7 @@ $breakpoints: (
 @import "base/typography";
 @import "base/forms";
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap");
 @import "vendors/sociallinks";
 @import "vendors/login";
 
@@ -694,7 +693,7 @@ $breakpoints: (
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
-                img{
+                img {
                     display: block;
                     height: 240px;
                     width: 100%;
@@ -1198,8 +1197,6 @@ $breakpoints: (
                 width: 150px;
             }
         }
-
-
     }
     // .audiences-form {
     // 	max-width: 900px;
@@ -1260,7 +1257,7 @@ $breakpoints: (
         height: 100%;
         .slick-slide {
             padding: 10px;
-            >div,
+            > div,
             [class*="col"] {
                 height: 100%;
             }
@@ -1282,8 +1279,6 @@ $breakpoints: (
     color: #333;
 }
 .custom-radio {
-
-
     .radio-label {
         background: transparent;
         border: 1px solid #9d9da1;
@@ -1294,10 +1289,9 @@ $breakpoints: (
         width: 65px;
         text-align: center;
 
-
         &:hover {
             border-color: #450d60;
-            color:#450d60;
+            color: #450d60;
         }
     }
 
@@ -1308,6 +1302,59 @@ $breakpoints: (
             background-color: #450d60;
             border-color: #450d60;
             color: #fff;
+        }
+    }
+}
+
+.form-check-input[type="checkbox"] {
+    border-radius: 0.25em;
+    background: #ffcf35;
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+.form-check-input:checked {
+    background: #ffcf35;
+    border-color: #ffcf35;
+}
+
+.increment_btn {
+    input[type="text"] {
+        width: 32px;
+        height: 19px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        border: none;
+        background: transparent;
+        color: #fff;
+    }
+    .quantity__minus {
+        border: 1px solid #fff;
+        background: #552771;
+        padding: 4px 8px;
+        margin: 0;
+        text-align: center;
+        line-height: 18px;
+        color: #fff;
+        &:hover {
+            background: #ffcc4e;
+            color: #000;
+        }
+    }
+    .quantity__plus {
+        border: 1px solid #fff;
+        background: #1f062e;
+        padding: 4px 8px;
+        margin: 0;
+        text-decoration: none;
+        text-align: center;
+        line-height: 21px;
+        color: #fff;
+        &:hover {
+            background: #ffcc4e;
+            color: #000;
         }
     }
 }
