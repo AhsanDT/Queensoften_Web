@@ -1,12 +1,13 @@
 @extends('home.layout.app')
 @section('main')
 <main>
-    <section>
+    <section class="addtocardbg">
+        <div class="container">
         <div class="authlayout">
             <div class="row">
                 <div class="col-lg-6 ">
                     <div class="authbox">
-                        <form class="login-form py-0">
+                        <form style="padding: 50px 120px 50px 0px;" class="login-form m-0">
                             <h6>Contact</h6>
                             <div class="form-group">
                                 <input class="form-control" type="email" id="email" name="email" placeholder="Email"
@@ -70,7 +71,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="addtocards ">
+                    <div class="addtocards">
                         <div class="card">
                             <div class="imgbox">
                                 <img src="{{asset('home/images/shirt.png')}}" alt="...">
@@ -258,7 +259,7 @@
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div style="padding: 0 0 0 110px;" class="card">
                         <div class="card-body">
                             <div class="contant py-2">
                                 <div class="text-section">
@@ -289,10 +290,12 @@
 
                 </div>
             </div>
-            <div class="btn my-2">
-                <a href="#">Pay Now</a>
+            <div  class="text-center pb-3">
+                <a class="btn addcard" href="#">Pay Now</a>
             </div>
+
         </div>
+    </div>
     </section>
 </main>
 </div>

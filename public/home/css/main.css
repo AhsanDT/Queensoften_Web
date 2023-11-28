@@ -22469,6 +22469,12 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   border-color: #450e61;
   color: #450e61;
 }
+.btn.addcard {
+  padding: 20px 0;
+}
+.btn.addcard a {
+  color: #fff;
+}
 
 .form_btn {
   display: flex;
@@ -22750,16 +22756,36 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   }
 }
 #wrapper .authlayout .addtocards {
-  max-height: 630px;
+  max-height: 581px;
   overflow: scroll;
   overflow-x: hidden;
-  padding-top: 50px;
+  padding: 50px 0px 50px 120px;
+  position: relative;
+  top: 60px;
+  margin-bottom: 70px;
+  border-left: 1px solid #fff;
+}
+@media (max-width: 991px) {
+  #wrapper .authlayout .addtocards {
+    top: 0px;
+    padding: 0px;
+    margin-bottom: 10px;
+    border: none;
+    max-height: 531px;
+    margin-top: 50px;
+  }
+}
+@media (max-width: 639px) {
+  #wrapper .authlayout .addtocards {
+    padding: 20px;
+    margin-bottom: 20px;
+    max-height: 551px;
+    top: 38px;
+  }
 }
 #wrapper .authlayout .card {
-  max-width: 30em;
   flex-direction: row;
   background-color: transparent;
-  margin: 1em auto;
   color: #fff;
   border: none;
 }
@@ -22810,6 +22836,17 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   #wrapper .authlayout .card .card {
     font-size: 0.9em;
   }
+}
+#wrapper .authlayout ::-webkit-scrollbar {
+  width: 12px;
+}
+#wrapper .authlayout ::-webkit-scrollbar-thumb {
+  background-color: #9f17e4;
+  border-radius: 6px;
+}
+#wrapper .authlayout ::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.5019607843);
+  border-radius: 20px;
 }
 #wrapper .contact .box_left .contactbg {
   height: 100%;
@@ -23527,16 +23564,36 @@ input[type=submit] {
   }
 }
 #wrapper .authlayout .addtocards {
-  max-height: 630px;
+  max-height: 581px;
   overflow: scroll;
   overflow-x: hidden;
-  padding-top: 50px;
+  padding: 50px 0px 50px 120px;
+  position: relative;
+  top: 60px;
+  margin-bottom: 70px;
+  border-left: 1px solid #fff;
+}
+@media (max-width: 991px) {
+  #wrapper .authlayout .addtocards {
+    top: 0px;
+    padding: 0px;
+    margin-bottom: 10px;
+    border: none;
+    max-height: 531px;
+    margin-top: 50px;
+  }
+}
+@media (max-width: 639px) {
+  #wrapper .authlayout .addtocards {
+    padding: 20px;
+    margin-bottom: 20px;
+    max-height: 551px;
+    top: 38px;
+  }
 }
 #wrapper .authlayout .card {
-  max-width: 30em;
   flex-direction: row;
   background-color: transparent;
-  margin: 1em auto;
   color: #fff;
   border: none;
 }
@@ -23587,6 +23644,17 @@ input[type=submit] {
   #wrapper .authlayout .card .card {
     font-size: 0.9em;
   }
+}
+#wrapper .authlayout ::-webkit-scrollbar {
+  width: 12px;
+}
+#wrapper .authlayout ::-webkit-scrollbar-thumb {
+  background-color: #9f17e4;
+  border-radius: 6px;
+}
+#wrapper .authlayout ::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.5019607843);
+  border-radius: 20px;
 }
 #wrapper .contact .box_left .contactbg {
   height: 100%;
@@ -23786,12 +23854,6 @@ input[type=submit] {
 }
 #wrapper.nav-active #nav {
   left: 0;
-}
-
-.container {
-  max-width: 1270px;
-  margin: 0 auto;
-  padding: 0 15px;
 }
 
 .section {
@@ -24879,7 +24941,22 @@ input[type=submit] {
   border-color: #ffcf35;
 }
 
-.increment_btn input[type=text] {
+.addtocardbg {
+  background-image: url(../images/formbg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+@media (max-width: 991px) {
+  .addtocardbg .login-form {
+    padding-right: 0 !important;
+  }
+  .addtocardbg .row {
+    flex-direction: column-reverse;
+  }
+}
+.addtocardbg .addtocards .increment_btn input[type=text] {
   width: 32px;
   height: 19px;
   margin: 0;
@@ -24889,7 +24966,7 @@ input[type=submit] {
   background: transparent;
   color: #fff;
 }
-.increment_btn .quantity__minus {
+.addtocardbg .addtocards .increment_btn .quantity__minus {
   border: 1px solid #fff;
   background: #552771;
   padding: 4px 8px;
@@ -24898,11 +24975,11 @@ input[type=submit] {
   line-height: 18px;
   color: #fff;
 }
-.increment_btn .quantity__minus:hover {
+.addtocardbg .addtocards .increment_btn .quantity__minus:hover {
   background: #ffcc4e;
   color: #000;
 }
-.increment_btn .quantity__plus {
+.addtocardbg .addtocards .increment_btn .quantity__plus {
   border: 1px solid #fff;
   background: #1f062e;
   padding: 4px 8px;
@@ -24912,7 +24989,7 @@ input[type=submit] {
   line-height: 21px;
   color: #fff;
 }
-.increment_btn .quantity__plus:hover {
+.addtocardbg .addtocards .increment_btn .quantity__plus:hover {
   background: #ffcc4e;
   color: #000;
 }/*# sourceMappingURL=main.css.map */

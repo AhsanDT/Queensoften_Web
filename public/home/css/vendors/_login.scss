@@ -271,21 +271,37 @@
                     margin: 10px;
                 }
             }
-
         }
 
-        
-        .addtocards{
-            max-height: 630px;
+        .addtocards {
+            max-height: 581px;
             overflow: scroll;
             overflow-x: hidden;
-            padding-top: 50px;
+            padding: 50px 0px 50px 120px;
+            position: relative;
+            top: 60px;
+            margin-bottom: 70px;
+            border-left: 1px solid #fff;
+            @include media("<tablet-x") {
+                top: 0px;
+                padding: 0px;
+                margin-bottom: 10px;
+                border: none;
+                max-height: 531px;
+                margin-top: 50px;
+            }
+            
+            @include media("<phone") {
+                padding: 20px;
+                margin-bottom: 20px;
+                max-height: 551px;
+                top: 38px;
+            }
         }
         .card {
-            max-width: 30em;
             flex-direction: row;
             background-color: transparent;
-            margin: 1em auto;
+            // margin: 1em auto;
             color: #fff;
             border: none;
             .imgbox {
@@ -340,6 +356,19 @@
                     font-size: 0.9em;
                 }
             }
+        }
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #9f17e4;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #ffffff80;
+            border-radius: 20px;
         }
     }
     .contact {
