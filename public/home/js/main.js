@@ -19,6 +19,17 @@ jQuery(document).ready(function($){
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    var toggleButton = document.querySelector('#shop-toggler');
+    var closeButton = document.querySelector('#close');
+    var elementToToggle = document.querySelector('#shop-section');
+
+    function toggleElement() {
+        elementToToggle.classList.toggle('active');
+    }
+    toggleButton.addEventListener('click', toggleElement);
+    closeButton.addEventListener('click', toggleElement);
+});
 
 function initScrollTop() {
     var win = jQuery(window);
@@ -49,6 +60,7 @@ function initMobileNav() {
         menuDrop: '#nav'
     });;
 }
+
 
 /*
  * Simple Mobile Navigation
@@ -178,6 +190,10 @@ const options = document.getElementById('options');
 options.addEventListener('change', function() {
     selectInput.value = options.value;
 });
+
+
+// shop operner
+
 
 
 

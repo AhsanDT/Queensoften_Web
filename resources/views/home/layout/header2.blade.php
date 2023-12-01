@@ -21,7 +21,7 @@
 {{--                </div>--}}
             </nav>
             <div class="profile">
-                <span><a href=""></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                <span class="shop-opener" id="shop-toggler"><a ></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                 <div class="dropdown">
                     <button id="dropdownMenuButton" data-toggle="dropdown">
                         <img src="{{\Illuminate\Support\Facades\Auth::user()->picture ?? asset('images/profile.jpg')}}"  alt="Profile Image">

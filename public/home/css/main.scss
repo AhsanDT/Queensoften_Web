@@ -5,7 +5,7 @@ $breakpoints: (
     "tablet-x": 992px,
     "desktop": 1024px,
     "widescreen": 1200px,
-    "widescreen-large": 1400px
+    "widescreen-large": 1400px,
 );
 
 @import "vendors/include-media";
@@ -135,8 +135,7 @@ $breakpoints: (
                                 bottom: 0;
                                 left: 0;
                                 top: 25px;
-                                text-shadow:
-                                    0px -2px 0px rgba(0, 0, 0, 1),
+                                text-shadow: 0px -2px 0px rgba(0, 0, 0, 1),
                                     0 0 5px rgb(213 73 213 / 80%),
                                     0 -4px 15px rgb(226 52 218 / 50%);
                                 height: 1px;
@@ -595,7 +594,13 @@ $breakpoints: (
     }
 
     .tutorial {
-        background: linear-gradient(180deg, #ffe486 0%, #ffcc4e 51.56%, #ffd02b 100%, #d2a61b 100%);
+        background: linear-gradient(
+            180deg,
+            #ffe486 0%,
+            #ffcc4e 51.56%,
+            #ffd02b 100%,
+            #d2a61b 100%
+        );
 
         h2 {
             color: #000;
@@ -654,7 +659,13 @@ $breakpoints: (
             position: absolute;
             left: 14px;
             top: 15px;
-            background: linear-gradient(180deg, #ffe486 0%, #ffcc4e 51.56%, #ffd02b 100%, #d2a61b 100%);
+            background: linear-gradient(
+                180deg,
+                #ffe486 0%,
+                #ffcc4e 51.56%,
+                #ffd02b 100%,
+                #d2a61b 100%
+            );
             color: #000;
             border-radius: 50%;
             font-size: 12px;
@@ -740,7 +751,14 @@ $breakpoints: (
                         color: #fff;
 
                         &:hover {
-                            background: var(--Yellow, linear-gradient(180deg, #ffe384 0%, #ffcf35 100%));
+                            background: var(
+                                --Yellow,
+                                linear-gradient(
+                                    180deg,
+                                    #ffe384 0%,
+                                    #ffcf35 100%
+                                )
+                            );
                             color: #fff;
                         }
                     }
@@ -1051,7 +1069,11 @@ $breakpoints: (
             background-position: center -90px;
 
             .sec_tab {
-                background: linear-gradient(360deg, hsla(0, 0%, 48%, 1) 0%, hsla(0, 0%, 100%, 1) 33%);
+                background: linear-gradient(
+                    360deg,
+                    hsla(0, 0%, 48%, 1) 0%,
+                    hsla(0, 0%, 100%, 1) 33%
+                );
                 color: #000;
             }
         }
@@ -1378,16 +1400,167 @@ $breakpoints: (
     background-position: center;
     background-repeat: no-repeat;
     height: 100%;
+
     @include media("<tablet-x") {
         .login-form {
             padding-right: 0 !important;
         }
-        .row{
+
+        .row {
             flex-direction: column-reverse;
         }
     }
 
     .addtocards {
+        .increment_btn {
+            input[type="text"] {
+                width: 32px;
+                height: 19px;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                border: none;
+                background: transparent;
+                color: #fff;
+            }
+            .quantity {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                text-align: center;
+                .quantity__minus {
+                    border: 1px solid #fff;
+                    background: #552771;
+                    padding: 4px 8px;
+                    margin: 0;
+                    text-align: center;
+                    line-height: 18px;
+                    color: #fff;
+
+                    &:hover {
+                        background: #ffcc4e;
+                        color: #000;
+                    }
+                }
+
+                .quantity__plus {
+                    border: 1px solid #fff;
+                    background: #1f062e;
+                    padding: 4px 8px;
+                    margin: 0;
+                    text-decoration: none;
+                    text-align: center;
+                    line-height: 21px;
+                    color: #fff;
+
+                    &:hover {
+                        background: #ffcc4e;
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.shop {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100vh;
+    transition: all linear 0.3s;
+    background: linear-gradient(0deg, #450e61 0%, #450e61 100%), #fff;
+    &.active {
+        right: 0;
+        transition: all linear 0.3s;
+    }
+    .shop-opener {
+        color: #fff;
+        font-size: 18px;
+        align-items: center;
+
+        .shophead {
+            font-size: 14px;
+            background: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            span {
+                i {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .card {
+        flex-direction: row;
+        background-color: transparent;
+        margin: 20px 10px;
+        color: #fff;
+        border: none;
+
+        .imgbox {
+            background-color: #fff;
+            padding: 10px;
+            max-width: 80px;
+            border-radius: 5px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        .card-body {
+            .contant {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .text-section {
+                max-width: 45%;
+
+                .card-title {
+                    font-size: 15px;
+                }
+
+                .card-text {
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .cta-section {
+            max-width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .cta-section .btn {
+            padding: 0.3em 0.5em;
+            /* color: #696969; */
+        }
+
+        .card.bg-light-subtle .cta-section .btn {
+            background-color: #898989;
+            border-color: #898989;
+        }
+
+        @media screen and (max-width: 475px) {
+            .card {
+                font-size: 0.9em;
+            }
+        }
         .increment_btn {
             input[type="text"] {
                 width: 32px;
@@ -1429,6 +1602,27 @@ $breakpoints: (
                     background: #ffcc4e;
                     color: #000;
                 }
+            }
+        }
+    }
+    .cards {
+        position: fixed;
+        bottom: 0;
+        margin: 0;
+        background: #3a0d52;
+        font-size: 12px;
+        overflow: hidden;
+        color: #fff;
+        width: 100%;
+        padding: 15px;
+        .contant {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn {
+            a {
+                font-size: 12px !important;
             }
         }
     }

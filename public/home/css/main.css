@@ -22756,7 +22756,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   }
 }
 #wrapper .authlayout .addtocards {
-  max-height: 581px;
+  max-height: 599px;
   overflow: scroll;
   overflow-x: hidden;
   padding: 50px 0px 50px 120px;
@@ -23564,7 +23564,7 @@ input[type=submit] {
   }
 }
 #wrapper .authlayout .addtocards {
-  max-height: 581px;
+  max-height: 599px;
   overflow: scroll;
   overflow-x: hidden;
   padding: 50px 0px 50px 120px;
@@ -24966,7 +24966,13 @@ input[type=submit] {
   background: transparent;
   color: #fff;
 }
-.addtocardbg .addtocards .increment_btn .quantity__minus {
+.addtocardbg .addtocards .increment_btn .quantity {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+.addtocardbg .addtocards .increment_btn .quantity .quantity__minus {
   border: 1px solid #fff;
   background: #552771;
   padding: 4px 8px;
@@ -24975,11 +24981,11 @@ input[type=submit] {
   line-height: 18px;
   color: #fff;
 }
-.addtocardbg .addtocards .increment_btn .quantity__minus:hover {
+.addtocardbg .addtocards .increment_btn .quantity .quantity__minus:hover {
   background: #ffcc4e;
   color: #000;
 }
-.addtocardbg .addtocards .increment_btn .quantity__plus {
+.addtocardbg .addtocards .increment_btn .quantity .quantity__plus {
   border: 1px solid #fff;
   background: #1f062e;
   padding: 4px 8px;
@@ -24989,7 +24995,148 @@ input[type=submit] {
   line-height: 21px;
   color: #fff;
 }
-.addtocardbg .addtocards .increment_btn .quantity__plus:hover {
+.addtocardbg .addtocards .increment_btn .quantity .quantity__plus:hover {
   background: #ffcc4e;
   color: #000;
+}
+
+.shop {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  height: 100vh;
+  transition: all linear 0.3s;
+  background: linear-gradient(0deg, #450e61 0%, #450e61 100%), #fff;
+}
+.shop.active {
+  right: 0;
+  transition: all linear 0.3s;
+}
+.shop .shop-opener {
+  color: #fff;
+  font-size: 18px;
+  align-items: center;
+}
+.shop .shop-opener .shophead {
+  font-size: 14px;
+  background: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.shop .shop-opener .shophead span i {
+  color: #fff;
+}
+.shop .card {
+  flex-direction: row;
+  background-color: transparent;
+  margin: 20px 10px;
+  color: #fff;
+  border: none;
+}
+.shop .card .imgbox {
+  background-color: #fff;
+  padding: 10px;
+  max-width: 80px;
+  border-radius: 5px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.shop .card .imgbox img {
+  width: 100%;
+  display: block;
+}
+.shop .card .card-body .contant {
+  display: flex;
+  justify-content: space-between;
+}
+.shop .card .card-body .text-section {
+  max-width: 45%;
+}
+.shop .card .card-body .text-section .card-title {
+  font-size: 15px;
+}
+.shop .card .card-body .text-section .card-text {
+  font-size: 12px;
+}
+.shop .card .cta-section {
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.shop .card .cta-section .btn {
+  padding: 0.3em 0.5em;
+  /* color: #696969; */
+}
+.shop .card .card.bg-light-subtle .cta-section .btn {
+  background-color: #898989;
+  border-color: #898989;
+}
+@media screen and (max-width: 475px) {
+  .shop .card .card {
+    font-size: 0.9em;
+  }
+}
+.shop .card .increment_btn input[type=text] {
+  width: 32px;
+  height: 19px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+.shop .card .increment_btn .quantity__minus {
+  border: 1px solid #fff;
+  background: #552771;
+  padding: 4px 8px;
+  margin: 0;
+  text-align: center;
+  line-height: 18px;
+  color: #fff;
+}
+.shop .card .increment_btn .quantity__minus:hover {
+  background: #ffcc4e;
+  color: #000;
+}
+.shop .card .increment_btn .quantity__plus {
+  border: 1px solid #fff;
+  background: #1f062e;
+  padding: 4px 8px;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  line-height: 21px;
+  color: #fff;
+}
+.shop .card .increment_btn .quantity__plus:hover {
+  background: #ffcc4e;
+  color: #000;
+}
+.shop .cards {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  background: #3a0d52;
+  font-size: 12px;
+  overflow: hidden;
+  color: #fff;
+  width: 100%;
+  padding: 15px;
+}
+.shop .cards .contant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shop .cards .btn a {
+  font-size: 12px !important;
 }/*# sourceMappingURL=main.css.map */
