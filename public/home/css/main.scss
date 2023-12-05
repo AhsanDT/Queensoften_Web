@@ -5,9 +5,8 @@ $breakpoints: (
     "tablet-x": 992px,
     "desktop": 1024px,
     "widescreen": 1200px,
-    "widescreen-large": 1400px
+    "widescreen-large": 1400px,
 );
-
 
 @import "vendors/include-media";
 @import "vendors/normalize";
@@ -28,7 +27,7 @@ $breakpoints: (
 @import "base/typography";
 @import "base/forms";
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap");
 @import "vendors/sociallinks";
 @import "vendors/login";
 
@@ -44,11 +43,11 @@ $breakpoints: (
     }
 }
 
-.container {
-    max-width: 1270px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+// .container {
+//     max-width: 1270px;
+//     margin: 0 auto;
+//     padding: 0 15px;
+// }
 
 .section {
     background-repeat: no-repeat;
@@ -116,6 +115,7 @@ $breakpoints: (
                         @include media("<tablet-x") {
                             padding: 0;
                             border-bottom: 1px solid #4c2c6c;
+
                             &.toggle {
                                 display: none;
                             }
@@ -135,8 +135,7 @@ $breakpoints: (
                                 bottom: 0;
                                 left: 0;
                                 top: 25px;
-                                text-shadow:
-                                    0px -2px 0px rgba(0, 0, 0, 1),
+                                text-shadow: 0px -2px 0px rgba(0, 0, 0, 1),
                                     0 0 5px rgb(213 73 213 / 80%),
                                     0 -4px 15px rgb(226 52 218 / 50%);
                                 height: 1px;
@@ -162,6 +161,7 @@ $breakpoints: (
                                 display: block;
                                 padding: 10px;
                                 width: 230px;
+
                                 &:hover {
                                     color: #450e61;
                                     background-color: #fff;
@@ -392,13 +392,16 @@ $breakpoints: (
     position: relative;
     padding: 35px 0;
     margin: 0 0 50px;
+
     &.business_queen {
         margin: 0;
+
         &::after,
         &::before {
             display: none;
         }
     }
+
     &::after,
     &::before {
         position: absolute;
@@ -591,7 +594,13 @@ $breakpoints: (
     }
 
     .tutorial {
-        background: linear-gradient(180deg, #ffe486 0%, #ffcc4e 51.56%, #ffd02b 100%, #d2a61b 100%);
+        background: linear-gradient(
+            180deg,
+            #ffe486 0%,
+            #ffcc4e 51.56%,
+            #ffd02b 100%,
+            #d2a61b 100%
+        );
 
         h2 {
             color: #000;
@@ -650,7 +659,13 @@ $breakpoints: (
             position: absolute;
             left: 14px;
             top: 15px;
-            background: linear-gradient(180deg, #ffe486 0%, #ffcc4e 51.56%, #ffd02b 100%, #d2a61b 100%);
+            background: linear-gradient(
+                180deg,
+                #ffe486 0%,
+                #ffcc4e 51.56%,
+                #ffd02b 100%,
+                #d2a61b 100%
+            );
             color: #000;
             border-radius: 50%;
             font-size: 12px;
@@ -694,7 +709,8 @@ $breakpoints: (
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
-                img{
+
+                img {
                     display: block;
                     height: 240px;
                     width: 100%;
@@ -735,7 +751,14 @@ $breakpoints: (
                         color: #fff;
 
                         &:hover {
-                            background: var(--Yellow, linear-gradient(180deg, #ffe384 0%, #ffcf35 100%));
+                            background: var(
+                                --Yellow,
+                                linear-gradient(
+                                    180deg,
+                                    #ffe384 0%,
+                                    #ffcf35 100%
+                                )
+                            );
                             color: #fff;
                         }
                     }
@@ -776,25 +799,30 @@ $breakpoints: (
         }
     }
 }
+
 // business queen
 .business_queen {
     background-image: url(../images/businessqueenbg.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
     h2 {
         padding: 45px 0;
         text-align: center;
         text-shadow: 0px 3.208019971847534px 70.5764389038086px #000;
         letter-spacing: 2.671px;
     }
+
     .product_card {
         display: flex;
         justify-content: center;
         text-align: center;
+
         .title {
             padding: 20px 45px 0 45px;
         }
+
         .card_contant {
             img {
                 width: 145px;
@@ -818,6 +846,7 @@ $breakpoints: (
             padding: 40px 10px;
         }
     }
+
     @include media("<xs-phone") {
         .story-text {
             font-size: 14px;
@@ -831,6 +860,7 @@ $breakpoints: (
         background-position: center;
         height: 100%;
         width: 100%;
+
         @include media("<tablet-x") {
             padding: 40px 10px;
         }
@@ -867,6 +897,7 @@ $breakpoints: (
             padding: 80px 0 0 0;
             font-size: 21px;
         }
+
         .dis-btn {
             padding: 20px 0 0 0;
         }
@@ -910,6 +941,7 @@ $breakpoints: (
 
     @include media("<phone") {
         padding: 30px 0;
+
         .footer_icons {
             i {
                 padding: 20px 10px;
@@ -917,6 +949,7 @@ $breakpoints: (
             }
         }
     }
+
     @include media("<xs-phone") {
         font-size: 12px;
     }
@@ -957,13 +990,16 @@ $breakpoints: (
             padding: 50px 192px;
             text-shadow: 0px 3px 65px #01295b;
             font-size: 35px;
+
             @include media("<widescreen") {
                 padding: 50px 112px;
                 font-size: 30px;
             }
+
             @include media("<tablet-x") {
                 padding: 50px;
             }
+
             @include media("<tablet") {
                 padding: 40px;
                 font-size: 26px;
@@ -981,9 +1017,11 @@ $breakpoints: (
             background-repeat: no-repeat;
             background-size: contain;
             height: 100%;
+
             @include media("<tablet") {
                 height: 180px;
             }
+
             @include media("<phone") {
                 height: 150px;
             }
@@ -1031,7 +1069,11 @@ $breakpoints: (
             background-position: center -90px;
 
             .sec_tab {
-                background: linear-gradient(360deg, hsla(0, 0%, 48%, 1) 0%, hsla(0, 0%, 100%, 1) 33%);
+                background: linear-gradient(
+                    360deg,
+                    hsla(0, 0%, 48%, 1) 0%,
+                    hsla(0, 0%, 100%, 1) 33%
+                );
                 color: #000;
             }
         }
@@ -1083,17 +1125,22 @@ $breakpoints: (
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 15px;
+
     .box_text {
         .title {
             display: flex;
             align-items: center;
+
             .logo {
                 margin: 0 30px;
+
                 @include media("<phone") {
                     margin: 0 10px;
                 }
+
                 img {
                     max-width: 80px;
+
                     @include media("<xs-phone") {
                         max-width: 50px;
                     }
@@ -1102,14 +1149,18 @@ $breakpoints: (
 
             .text {
                 margin: 0 auto;
+
                 h3 {
                     color: #450e61;
+
                     @include media("<desktop") {
                         font-size: 21px;
                     }
+
                     @include media("<phone") {
                         font-size: 18px;
                     }
+
                     @include media("<xs-phone") {
                         font-size: 16px;
                         text-align: center;
@@ -1117,6 +1168,7 @@ $breakpoints: (
                 }
             }
         }
+
         .contant {
             text-align: center;
             line-height: 154.023%;
@@ -1127,9 +1179,11 @@ $breakpoints: (
                     font-size: 14px;
                 }
             }
+
             &.terms {
                 padding: 0;
             }
+
             .dark,
             a,
             h6 {
@@ -1137,40 +1191,49 @@ $breakpoints: (
                 font-weight: 600;
                 padding: 10px 0;
             }
+
             .dots {
                 list-style-type: disc;
                 list-style-position: inside;
             }
+
             .numbers {
                 list-style-type: auto;
                 list-style-position: inside;
             }
         }
+
         .audiences-form {
             max-width: 900px;
             margin: 0 auto;
+
             .form-control {
                 font-size: 12px;
                 padding: 10px;
                 border: 1px solid #000;
             }
+
             .audiences {
                 display: flex;
                 justify-content: space-between;
+
                 .form-group {
                     padding: 10px 0;
                     flex: 0 0 45%;
                 }
             }
+
             hr {
                 color: #000;
             }
         }
+
         .checkboxs {
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             text-align: center;
+
             .form-group {
                 align-items: center;
                 border: 1px solid black;
@@ -1180,10 +1243,12 @@ $breakpoints: (
                 line-height: 0;
                 display: flex;
                 align-items: center;
+
                 label {
                     display: inline-block;
                     font-size: 14px;
                 }
+
                 input[type="checkbox"] {
                     width: 20px;
                     height: 20px;
@@ -1191,16 +1256,17 @@ $breakpoints: (
                 }
             }
         }
+
         .form-text {
             text-align: center;
             color: #000;
+
             .btn {
                 width: 150px;
             }
         }
-
-
     }
+
     // .audiences-form {
     // 	max-width: 900px;
     // 	margin: 0 auto;
@@ -1258,18 +1324,22 @@ $breakpoints: (
 .product-card-slider {
     .slick-track {
         height: 100%;
+
         .slick-slide {
             padding: 10px;
-            >div,
+
+            > div,
             [class*="col"] {
                 height: 100%;
             }
         }
     }
 }
+
 .iti {
     width: 100%;
 }
+
 .iti__country-list {
     li {
         span {
@@ -1281,9 +1351,8 @@ $breakpoints: (
 .iti__selected-flag {
     color: #333;
 }
+
 .custom-radio {
-
-
     .radio-label {
         background: transparent;
         border: 1px solid #9d9da1;
@@ -1294,10 +1363,9 @@ $breakpoints: (
         width: 65px;
         text-align: center;
 
-
         &:hover {
             border-color: #450d60;
-            color:#450d60;
+            color: #450d60;
         }
     }
 
@@ -1308,6 +1376,254 @@ $breakpoints: (
             background-color: #450d60;
             border-color: #450d60;
             color: #fff;
+        }
+    }
+}
+
+.form-check-input[type="checkbox"] {
+    border-radius: 0.25em;
+    background: #ffcf35;
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.form-check-input:checked {
+    background: #ffcf35;
+    border-color: #ffcf35;
+}
+
+.addtocardbg {
+    background-image: url(../images/formbg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+
+    @include media("<tablet-x") {
+        .login-form {
+            padding-right: 0 !important;
+        }
+
+        .row {
+            flex-direction: column-reverse;
+        }
+    }
+
+    .addtocards {
+        .increment_btn {
+            input[type="text"] {
+                width: 32px;
+                height: 19px;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                border: none;
+                background: transparent;
+                color: #fff;
+            }
+            .quantity {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                text-align: center;
+                .quantity__minus {
+                    border: 1px solid #fff;
+                    background: #552771;
+                    padding: 4px 8px;
+                    margin: 0;
+                    text-align: center;
+                    line-height: 18px;
+                    color: #fff;
+
+                    &:hover {
+                        background: #ffcc4e;
+                        color: #000;
+                    }
+                }
+
+                .quantity__plus {
+                    border: 1px solid #fff;
+                    background: #1f062e;
+                    padding: 4px 8px;
+                    margin: 0;
+                    text-decoration: none;
+                    text-align: center;
+                    line-height: 21px;
+                    color: #fff;
+
+                    &:hover {
+                        background: #ffcc4e;
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.shop {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100vh;
+    transition: all linear 0.3s;
+    background: linear-gradient(0deg, #450e61 0%, #450e61 100%), #fff;
+    &.active {
+        right: 0;
+        transition: all linear 0.3s;
+    }
+    .shop-opener {
+        color: #fff;
+        font-size: 18px;
+        align-items: center;
+
+        .shophead {
+            font-size: 14px;
+            background: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            span {
+                i {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .card {
+        flex-direction: row;
+        background-color: transparent;
+        margin: 20px 10px;
+        color: #fff;
+        border: none;
+
+        .imgbox {
+            background-color: #fff;
+            padding: 10px;
+            max-width: 80px;
+            border-radius: 5px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        .card-body {
+            .contant {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .text-section {
+                max-width: 45%;
+
+                .card-title {
+                    font-size: 15px;
+                }
+
+                .card-text {
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .cta-section {
+            max-width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .cta-section .btn {
+            padding: 0.3em 0.5em;
+            /* color: #696969; */
+        }
+
+        .card.bg-light-subtle .cta-section .btn {
+            background-color: #898989;
+            border-color: #898989;
+        }
+
+        @media screen and (max-width: 475px) {
+            .card {
+                font-size: 0.9em;
+            }
+        }
+        .increment_btn {
+            input[type="text"] {
+                width: 32px;
+                height: 19px;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                border: none;
+                background: transparent;
+                color: #fff;
+            }
+
+            .quantity__minus {
+                border: 1px solid #fff;
+                background: #552771;
+                padding: 4px 8px;
+                margin: 0;
+                text-align: center;
+                line-height: 18px;
+                color: #fff;
+
+                &:hover {
+                    background: #ffcc4e;
+                    color: #000;
+                }
+            }
+
+            .quantity__plus {
+                border: 1px solid #fff;
+                background: #1f062e;
+                padding: 4px 8px;
+                margin: 0;
+                text-decoration: none;
+                text-align: center;
+                line-height: 21px;
+                color: #fff;
+
+                &:hover {
+                    background: #ffcc4e;
+                    color: #000;
+                }
+            }
+        }
+    }
+    .cards {
+        position: fixed;
+        bottom: 0;
+        margin: 0;
+        background: #3a0d52;
+        font-size: 12px;
+        overflow: hidden;
+        color: #fff;
+        width: 100%;
+        padding: 15px;
+        .contant {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn {
+            a {
+                font-size: 12px !important;
+            }
         }
     }
 }

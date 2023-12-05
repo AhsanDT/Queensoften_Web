@@ -121,6 +121,9 @@ class HomeController extends Controller
     public function reachaudience(){
         return view('home.reachaudience');
     }
+    public function addtocart(){
+        return view('home.addtocart');
+    }
     public function crossAdvertisement(){
         return view('home.corssadvertisement');
     }

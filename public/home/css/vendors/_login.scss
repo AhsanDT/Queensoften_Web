@@ -132,13 +132,13 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            h2{
+            h2 {
                 text-transform: unset;
             }
-            .login-btns{
+            .login-btns {
                 text-align: center;
                 padding: 50px 0 0 0;
-                .btn-group{
+                .btn-group {
                     padding: 5px;
                     width: 49%;
                 }
@@ -185,7 +185,7 @@
                         i {
                             position: absolute;
                             top: 50%;
-							right: 15px;
+                            right: 15px;
                             transform: translateY(-50%);
                             cursor: pointer;
                         }
@@ -271,6 +271,104 @@
                     margin: 10px;
                 }
             }
+        }
+
+        .addtocards {
+            max-height: 599px;
+            overflow: scroll;
+            overflow-x: hidden;
+            padding: 50px 0px 50px 120px;
+            position: relative;
+            top: 60px;
+            margin-bottom: 70px;
+            border-left: 1px solid #fff;
+            @include media("<tablet-x") {
+                top: 0px;
+                padding: 0px;
+                margin-bottom: 10px;
+                border: none;
+                max-height: 531px;
+                margin-top: 50px;
+            }
+            
+            @include media("<phone") {
+                padding: 20px;
+                margin-bottom: 20px;
+                max-height: 551px;
+                top: 38px;
+            }
+        }
+        .card {
+            flex-direction: row;
+            background-color: transparent;
+            // margin: 1em auto;
+            color: #fff;
+            border: none;
+            .imgbox {
+                background-color: #fff;
+                padding: 15px;
+                max-width: 100px;
+                border-radius: 5px;
+                height: 140px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                img {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+            .card-body {
+                .contant {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .text-section {
+                    max-width: 60%;
+                    .card-title {
+                        font-size: 15px;
+                    }
+                    .card-text {
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .cta-section {
+                max-width: 40%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: space-between;
+            }
+            .cta-section .btn {
+                padding: 0.3em 0.5em;
+                /* color: #696969; */
+            }
+            .card.bg-light-subtle .cta-section .btn {
+                background-color: #898989;
+                border-color: #898989;
+            }
+            @media screen and (max-width: 475px) {
+                .card {
+                    font-size: 0.9em;
+                }
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #9f17e4;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #ffffff80;
+            border-radius: 20px;
         }
     }
     .contact {
@@ -452,11 +550,10 @@
             .edit1 {
                 flex-direction: column;
             }
-            .wallet{
+            .wallet {
                 flex-direction: column;
-                .my_wallet{
+                .my_wallet {
                     padding: 0 0 10px 0 !important;
-
                 }
             }
         }
@@ -487,5 +584,13 @@
             height: 40px;
             padding: 10px 16px;
         }
+    }
+}
+.addcart {
+    display: flex;
+    justify-content: space-between;
+    .form-group {
+        padding: 0 !important;
+        flex: 0 0 49%;
     }
 }
