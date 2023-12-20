@@ -151,7 +151,8 @@
 
     <!--discount  -->
     <section class="section discount">
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-easing="ease-out-cubic"
+                        data-aos-duration="1000">
             <h1>GET AMAZING DISCOUNT<br>
                 IF YOU BUY ON OUR FIRST EVER SALE!</h1>
             <div class="dis-btn">
