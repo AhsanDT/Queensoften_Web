@@ -8,7 +8,8 @@
         <div class="container-fluid">
             <div class="product_card product-card-slider row">
                 @foreach($tutorials->sortBy('sequence') as $tutorial)
-                    <div class=" col-xl-3 col-md-6 col-sm-6 mb-3">
+                    <div class=" col-xl-3 col-md-6 col-sm-6 mb-3 "data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                         <div class="section card_contant counter ">
                             <span>{{$tutorial->sequence}}.</span>
                             <div class="box-contant">
