@@ -1,6 +1,6 @@
 @extends('home.layout.app')
 @section('main')
-        <main>   
+        <main>
         <section class="box-contant">
             <div class="container">
                 <div class="box_text">
@@ -52,7 +52,7 @@
                                 your brand shine in the world of "Queens of Ten.<br>If you are interested please visitspan <span class="dark"><a href="">queensoften.com</a></span> or
                                 click the link below to
                                 schedule a business consultation</p>
-                            <a class="btn" href="./tutorial.php">Apply Here</a>
+                            <a class="btn" href="#">Apply Here</a>
                             <p class="pt-3">Thank you for choosing our services!</p>
                         </div>
                     </div>
