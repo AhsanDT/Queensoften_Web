@@ -4,6 +4,8 @@
 <script type="text/javascript" src="{{asset('home/js/main.js')}}"></script>
 <script type="text/javascript" src="{{asset('home/js/slick.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.11/js/intlTelInput.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 <script>
   $(document).ready(function () {
     // Initialize intl-tel-input
@@ -21,7 +23,9 @@
     });
   });
 </script>
-
+<script>
+  AOS.init();
+</script>
 </body>
 </div>
 

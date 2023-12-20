@@ -11,6 +11,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
       href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.11/css/intlTelInput.css"
     />
 
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
 <body>
