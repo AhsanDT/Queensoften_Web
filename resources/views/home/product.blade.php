@@ -23,7 +23,8 @@
                         <div class="container">
                             <div class="row ">
                                 @foreach($allItems as $item)
-                                <div class=" col-lg-4 col-md-4 col-sm-6">
+                                <div class=" col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                     <div class="section card_contant ">
                                         <div class="imag_box">
                                             <img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/{{$item->image}}"
@@ -460,8 +461,9 @@
             <div class="our_product">
                 <div class="product_card">
                     <div class="container">
-                         <div class="row ">
-                            <div class=" col-lg-4 col-md-4 col-sm-6">
+                         <div class="row" >
+                            <div class=" col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/shirt.png')}}" alt="">
@@ -486,7 +488,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/shirt.png')}}" alt="">
@@ -511,7 +514,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/shirt.png')}}" alt="">
@@ -536,7 +540,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class=" col-lg-4 col-md-4 col-sm-6">
+                            <div class=" col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/Castle1.png')}}" alt="">
@@ -561,7 +566,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/Castle1.png')}}" alt="">
@@ -586,7 +592,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/Castle1.png')}}" alt="">
@@ -611,7 +618,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class=" col-lg-4 col-md-4 col-sm-6">
+                            <div class=" col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/shirt2.png')}}" alt="">
@@ -636,7 +644,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/shirt2.png')}}" alt="">
@@ -661,7 +670,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/shirt2.png')}}" alt="">
@@ -686,7 +696,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class=" col-lg-4 col-md-4 col-sm-6">
+                            <div class=" col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/Castle2.png')}}" alt="">
@@ -711,7 +722,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/Castle2.png')}}" alt="">
@@ -736,7 +748,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/Castle2.png')}}" alt="">
@@ -761,7 +774,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class=" col-lg-4 col-md-4 col-sm-6">
+                            <div class=" col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/shirt.png')}}" alt="">
@@ -786,7 +800,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/shirt2.png')}}" alt="">
@@ -811,7 +826,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="500">
                                 <div class="section card_contant  sec_tab  ">
                                     <div class="imag_box">
                                         <img src="{{asset('home/images/Castle1.png')}}" alt="">

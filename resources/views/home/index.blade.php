@@ -107,11 +107,11 @@
             <h2 data-aos="zoom-out"><span class="text-warning">our </span> latest products</h2>
         </div>
         <div style="background-image: url(home/images/wave.png);" class="product_card">
-            <div class="container">
+            <div class="container" data-aos="zoom-in"  data-aos-easing="ease-out-cubic"
+                        data-aos-duration="1000">
                 <div class=" row product_slider">
                     @foreach($recentItems as $recentItem)
-                    <div class=" col-lg-4 col-md-4 col-sm-6" data-aos="flip-right" data-aos-easing="ease-out-cubic"
-                        data-aos-duration="1000">
+                    <div class=" col-lg-4 col-md-4 col-sm-6">
                         <div class="section card_contant ">
                             <div class="imag_box">
                                 <img src="https://queensoftenimages.s3.us-west-1.amazonaws.com/{{$recentItem->image}}"
