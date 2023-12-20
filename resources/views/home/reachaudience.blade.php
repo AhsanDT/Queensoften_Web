@@ -30,7 +30,7 @@
                         href="">queensoften.com</a></span> or click the link below to
                 schedule a business consultation
             </p>
-            <a class="btn" href="./tutorial.php">Apply Here</a>
+            <a class="btn" href="#">Apply Here</a>
             <p class="pt-3">Thank you for choosing our services!</p>
         </div>
         </div>
