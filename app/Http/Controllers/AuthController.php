@@ -109,7 +109,7 @@ class AuthController extends Controller
                 'response_type' => 'code',
                 'response_mode' => 'form_post',
                 'client_id' => 'com.qot.queensoftenweb',
-                'redirect_uri' => 'https://queensoften.com/auth/callback-apple',
+                'redirect_uri' => 'https://admin.queensoften.com/auth/callback-apple',
                 'scope' => 'name email',
                 'state' => $state,
                 'nonce' => $nonce,
@@ -128,7 +128,7 @@ class AuthController extends Controller
         $keyFile = asset('apple/AuthKey_65H92Z42L4.p8');
         $keyFileId = '65H92Z42L4';
         $code = $request->code;
-        $redirect_uri = 'https://queensoften.com/auth/callback-apple';
+        $redirect_uri = 'https://admin.queensoften.com/auth/callback-apple';
         $response = $this->generateAppleClientSecret($teamId,$clientId,$keyFile,$keyFileId,$code,$redirect_uri);
 
 //        dd($response->body());
