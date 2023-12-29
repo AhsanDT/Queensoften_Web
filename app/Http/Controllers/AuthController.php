@@ -133,7 +133,7 @@ class AuthController extends Controller
 
 //        dd($response->body());
         $data = json_decode($response);
-//        dd($data);
+        dd($data);
         if ($data->access_token) {
             $accessToken = $data->id_token;
             $tokenParts = explode('.', $accessToken);
