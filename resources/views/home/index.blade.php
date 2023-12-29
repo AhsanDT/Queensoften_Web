@@ -5,17 +5,17 @@
         <div class="section banner_contant">
             <h1>PLAY THE AMAZING GAME </h1>
             <img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
-            <a class="btn" href="">Download the App</a>
+            <a class="btn" href="https://apps.apple.com/pk/app/queens-of-ten/id1672243186">Download the App</a>
         </div>
         <div class="section banner_contant">
             <h1>PLAY THE AMAZING GAME </h1>
             <img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
-            <a class="btn" href="">Download the App</a>
+            <a class="btn" href="https://apps.apple.com/pk/app/queens-of-ten/id1672243186">Download the App</a>
         </div>
         <div class="section banner_contant">
             <h1>PLAY THE AMAZING GAME </h1>
             <img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
-            <a class="btn" href="">Download the App</a>
+            <a class="btn" href="https://apps.apple.com/pk/app/queens-of-ten/id1672243186">Download the App</a>
 
         </div>
     </div>
