@@ -22,7 +22,7 @@ Route::post('/post-billing',[\App\Http\Controllers\HomeController::class,'billin
 Route::get('/tutorial',[\App\Http\Controllers\HomeController::class,'tutorial'])->name('tutorial');
 Route::get('/story',[\App\Http\Controllers\HomeController::class,'story'])->name('story');
 Route::get('/signup',[\App\Http\Controllers\HomeController::class,'signup'])->name('signup');
-Route::get('/signin',[\App\Http\Controllers\HomeController::class,'signin'])->name('signin');
+Route::get('/login',[\App\Http\Controllers\HomeController::class,'signin'])->name('signin');
 Route::get('/product',[\App\Http\Controllers\HomeController::class,'product'])->name('product');
 Route::get('/mywallet/{id}',[\App\Http\Controllers\HomeController::class,'mywallet'])->name('mywallet');
 Route::get('/reachaudience',[\App\Http\Controllers\HomeController::class,'reachaudience'])->name('reachaudience');
@@ -33,7 +33,7 @@ Route::get('/manageaccount/{id}',[\App\Http\Controllers\HomeController::class,'m
 Route::get('/editprofile',[\App\Http\Controllers\HomeController::class,'editprofile'])->name('editprofile');
 Route::post('/updateprofile',[\App\Http\Controllers\HomeController::class,'updateprofile'])->name('updateprofile');
 Route::get('/contactus',[\App\Http\Controllers\HomeController::class,'contactus'])->name('contactus');
-Route::post('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('login.authenticate');
+Route::post('/login-post',[\App\Http\Controllers\AuthController::class,'login'])->name('login.authenticate');
 Route::get('/forgot-password',[\App\Http\Controllers\AuthController::class,'forgot_request'])->name('password.request');
 Route::post('/forgot-password',[\App\Http\Controllers\AuthController::class,'forgot_password'])->name('password.email');
 Route::get('/reset-password/{token}',[\App\Http\Controllers\AuthController::class,'reset_password'] )->name('password.reset');
