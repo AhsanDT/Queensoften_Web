@@ -10,6 +10,7 @@
         "darkaonline/l5-swagger": "^8.5",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^3.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/socialite": "^5.10",

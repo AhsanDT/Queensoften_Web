@@ -25,6 +25,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Image;
 use PHPUnit\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -377,7 +378,7 @@ class UserApiRepository implements UserApiRepositoryInterface
         $user->save();
         return $this->response(true, "Gamertag updated successfully", '', Response::HTTP_OK);
     }
-    public function updateProfileImage($request):JsonResponse
+    public function updateProfileImage($request): JsonResponse
     {
         $user = User::find($request->id);
 
@@ -387,12 +388,22 @@ class UserApiRepository implements UserApiRepositoryInterface
             $user->picture = '';
             $user->save();
         }
+
         $file = $request->file('image');
         $name = time() . $file->getClientOriginalName();
         $filePath = 'images/' . $name;
-        Storage::disk('s3')->put($filePath, file_get_contents($file));
+
+        // Resize and compress image
+        $image = Image::make($file)->resize(800, null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->encode('jpg', 75); // 75 is the compression quality
+
+        // Store the compressed image to S3
+        Storage::disk('s3')->put($filePath, $image->stream(), 'public');
         $user->picture = 'https://queensoftenimages.s3.us-west-1.amazonaws.com/'.$filePath;
         $user->save();
+
         return $this->response(true, "Profile picture updated successfully", '', Response::HTTP_OK);
     }
 }
