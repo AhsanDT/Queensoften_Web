@@ -5,17 +5,20 @@
         <div class="section banner_contant">
             <h1>PLAY THE AMAZING GAME </h1>
             <img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
-            <a class="btn" href="https://apps.apple.com/pk/app/queens-of-ten/id1672243186">Download the App</a>
+            <a class="btn icon-btn" href="https://apps.apple.com/pk/app/queens-of-ten/id1672243186"><img src="{{asset('images/apple.svg')}}"></a>
+            <a class="btn icon-btn" href="https://play.google.com/store/apps/details?id=com.torihampton.queenoften"><img src="{{asset('images/google_2.svg')}}"></a>
         </div>
         <div class="section banner_contant">
             <h1>PLAY THE AMAZING GAME </h1>
             <img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
-            <a class="btn" href="https://apps.apple.com/pk/app/queens-of-ten/id1672243186">Download the App</a>
+            <a class="btn icon-btn" href="https://apps.apple.com/pk/app/queens-of-ten/id1672243186"><img src="{{asset('images/apple.svg')}}"></a>
+            <a class="btn icon-btn" href="https://play.google.com/store/apps/details?id=com.torihampton.queenoften"><img src="{{asset('images/google_2.svg')}}"></a>
         </div>
         <div class="section banner_contant">
             <h1>PLAY THE AMAZING GAME </h1>
             <img src="{{asset('home/images/bannerlogo.png')}}" alt="img">
-            <a class="btn" href="https://apps.apple.com/pk/app/queens-of-ten/id1672243186">Download the App</a>
+            <a class="btn icon-btn" href="https://apps.apple.com/pk/app/queens-of-ten/id1672243186"><img src="{{asset('images/apple.svg')}}"></a>
+            <a class="btn icon-btn" href="https://play.google.com/store/apps/details?id=com.torihampton.queenoften"><img src="{{asset('images/google_2.svg')}}"></a>
 
         </div>
     </div>

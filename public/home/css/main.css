@@ -24197,6 +24197,15 @@ input[type=submit] {
 }
 .banner_contant a {
   margin: 20px 0;
+  background: transparent !important;
+}
+.banner_contant a img {
+  width: 150px;
+}
+@media screen and (max-width: 580px) {
+  .banner_contant a img {
+    width: 100px;
+  }
 }
 @media (max-width: 991px) {
   .banner_contant h1 {

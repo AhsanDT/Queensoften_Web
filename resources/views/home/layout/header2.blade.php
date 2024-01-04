@@ -9,7 +9,7 @@
                 <ul>
                     <li><a class="active" href="{{route('story')}}"><i class="fa fa-book nav-2"></i>Story</a></li>
                     <li><a href="{{route('product')}}"><i class="fa fa-shopping-cart nav-2"></i>Store</a></li>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.torihampton.queenoften"><i class="fa fa-download nav-2"></i>Download App</a></li>
+{{--                    <li><a href="https://play.google.com/store/apps/details?id=com.torihampton.queenoften"><i class="fa fa-download nav-2"></i>Download App</a></li>--}}
                     <li><a href="{{route('contactus')}}"><i class="fa fa-envelope nav-2"></i>Contact Us</a></li>
                 </ul>
 {{--                <div class="nav_btn">--}}

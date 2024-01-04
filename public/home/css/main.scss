@@ -323,6 +323,15 @@ $breakpoints: (
 
     a {
         margin: 20px 0;
+        background: transparent !important;
+        img{
+            width: 150px;
+            @media screen and (max-width: 580px) {
+
+                width: 100px
+
+            }
+        }
     }
 
     @include media("<tablet-x") {
