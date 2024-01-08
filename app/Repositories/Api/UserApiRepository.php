@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use PHPUnit\Exception;
+use Spatie\ImageOptimizer\OptimizerChainFactory;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserApiRepository implements UserApiRepositoryInterface
@@ -377,7 +378,7 @@ class UserApiRepository implements UserApiRepositoryInterface
         $user->save();
         return $this->response(true, "Gamertag updated successfully", '', Response::HTTP_OK);
     }
-    public function updateProfileImage($request):JsonResponse
+    public function updateProfileImage($request): JsonResponse
     {
         $user = User::find($request->id);
 
@@ -387,12 +388,31 @@ class UserApiRepository implements UserApiRepositoryInterface
             $user->picture = '';
             $user->save();
         }
+
         $file = $request->file('image');
         $name = time() . $file->getClientOriginalName();
-        $filePath = 'images/' . $name;
-        Storage::disk('s3')->put($filePath, file_get_contents($file));
-        $user->picture = 'https://queensoftenimages.s3.us-west-1.amazonaws.com/'.$filePath;
+        $temporaryPath = 'temp/' . $name;
+        Storage::disk('local')->put($temporaryPath, file_get_contents($file));
+
+        // Compress the temporary image
+        $this->compressImage('local', $temporaryPath);
+
+        // Upload the compressed image to S3
+        $compressedPath = 'compressed/' . $name;
+        Storage::disk('s3')->put($compressedPath, Storage::disk('local')->get($temporaryPath));
+
+        // Delete the temporary image from local storage
+        Storage::disk('local')->delete($temporaryPath);
+
+        $user->picture = 'https://queensoftenimages.s3.us-west-1.amazonaws.com/' . $compressedPath;
         $user->save();
+
         return $this->response(true, "Profile picture updated successfully", '', Response::HTTP_OK);
+    }
+
+    private function compressImage($disk, $path)
+    {
+        $optimizerChain = OptimizerChainFactory::create();
+        $optimizerChain->optimize(Storage::disk($disk)->path($path));
     }
 }

@@ -16,6 +16,7 @@
         "laravel/socialite": "^5.10",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.15",
+        "spatie/image-optimizer": "^1.7",
         "tymon/jwt-auth": "^2.0",
         "web-token/jwt-framework": "^3.2"
     },
